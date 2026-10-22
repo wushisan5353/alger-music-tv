@@ -101,7 +101,7 @@ jobs:
             echo "sha=${{ github.sha }}"
             echo "signed=${SIGNED:-unknown}"
           } > "$STAGE/build-info.txt"
-          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.2.apk
+          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.3.apk
           if [ -f "$APK" ]; then
             SIZE=$(stat -c%s "$APK")
             SHA=$(sha256sum "$APK" | cut -d' ' -f1)
@@ -112,7 +112,7 @@ jobs:
           else
             echo "apk_missing=1" >> "$STAGE/build-info.txt"
           fi
-          PHONE_APK=app/build/outputs/apk/phone/release/AlgerPhone-1.0.apk
+          PHONE_APK=app/build/outputs/apk/phone/release/AlgerPhone-1.1.apk
           if [ -f "$PHONE_APK" ]; then
             PSIZE=$(stat -c%s "$PHONE_APK")
             PSHA=$(sha256sum "$PHONE_APK" | cut -d' ' -f1)
@@ -149,20 +149,21 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            app/build/outputs/apk/tv/release/AlgerTV-1.0.2.apk \
-            app/build/outputs/apk/phone/release/AlgerPhone-1.0.apk \
+            app/build/outputs/apk/tv/release/AlgerTV-1.0.3.apk \
+            app/build/outputs/apk/phone/release/AlgerPhone-1.1.apk \
             --title "Alger轻听 ${GITHUB_REF_NAME}" \
             --notes "Alger轻听 ${GITHUB_REF_NAME}（原生轻量版，免登录；含电视版与手机版两个 APK）"
 
       - name: Fail if APK missing
         run: |
-          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.2.apk
-          test -f app/build/outputs/apk/phone/release/AlgerPhone-1.0.apk
+          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.3.apk
+          test -f app/build/outputs/apk/phone/release/AlgerPhone-1.1.apk
 
-  # In-workflow smoke test on a real Android (redroid 11 on the ARM runner):
-  # the workflow itself downloads the just-built artifacts — no MCP chunk
-  # pushes, so zero user approval cards. Results are committed back to
-  # build-output/smoke-results/ with the workflow token.
+  # In-workflow smoke on redroid 11 (ARM runner). This round the smoke also
+  # reproduces the "first launch shows no list" report: BOTH flavors are
+  # launched cold (pm clear) for a first-launch screenshot + HOME_ load
+  # markers, then relaunched for a second-launch screenshot. TV runs at
+  # 1920x1080/density 320, phone at 1080x1920/density 420.
   smoke:
     needs: build
     if: always()
@@ -209,50 +210,15 @@ jobs:
           if [ "$BOOT" != "ok" ]; then echo "SMOKE_ENV_FAIL=boot" >> smoke-out/report.txt; exit 0; fi
           echo "REDROID_BOOTED" >> smoke-out/report.txt
           adb -s localhost:5555 shell getprop ro.product.cpu.abilist
-
-          smoke_one() {
-            local TAG="$1" APKFILE="$2" PKG="$3" ACT="$4" EXTRA="$5"
-            echo "===== $TAG ($PKG) ====="
-            if [ ! -f "$APKFILE" ]; then echo "${TAG}_APK_MISSING" >> smoke-out/report.txt; return; fi
-            if adb -s localhost:5555 install -r "$APKFILE" > "smoke-out/install-$TAG.txt" 2>&1; then
-              echo "${TAG}_INSTALL_OK" >> smoke-out/report.txt
-            else
-              echo "${TAG}_INSTALL_FAIL" >> smoke-out/report.txt; return
-            fi
-            adb -s localhost:5555 logcat -c
-            if [ -n "$EXTRA" ]; then
-              adb -s localhost:5555 shell am start -n "$PKG/$ACT" --es alger_smoke 1
-            else
-              adb -s localhost:5555 shell am start -n "$PKG/$ACT"
-            fi
-            sleep 15
-            PID=$(adb -s localhost:5555 shell pidof "$PKG" | tr -d '\r')
-            if [ -n "$PID" ]; then
-              echo "${TAG}_PROCESS_ALIVE pid=$PID" >> smoke-out/report.txt
-            else
-              echo "${TAG}_PROCESS_DEAD" >> smoke-out/report.txt
-            fi
-            adb -s localhost:5555 shell dumpsys activity activities | grep -E "ResumedActivity|topResumedActivity" | head -4
-            adb -s localhost:5555 logcat -d > "smoke-out/logcat-$TAG.txt" 2>/dev/null
-            FATAL=$(grep -c "FATAL EXCEPTION" "smoke-out/logcat-$TAG.txt" || true)
-            echo "${TAG}_FATAL_COUNT=$FATAL" >> smoke-out/report.txt
-            grep -E "FATAL EXCEPTION|AndroidRuntime|IllegalStateException|Theme.AppCompat" "smoke-out/logcat-$TAG.txt" | head -20 > "smoke-out/fatal-$TAG.txt" || true
-            adb -s localhost:5555 shell screencap -p /sdcard/smoke-$TAG.png
-            adb -s localhost:5555 pull /sdcard/smoke-$TAG.png "smoke-out/shot-$TAG.png" > /dev/null 2>&1 || true
-          }
+          D="adb -s localhost:5555"
 
           echo "=== sign artifacts with ephemeral key (smoke only; CI artifacts are unsigned) ==="
-          # Build #14 lesson: the ARM smoke runner has no Android SDK
-          # build-tools and no JDK, so $ANDROID_HOME/build-tools/*/apksigner
-          # matched nothing and keytool was absent -> signer_missing and the
-          # unsigned artifacts failed install with NO_CERTIFICATES. Install
-          # both tools from apt first (apksigner + keytool via JDK headless).
           sudo apt-get install -y apksigner default-jdk-headless > /dev/null 2>&1 || true
           APKSIGNER=$(command -v apksigner || ls $ANDROID_HOME/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
           echo "apksigner=$APKSIGNER keytool=$(command -v keytool || echo MISSING)"
           if [ -n "$APKSIGNER" ] && command -v keytool > /dev/null; then
             keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
-            for f in apks/tv/release/AlgerTV-1.0.2.apk apks/phone/release/AlgerPhone-1.0.apk; do
+            for f in apks/tv/release/AlgerTV-1.0.3.apk apks/phone/release/AlgerPhone-1.1.apk; do
               if [ -f "$f" ] && "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 "$f"; then
                 echo "SMOKE_SIGNED $f"
               else
@@ -263,8 +229,85 @@ jobs:
             echo "SMOKE_ENV_FAIL=signer_missing" >> smoke-out/report.txt
           fi
 
-          smoke_one TV "apks/tv/release/AlgerTV-1.0.2.apk" "com.wushisan.algertv" "com.wushisan.algertv.ui.MainActivity" "smoke"
-          smoke_one PHONE "apks/phone/release/AlgerPhone-1.0.apk" "com.wushisan.algertv.phone" "com.wushisan.algertv.ui.phone.PhoneMainActivity" ""
+          shot() { # $1 = output name
+            $D shell screencap -p /sdcard/shot.png
+            $D pull /sdcard/shot.png "smoke-out/$1" > /dev/null 2>&1 || true
+          }
+          alive_line() { # $1 = tag prefix, $2 = pkg
+            PID=$($D shell pidof "$2" | tr -d '\r')
+            if [ -n "$PID" ]; then echo "$1_ALIVE pid=$PID" >> smoke-out/report.txt; else echo "$1_DEAD" >> smoke-out/report.txt; fi
+          }
+
+          # ---------------- TV: 1920x1080, first + second launch ----------
+          TVPKG=com.wushisan.algertv
+          TVACT=com.wushisan.algertv.ui.MainActivity
+          $D shell wm size 1920x1080
+          $D shell wm density 320
+          if $D install -r apks/tv/release/AlgerTV-1.0.3.apk > smoke-out/install-TV.txt 2>&1; then
+            echo "TV_INSTALL_OK" >> smoke-out/report.txt
+          else
+            echo "TV_INSTALL_FAIL" >> smoke-out/report.txt
+          fi
+          $D shell pm clear $TVPKG
+          $D logcat -c
+          echo "--- TV first launch (cold, no extras) ---"
+          $D shell am start -n "$TVPKG/$TVACT"
+          sleep 14
+          shot shot-TV-first.png
+          alive_line TV_FIRST $TVPKG
+          $D logcat -d > smoke-out/logcat-TV-first.txt 2>/dev/null
+          grep "HOME_" smoke-out/logcat-TV-first.txt > smoke-out/home-repro.txt || true
+          echo "--- TV second launch (smoke autoplay) ---"
+          $D shell am force-stop $TVPKG
+          $D logcat -c
+          $D shell am start -n "$TVPKG/$TVACT" --es alger_smoke 1
+          sleep 20
+          shot shot-TV-second.png
+          PID=$($D shell pidof $TVPKG | tr -d '\r')
+          if [ -n "$PID" ]; then echo "TV_PROCESS_ALIVE pid=$PID" >> smoke-out/report.txt; else echo "TV_PROCESS_DEAD" >> smoke-out/report.txt; fi
+          $D logcat -d > smoke-out/logcat-TV.txt 2>/dev/null
+          FATAL=$(grep -c "FATAL EXCEPTION" smoke-out/logcat-TV.txt || true)
+          echo "TV_FATAL_COUNT=$FATAL" >> smoke-out/report.txt
+          grep -E "FATAL EXCEPTION|AndroidRuntime" smoke-out/logcat-TV.txt | head -20 > smoke-out/fatal-TV.txt || true
+          if grep -q "SMOKE_AUTOPLAY_OK" smoke-out/logcat-TV.txt && grep -q "PLAYER_STARTED" smoke-out/logcat-TV.txt; then
+            echo "TV_AUTOPLAY_OK" >> smoke-out/report.txt
+          else
+            echo "TV_AUTOPLAY_UNCONFIRMED" >> smoke-out/report.txt
+          fi
+          grep -E "SMOKE_AUTOPLAY|PLAYER_" smoke-out/logcat-TV.txt | head -30 > smoke-out/autoplay-TV.txt || true
+
+          # ---------------- PHONE: 1080x1920, first + second launch -------
+          PHPKG=com.wushisan.algertv.phone
+          PHACT=com.wushisan.algertv.ui.phone.PhoneMainActivity
+          $D shell wm size 1080x1920
+          $D shell wm density 420
+          if $D install -r apks/phone/release/AlgerPhone-1.1.apk > smoke-out/install-PHONE.txt 2>&1; then
+            echo "PHONE_INSTALL_OK" >> smoke-out/report.txt
+          else
+            echo "PHONE_INSTALL_FAIL" >> smoke-out/report.txt
+          fi
+          $D shell pm clear $PHPKG
+          $D logcat -c
+          echo "--- PHONE first launch (cold) ---"
+          $D shell am start -n "$PHPKG/$PHACT"
+          sleep 12
+          shot shot-PHONE-first.png
+          alive_line PHONE_FIRST $PHPKG
+          $D logcat -d > smoke-out/logcat-PHONE-first.txt 2>/dev/null
+          grep "HOME_" smoke-out/logcat-PHONE-first.txt >> smoke-out/home-repro.txt || true
+          echo "--- PHONE second launch ---"
+          $D shell am force-stop $PHPKG
+          $D logcat -c
+          $D shell am start -n "$PHPKG/$PHACT"
+          sleep 10
+          shot shot-PHONE-second.png
+          PID=$($D shell pidof $PHPKG | tr -d '\r')
+          if [ -n "$PID" ]; then echo "PHONE_PROCESS_ALIVE pid=$PID" >> smoke-out/report.txt; else echo "PHONE_PROCESS_DEAD" >> smoke-out/report.txt; fi
+          $D logcat -d > smoke-out/logcat-PHONE.txt 2>/dev/null
+          FATAL=$(grep -c "FATAL EXCEPTION" smoke-out/logcat-PHONE.txt || true)
+          echo "PHONE_FATAL_COUNT=$FATAL" >> smoke-out/report.txt
+          grep -E "FATAL EXCEPTION|AndroidRuntime" smoke-out/logcat-PHONE.txt | head -20 > smoke-out/fatal-PHONE.txt || true
+
           echo "SMOKE_DONE date=$(date -u +%Y-%m-%dT%H:%M:%SZ) sha=${{ github.sha }}" >> smoke-out/report.txt
           cat smoke-out/report.txt
 
@@ -274,8 +317,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set +e
-          # Keep the committed payloads small: cap each logcat excerpt.
-          for f in smoke-out/logcat-TV.txt smoke-out/logcat-PHONE.txt; do
+          for f in smoke-out/logcat-TV.txt smoke-out/logcat-PHONE.txt smoke-out/logcat-TV-first.txt smoke-out/logcat-PHONE-first.txt; do
             [ -f "$f" ] && tail -c 300000 "$f" > "$f.tmp" && mv "$f.tmp" "$f"
           done
           rm -rf /tmp/outrepo
@@ -295,3 +337,142 @@ jobs:
           git commit -m "smoke results for ${{ github.sha }}" || echo "nothing to commit"
           git push origin build-output
           echo "smoke results published"
+
+  # Modern-Android phone playback repro: phone 1.0 crashed on the user's
+  # recent Android when a playlist track was tapped, a path the API 30
+  # redroid smoke never exercised. This job drives the real tap path
+  # (home -> first chart playlist -> first track -> player) via the app's
+  # alger_smoke hooks on redroid 13 (API 33) if it boots here, else on an
+  # x86 API 34 emulator (the phone APK is pure Java, no native libs), and
+  # verifies: process alive, media session PLAYING, position advancing,
+  # zero FATAL — with the full AndroidRuntime stack captured on failure.
+  smoke-phone-modern:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - name: Download built APKs
+        uses: actions/download-artifact@v4
+        with:
+          name: Alger-apks
+          path: apks
+
+      - name: Sign phone APK and write repro script
+        run: |
+          mkdir -p modern-out
+          sudo apt-get update -qq
+          sudo apt-get install -y apksigner default-jdk-headless android-tools-adb > /dev/null 2>&1 || true
+          APKSIGNER=$(command -v apksigner || ls $ANDROID_HOME/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
+          keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
+          "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 apks/phone/release/AlgerPhone-1.1.apk && echo "MODERN_SIGNED" || echo "MODERN_SIGN_FAIL"
+          cat > repro-phone.sh << 'REPROEOF'
+          #!/bin/bash
+          # $1 = env label (redroid13 / emulator34). Expects adb ready.
+          set +e
+          PKG=com.wushisan.algertv.phone
+          ACT=com.wushisan.algertv.ui.phone.PhoneMainActivity
+          OUT=modern-out
+          mkdir -p "$OUT"
+          echo "PHONE_MODERN_ENV=$1" >> "$OUT/report.txt"
+          adb wait-for-device
+          adb shell getprop ro.build.version.sdk > "$OUT/sdk.txt" 2>/dev/null
+          if adb install -r apks/phone/release/AlgerPhone-1.1.apk > "$OUT/install.txt" 2>&1; then
+            echo "PHONE_MODERN_INSTALL_OK" >> "$OUT/report.txt"
+          else
+            echo "PHONE_MODERN_INSTALL_FAIL" >> "$OUT/report.txt"; exit 0
+          fi
+          adb shell pm clear $PKG
+          adb logcat -c
+          adb shell am start -n "$PKG/$ACT" --es alger_smoke 1
+          sleep 30
+          PID=$(adb shell pidof $PKG | tr -d '\r')
+          if [ -n "$PID" ]; then echo "PHONE_MODERN_ALIVE pid=$PID" >> "$OUT/report.txt"; else echo "PHONE_MODERN_DEAD" >> "$OUT/report.txt"; fi
+          adb shell dumpsys media_session > "$OUT/media-session-1.txt" 2>/dev/null
+          adb shell screencap -p /sdcard/modern1.png
+          adb pull /sdcard/modern1.png "$OUT/shot-PHONE-modern-player.png" > /dev/null 2>&1 || true
+          sleep 6
+          adb shell dumpsys media_session > "$OUT/media-session-2.txt" 2>/dev/null
+          adb logcat -d > "$OUT/logcat-modern.txt" 2>/dev/null
+          FATAL=$(grep -c "FATAL EXCEPTION" "$OUT/logcat-modern.txt" || true)
+          echo "PHONE_MODERN_FATAL_COUNT=$FATAL" >> "$OUT/report.txt"
+          if [ "$FATAL" != "0" ]; then
+            grep -A 45 "FATAL EXCEPTION" "$OUT/logcat-modern.txt" | head -90 > "$OUT/phone-crash.txt"
+          fi
+          grep -E "SMOKE_PHONE_|PLAYER_" "$OUT/logcat-modern.txt" | head -40 > "$OUT/play-markers.txt" || true
+          if grep -q "PLAYER_STARTED" "$OUT/logcat-modern.txt"; then echo "PHONE_MODERN_PLAYER_STARTED" >> "$OUT/report.txt"; fi
+          P1=$(grep -o "position=[0-9]*" "$OUT/media-session-1.txt" | head -1 | cut -d= -f2)
+          P2=$(grep -o "position=[0-9]*" "$OUT/media-session-2.txt" | head -1 | cut -d= -f2)
+          echo "PHONE_MODERN_POSITION p1=${P1:-none} p2=${P2:-none}" >> "$OUT/report.txt"
+          if [ -n "$P1" ] && [ -n "$P2" ] && [ "$P2" -gt "$P1" ]; then echo "PHONE_MODERN_POSITION_ADVANCED" >> "$OUT/report.txt"; fi
+          if grep -q "PLAYING" "$OUT/media-session-2.txt"; then echo "PHONE_MODERN_SESSION_PLAYING" >> "$OUT/report.txt"; fi
+          PID=$(adb shell pidof $PKG | tr -d '\r')
+          if [ -n "$PID" ]; then echo "PHONE_MODERN_ALIVE_END pid=$PID" >> "$OUT/report.txt"; else echo "PHONE_MODERN_DEAD_END" >> "$OUT/report.txt"; fi
+          cat "$OUT/report.txt"
+          REPROEOF
+          chmod +x repro-phone.sh
+
+      - name: Try redroid 13 (API 33)
+        run: |
+          set +e
+          echo "MODERN_ENV=" >> "$GITHUB_ENV"
+          sudo modprobe binder_linux devices="binder,hwbinder,vndbinder" 2>/dev/null
+          if [ ! -e /dev/binder ]; then
+            sudo apt-get install -y linux-modules-extra-$(uname -r) > /dev/null 2>&1 || true
+            sudo modprobe binder_linux devices="binder,hwbinder,vndbinder" 2>/dev/null
+          fi
+          docker run -d --privileged -p 5555:5555 --name redroid redroid/redroid:13.0.0-latest androidboot.redroid_gpu_mode=guest || { echo "redroid13 docker failed"; exit 0; }
+          adb connect localhost:5555
+          BOOT=""
+          for i in $(seq 1 24); do
+            B=$(adb -s localhost:5555 shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+            echo "redroid13 boot try $i: $B"
+            if [ "$B" = "1" ]; then BOOT=ok; break; fi
+            sleep 10
+          done
+          if [ "$BOOT" = "ok" ]; then
+            echo "MODERN_ENV=redroid13" >> "$GITHUB_ENV"
+            export ANDROID_SERIAL=localhost:5555
+            bash repro-phone.sh redroid13
+          else
+            echo "redroid13 did not boot; emulator fallback will run"
+            docker rm -f redroid || true
+          fi
+
+      - name: Fallback — x86 emulator API 34
+        if: env.MODERN_ENV != 'redroid13'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: bash repro-phone.sh emulator34
+
+      - name: Publish modern repro results to build-output branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          [ -f modern-out/logcat-modern.txt ] && tail -c 300000 modern-out/logcat-modern.txt > modern-out/logcat-modern.txt.tmp && mv modern-out/logcat-modern.txt.tmp modern-out/logcat-modern.txt
+          rm -rf /tmp/outrepo
+          if git clone --branch build-output "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" /tmp/outrepo 2>/dev/null; then
+            echo "cloned existing build-output"
+          else
+            git clone "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" /tmp/outrepo
+            cd /tmp/outrepo && git checkout --orphan build-output && git rm -rf . > /dev/null 2>&1
+            cd - > /dev/null
+          fi
+          mkdir -p /tmp/outrepo/smoke-results/modern
+          cp -r modern-out/* /tmp/outrepo/smoke-results/modern/ 2>/dev/null || echo "no modern-out"
+          cd /tmp/outrepo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "modern phone repro for ${{ github.sha }}" || echo "nothing to commit"
+          git push origin build-output
+          echo "modern repro published"
