@@ -29,8 +29,10 @@ android {
             // minSdk 22 / targetSdk 28 (from defaultConfig).
             // 1.0.1: fix launch crash (AppCompatActivity + Theme.Leanback),
             // same signing key -> installs over 1.0 on the user's TV.
-            versionCode 2
-            versionName '1.0.1'
+            // 1.0.2: fix startForeground crash on API 26+ (foreground
+            // notification had no NotificationChannel; Build #15 smoke).
+            versionCode 3
+            versionName '1.0.2'
         }
         phone {
             dimension 'device'

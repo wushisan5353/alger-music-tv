@@ -1,9 +1,12 @@
 package com.wushisan.algertv.playback;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaSessionCompat;
@@ -23,6 +26,7 @@ public class PlaybackService extends Service {
     public static final String ACTION_NEXT = "com.wushisan.algertv.NEXT";
     public static final String ACTION_PREV = "com.wushisan.algertv.PREV";
     private static final int NOTIF_ID = 1001;
+    private static final String CHANNEL_ID = "playback";
 
     private MediaSessionCompat mediaSession;
 
@@ -46,6 +50,7 @@ public class PlaybackService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        createChannel();
         mediaSession = new MediaSessionCompat(this, "AlgerTV");
         mediaSession.setFlags(MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS
                 | MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS);
@@ -121,6 +126,19 @@ public class PlaybackService extends Service {
         return mediaSession;
     }
 
+    private void createChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            if (nm != null && nm.getNotificationChannel(CHANNEL_ID) == null) {
+                NotificationChannel ch = new NotificationChannel(CHANNEL_ID,
+                        "音乐播放", NotificationManager.IMPORTANCE_LOW);
+                ch.setDescription("正在播放的歌曲与控制");
+                ch.setShowBadge(false);
+                nm.createNotificationChannel(ch);
+            }
+        }
+    }
+
     private void refresh() {
         PlayerController pc = PlayerController.get();
         Song song = pc.currentSong();
@@ -152,7 +170,7 @@ public class PlaybackService extends Service {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, openIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        Notification notification = new NotificationCompat.Builder(this)
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(android.R.drawable.ic_media_play)
                 .setContentTitle(song.name)
                 .setContentText(song.artistsText)
