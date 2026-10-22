@@ -1,12 +1,23 @@
 # Alger轻听（Alger Music TV）
 
-为老电视（Android 5.1.1 / API 22 / armeabi-v7a）原生重写的轻量网易云音乐 App，
-借鉴 [AlgerMusicPlayer](https://github.com/algerkong/AlgerMusicPlayer) 的功能与视觉
+原生重写的轻量网易云音乐 App（电视版 + 手机版两个 flavor），借鉴
+[AlgerMusicPlayer](https://github.com/algerkong/AlgerMusicPlayer) 的功能与视觉
 （深色界面、封面取色、全屏沉浸歌词），全部代码为原生 Java，不依赖 WebView。
 
-- 包名 `com.wushisan.algertv`，minSdk 22 / targetSdk 28
-- 技术：Leanback + RecyclerView + Palette + MediaSessionCompat、Glide 4.16、OkHttp 3.12
-- 播放：系统 MediaPlayer + 前台 Service（队列、自动下一首、遥控器媒体键）
+- **tv flavor**：为老电视（Android 5.1.1 / API 22 / armeabi-v7a）设计，
+  包名 `com.wushisan.algertv`，minSdk 22 / targetSdk 28，
+  Leanback 电视 UI（遥控器焦点导航、横屏），产物 `AlgerTV-<版本>.apk`
+  （当前 1.0.1：修复 1.0 的启动闪退——AppCompatActivity 与 Theme.Leanback
+  主题冲突，宿主 Activity 已改 FragmentActivity；主题按 flavor 隔离，
+  tv 用 Leanback 主题、phone 用 AppCompat 主题 PhoneTheme）
+- **phone flavor**：手机触控 UI（竖屏），包名 `com.wushisan.algertv.phone`，
+  minSdk 22 / **targetSdk 34**，产物 `AlgerPhone-1.0.apk`；
+  前台服务声明 mediaPlayback 类型，Android 13+ 通知权限在播放页按需请求
+  （拒绝不阻断播放）；手机源集零 Leanback 依赖
+- 技术：RecyclerView + Palette + MediaSessionCompat、Glide 4.16、OkHttp 3.12；
+  数据层 / 队列 / LRC 解析为两 flavor 共用（`src/main`），UI 与播放 Service
+  各 flavor 独立（`src/tv`、`src/phone`）
+- 播放：系统 MediaPlayer + 前台 Service（队列、自动下一首、通知栏/媒体键控制）
 
 ## 数据源
 
@@ -32,8 +43,10 @@
 
 本机不构建，全部走 GitHub Actions（`.github/workflows/build.yml`）：
 
-- push 到 `main` 或 tag `v*` 触发：还原签名（Secrets）→ `assembleRelease` →
-  产物 APK 同时以 base64 分片提交到 `build-output` 分支（含 `build-info.txt` 与构建日志）
+- push 到 `main` 或 tag `v*` 触发：还原签名（Secrets）→ `assembleRelease`
+  （同时产出 tv 与 phone 两个 release APK）→ 产物以 base64 分片提交到
+  `build-output` 分支（电视版在 `apk/`、手机版在 `phone-apk/`，
+  含 `build-info.txt` 与构建日志）
 - 仓库内二进制图片素材以 base64 形式存放于 `assets-src/`，CI 构建前解码回 `res/`
 
 ## 签名（固定）
@@ -45,9 +58,12 @@ Secrets 未配置时 CI 产出未签名 APK（交付时由维护者在本地用�
 
 ## 冒烟验证
 
-`.github/workflows/smoke.yml`：向 `build-output` 分支的 `smoke/` 目录推送已签名 APK
-分片后触发，在 ARM runner + redroid 11 容器中装包、启动（含自动播放入口）、
-抓日志与截图，结果提交回 `smoke-results/`；通过后自动创建 GitHub Release。
+`build.yml` 内置 smoke job（ARM runner + redroid 11）：构建完成后由工作流
+自己下载刚构建的两个 APK，逐个 adb install + 启动主 Activity，
+检查进程存活与 logcat 有无 FATAL EXCEPTION，把 `report.txt`、logcat 与截图
+用工作流 token 提交回 `build-output/smoke-results/`。
+（旧的 `.github/workflows/smoke.yml` 分片推送方案已废弃——逐片推送会产生
+大量用户审核卡；smoke.yml 文件可后续删除，不再触发任何发布动作。）
 
 ## v1 范围
 

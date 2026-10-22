@@ -20,6 +20,27 @@ android {
         versionName '1.0'
     }
 
+    flavorDimensions 'device'
+
+    productFlavors {
+        tv {
+            dimension 'device'
+            // applicationId stays com.wushisan.algertv (from defaultConfig),
+            // minSdk 22 / targetSdk 28 (from defaultConfig).
+            // 1.0.1: fix launch crash (AppCompatActivity + Theme.Leanback),
+            // same signing key -> installs over 1.0 on the user's TV.
+            versionCode 2
+            versionName '1.0.1'
+        }
+        phone {
+            dimension 'device'
+            applicationIdSuffix '.phone'
+            // Modern phones: targetSdk 34 (foreground-service type +
+            // notification runtime permission handled in the phone sources).
+            targetSdk 34
+        }
+    }
+
     signingConfigs {
         release {
             if (hasSigning) {
@@ -58,14 +79,16 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             if (variant.buildType.name == 'release') {
-                output.outputFileName = 'AlgerTV-1.0.apk'
+                output.outputFileName = (variant.flavorName == 'phone'
+                        ? 'AlgerPhone-' : 'AlgerTV-') + variant.versionName + '.apk'
             }
         }
     }
 }
 
 dependencies {
-    implementation 'androidx.leanback:leanback:1.0.0'
+    // Leanback is TV-only: the phone variant must not reference it at all.
+    tvImplementation 'androidx.leanback:leanback:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.palette:palette:1.0.0'

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TV flavor theme: Leanback parent. The host activities are plain
+     FragmentActivity — AppCompatActivity would (and did) crash at launch
+     with "You need to use a Theme.AppCompat theme". -->
+<resources>
+    <style name="AppTheme" parent="Theme.Leanback">
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+</resources>

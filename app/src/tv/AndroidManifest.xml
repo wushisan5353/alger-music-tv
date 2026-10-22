@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TV flavor: Leanback UI, landscape, dual launcher entry. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
+    <application android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.PlaylistActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.SearchActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <activity
+            android:name=".ui.PlayerActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme" />
+
+        <service
+            android:name=".playback.PlaybackService"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

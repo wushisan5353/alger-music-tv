@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/row_settings"
+        android:textColor="@color/text_primary"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/custom_api"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/settings_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/custom_api_hint"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/settings_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/search_input_bg"
+        android:hint="http://192.168.1.10:3000"
+        android:inputType="textUri"
+        android:padding="12dp"
+        android:singleLine="true"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/save"
+            android:textColor="@color/text_primary" />
+
+        <Button
+            android:id="@+id/btn_clear_api"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/clear"
+            android:textColor="@color/text_secondary" />
+    </LinearLayout>
+</LinearLayout>

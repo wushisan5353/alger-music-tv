@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Phone flavor: touch UI, portrait. targetSdk 34, so the media-playback
+     foreground service needs its type declared here plus the dedicated
+     FOREGROUND_SERVICE_MEDIA_PLAYBACK permission; POST_NOTIFICATIONS is a
+     runtime permission requested on first playback (denial must not block). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application android:theme="@style/PhoneTheme">
+
+        <activity
+            android:name=".ui.phone.PhoneMainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/PhoneTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.phone.PhonePlaylistActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/PhoneTheme" />
+
+        <activity
+            android:name=".ui.phone.PhoneSearchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/PhoneTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <activity
+            android:name=".ui.phone.PhonePlayerActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/PhoneTheme" />
+
+        <activity
+            android:name=".ui.phone.PhoneQueueActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/PhoneTheme" />
+
+        <activity
+            android:name=".ui.phone.PhoneSettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/PhoneTheme" />
+
+        <service
+            android:name=".playback.PlaybackService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+    </application>
+
+</manifest>
