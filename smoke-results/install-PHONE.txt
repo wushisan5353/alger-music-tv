@@ -1,2 +1,2 @@
-adb: failed to install apks/phone/release/AlgerPhone-1.0.apk: Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES: Failed collecting certificates for /data/app/vmdl1162480568.tmp/base.apk: Failed to collect certificates from /data/app/vmdl1162480568.tmp/base.apk: Attempt to get length of null array]
+adb: failed to install apks/phone/release/AlgerPhone-1.0.apk: Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES: Failed collecting certificates for /data/app/vmdl570804804.tmp/base.apk: Failed to collect certificates from /data/app/vmdl570804804.tmp/base.apk: Attempt to get length of null array]
 Performing Streamed Install
