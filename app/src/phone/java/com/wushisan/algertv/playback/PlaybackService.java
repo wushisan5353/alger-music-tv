@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ServiceInfo;
 import android.os.Build;
@@ -15,6 +16,7 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
+import androidx.media.session.MediaButtonReceiver;
 
 import com.wushisan.algertv.App;
 import com.wushisan.algertv.data.Song;
@@ -58,7 +60,18 @@ public class PlaybackService extends Service {
     public void onCreate() {
         super.onCreate();
         createChannel();
-        mediaSession = new MediaSessionCompat(this, "AlgerPhone");
+        // androidx.media 1.1.0's two-arg constructor creates its
+        // media-button PendingIntent with no mutability flag, which is a
+        // hard crash on targetSdk 31+ (cloud modern smoke stack:
+        // MediaSessionCompat.<init> <- PlaybackService.onCreate). Supply
+        // our own FLAG_IMMUTABLE one via the four-arg constructor.
+        ComponentName mediaButton = new ComponentName(this, MediaButtonReceiver.class);
+        Intent mediaButtonIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
+        mediaButtonIntent.setComponent(mediaButton);
+        PendingIntent mediaButtonPi = PendingIntent.getBroadcast(this, 0,
+                mediaButtonIntent, PendingIntent.FLAG_IMMUTABLE);
+        mediaSession = new MediaSessionCompat(this, "AlgerPhone",
+                mediaButton, mediaButtonPi);
         mediaSession.setFlags(MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS
                 | MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS);
         mediaSession.setCallback(new MediaSessionCompat.Callback() {
