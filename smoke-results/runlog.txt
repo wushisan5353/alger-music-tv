@@ -1,22 +1,19 @@
 === uname ===
-Linux runnervm05w4h 7.0.0-1017-azure #17~24.04.1-Ubuntu SMP PREEMPT Thu Sep 24 19:06:39 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+Linux runnervm3byir 7.0.0-1017-azure #17~24.04.1-Ubuntu SMP PREEMPT Thu Sep 24 19:06:39 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
 total 8.0K
-drwxr-xr-x 3 runner runner 4.0K Oct 22 11:17 phone
-drwxr-xr-x 3 runner runner 4.0K Oct 22 11:17 tv
+drwxr-xr-x 3 runner runner 4.0K Oct 22 11:47 phone
+drwxr-xr-x 3 runner runner 4.0K Oct 22 11:47 tv
 Reading package lists...
 Building dependency tree...
 Reading state information...
 The following additional packages will be installed:
   android-libbase android-libboringssl android-libcutils android-liblog
-  android-libziparchive android-sdk-platform-tools-common
-  libprotobuf-lite32t64 libprotobuf32t64
+  android-libziparchive android-sdk-platform-tools-common libprotobuf32t64
 The following NEW packages will be installed:
   adb android-libbase android-libboringssl android-libcutils android-liblog
   android-libziparchive android-sdk-platform-tools-common libprotobuf32t64
-The following packages will be upgraded:
-  libprotobuf-lite32t64
-1 upgraded, 8 newly installed, 0 to remove and 54 not upgraded.
-Need to get 2225 kB of archives.
+0 upgraded, 8 newly installed, 0 to remove and 1 not upgraded.
+Need to get 2004 kB of archives.
 After this operation, 6612 kB of additional disk space will be used.
 Get:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 android-liblog arm64 1:34.0.4-1build3 [35.7 kB]
 Get:2 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 android-libbase arm64 1:34.0.4-1build3 [96.8 kB]
@@ -26,10 +23,9 @@ Get:5 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 android-libzipar
 Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf32t64 arm64 3.21.12-8.2ubuntu0.4 [859 kB]
 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 adb arm64 1:34.0.4-1build3 [272 kB]
 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 android-sdk-platform-tools-common all 28.0.2+9 [6402 B]
-Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf-lite32t64 arm64 3.21.12-8.2ubuntu0.4 [221 kB]
-Fetched 2225 kB in 2s (915 kB/s)
+Fetched 2004 kB in 1s (1739 kB/s)
 Selecting previously unselected package android-liblog:arm64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 212362 files and directories currently installed.)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 213444 files and directories currently installed.)
 Preparing to unpack .../0-android-liblog_1%3a34.0.4-1build3_arm64.deb ...
 Unpacking android-liblog:arm64 (1:34.0.4-1build3) ...
 Selecting previously unselected package android-libbase:arm64.
@@ -53,9 +49,6 @@ Unpacking adb (1:34.0.4-1build3) ...
 Selecting previously unselected package android-sdk-platform-tools-common.
 Preparing to unpack .../7-android-sdk-platform-tools-common_28.0.2+9_all.deb ...
 Unpacking android-sdk-platform-tools-common (28.0.2+9) ...
-Preparing to unpack .../8-libprotobuf-lite32t64_3.21.12-8.2ubuntu0.4_arm64.deb ...
-Unpacking libprotobuf-lite32t64:arm64 (3.21.12-8.2ubuntu0.4) over (3.21.12-8.2ubuntu0.3) ...
-Setting up libprotobuf-lite32t64:arm64 (3.21.12-8.2ubuntu0.4) ...
 Setting up libprotobuf32t64:arm64 (3.21.12-8.2ubuntu0.4) ...
 Setting up android-sdk-platform-tools-common (28.0.2+9) ...
 Setting up android-liblog:arm64 (1:34.0.4-1build3) ...
@@ -91,7 +84,7 @@ Unable to find image 'redroid/redroid:11.0.0-latest' locally
 06cb3c383cf0: Pull complete
 Digest: sha256:60b0810684be4578733a847be3314c50b70f73bc92405b5a627ebe9b633ebb5e
 Status: Downloaded newer image for redroid/redroid:11.0.0-latest
-6e3b4dbebfb0dc79030ac08170c86eaa02fc3a8fab4a2c7463170ae854fb40e5
+3f1fdde179833b3ec684fe0f31d2f61cb2f5e5ce8e5e26c32211d4c08cfe0953
 * daemon not running; starting now at tcp:5037
 * daemon started successfully
 connected to localhost:5555
@@ -100,23 +93,18 @@ boot try 2: 1
 arm64-v8a,armeabi-v7a,armeabi
 === sign artifacts with ephemeral key (smoke only; CI artifacts are unsigned) ===
 apksigner=/usr/bin/apksigner keytool=/usr/bin/keytool
-SMOKE_SIGNED apks/tv/release/AlgerTV-1.0.1.apk
 SMOKE_SIGNED apks/phone/release/AlgerPhone-1.0.apk
 ===== TV (com.wushisan.algertv) =====
-Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity (has extras) }
-    mResumedActivity: ActivityRecord{bdfafc5 u0 com.android.launcher3/.uioverrides.QuickstepLauncher t7}
-  ResumedActivity: ActivityRecord{bdfafc5 u0 com.android.launcher3/.uioverrides.QuickstepLauncher t7}
 ===== PHONE (com.wushisan.algertv.phone) =====
 Starting: Intent { cmp=com.wushisan.algertv.phone/.ui.phone.PhoneMainActivity }
 Error type 3
 Error: Activity class {com.wushisan.algertv.phone/com.wushisan.algertv.phone.ui.phone.PhoneMainActivity} does not exist.
-    mResumedActivity: ActivityRecord{bdfafc5 u0 com.android.launcher3/.uioverrides.QuickstepLauncher t7}
-  ResumedActivity: ActivityRecord{bdfafc5 u0 com.android.launcher3/.uioverrides.QuickstepLauncher t7}
+    mResumedActivity: ActivityRecord{ca68031 u0 com.android.launcher3/.uioverrides.QuickstepLauncher t7}
+  ResumedActivity: ActivityRecord{ca68031 u0 com.android.launcher3/.uioverrides.QuickstepLauncher t7}
 REDROID_BOOTED
-TV_INSTALL_OK
-TV_PROCESS_DEAD
-TV_FATAL_COUNT=1
+SMOKE_SIGN_FAIL apks/tv/release/AlgerTV-1.0.1.apk
+TV_APK_MISSING
 PHONE_INSTALL_OK
 PHONE_PROCESS_DEAD
 PHONE_FATAL_COUNT=0
-SMOKE_DONE date=2026-10-22T11:19:04Z sha=c9bb71a45741e49853ebb04aa24cd40e37bcde29
+SMOKE_DONE date=2026-10-22T11:49:08Z sha=a819d0855e4643eff6adce950afa62e4280bd9c8

@@ -1,7 +1,19 @@
---------- beginning of system
-10-22 11:18:48.728   270   543 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/.ui.phone.PhoneMainActivity} from uid 2000
 --------- beginning of main
-10-22 11:18:48.728  1844  1846 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 11:19:00.001   443   443 D KeyguardClockSwitch: Updating clock: 1119
-10-22 11:19:00.002    66    66 D hwcomposer: VSYNC event status:1
-10-22 11:19:00.375    66    66 D hwcomposer: VSYNC event status:0
+10-22 11:48:52.785   270   304 I system_server: IncrementDisableThreadFlip blocked for 5.384ms
+10-22 11:48:52.796    72    72 D hwcomposer: VSYNC event status:1
+--------- beginning of system
+10-22 11:48:52.810   270   298 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-22 11:48:52.829   270   521 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/.ui.phone.PhoneMainActivity} from uid 2000
+10-22 11:48:52.833  1734  1736 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 11:48:53.190    72    72 D hwcomposer: VSYNC event status:0
+10-22 11:48:54.335   445   781 I vol.Events: writeEvent level_changed STREAM_MUSIC 3
+10-22 11:48:54.335    72    72 D hwcomposer: VSYNC event status:1
+10-22 11:48:54.724    72    72 D hwcomposer: VSYNC event status:0
+10-22 11:48:55.303   166   190 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
+10-22 11:48:55.303   166   190 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
+10-22 11:49:00.001   445   445 D KeyguardClockSwitch: Updating clock: 1149
+10-22 11:49:00.002    72    72 D hwcomposer: VSYNC event status:1
+10-22 11:49:00.060   445   445 D KeyguardClockSwitch: Updating clock: 1149
+10-22 11:49:00.390    72    72 D hwcomposer: VSYNC event status:0
+10-22 11:49:05.518   657   924 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
+10-22 11:49:05.518   657   924 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
