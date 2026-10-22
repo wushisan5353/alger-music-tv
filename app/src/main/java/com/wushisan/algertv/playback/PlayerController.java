@@ -219,7 +219,18 @@ public class PlayerController {
 
     private void ensureService() {
         try {
-            appContext.startService(new Intent(appContext, PlaybackService.class));
+            Intent i = new Intent(appContext, PlaybackService.class);
+            // The playback service is a foreground service: on API 26+ it
+            // must be started via startForegroundService (plain startService
+            // throws IllegalStateException once the app is not in the
+            // foreground on Android 12+/targetSdk 31+, which the phone
+            // flavor hits — playback entry points like notification
+            // actions and auto-advance reach here from the background).
+            if (android.os.Build.VERSION.SDK_INT >= 26) {
+                androidx.core.content.ContextCompat.startForegroundService(appContext, i);
+            } else {
+                appContext.startService(i);
+            }
         } catch (Exception e) {
             Log.w(App.TAG, "startService failed: " + e.getMessage());
         }

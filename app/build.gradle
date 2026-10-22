@@ -31,15 +31,22 @@ android {
             // same signing key -> installs over 1.0 on the user's TV.
             // 1.0.2: fix startForeground crash on API 26+ (foreground
             // notification had no NotificationChannel; Build #15 smoke).
-            versionCode 3
-            versionName '1.0.2'
+            // 1.0.3: home first-launch fix (disk cache + per-request retry,
+            // shared MusicRepository) + full Alger visual language on TV
+            // (pure black, grey tiers, brand green, TV type ladder).
+            versionCode 4
+            versionName '1.0.3'
         }
         phone {
             dimension 'device'
             applicationIdSuffix '.phone'
             // Modern phones: targetSdk 34 (foreground-service type +
             // notification runtime permission handled in the phone sources).
+            // 1.1: Alger visual rebuild + home first-launch fix + playback
+            // entry hardening for Android 12-14 (startForegroundService).
             targetSdk 34
+            versionCode 2
+            versionName '1.1'
         }
     }
 

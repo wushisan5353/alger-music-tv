@@ -213,8 +213,11 @@ public class PlayerActivity extends FragmentActivity {
                 coverView.setImageResource(R.drawable.cover_placeholder);
             }
         };
+        int radius = getResources().getDimensionPixelSize(R.dimen.tv_radius_cover);
         Glide.with(this).asBitmap().load(url)
                 .placeholder(R.drawable.cover_placeholder)
+                .transform(new com.bumptech.glide.load.resource.bitmap.CenterCrop(),
+                        new com.bumptech.glide.load.resource.bitmap.RoundedCorners(radius))
                 .into(coverTarget);
     }
 
@@ -223,11 +226,13 @@ public class PlayerActivity extends FragmentActivity {
             @Override
             public void onGenerated(@Nullable Palette palette) {
                 if (palette == null) return;
-                int dark = palette.getDarkMutedColor(0xFF0B0F14);
-                int muted = palette.getMutedColor(0xFF16202B);
+                // Content supplies the color; fallbacks are the Alger
+                // surface tiers (pure black page / #161616 card grey).
+                int dark = palette.getDarkMutedColor(0xFF000000);
+                int muted = palette.getMutedColor(0xFF161616);
                 GradientDrawable gd = new GradientDrawable(
                         GradientDrawable.Orientation.TL_BR,
-                        new int[]{muted, dark, 0xFF0B0F14});
+                        new int[]{muted, dark, 0xFF000000});
                 root.setBackground(gd);
             }
         });
@@ -349,13 +354,17 @@ public class PlayerActivity extends FragmentActivity {
         public void onBindViewHolder(@NonNull LVH holder, int position) {
             LrcParser.Line line = lyricLines.get(position);
             holder.text.setText(line.text);
+            // Alger fullscreen lyrics: current line full white, one step
+            // up, bold; the rest at the 54% tier (see tv_text_lyric ladder).
             if (position == currentLyricIndex) {
                 holder.text.setTextColor(0xFFFFFFFF);
-                holder.text.setTextSize(27);
+                holder.text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimension(R.dimen.tv_text_lyric_current));
                 holder.text.setTypeface(null, android.graphics.Typeface.BOLD);
             } else {
-                holder.text.setTextColor(0xFF8CA3B8);
-                holder.text.setTextSize(21);
+                holder.text.setTextColor(0x8AF8F9FA);
+                holder.text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimension(R.dimen.tv_text_lyric));
                 holder.text.setTypeface(null, android.graphics.Typeface.NORMAL);
             }
         }

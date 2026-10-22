@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/search_title"
         android:textColor="@color/text_primary"
-        android:textSize="28sp"
+        android:textSize="@dimen/tv_text_title"
         android:textStyle="bold" />
 
     <EditText
@@ -29,8 +29,8 @@
         android:padding="14dp"
         android:singleLine="true"
         android:textColor="@color/text_primary"
-        android:textColorHint="@color/text_secondary"
-        android:textSize="20sp" />
+        android:textColorHint="@color/text_tertiary"
+        android:textSize="@dimen/tv_text_song" />
 
     <LinearLayout
         android:id="@+id/hot_row"

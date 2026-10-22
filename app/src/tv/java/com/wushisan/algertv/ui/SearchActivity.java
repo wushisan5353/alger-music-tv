@@ -57,18 +57,29 @@ public class SearchActivity extends FragmentActivity {
         });
 
         LinearLayout hotRow = findViewById(R.id.hot_row);
+        float density = getResources().getDisplayMetrics().density;
         for (final String kw : HOT) {
-            TextView chip = new TextView(this);
+            final TextView chip = new TextView(this);
             chip.setText(kw);
-            chip.setTextSize(17);
+            chip.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX,
+                    getResources().getDimension(R.dimen.tv_text_artist));
             chip.setTextColor(getResources().getColor(R.color.text_primary));
             chip.setBackgroundResource(R.drawable.chip_bg);
             chip.setFocusable(true);
             chip.setFocusableInTouchMode(true);
-            chip.setPadding(26, 10, 26, 10);
+            // Focused chip is brand green; flip its text to black for contrast.
+            chip.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    chip.setTextColor(getResources().getColor(
+                            hasFocus ? R.color.on_accent : R.color.text_primary));
+                }
+            });
+            chip.setPadding((int) (20 * density), (int) (8 * density),
+                    (int) (20 * density), (int) (8 * density));
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(0, 0, 14, 0);
+            lp.setMargins(0, 0, (int) (12 * density), 0);
             chip.setLayoutParams(lp);
             chip.setOnClickListener(new View.OnClickListener() {
                 @Override

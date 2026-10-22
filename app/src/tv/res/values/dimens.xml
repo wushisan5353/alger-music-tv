@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Leanback chrome size overrides (app resources win over the library's).
+     The browse title and row headers are theme-drawn by Leanback itself,
+     so the TV type ladder reaches them through these names where the
+     library exposes them; any name leanback 1.0.0 does not define is
+     simply unused. Keeps the giant default title from colliding with
+     the first row at 1080p. -->
+<resources>
+    <dimen name="lb_browse_header_text_size">24sp</dimen>
+    <dimen name="lb_browse_title_text_size">36sp</dimen>
+</resources>

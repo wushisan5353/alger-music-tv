@@ -106,6 +106,15 @@ public class MainFragment extends BrowseSupportFragment {
             @Override
             public void onError(String message) {
                 Log.w(App.TAG, "HOME_LOAD_ERROR: " + message);
+                // Never leave an empty home: fall back to the built-in seed
+                // rows (names are known offline) and say so.
+                if (homeData == null && getActivity() != null) {
+                    homeData = MusicRepository.builtInHomeData();
+                    homeData.fromFallback = true;
+                    buildRows();
+                    Toast.makeText(getActivity(), R.string.load_failed,
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

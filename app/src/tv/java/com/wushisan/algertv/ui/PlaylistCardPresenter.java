@@ -20,7 +20,7 @@ public class PlaylistCardPresenter extends Presenter {
         int w = (int) parent.getResources().getDimension(R.dimen.card_width);
         int h = (int) parent.getResources().getDimension(R.dimen.card_height);
         card.setMainImageDimensions(w, h);
-        card.setInfoAreaBackgroundColor(0xFF16202B);
+        card.setInfoAreaBackgroundColor(0xFF161616);
         card.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

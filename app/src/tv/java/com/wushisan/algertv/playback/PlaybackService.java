@@ -103,6 +103,14 @@ public class PlaybackService extends Service {
                     break;
             }
         }
+        // Started via startForegroundService on API 26+: with nothing to
+        // play, refresh() would never call startForeground and Android
+        // would kill the process (ForegroundServiceDidNotStartInTime).
+        PlayerController pc0 = PlayerController.get();
+        if (pc0 == null || pc0.currentSong() == null) {
+            stopSelf();
+            return START_NOT_STICKY;
+        }
         refresh();
         return START_STICKY;
     }

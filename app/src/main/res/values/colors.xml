@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Shared palette — as of TV 1.0.3 this is the TV-facing palette (the
+     phone flavor carries its own ph_* palette). Alger design language:
+     pure black page, three grey surface tiers by luminance, one brand
+     green #22C55E reserved for play / active / progress / focus, text
+     tiers by white opacity (100 / 80 / 54 / 38). -->
 <resources>
-    <color name="bg_dark">#0B0F14</color>
-    <color name="bg_panel">#16202B</color>
-    <color name="accent">#20B2AA</color>
-    <color name="text_primary">#F5FAFA</color>
-    <color name="text_secondary">#9FB3C8</color>
-    <color name="text_lyric_dim">#8CA3B8</color>
-    <color name="focus_stroke">#FFD54F</color>
+    <color name="bg_dark">#000000</color>
+    <color name="bg_panel">#161616</color>
+    <color name="bg_surface2">#2D2D2D</color>
+    <color name="bg_surface3">#3D3D3D</color>
+    <color name="accent">#22C55E</color>
+    <color name="accent_dark">#1EB154</color>
+    <color name="text_primary">#F8F9FA</color>
+    <color name="text_80">#CCF8F9FA</color>
+    <color name="text_secondary">#8AF8F9FA</color>
+    <color name="text_tertiary">#61F8F9FA</color>
+    <color name="text_lyric_dim">#8AF8F9FA</color>
+    <color name="focus_stroke">#22C55E</color>
+    <color name="on_accent">#000000</color>
 </resources>

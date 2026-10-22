@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Alger pill button: surface-2 grey resting; focus/activation is the
+     one brand green. -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_focused="true">
         <shape android:shape="rectangle">
             <corners android:radius="24dp" />
             <solid android:color="@color/accent" />
-            <stroke android:width="2dp" android:color="@color/focus_stroke" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <corners android:radius="24dp" />
-            <solid android:color="#1B7F79" />
+            <solid android:color="@color/accent_dark" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="24dp" />
-            <solid android:color="#22303F" />
+            <solid android:color="@color/bg_surface2" />
         </shape>
     </item>
 </selector>

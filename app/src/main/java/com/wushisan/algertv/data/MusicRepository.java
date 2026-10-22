@@ -57,6 +57,15 @@ public class MusicRepository {
         public List<Playlist> toplists = new ArrayList<>();
         /** True only when every metadata request failed (names-only built-ins). */
         public boolean fromFallback = false;
+        /**
+         * True for the instant first delivery (disk cache or built-in seed):
+         * the UI should paint it immediately but keep quiet (no error toast);
+         * a final delivery with preliminary=false follows once the network
+         * refresh settles.
+         */
+        public boolean preliminary = false;
+        /** True when the preliminary delivery came from the disk cache. */
+        public boolean fromCache = false;
     }
 
     private static final String GDS_BASE = "https://music-api.gdstudio.xyz/api.php";
@@ -224,8 +233,42 @@ public class MusicRepository {
 
     // ------------------------------------------------------------------ Home
 
+    private static final String HOME_CACHE_FILE = "home_cache.json";
+    private static final long HOME_META_RETRY_DELAY_MS = 800;
+
+    /** Built-in seed home (names only, no covers) — always available instantly. */
+    public static HomeData builtInHomeData() {
+        HomeData d = new HomeData();
+        d.recommend = builtInRecommend();
+        d.toplists = builtInToplists();
+        d.preliminary = true;
+        return d;
+    }
+
+    /**
+     * Home loading, two deliveries (both via onSuccess, on the main thread):
+     *  1. Instant preliminary delivery — the disk cache when present, else the
+     *     built-in seed — so the first frame after install is never an empty
+     *     screen (the pre-1.0.3 code waited for all 13 full-playlist JSONs
+     *     before painting anything, which on a cold network looked like
+     *     "first launch has no list").
+     *  2. Final delivery once every metadata request has settled (each failed
+     *     request is retried once); fresh metadata is written to the disk
+     *     cache for the next launch.
+     */
     public void loadHome(final Result<HomeData> cb) {
-        final HomeData data = new HomeData();
+        final long t0 = System.currentTimeMillis();
+        Log.i(App.TAG, "HOME_LOAD_START");
+        HomeData cached = readHomeCache();
+        final HomeData instant = cached != null ? cached : builtInHomeData();
+        Log.i(App.TAG, cached != null ? "HOME_CACHE_HIT" : "HOME_SEED");
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                cb.onSuccess(instant);
+            }
+        });
+
         final List<Playlist> rec = builtInRecommend();
         final List<Playlist> top = builtInToplists();
         final List<Playlist> all = new ArrayList<>();
@@ -234,40 +277,154 @@ public class MusicRepository {
         final AtomicInteger pending = new AtomicInteger(all.size());
         final AtomicInteger okCount = new AtomicInteger(0);
         for (final Playlist pl : all) {
-            getJson(clientGds, GDS_BASE + "?types=playlist&source=netease&id=" + pl.id,
-                    new Result<JSONObject>() {
-                        @Override
-                        public void onSuccess(JSONObject json) {
-                            JSONObject meta = json.optJSONObject("playlist");
-                            if (meta != null) {
-                                String name = optStr(meta, "name");
-                                if (name != null) pl.name = name;
-                                pl.coverUrl = optStr(meta, "coverImgUrl");
-                                pl.playCount = meta.optLong("playCount");
-                                pl.trackCount = meta.optInt("trackCount");
-                                okCount.incrementAndGet();
-                            }
-                            finishOne();
-                        }
-
-                        @Override
-                        public void onError(String message) {
-                            Log.w(App.TAG, "HOME_META_FAIL id=" + pl.id + ": " + message);
-                            finishOne();
-                        }
-
-                        private void finishOne() {
-                            if (pending.decrementAndGet() == 0) {
-                                data.recommend = rec;
-                                data.toplists = top;
-                                data.fromFallback = okCount.get() == 0;
-                                Log.i(App.TAG, "HOME_GDS_OK meta=" + okCount.get()
-                                        + "/" + all.size() + " fallback=" + data.fromFallback);
-                                cb.onSuccess(data);
-                            }
-                        }
-                    });
+            fetchHomeMeta(pl, 0, new Runnable() {
+                @Override
+                public void run() {
+                    if (pending.decrementAndGet() == 0) {
+                        HomeData data = new HomeData();
+                        data.recommend = rec;
+                        data.toplists = top;
+                        data.preliminary = false;
+                        data.fromFallback = okCount.get() == 0;
+                        Log.i(App.TAG, "HOME_DONE ms=" + (System.currentTimeMillis() - t0)
+                                + " meta=" + okCount.get() + "/" + all.size()
+                                + " fallback=" + data.fromFallback);
+                        if (okCount.get() > 0) writeHomeCache(rec, top);
+                        cb.onSuccess(data);
+                    }
+                }
+            }, okCount, t0);
         }
+    }
+
+    /** One playlist's home metadata; retries exactly once on failure. */
+    private void fetchHomeMeta(final Playlist pl, final int attempt,
+                               final Runnable done, final AtomicInteger okCount,
+                               final long t0) {
+        getJson(clientGds, GDS_BASE + "?types=playlist&source=netease&id=" + pl.id,
+                new Result<JSONObject>() {
+                    @Override
+                    public void onSuccess(JSONObject json) {
+                        JSONObject meta = json.optJSONObject("playlist");
+                        if (meta != null) {
+                            String name = optStr(meta, "name");
+                            if (name != null) pl.name = name;
+                            pl.coverUrl = optStr(meta, "coverImgUrl");
+                            pl.playCount = meta.optLong("playCount");
+                            pl.trackCount = meta.optInt("trackCount");
+                            okCount.incrementAndGet();
+                            Log.i(App.TAG, "HOME_META_OK id=" + pl.id
+                                    + " ms=" + (System.currentTimeMillis() - t0));
+                        } else {
+                            Log.w(App.TAG, "HOME_META_EMPTY id=" + pl.id);
+                        }
+                        done.run();
+                    }
+
+                    @Override
+                    public void onError(String message) {
+                        Log.w(App.TAG, "HOME_META_FAIL id=" + pl.id
+                                + " attempt=" + attempt + ": " + message);
+                        if (attempt == 0) {
+                            mainHandler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    fetchHomeMeta(pl, 1, done, okCount, t0);
+                                }
+                            }, HOME_META_RETRY_DELAY_MS);
+                        } else {
+                            done.run();
+                        }
+                    }
+                });
+    }
+
+    // ------------------------------------------------------- Home disk cache
+
+    private HomeData readHomeCache() {
+        if (appContext == null) return null;
+        try {
+            java.io.File f = new java.io.File(appContext.getFilesDir(), HOME_CACHE_FILE);
+            if (!f.exists() || f.length() == 0) return null;
+            byte[] buf = new byte[(int) f.length()];
+            java.io.FileInputStream in = new java.io.FileInputStream(f);
+            int off = 0;
+            while (off < buf.length) {
+                int n = in.read(buf, off, buf.length - off);
+                if (n < 0) break;
+                off += n;
+            }
+            in.close();
+            JSONObject root = new JSONObject(new String(buf, 0, off, "UTF-8"));
+            HomeData d = new HomeData();
+            d.recommend = parseCachedPlaylists(root.optJSONArray("rec"));
+            d.toplists = parseCachedPlaylists(root.optJSONArray("top"));
+            if (d.recommend.isEmpty() || d.toplists.isEmpty()) return null;
+            d.preliminary = true;
+            d.fromCache = true;
+            return d;
+        } catch (Exception e) {
+            Log.w(App.TAG, "HOME_CACHE_READ_FAIL: " + e.getMessage());
+            return null;
+        }
+    }
+
+    private List<Playlist> parseCachedPlaylists(JSONArray arr) {
+        List<Playlist> out = new ArrayList<>();
+        if (arr == null) return out;
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject o = arr.optJSONObject(i);
+            if (o == null) continue;
+            Playlist p = new Playlist();
+            p.id = o.optString("id");
+            p.name = o.optString("name");
+            p.coverUrl = optStr(o, "cover");
+            p.playCount = o.optLong("play");
+            p.trackCount = o.optInt("tracks");
+            if (p.id != null && p.id.length() > 0) out.add(p);
+        }
+        return out;
+    }
+
+    private void writeHomeCache(final List<Playlist> rec, final List<Playlist> top) {
+        if (appContext == null) return;
+        try {
+            JSONObject root = new JSONObject();
+            root.put("ts", System.currentTimeMillis());
+            root.put("rec", cacheArray(rec));
+            root.put("top", cacheArray(top));
+            final String text = root.toString();
+            final java.io.File f = new java.io.File(appContext.getFilesDir(), HOME_CACHE_FILE);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        java.io.FileOutputStream out = new java.io.FileOutputStream(f);
+                        out.write(text.getBytes("UTF-8"));
+                        out.close();
+                        Log.i(App.TAG, "HOME_CACHE_SAVED bytes=" + text.length());
+                    } catch (Exception e) {
+                        Log.w(App.TAG, "HOME_CACHE_WRITE_FAIL: " + e.getMessage());
+                    }
+                }
+            }, "home-cache-writer").start();
+        } catch (Exception e) {
+            Log.w(App.TAG, "HOME_CACHE_SERIALIZE_FAIL: " + e.getMessage());
+        }
+    }
+
+    private JSONArray cacheArray(List<Playlist> list) throws Exception {
+        JSONArray arr = new JSONArray();
+        for (Playlist p : list) {
+            JSONObject o = new JSONObject();
+            o.put("id", p.id);
+            o.put("name", p.name == null ? "" : p.name);
+            if (p.coverUrl != null) o.put("cover", p.coverUrl);
+            o.put("play", p.playCount);
+            o.put("tracks", p.trackCount);
+            arr.put(o);
+        }
+        return arr;
     }
 
     // -------------------------------------------------------------- Playlist

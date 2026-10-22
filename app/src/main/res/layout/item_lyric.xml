@@ -7,4 +7,4 @@
     android:paddingTop="9dp"
     android:paddingBottom="9dp"
     android:textColor="@color/text_lyric_dim"
-    android:textSize="21sp" />
+    android:textSize="@dimen/tv_text_lyric" />

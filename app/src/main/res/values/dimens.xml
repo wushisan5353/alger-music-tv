@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- TV type ladder — 1080p, ten-foot distance, all sp:
+       页面标题 tv_text_title   32sp bold (playlist name, search title, player title)
+       行头     tv_text_header  24sp bold (section / row headers)
+       歌名     tv_text_song    22sp      (track rows, card titles)
+       歌手     tv_text_artist  18sp      (secondary line)
+       辅助     tv_text_aux     16sp      (duration, counts, time)
+       歌词     tv_text_lyric   24sp / current line tv_text_lyric_current 28sp bold -->
 <resources>
     <dimen name="card_width">176dp</dimen>
     <dimen name="card_height">176dp</dimen>
     <dimen name="page_padding">48dp</dimen>
-    <dimen name="track_row_height">64dp</dimen>
+    <dimen name="track_row_height">68dp</dimen>
+
+    <dimen name="tv_text_title">32sp</dimen>
+    <dimen name="tv_text_header">24sp</dimen>
+    <dimen name="tv_text_song">22sp</dimen>
+    <dimen name="tv_text_artist">18sp</dimen>
+    <dimen name="tv_text_aux">16sp</dimen>
+    <dimen name="tv_text_lyric">24sp</dimen>
+    <dimen name="tv_text_lyric_current">28sp</dimen>
+    <dimen name="tv_radius_card">16dp</dimen>
+    <dimen name="tv_radius_cover">24dp</dimen>
 </resources>

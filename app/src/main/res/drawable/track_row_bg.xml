@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Track row: surface-1 resting on the black page; focus lifts to
+     surface-2 with the brand-green ring (focus = Alger active green). -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_focused="true">
         <shape android:shape="rectangle">
-            <corners android:radius="8dp" />
-            <solid android:color="#263646" />
+            <corners android:radius="12dp" />
+            <solid android:color="@color/bg_surface2" />
             <stroke android:width="2dp" android:color="@color/focus_stroke" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="8dp" />
-            <solid android:color="#141E29" />
+            <corners android:radius="12dp" />
+            <solid android:color="@color/bg_panel" />
         </shape>
     </item>
 </selector>
