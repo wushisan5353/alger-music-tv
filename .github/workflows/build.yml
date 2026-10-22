@@ -242,7 +242,14 @@ jobs:
           }
 
           echo "=== sign artifacts with ephemeral key (smoke only; CI artifacts are unsigned) ==="
-          APKSIGNER=$(ls $ANDROID_HOME/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
+          # Build #14 lesson: the ARM smoke runner has no Android SDK
+          # build-tools and no JDK, so $ANDROID_HOME/build-tools/*/apksigner
+          # matched nothing and keytool was absent -> signer_missing and the
+          # unsigned artifacts failed install with NO_CERTIFICATES. Install
+          # both tools from apt first (apksigner + keytool via JDK headless).
+          sudo apt-get install -y apksigner default-jdk-headless > /dev/null 2>&1 || true
+          APKSIGNER=$(command -v apksigner || ls $ANDROID_HOME/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
+          echo "apksigner=$APKSIGNER keytool=$(command -v keytool || echo MISSING)"
           if [ -n "$APKSIGNER" ] && command -v keytool > /dev/null; then
             keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
             for f in apks/tv/release/AlgerTV-1.0.1.apk apks/phone/release/AlgerPhone-1.0.apk; do
