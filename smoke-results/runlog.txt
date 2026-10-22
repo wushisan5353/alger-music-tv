@@ -1,8 +1,8 @@
 === uname ===
 Linux runnervmidgih 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:12:01 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
 total 8.0K
-drwxr-xr-x 3 runner runner 4.0K Oct 22 12:00 phone
-drwxr-xr-x 3 runner runner 4.0K Oct 22 12:00 tv
+drwxr-xr-x 3 runner runner 4.0K Oct 22 13:01 phone
+drwxr-xr-x 3 runner runner 4.0K Oct 22 13:01 tv
 Reading package lists...
 Building dependency tree...
 Reading state information...
@@ -27,7 +27,7 @@ Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf3
 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 adb arm64 1:34.0.4-1build3 [272 kB]
 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 android-sdk-platform-tools-common all 28.0.2+9 [6402 B]
 Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf-lite32t64 arm64 3.21.12-8.2ubuntu0.4 [221 kB]
-Fetched 2225 kB in 1s (4418 kB/s)
+Fetched 2225 kB in 2s (1039 kB/s)
 Selecting previously unselected package android-liblog:arm64.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 203258 files and directories currently installed.)
 Preparing to unpack .../0-android-liblog_1%3a34.0.4-1build3_arm64.deb ...
@@ -94,7 +94,7 @@ Need to get 114 MB of archives.
 After this operation, 112 MB of additional disk space will be used.
 Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 wireless-regdb all 2026.05.30-0ubuntu1~24.04.1 [7714 B]
 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 linux-modules-extra-6.17.0-1022-azure arm64 6.17.0-1022.22 [114 MB]
-Fetched 114 MB in 3s (36.9 MB/s)
+Fetched 114 MB in 1s (102 MB/s)
 Selecting previously unselected package wireless-regdb.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 203319 files and directories currently installed.)
 Preparing to unpack .../wireless-regdb_2026.05.30-0ubuntu1~24.04.1_all.deb ...
@@ -148,7 +148,7 @@ Unable to find image 'redroid/redroid:11.0.0-latest' locally
 06cb3c383cf0: Pull complete
 Digest: sha256:60b0810684be4578733a847be3314c50b70f73bc92405b5a627ebe9b633ebb5e
 Status: Downloaded newer image for redroid/redroid:11.0.0-latest
-99a4d72790c39d3a4148232adab21df033e6f372efbf491d4108220f89faa651
+2b369dfb62fa9552870a7373db4fead8eaa33c0373dc69286b3f030d7482aa86
 * daemon not running; starting now at tcp:5037
 * daemon started successfully
 connected to localhost:5555
@@ -157,21 +157,11 @@ boot try 2: 1
 arm64-v8a,armeabi-v7a,armeabi
 === sign artifacts with ephemeral key (smoke only; CI artifacts are unsigned) ===
 apksigner=/usr/bin/apksigner keytool=/usr/bin/keytool
-SMOKE_SIGNED apks/tv/release/AlgerTV-1.0.2.apk
-SMOKE_SIGNED apks/phone/release/AlgerPhone-1.0.apk
 ===== TV (com.wushisan.algertv) =====
-Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity (has extras) }
-    mResumedActivity: ActivityRecord{b6ab291 u0 com.wushisan.algertv/.ui.MainActivity t8}
-  ResumedActivity: ActivityRecord{b6ab291 u0 com.wushisan.algertv/.ui.MainActivity t8}
 ===== PHONE (com.wushisan.algertv.phone) =====
-Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity }
-    mResumedActivity: ActivityRecord{5b227c4 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity t9}
-  ResumedActivity: ActivityRecord{5b227c4 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity t9}
 REDROID_BOOTED
-TV_INSTALL_OK
-TV_PROCESS_ALIVE pid=1733
-TV_FATAL_COUNT=0
-PHONE_INSTALL_OK
-PHONE_PROCESS_ALIVE pid=1844
-PHONE_FATAL_COUNT=0
-SMOKE_DONE date=2026-10-22T12:02:14Z sha=07eb87637de45d58b0397c8cb1dd3b1a71360305
+SMOKE_SIGN_FAIL apks/tv/release/AlgerTV-1.0.2.apk
+SMOKE_SIGN_FAIL apks/phone/release/AlgerPhone-1.0.apk
+TV_APK_MISSING
+PHONE_APK_MISSING
+SMOKE_DONE date=2026-10-22T13:02:42Z sha=0bb3a95c72dfc8e004f02552c1435117fd3a821e
