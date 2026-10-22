@@ -1,2 +1,2 @@
-adb: failed to install apks/tv/release/AlgerTV-1.0.1.apk: Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES: Failed collecting certificates for /data/app/vmdl664155481.tmp/base.apk: Failed to collect certificates from /data/app/vmdl664155481.tmp/base.apk: Attempt to get length of null array]
+adb: failed to install apks/tv/release/AlgerTV-1.0.1.apk: Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES: Failed collecting certificates for /data/app/vmdl203679997.tmp/base.apk: Failed to collect certificates from /data/app/vmdl203679997.tmp/base.apk: Attempt to get length of null array]
 Performing Streamed Install
