@@ -101,7 +101,7 @@ jobs:
             echo "sha=${{ github.sha }}"
             echo "signed=${SIGNED:-unknown}"
           } > "$STAGE/build-info.txt"
-          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.1.apk
+          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.2.apk
           if [ -f "$APK" ]; then
             SIZE=$(stat -c%s "$APK")
             SHA=$(sha256sum "$APK" | cut -d' ' -f1)
@@ -149,14 +149,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            app/build/outputs/apk/tv/release/AlgerTV-1.0.1.apk \
+            app/build/outputs/apk/tv/release/AlgerTV-1.0.2.apk \
             app/build/outputs/apk/phone/release/AlgerPhone-1.0.apk \
             --title "Alger轻听 ${GITHUB_REF_NAME}" \
             --notes "Alger轻听 ${GITHUB_REF_NAME}（原生轻量版，免登录；含电视版与手机版两个 APK）"
 
       - name: Fail if APK missing
         run: |
-          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.1.apk
+          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.2.apk
           test -f app/build/outputs/apk/phone/release/AlgerPhone-1.0.apk
 
   # In-workflow smoke test on a real Android (redroid 11 on the ARM runner):
@@ -252,7 +252,7 @@ jobs:
           echo "apksigner=$APKSIGNER keytool=$(command -v keytool || echo MISSING)"
           if [ -n "$APKSIGNER" ] && command -v keytool > /dev/null; then
             keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
-            for f in apks/tv/release/AlgerTV-1.0.1.apk apks/phone/release/AlgerPhone-1.0.apk; do
+            for f in apks/tv/release/AlgerTV-1.0.2.apk apks/phone/release/AlgerPhone-1.0.apk; do
               if [ -f "$f" ] && "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 "$f"; then
                 echo "SMOKE_SIGNED $f"
               else
@@ -263,8 +263,8 @@ jobs:
             echo "SMOKE_ENV_FAIL=signer_missing" >> smoke-out/report.txt
           fi
 
-          smoke_one TV "apks/tv/release/AlgerTV-1.0.1.apk" "com.wushisan.algertv" ".ui.MainActivity" "smoke"
-          smoke_one PHONE "apks/phone/release/AlgerPhone-1.0.apk" "com.wushisan.algertv.phone" ".ui.phone.PhoneMainActivity" ""
+          smoke_one TV "apks/tv/release/AlgerTV-1.0.2.apk" "com.wushisan.algertv" "com.wushisan.algertv.ui.MainActivity" "smoke"
+          smoke_one PHONE "apks/phone/release/AlgerPhone-1.0.apk" "com.wushisan.algertv.phone" "com.wushisan.algertv.ui.phone.PhoneMainActivity" ""
           echo "SMOKE_DONE date=$(date -u +%Y-%m-%dT%H:%M:%SZ) sha=${{ github.sha }}" >> smoke-out/report.txt
           cat smoke-out/report.txt
 
