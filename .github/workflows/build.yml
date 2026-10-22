@@ -61,7 +61,7 @@ jobs:
             echo "::warning::KEYSTORE_BASE64 secret not set; building unsigned APK"
           fi
 
-      - name: Build release APK
+      - name: Build release APKs (tv + phone flavors)
         env:
           KS_PASS: ${{ secrets.KS_PASS }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
@@ -75,14 +75,16 @@ jobs:
           fi
           echo "gradle_exit=$?" >> gradle-build.log
           tail -60 gradle-build.log
-          ls -lh app/build/outputs/apk/release/ || true
+          ls -lh app/build/outputs/apk/tvRelease/ app/build/outputs/apk/phoneRelease/ || true
 
-      - name: Upload APK artifact
+      - name: Upload APK artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: AlgerTV-1.0-apk
-          path: app/build/outputs/apk/release/*.apk
+          name: Alger-apks
+          path: |
+            app/build/outputs/apk/tvRelease/*.apk
+            app/build/outputs/apk/phoneRelease/*.apk
           if-no-files-found: warn
 
       - name: Publish build output to build-output branch
@@ -92,14 +94,14 @@ jobs:
         run: |
           set +e
           STAGE=/tmp/stage
-          mkdir -p "$STAGE/apk"
+          mkdir -p "$STAGE/apk" "$STAGE/phone-apk"
           {
             echo "date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
             echo "ref=${{ github.ref }}"
             echo "sha=${{ github.sha }}"
             echo "signed=${SIGNED:-unknown}"
           } > "$STAGE/build-info.txt"
-          APK=app/build/outputs/apk/release/AlgerTV-1.0.apk
+          APK=app/build/outputs/apk/tvRelease/AlgerTV-1.0.1.apk
           if [ -f "$APK" ]; then
             SIZE=$(stat -c%s "$APK")
             SHA=$(sha256sum "$APK" | cut -d' ' -f1)
@@ -109,6 +111,17 @@ jobs:
             split -b 900000 -d /tmp/apk.b64 "$STAGE/apk/apk.part."
           else
             echo "apk_missing=1" >> "$STAGE/build-info.txt"
+          fi
+          PHONE_APK=app/build/outputs/apk/phoneRelease/AlgerPhone-1.0.apk
+          if [ -f "$PHONE_APK" ]; then
+            PSIZE=$(stat -c%s "$PHONE_APK")
+            PSHA=$(sha256sum "$PHONE_APK" | cut -d' ' -f1)
+            echo "phone_apk_size=$PSIZE" >> "$STAGE/build-info.txt"
+            echo "phone_apk_sha256=$PSHA" >> "$STAGE/build-info.txt"
+            base64 -w0 "$PHONE_APK" > /tmp/phone-apk.b64
+            split -b 900000 -d /tmp/phone-apk.b64 "$STAGE/phone-apk/apk.part."
+          else
+            echo "phone_apk_missing=1" >> "$STAGE/build-info.txt"
           fi
           tail -400 gradle-build.log > "$STAGE/build-log.txt" 2>/dev/null || echo "no log" > "$STAGE/build-log.txt"
           cat "$STAGE/build-info.txt"
@@ -136,10 +149,127 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            app/build/outputs/apk/release/AlgerTV-1.0.apk \
+            app/build/outputs/apk/tvRelease/AlgerTV-1.0.1.apk \
+            app/build/outputs/apk/phoneRelease/AlgerPhone-1.0.apk \
             --title "Alger轻听 ${GITHUB_REF_NAME}" \
-            --notes "Alger轻听 ${GITHUB_REF_NAME}（原生轻量版，免登录）"
+            --notes "Alger轻听 ${GITHUB_REF_NAME}（原生轻量版，免登录；含电视版与手机版两个 APK）"
 
       - name: Fail if APK missing
         run: |
-          test -f app/build/outputs/apk/release/AlgerTV-1.0.apk
+          test -f app/build/outputs/apk/tvRelease/AlgerTV-1.0.1.apk
+          test -f app/build/outputs/apk/phoneRelease/AlgerPhone-1.0.apk
+
+  # In-workflow smoke test on a real Android (redroid 11 on the ARM runner):
+  # the workflow itself downloads the just-built artifacts — no MCP chunk
+  # pushes, so zero user approval cards. Results are committed back to
+  # build-output/smoke-results/ with the workflow token.
+  smoke:
+    needs: build
+    if: always()
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - name: Download built APKs
+        uses: actions/download-artifact@v4
+        with:
+          name: Alger-apks
+          path: apks
+
+      - name: Boot redroid and smoke test both APKs
+        run: |
+          mkdir -p smoke-out
+          exec > >(tee -a smoke-out/runlog.txt) 2>&1
+          set +e
+          echo "=== uname ==="; uname -a
+          ls -lh apks/ || true
+          sudo apt-get update -qq
+          sudo apt-get install -y android-tools-adb
+          adb version || { echo "SMOKE_ENV_FAIL=adb_missing" >> smoke-out/report.txt; exit 0; }
+
+          echo "=== binder ladder ==="
+          BINDER=""
+          if sudo modprobe binder_linux devices="binder,hwbinder,vndbinder" 2>/dev/null; then BINDER=direct; fi
+          if [ -z "$BINDER" ]; then
+            sudo apt-get install -y linux-modules-extra-$(uname -r) || sudo apt-get install -y linux-modules-extra-azure || sudo apt-get install -y linux-modules-extra || true
+            if sudo modprobe binder_linux devices="binder,hwbinder,vndbinder" 2>/dev/null; then BINDER=after-install; fi
+          fi
+          if [ -n "$BINDER" ]; then echo "BINDER_OK via $BINDER"; else echo "SMOKE_ENV_FAIL=binder" >> smoke-out/report.txt; exit 0; fi
+
+          docker run -d --privileged -p 5555:5555 --name redroid redroid/redroid:11.0.0-latest androidboot.redroid_gpu_mode=guest
+          adb connect localhost:5555
+          BOOT=""
+          for i in $(seq 1 40); do
+            B=$(adb -s localhost:5555 shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+            echo "boot try $i: $B"
+            if [ "$B" = "1" ]; then BOOT=ok; break; fi
+            sleep 10
+          done
+          if [ "$BOOT" != "ok" ]; then echo "SMOKE_ENV_FAIL=boot" >> smoke-out/report.txt; exit 0; fi
+          echo "REDROID_BOOTED" >> smoke-out/report.txt
+          adb -s localhost:5555 shell getprop ro.product.cpu.abilist
+
+          smoke_one() {
+            local TAG="$1" APKFILE="$2" PKG="$3" ACT="$4" EXTRA="$5"
+            echo "===== $TAG ($PKG) ====="
+            if [ ! -f "$APKFILE" ]; then echo "${TAG}_APK_MISSING" >> smoke-out/report.txt; return; fi
+            if adb -s localhost:5555 install -r "$APKFILE" > "smoke-out/install-$TAG.txt" 2>&1; then
+              echo "${TAG}_INSTALL_OK" >> smoke-out/report.txt
+            else
+              echo "${TAG}_INSTALL_FAIL" >> smoke-out/report.txt; return
+            fi
+            adb -s localhost:5555 logcat -c
+            if [ -n "$EXTRA" ]; then
+              adb -s localhost:5555 shell am start -n "$PKG/$ACT" --es alger_smoke 1
+            else
+              adb -s localhost:5555 shell am start -n "$PKG/$ACT"
+            fi
+            sleep 15
+            PID=$(adb -s localhost:5555 shell pidof "$PKG" | tr -d '\r')
+            if [ -n "$PID" ]; then
+              echo "${TAG}_PROCESS_ALIVE pid=$PID" >> smoke-out/report.txt
+            else
+              echo "${TAG}_PROCESS_DEAD" >> smoke-out/report.txt
+            fi
+            adb -s localhost:5555 shell dumpsys activity activities | grep -E "ResumedActivity|topResumedActivity" | head -4
+            adb -s localhost:5555 logcat -d > "smoke-out/logcat-$TAG.txt" 2>/dev/null
+            FATAL=$(grep -c "FATAL EXCEPTION" "smoke-out/logcat-$TAG.txt" || true)
+            echo "${TAG}_FATAL_COUNT=$FATAL" >> smoke-out/report.txt
+            grep -E "FATAL EXCEPTION|AndroidRuntime|IllegalStateException|Theme.AppCompat" "smoke-out/logcat-$TAG.txt" | head -20 > "smoke-out/fatal-$TAG.txt" || true
+            adb -s localhost:5555 shell screencap -p /sdcard/smoke-$TAG.png
+            adb -s localhost:5555 pull /sdcard/smoke-$TAG.png "smoke-out/shot-$TAG.png" > /dev/null 2>&1 || true
+          }
+
+          smoke_one TV "apks/AlgerTV-1.0.1.apk" "com.wushisan.algertv" ".ui.MainActivity" "smoke"
+          smoke_one PHONE "apks/AlgerPhone-1.0.apk" "com.wushisan.algertv.phone" ".ui.phone.PhoneMainActivity" ""
+          echo "SMOKE_DONE date=$(date -u +%Y-%m-%dT%H:%M:%SZ) sha=${{ github.sha }}" >> smoke-out/report.txt
+          cat smoke-out/report.txt
+
+      - name: Publish smoke results to build-output branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          # Keep the committed payloads small: cap each logcat excerpt.
+          for f in smoke-out/logcat-TV.txt smoke-out/logcat-PHONE.txt; do
+            [ -f "$f" ] && tail -c 300000 "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+          done
+          rm -rf /tmp/outrepo
+          if git clone --branch build-output "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" /tmp/outrepo 2>/dev/null; then
+            echo "cloned existing build-output"
+          else
+            git clone "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" /tmp/outrepo
+            cd /tmp/outrepo && git checkout --orphan build-output && git rm -rf . > /dev/null 2>&1
+            cd - > /dev/null
+          fi
+          mkdir -p /tmp/outrepo/smoke-results
+          cp -r smoke-out/* /tmp/outrepo/smoke-results/ 2>/dev/null || echo "no smoke-out"
+          cd /tmp/outrepo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "smoke results for ${{ github.sha }}" || echo "nothing to commit"
+          git push origin build-output
+          echo "smoke results published"
