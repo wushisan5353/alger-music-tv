@@ -1,6 +1,5 @@
-date=2026-10-22T10:43:12Z
+date=2026-10-22T10:43:30Z
 ref=refs/heads/main
-sha=172e20052868fa899aa0c58e07b8581f6b107eb7
+sha=4b1905e44f4863aaf28c5fea05dde9a33c61697c
 signed=false
-apk_size=3285865
-apk_sha256=20efb290c7e6a5ee3699818514a9799ba535ba5bc1de597675085f38253ecd6d
+apk_missing=1
