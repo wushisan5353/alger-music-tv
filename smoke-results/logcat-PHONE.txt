@@ -1,94 +1,89 @@
 --------- beginning of main
-10-22 14:14:38.383   138   138 I Zygote  : Process 2001 exited due to signal 9 (Killed)
-10-22 14:14:38.388   778   778 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
-10-22 14:14:38.388   778   778 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
-10-22 14:14:38.388   441   441 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-22 14:27:58.988   135   135 I Zygote  : Process 2017 exited due to signal 9 (Killed)
 --------- beginning of system
-10-22 14:14:38.405   231  2077 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
-10-22 14:14:38.412  2080  2082 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 14:14:38.413   231   300 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10117; state: DISABLED
-10-22 14:14:38.413   231   300 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10117; state: ENABLED
-10-22 14:14:38.413   231   307 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10117; state: ENABLED
-10-22 14:14:38.418   138   138 D Zygote  : Forked child process 2083
-10-22 14:14:38.419  2083  2083 I Zygote  : seccomp disabled by setenforce 0
-10-22 14:14:38.419   231   307 I ActivityManager: Start proc 2083:com.wushisan.algertv.phone/u0a117 for pre-top-activity {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
-10-22 14:14:38.421   121   130 I adbd    : jdwp connection from 2083
-10-22 14:14:38.423   231  2077 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
-10-22 14:14:38.430  2083  2083 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-22 14:14:38.430  2083  2083 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-22 14:14:38.432  2083  2083 I AlgerTV : App onCreate
-10-22 14:14:38.506  2083  2083 I AlgerTV : HOME_LOAD_START
-10-22 14:14:38.506  2083  2083 I AlgerTV : HOME_CACHE_HIT
-10-22 14:14:38.588  2083  2083 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv.phone
-10-22 14:14:38.589   231  1974 D ConnectivityService: requestNetwork for uid/pid:10117/2083 NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ]
-10-22 14:14:38.589   231   379 D ConnectivityService: NetReassign [23 : null → 100]
-10-22 14:14:38.589   231   405 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 14:14:38.589   231   375 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 14:14:38.589   231   375 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 14:14:38.592   778   778 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 14:14:38.595   441   441 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
-10-22 14:14:38.595   778   778 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
-10-22 14:14:38.595   778   778 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
-10-22 14:14:38.597    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
-10-22 14:14:38.838    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 14:14:38.839  2083  2103 I Gralloc4: mapper 4.x is not supported
-10-22 14:14:38.839    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-22 14:14:38.839  2083  2103 W Gralloc3: mapper 3.x is not supported
-10-22 14:14:38.840    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 14:14:38.849   231   305 I ActivityTaskManager: Displayed com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity: +442ms
-10-22 14:14:39.114  2083  2083 W AlgerTV : HOME_META_FAIL id=60198 attempt=0: HTTP 503
-10-22 14:14:39.129  2083  2083 W AlgerTV : HOME_META_FAIL id=745956260 attempt=0: HTTP 503
-10-22 14:14:39.312  2083  2083 W AlgerTV : HOME_META_FAIL id=11641012 attempt=0: HTTP 503
-10-22 14:14:39.380  2083  2083 W AlgerTV : HOME_META_FAIL id=71384707 attempt=0: HTTP 503
-10-22 14:14:39.514  2083  2083 W AlgerTV : HOME_META_FAIL id=60131 attempt=0: HTTP 503
-10-22 14:14:39.589  2083  2083 W AlgerTV : HOME_META_FAIL id=3778678 attempt=0: HTTP 503
-10-22 14:14:39.722  2083  2083 W AlgerTV : HOME_META_FAIL id=19723756 attempt=0: HTTP 503
-10-22 14:14:39.801  2083  2083 W AlgerTV : HOME_META_FAIL id=3779629 attempt=0: HTTP 503
-10-22 14:14:39.921  2083  2083 W AlgerTV : HOME_META_FAIL id=2884035 attempt=0: HTTP 503
-10-22 14:14:40.029  2083  2083 I AlgerTV : HOME_META_OK id=1978921795 ms=1523
-10-22 14:14:40.131  2083  2083 I AlgerTV : HOME_META_OK id=180106 ms=1625
-10-22 14:14:40.176    68    68 D hwcomposer: VSYNC event status:1
-10-22 14:14:40.243  2083  2083 I AlgerTV : HOME_META_OK id=2809513713 ms=1737
-10-22 14:14:40.377  2083  2083 W AlgerTV : HOME_META_FAIL id=11641012 attempt=1: HTTP 503
-10-22 14:14:40.443  2083  2083 W AlgerTV : HOME_META_FAIL id=71384707 attempt=1: HTTP 503
-10-22 14:14:40.575    68    68 D hwcomposer: VSYNC event status:0
-10-22 14:14:40.591  2083  2083 W AlgerTV : HOME_META_FAIL id=60131 attempt=1: HTTP 503
-10-22 14:14:40.642  2083  2083 W AlgerTV : HOME_META_FAIL id=3778678 attempt=1: HTTP 503
-10-22 14:14:40.788  2083  2083 W AlgerTV : HOME_META_FAIL id=19723756 attempt=1: HTTP 503
-10-22 14:14:40.842  2083  2083 W AlgerTV : HOME_META_FAIL id=3779629 attempt=1: HTTP 503
-10-22 14:14:40.985  2083  2083 W AlgerTV : HOME_META_FAIL id=2884035 attempt=1: HTTP 503
-10-22 14:14:41.128  2083  2083 I AlgerTV : HOME_META_OK id=991319590 ms=2622
-10-22 14:14:41.182  2083  2083 I AlgerTV : HOME_META_OK id=60198 ms=2676
-10-22 14:14:41.559  2083  2083 I AlgerTV : HOME_META_OK id=745956260 ms=3053
-10-22 14:14:41.559  2083  2083 I AlgerTV : HOME_DONE ms=3053 meta=6/13 fallback=false
-10-22 14:14:41.560    68    68 D hwcomposer: VSYNC event status:1
-10-22 14:14:41.560  2083  2131 I AlgerTV : HOME_CACHE_SAVED bytes=1313
-10-22 14:14:41.908    68    68 D hwcomposer: VSYNC event status:0
-10-22 14:14:42.463   231  1059 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
-10-22 14:14:42.483    68    68 D hwcomposer: VSYNC event status:1
-10-22 14:14:42.842    68    68 D hwcomposer: VSYNC event status:0
-10-22 14:14:44.202    68    68 D hwcomposer: VSYNC event status:1
-10-22 14:14:44.576    68    68 D hwcomposer: VSYNC event status:0
-10-22 14:14:45.278   718   902 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
-10-22 14:14:45.278   718   902 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
-10-22 14:14:48.487    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 14:14:48.487  2137  2137 I Gralloc4: mapper 4.x is not supported
-10-22 14:14:48.487    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-22 14:14:48.487  2137  2137 W Gralloc3: mapper 3.x is not supported
-10-22 14:14:48.626  2141  2143 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 14:14:48.628  1107  1674 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-22 14:14:48.634  1107  1674 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-22 14:14:48.638  1107  1677 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
-10-22 14:14:48.638  1107  1677 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
-10-22 14:14:48.638  1107  1677 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
-10-22 14:14:48.638  1107  1677 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-22 14:27:59.033   231   551 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
+10-22 14:27:59.046   231   300 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10117; state: DISABLED
+10-22 14:27:59.046   231   300 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10117; state: ENABLED
+10-22 14:27:59.046   231   307 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10117; state: ENABLED
+10-22 14:27:59.052   135   135 D Zygote  : Forked child process 2109
+10-22 14:27:59.053  2109  2109 I Zygote  : seccomp disabled by setenforce 0
+10-22 14:27:59.054   231   307 I ActivityManager: Start proc 2109:com.wushisan.algertv.phone/u0a117 for pre-top-activity {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
+10-22 14:27:59.056   122   131 I adbd    : jdwp connection from 2109
+10-22 14:27:59.058   231   550 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
+10-22 14:27:59.067  2109  2109 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-22 14:27:59.067  2109  2109 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-22 14:27:59.069  2109  2109 I AlgerTV : App onCreate
+10-22 14:27:59.089  2109  2109 I AlgerTV : HOME_LOAD_START
+10-22 14:27:59.089  2109  2109 I AlgerTV : HOME_CACHE_HIT
+10-22 14:27:59.124  2109  2109 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv.phone
+10-22 14:27:59.126   231   549 D ConnectivityService: requestNetwork for uid/pid:10117/2109 NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ]
+10-22 14:27:59.142    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
+10-22 14:27:59.142   231   382 D ConnectivityService: NetReassign [23 : null → 100]
+10-22 14:27:59.143   231   408 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 14:27:59.145   231   378 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 14:27:59.145   231   378 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 14:27:59.145   783   783 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=23, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 14:27:59.152   443   443 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-22 14:27:59.155   783   783 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-22 14:27:59.155   783   783 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+10-22 14:27:59.396    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 14:27:59.396  2109  2129 I Gralloc4: mapper 4.x is not supported
+10-22 14:27:59.396    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-22 14:27:59.396  2109  2129 W Gralloc3: mapper 3.x is not supported
+10-22 14:27:59.398    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 14:27:59.417   231   305 I ActivityTaskManager: Displayed com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity: +377ms
+10-22 14:27:59.420  2109  2109 W AlgerTV : HOME_META_FAIL id=60198 attempt=0: HTTP 503
+10-22 14:27:59.420  2109  2109 W AlgerTV : HOME_META_FAIL id=745956260 attempt=0: HTTP 503
+10-22 14:27:59.548  2109  2109 W AlgerTV : HOME_META_FAIL id=11641012 attempt=0: HTTP 503
+10-22 14:27:59.561  2109  2109 W AlgerTV : HOME_META_FAIL id=71384707 attempt=0: HTTP 503
+10-22 14:27:59.746  2109  2109 W AlgerTV : HOME_META_FAIL id=60131 attempt=0: HTTP 503
+10-22 14:27:59.814  2109  2109 I AlgerTV : HOME_META_OK id=1978921795 ms=725
+10-22 14:27:59.940  2109  2109 W AlgerTV : HOME_META_FAIL id=19723756 attempt=0: HTTP 503
+10-22 14:28:00.001   443   443 D KeyguardClockSwitch: Updating clock: 228
+10-22 14:28:00.008  2109  2109 W AlgerTV : HOME_META_FAIL id=3779629 attempt=0: HTTP 503
+10-22 14:28:00.163  2109  2109 W AlgerTV : HOME_META_FAIL id=2884035 attempt=0: HTTP 503
+10-22 14:28:00.201  2109  2109 W AlgerTV : HOME_META_FAIL id=991319590 attempt=0: HTTP 503
+10-22 14:28:00.426  2109  2109 I AlgerTV : HOME_META_OK id=180106 ms=1337
+10-22 14:28:00.427  2109  2109 W AlgerTV : HOME_META_FAIL id=745956260 attempt=1: HTTP 503
+10-22 14:28:00.593  2109  2109 I AlgerTV : HOME_META_OK id=2809513713 ms=1504
+10-22 14:28:00.671  2109  2109 W AlgerTV : HOME_META_FAIL id=71384707 attempt=1: HTTP 503
+10-22 14:28:00.839  2109  2109 I AlgerTV : HOME_META_OK id=3778678 ms=1750
+10-22 14:28:01.039  2109  2109 W AlgerTV : HOME_META_FAIL id=19723756 attempt=1: HTTP 503
+10-22 14:28:01.040  2109  2109 W AlgerTV : HOME_META_FAIL id=3779629 attempt=1: HTTP 503
+10-22 14:28:01.192  2109  2109 W AlgerTV : HOME_META_FAIL id=2884035 attempt=1: HTTP 503
+10-22 14:28:01.283  2109  2109 W AlgerTV : HOME_META_FAIL id=991319590 attempt=1: HTTP 503
+10-22 14:28:01.357  2109  2109 I AlgerTV : HOME_META_OK id=60198 ms=2268
+10-22 14:28:01.821  2109  2109 I AlgerTV : HOME_META_OK id=11641012 ms=2732
+10-22 14:28:01.841  2109  2109 I AlgerTV : HOME_META_OK id=60131 ms=2752
+10-22 14:28:01.842  2109  2109 I AlgerTV : HOME_DONE ms=2753 meta=7/13 fallback=false
+10-22 14:28:01.842  2109  2157 I AlgerTV : HOME_CACHE_SAVED bytes=1410
+10-22 14:28:01.843    71    71 D hwcomposer: VSYNC event status:1
+10-22 14:28:02.237    71    71 D hwcomposer: VSYNC event status:0
+10-22 14:28:02.840    71    71 D hwcomposer: VSYNC event status:1
+10-22 14:28:03.073   231  1058 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-22 14:28:03.237    71    71 D hwcomposer: VSYNC event status:0
+10-22 14:28:08.232   669   927 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
+10-22 14:28:08.233   669   927 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
+10-22 14:28:09.117    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 14:28:09.117  2163  2163 I Gralloc4: mapper 4.x is not supported
+10-22 14:28:09.117    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-22 14:28:09.117  2163  2163 W Gralloc3: mapper 3.x is not supported
+10-22 14:28:09.261  2167  2169 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 14:28:09.262   231   549 I ActivityManager: Killing 1494:com.android.dynsystem/1000 (adj 985): empty #17
+10-22 14:28:09.265  1087  1667 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-22 14:28:09.272   135   135 I Zygote  : Process 1494 exited due to signal 9 (Killed)
+10-22 14:28:09.275  1087  1667 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-22 14:28:09.277  1087  1675 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-22 14:28:09.277  1087  1675 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-22 14:28:09.277  1087  1675 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-22 14:28:09.277  1087  1675 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
