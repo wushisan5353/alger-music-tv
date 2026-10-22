@@ -3,12 +3,17 @@ package com.wushisan.algertv.ui.phone;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.wushisan.algertv.R;
+import com.wushisan.algertv.data.MusicRepository;
 import com.wushisan.algertv.data.Song;
 
 import java.util.ArrayList;
@@ -50,6 +55,7 @@ public class PhoneTracksAdapter extends RecyclerView.Adapter<PhoneTracksAdapter.
     }
 
     class VH extends RecyclerView.ViewHolder {
+        final ImageView cover;
         final TextView index;
         final TextView name;
         final TextView sub;
@@ -57,6 +63,7 @@ public class PhoneTracksAdapter extends RecyclerView.Adapter<PhoneTracksAdapter.
 
         VH(View v) {
             super(v);
+            cover = v.findViewById(R.id.track_cover);
             index = v.findViewById(R.id.track_index);
             name = v.findViewById(R.id.track_name);
             sub = v.findViewById(R.id.track_sub);
@@ -77,18 +84,57 @@ public class PhoneTracksAdapter extends RecyclerView.Adapter<PhoneTracksAdapter.
         final Song s = items.get(position);
         final int pos = position;
         boolean current = position == highlightIndex;
-        holder.index.setText(current ? "▶" : String.valueOf(position + 1));
+        holder.index.setText(current ? "▶" : "");
         holder.name.setText(s.name == null ? "" : s.name);
         holder.name.setTextColor(holder.itemView.getResources().getColor(
-                current ? R.color.accent : R.color.text_primary));
+                current ? R.color.ph_accent : R.color.ph_text));
         holder.sub.setText(s.subtitle());
         holder.duration.setText(formatDuration(s.durationMs));
+        bindCover(holder, s);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) listener.onTrackClick(s, pos);
             }
         });
+    }
+
+    /** Rounded cover; search results only carry a pic_id, resolved lazily
+     *  with a tag guard so recycled rows never show a stale cover. */
+    private void bindCover(final VH holder, final Song s) {
+        holder.cover.setTag(s);
+        int radius = holder.itemView.getResources()
+                .getDimensionPixelSize(R.dimen.ph_radius_cover);
+        if (s.picUrl != null && s.picUrl.length() > 0) {
+            Glide.with(holder.itemView.getContext()).load(s.picUrl)
+                    .placeholder(R.drawable.cover_placeholder)
+                    .error(R.drawable.cover_placeholder)
+                    .transform(new CenterCrop(), new RoundedCorners(radius))
+                    .into(holder.cover);
+        } else if (s.picId != null) {
+            Glide.with(holder.itemView.getContext()).clear(holder.cover);
+            holder.cover.setImageResource(R.drawable.cover_placeholder);
+            MusicRepository.get().resolvePic(s, new MusicRepository.Result<String>() {
+                @Override
+                public void onSuccess(String url) {
+                    if (holder.cover.getTag() == s) {
+                        int r = holder.itemView.getResources()
+                                .getDimensionPixelSize(R.dimen.ph_radius_cover);
+                        Glide.with(holder.itemView.getContext()).load(url)
+                                .placeholder(R.drawable.cover_placeholder)
+                                .transform(new CenterCrop(), new RoundedCorners(r))
+                                .into(holder.cover);
+                    }
+                }
+
+                @Override
+                public void onError(String message) {
+                }
+            });
+        } else {
+            Glide.with(holder.itemView.getContext()).clear(holder.cover);
+            holder.cover.setImageResource(R.drawable.cover_placeholder);
+        }
     }
 
     @Override

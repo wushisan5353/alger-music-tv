@@ -60,10 +60,13 @@ public class PhonePlaylistActivity extends AppCompatActivity {
         statusView = findViewById(R.id.pl_status);
         nameView.setText(name == null ? "" : name);
         if (cover != null) {
+            int radius = getResources().getDimensionPixelSize(R.dimen.ph_radius_card);
             Glide.with(this).load(cover)
                     .placeholder(R.drawable.cover_placeholder)
                     .error(R.drawable.cover_placeholder)
-                    .centerCrop().into(coverView);
+                    .transform(new com.bumptech.glide.load.resource.bitmap.CenterCrop(),
+                            new com.bumptech.glide.load.resource.bitmap.RoundedCorners(radius))
+                    .into(coverView);
         }
         findViewById(R.id.btn_play_all).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +141,7 @@ public class PhonePlaylistActivity extends AppCompatActivity {
                         statusView.setVisibility(View.GONE);
                         metaView.setText(getString(R.string.phone_tracks_count, tracks.size()));
                         syncHighlight();
+                        maybeSmokePlay();
                     }
 
                     @Override
@@ -147,6 +151,19 @@ public class PhonePlaylistActivity extends AppCompatActivity {
                         metaView.setText("");
                     }
                 });
+    }
+
+    private boolean smokePlayed = false;
+
+    /** Smoke hook: with extra alger_smoke_play=1, tap the first track —
+     *  the exact user path that crashed phone 1.0 on modern Android. */
+    private void maybeSmokePlay() {
+        if (smokePlayed) return;
+        if (!"1".equals(getIntent().getStringExtra("alger_smoke_play"))) return;
+        if (tracks.isEmpty()) return;
+        smokePlayed = true;
+        android.util.Log.i("AlgerTV", "SMOKE_PHONE_PLAY first track");
+        playFrom(0);
     }
 
     private void playFrom(int index) {

@@ -70,11 +70,8 @@ public class PhoneMainActivity extends AppCompatActivity {
         toplistRows = findViewById(R.id.toplist_rows);
         miniBar = new MiniPlayerBar(this);
 
-        // Instant paint with the curated built-ins; metadata refreshes async.
-        MusicRepository.HomeData seed = new MusicRepository.HomeData();
-        seed.recommend = MusicRepository.builtInRecommend();
-        seed.toplists = MusicRepository.builtInToplists();
-        bindHome(seed);
+        // loadHome delivers twice: an instant preliminary paint (disk
+        // cache, else the built-in seed) and the refreshed final data.
         loadHome();
     }
 
@@ -94,23 +91,47 @@ public class PhoneMainActivity extends AppCompatActivity {
         miniBar.detach();
     }
 
+    private boolean smokeOpenedPlaylist = false;
+
     private void loadHome() {
         MusicRepository.get().loadHome(new MusicRepository.Result<MusicRepository.HomeData>() {
             @Override
             public void onSuccess(MusicRepository.HomeData data) {
                 bindHome(data);
-                if (data.fromFallback) {
+                // Only the final delivery may complain about the network;
+                // the preliminary cache/seed paint must stay silent.
+                if (!data.preliminary && data.fromFallback) {
                     Toast.makeText(PhoneMainActivity.this,
                             R.string.phone_net_fallback, Toast.LENGTH_SHORT).show();
                 }
+                maybeSmokeOpenPlaylist(data);
             }
 
             @Override
             public void onError(String message) {
-                Toast.makeText(PhoneMainActivity.this,
-                        R.string.phone_net_fallback, Toast.LENGTH_SHORT).show();
+                // Data is already on screen (preliminary delivery); the
+                // user must never see an error for a populated home.
+                android.util.Log.w("AlgerTV", "HOME_LOAD_ERROR: " + message);
             }
         });
+    }
+
+    /** Smoke hook (modern-Android playback repro): with --es alger_smoke 1,
+     *  open the first chart playlist and let it autoplay its first track,
+     *  mirroring a user's tap path Playlist -> track -> Player. */
+    private void maybeSmokeOpenPlaylist(MusicRepository.HomeData data) {
+        if (smokeOpenedPlaylist) return;
+        if (!"1".equals(getIntent().getStringExtra("alger_smoke"))) return;
+        if (data.toplists == null || data.toplists.isEmpty()) return;
+        smokeOpenedPlaylist = true;
+        Playlist first = data.toplists.get(0);
+        android.util.Log.i("AlgerTV", "SMOKE_PHONE_OPEN_PLAYLIST id=" + first.id);
+        android.content.Intent i = new android.content.Intent(this, PhonePlaylistActivity.class);
+        i.putExtra(PhonePlaylistActivity.EXTRA_ID, first.id);
+        i.putExtra(PhonePlaylistActivity.EXTRA_NAME, first.name);
+        i.putExtra(PhonePlaylistActivity.EXTRA_COVER, first.coverUrl);
+        i.putExtra("alger_smoke_play", "1");
+        startActivity(i);
     }
 
     private void bindHome(MusicRepository.HomeData data) {
@@ -125,7 +146,11 @@ public class PhoneMainActivity extends AppCompatActivity {
         for (int i = 0; i < toplists.size(); i++) {
             final Playlist pl = toplists.get(i);
             View row = inflater.inflate(R.layout.item_phone_toplist_row, toplistRows, false);
-            ((TextView) row.findViewById(R.id.row_rank)).setText(String.valueOf(i + 1));
+            TextView rank = row.findViewById(R.id.row_rank);
+            rank.setText(String.valueOf(i + 1));
+            // Alger chart language: only the podium wears the brand green.
+            rank.setTextColor(getResources().getColor(
+                    i < 3 ? R.color.ph_accent : R.color.ph_text_54));
             ((TextView) row.findViewById(R.id.row_name))
                     .setText(pl.name == null ? "" : pl.name);
             StringBuilder meta = new StringBuilder();
@@ -138,10 +163,13 @@ public class PhoneMainActivity extends AppCompatActivity {
             ((TextView) row.findViewById(R.id.row_meta)).setText(meta.toString());
             ImageView cover = row.findViewById(R.id.row_cover);
             if (pl.coverUrl != null) {
+                int radius = getResources().getDimensionPixelSize(R.dimen.ph_radius_cover);
                 Glide.with(this).load(pl.coverUrl)
                         .placeholder(R.drawable.cover_placeholder)
                         .error(R.drawable.cover_placeholder)
-                        .centerCrop().into(cover);
+                        .transform(new com.bumptech.glide.load.resource.bitmap.CenterCrop(),
+                                new com.bumptech.glide.load.resource.bitmap.RoundedCorners(radius))
+                        .into(cover);
             }
             row.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -92,6 +92,10 @@ public class PhoneSearchActivity extends AppCompatActivity {
 
     private List<Song> lastResults;
 
+    private int dp(float v) {
+        return (int) (v * getResources().getDisplayMetrics().density + 0.5f);
+    }
+
     private void buildHotChips() {
         LinearLayout container = findViewById(R.id.hot_chips);
         LinearLayout row = null;
@@ -102,21 +106,21 @@ public class PhoneSearchActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
-                if (i > 0) rlp.setMargins(0, 10, 0, 0);
+                if (i > 0) rlp.setMargins(0, dp(10), 0, 0);
                 row.setLayoutParams(rlp);
                 container.addView(row);
             }
             final String kw = HOT[i];
             TextView chip = new TextView(this);
             chip.setText(kw);
-            chip.setTextSize(15);
-            chip.setTextColor(getResources().getColor(R.color.text_primary));
-            chip.setBackgroundResource(R.drawable.chip_bg);
-            chip.setPadding(22, 9, 22, 9);
+            chip.setTextSize(14);
+            chip.setTextColor(getResources().getColor(R.color.ph_text));
+            chip.setBackgroundResource(R.drawable.ph_chip_bg);
+            chip.setPadding(dp(15), dp(7), dp(15), dp(7));
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(0, 0, 10, 0);
+            lp.setMargins(0, 0, dp(10), 0);
             chip.setLayoutParams(lp);
             chip.setOnClickListener(new View.OnClickListener() {
                 @Override

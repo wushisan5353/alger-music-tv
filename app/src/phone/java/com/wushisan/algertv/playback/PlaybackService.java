@@ -110,6 +110,14 @@ public class PlaybackService extends Service {
                     break;
             }
         }
+        // Started via startForegroundService: if there is nothing to play
+        // we must not linger unpromoted (Android kills the process with
+        // ForegroundServiceDidNotStartInTimeException). Stop cleanly.
+        PlayerController pc = PlayerController.get();
+        if (pc == null || pc.currentSong() == null) {
+            stopSelf();
+            return START_NOT_STICKY;
+        }
         refresh();
         return START_STICKY;
     }
@@ -199,11 +207,24 @@ public class PlaybackService extends Service {
     }
 
     private void startForegroundCompat(Notification notification) {
-        if (Build.VERSION.SDK_INT >= 29) {
-            startForeground(NOTIF_ID, notification,
-                    ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
-        } else {
-            startForeground(NOTIF_ID, notification);
+        // refresh() runs on listener callbacks posted to the main thread:
+        // an exception here would take the whole process down, so degrade
+        // in steps and never throw. (Android 14 OEM builds have been seen
+        // to reject the typed call when permission state changed mid-run.)
+        try {
+            if (Build.VERSION.SDK_INT >= 29) {
+                startForeground(NOTIF_ID, notification,
+                        ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
+            } else {
+                startForeground(NOTIF_ID, notification);
+            }
+        } catch (Exception e) {
+            Log.w(App.TAG, "startForeground typed failed: " + e.getMessage());
+            try {
+                startForeground(NOTIF_ID, notification);
+            } catch (Exception e2) {
+                Log.w(App.TAG, "startForeground plain failed: " + e2.getMessage());
+            }
         }
     }
 

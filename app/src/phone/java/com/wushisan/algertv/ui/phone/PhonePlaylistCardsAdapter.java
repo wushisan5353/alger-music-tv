@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.wushisan.algertv.R;
 import com.wushisan.algertv.data.Playlist;
 
@@ -65,10 +67,13 @@ public class PhonePlaylistCardsAdapter
         String plays = Playlist.formatPlayCount(pl.playCount);
         holder.meta.setText(plays.length() > 0 ? plays + " 播放" : "");
         if (pl.coverUrl != null) {
+            int radius = holder.itemView.getResources()
+                    .getDimensionPixelSize(R.dimen.ph_radius_card);
             Glide.with(holder.itemView.getContext()).load(pl.coverUrl)
                     .placeholder(R.drawable.cover_placeholder)
                     .error(R.drawable.cover_placeholder)
-                    .centerCrop().into(holder.cover);
+                    .transform(new CenterCrop(), new RoundedCorners(radius))
+                    .into(holder.cover);
         } else {
             holder.cover.setImageResource(R.drawable.cover_placeholder);
         }
