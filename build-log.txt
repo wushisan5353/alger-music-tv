@@ -1,5 +1,4 @@
-Downloading https://services.gradle.org/distributions/gradle-8.5-bin.zip
-............10%.............20%............30%.............40%.............50%............60%.............70%.............80%............90%.............100%
+Starting a Gradle Daemon (subsequent builds will be faster)
 Checking the license for package Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/licenses
 License for package Android SDK Build-Tools 33.0.1 accepted.
 Preparing "Install Android SDK Build-Tools 33.0.1 v.33.0.1".
@@ -37,10 +36,8 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:mergeReleaseAssets
 > Task :app:compressReleaseAssets
 > Task :app:collectReleaseDependencies
-> Task :app:sdkReleaseDependencyData
-> Task :app:writeReleaseAppMetadata
-> Task :app:writeReleaseSigningConfigVersions
 > Task :app:processReleaseResources
+> Task :app:sdkReleaseDependencyData
 
 > Task :app:compileReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: []
@@ -53,12 +50,14 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :app:processReleaseJavaRes
 > Task :app:compileReleaseArtProfile
 > Task :app:optimizeReleaseResources
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
 > Task :app:mergeReleaseJavaResource
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792659683802.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792665760700.json
 
-BUILD SUCCESSFUL in 1m 15s
+BUILD SUCCESSFUL in 33s
 35 actionable tasks: 35 executed
 gradle_exit=0
