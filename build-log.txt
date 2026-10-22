@@ -20,17 +20,28 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:mapReleaseSourceSetPaths
 > Task :app:generateReleaseResources
 > Task :app:packageReleaseResources
-> Task :app:parseReleaseLocalResources
+> Task :app:mergeReleaseResources
 > Task :app:createReleaseCompatibleScreenManifests
 > Task :app:extractDeepLinksRelease
-> Task :app:mergeReleaseResources
+> Task :app:parseReleaseLocalResources
 > Task :app:processReleaseMainManifest
 > Task :app:processReleaseManifest
 > Task :app:desugarReleaseFileDependencies
 > Task :app:processReleaseManifestForPackage
+> Task :app:mergeExtDexRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
 > Task :app:processReleaseResources
 
-> Task :app:compileReleaseJavaWithJavac
+> Task :app:compileReleaseJavaWithJavac FAILED
 Note: [1] Wrote GeneratedAppGlideModule with: []
 /home/runner/work/alger-music-tv/alger-music-tv/app/src/main/java/com/wushisan/algertv/playback/PlaybackService.java:18: error: cannot find symbol
 import com.wushisan.algertv.ui.PlayerActivity;
@@ -38,10 +49,7 @@ import com.wushisan.algertv.ui.PlayerActivity;
   symbol:   class PlayerActivity
   location: package com.wushisan.algertv.ui
 1 error
-
-> Task :app:compileReleaseJavaWithJavac FAILED
-> Task :app:mergeExtDexRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792665780330.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792665786316.json
 
 FAILURE: Build failed with an exception.
 
@@ -304,6 +312,6 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
 
 
-BUILD FAILED in 35s
-18 actionable tasks: 18 executed
+BUILD FAILED in 33s
+26 actionable tasks: 26 executed
 gradle_exit=1
