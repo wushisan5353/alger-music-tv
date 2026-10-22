@@ -1,70 +1,70 @@
---------- beginning of main
-10-22 11:51:39.971   466  1826 W Role    : Cannot get ApplicationInfo for default holder: com.android.messaging
-10-22 11:51:39.976   466  1826 W Role    : Cannot get ApplicationInfo for default holder: com.android.dialer
-10-22 11:51:39.994    66    66 D hwcomposer: VSYNC event status:1
 --------- beginning of system
-10-22 11:51:39.999   272   411 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
-10-22 11:51:40.002  1831  1833 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 11:51:40.007   272   302 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10117; state: DISABLED
-10-22 11:51:40.007   272   302 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10117; state: ENABLED
-10-22 11:51:40.008   272   309 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10117; state: ENABLED
-10-22 11:51:40.008   272   302 D CompatibilityChangeReporter: Compat change id reported: 136219221; UID 10116; state: DISABLED
-10-22 11:51:40.013   137   137 D Zygote  : Forked child process 1834
-10-22 11:51:40.014   272   309 I ActivityManager: Start proc 1834:com.wushisan.algertv.phone/u0a117 for pre-top-activity {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
-10-22 11:51:40.014  1834  1834 I Zygote  : seccomp disabled by setenforce 0
-10-22 11:51:40.016   124   132 I adbd    : jdwp connection from 1834
-10-22 11:51:40.018   272   547 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
-10-22 11:51:40.028  1834  1834 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-22 11:51:40.028  1834  1834 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-22 11:51:40.030  1834  1834 I AlgerTV : App onCreate
-10-22 11:51:40.106   272   303 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3fb1b5e u0 com.android.systemui.ImageWallpaper}, surfaceController Surface(name=com.android.systemui.ImageWallpaper)/@0xf2191e
-10-22 11:51:40.115   442   581 D EglHelper: createEglContext start
-10-22 11:51:40.116   442   581 D EglHelper: createEglContext done
-10-22 11:51:40.116   442   581 D EglHelper: createEglSurface start
-10-22 11:51:40.119    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
-10-22 11:51:40.124   442   581 D EglHelper: createEglSurface done
-10-22 11:51:40.339    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 11:51:40.339  1834  1854 I Gralloc4: mapper 4.x is not supported
-10-22 11:51:40.339    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-22 11:51:40.339  1834  1854 W Gralloc3: mapper 3.x is not supported
-10-22 11:51:40.340    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 11:51:40.345    90   343 W ServiceManager: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10117 pid=1834
-10-22 11:51:40.345    90   343 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10117 => denied (154 us)
-10-22 11:51:40.349   272   307 I ActivityTaskManager: Displayed com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity: +347ms
-10-22 11:51:40.351    66    66 D hwcomposer: VSYNC event status:0
-10-22 11:51:40.755   272   302 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.53} unchanged for IME proc com.android.inputmethod.latin
-10-22 11:51:40.756   272   302 I ActivityTaskManager: Config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53}
-10-22 11:51:40.757   272   302 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.53} unchanged for IME proc com.android.inputmethod.latin
-10-22 11:51:40.758   272   302 I WindowManager: Override config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53} for displayId=0
-10-22 11:51:40.758   272   302 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
-10-22 11:51:40.758   272   302 V ActivityTaskManager: Sending to IME proc com.android.inputmethod.latin new config {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53}
-10-22 11:51:40.758   272   302 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53} unchanged for IME proc com.android.inputmethod.latin
-10-22 11:51:40.765   272   302 I InputManager-JNI: Viewport [0] to add: local:0, isActive: true
-10-22 11:51:40.767   272   345 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
-10-22 11:51:40.771   442   442 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
-10-22 11:51:40.828    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 11:51:40.854   272   381 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] (release request)
-10-22 11:51:40.857   773   773 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
-10-22 11:51:40.857   773   773 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
-10-22 11:51:40.954   442   442 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
-10-22 11:51:41.629   705   938 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
-10-22 11:51:41.629   705   938 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
-10-22 11:51:43.043   272  1061 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
-10-22 11:51:43.438  1834  1834 W AlgerTV : HOME_META_FAIL id=3778678: HTTP 503
-10-22 11:51:43.475  1834  1834 W AlgerTV : HOME_META_FAIL id=19723756: HTTP 503
-10-22 11:51:43.634  1834  1834 W AlgerTV : HOME_META_FAIL id=3779629: HTTP 503
-10-22 11:51:43.673  1834  1834 W AlgerTV : HOME_META_FAIL id=2884035: HTTP 503
-10-22 11:51:43.831  1834  1834 W AlgerTV : HOME_META_FAIL id=991319590: HTTP 503
-10-22 11:51:45.035  1834  1834 I AlgerTV : HOME_GDS_OK meta=8/13 fallback=false
-10-22 11:51:45.035    66    66 D hwcomposer: VSYNC event status:1
-10-22 11:51:45.089  1834  1834 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv.phone
-10-22 11:51:45.090   272   548 D ConnectivityService: requestNetwork for uid/pid:10117/1834 NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ]
-10-22 11:51:45.091   272   381 D ConnectivityService: NetReassign [20 : null → 100]
-10-22 11:51:45.091   272   377 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 11:51:45.091   272   377 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 11:51:45.091   773   773 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 11:51:45.092   272   410 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-22 11:51:45.093   442   442 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
-10-22 11:51:45.094   773   773 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
-10-22 11:51:45.094   773   773 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
-10-22 11:51:45.417    66    66 D hwcomposer: VSYNC event status:0
+10-22 12:01:59.429   231   368 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
+--------- beginning of main
+10-22 12:01:59.430    66    66 D hwcomposer: VSYNC event status:1
+10-22 12:01:59.436   231   298 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10117; state: DISABLED
+10-22 12:01:59.436   231   298 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10117; state: ENABLED
+10-22 12:01:59.437  1840  1843 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 12:01:59.439   231   298 D CompatibilityChangeReporter: Compat change id reported: 136219221; UID 10116; state: DISABLED
+10-22 12:01:59.440   231   305 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10117; state: ENABLED
+10-22 12:01:59.446   135   135 D Zygote  : Forked child process 1844
+10-22 12:01:59.447  1844  1844 I Zygote  : seccomp disabled by setenforce 0
+10-22 12:01:59.448   231   305 I ActivityManager: Start proc 1844:com.wushisan.algertv.phone/u0a117 for pre-top-activity {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
+10-22 12:01:59.449   122   131 I adbd    : jdwp connection from 1844
+10-22 12:01:59.452   231  1382 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
+10-22 12:01:59.462  1844  1844 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-22 12:01:59.462  1844  1844 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-22 12:01:59.465  1844  1844 I AlgerTV : App onCreate
+10-22 12:01:59.534   231   299 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c1e4790 u0 com.android.systemui.ImageWallpaper}, surfaceController Surface(name=com.android.systemui.ImageWallpaper)/@0x88d47af
+10-22 12:01:59.538   442   587 D EglHelper: createEglContext start
+10-22 12:01:59.539   442   587 D EglHelper: createEglContext done
+10-22 12:01:59.539   442   587 D EglHelper: createEglSurface start
+10-22 12:01:59.542   442   587 D EglHelper: createEglSurface done
+10-22 12:01:59.544    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
+10-22 12:01:59.766    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 12:01:59.766  1844  1864 I Gralloc4: mapper 4.x is not supported
+10-22 12:01:59.766    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-22 12:01:59.766  1844  1864 W Gralloc3: mapper 3.x is not supported
+10-22 12:01:59.767    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 12:01:59.774    83  1092 W ServiceManager: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10117 pid=1844
+10-22 12:01:59.774    83  1092 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10117 => denied (129 us)
+10-22 12:01:59.777   231   303 I ActivityTaskManager: Displayed com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity: +344ms
+10-22 12:01:59.783    66    66 D hwcomposer: VSYNC event status:0
+10-22 12:02:00.001   442   442 D KeyguardClockSwitch: Updating clock: 1202
+10-22 12:02:00.055   442   442 D KeyguardClockSwitch: Updating clock: 1202
+10-22 12:02:00.123   231   298 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.53} unchanged for IME proc com.android.inputmethod.latin
+10-22 12:02:00.123   231   298 I ActivityTaskManager: Config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53}
+10-22 12:02:00.124   231   298 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.53} unchanged for IME proc com.android.inputmethod.latin
+10-22 12:02:00.126   231   298 I WindowManager: Override config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53} for displayId=0
+10-22 12:02:00.126   231   298 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
+10-22 12:02:00.126   231   298 V ActivityTaskManager: Sending to IME proc com.android.inputmethod.latin new config {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53}
+10-22 12:02:00.127   231   298 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.53} unchanged for IME proc com.android.inputmethod.latin
+10-22 12:02:00.134   231   298 I InputManager-JNI: Viewport [0] to add: local:0, isActive: true
+10-22 12:02:00.135   231   342 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
+10-22 12:02:00.204   442   442 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-22 12:02:00.208   231   379 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] (release request)
+10-22 12:02:00.211   766   766 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-22 12:02:00.211   766   766 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+10-22 12:02:00.216    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 12:02:00.326   442   442 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-22 12:02:01.513   670   922 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
+10-22 12:02:01.513   670   922 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
+10-22 12:02:01.960  1844  1844 W AlgerTV : HOME_META_FAIL id=19723756: HTTP 503
+10-22 12:02:02.470   231  1055 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-22 12:02:03.725  1844  1844 I AlgerTV : HOME_GDS_OK meta=12/13 fallback=false
+10-22 12:02:03.726    66    66 D hwcomposer: VSYNC event status:1
+10-22 12:02:03.730  1844  1844 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv.phone
+10-22 12:02:03.730   231   281 D ConnectivityService: requestNetwork for uid/pid:10117/1844 NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ]
+10-22 12:02:03.731   231   379 D ConnectivityService: NetReassign [20 : null → 100]
+10-22 12:02:03.731   231   407 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 12:02:03.732   231   375 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 12:02:03.732   231   375 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 12:02:03.732   766   766 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-22 12:02:03.738   766   766 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-22 12:02:03.738   766   766 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+10-22 12:02:03.738   442   442 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-22 12:02:04.117    66    66 D hwcomposer: VSYNC event status:0
+10-22 12:02:05.252    66    66 D hwcomposer: VSYNC event status:1
+10-22 12:02:05.650    66    66 D hwcomposer: VSYNC event status:0
+10-22 12:02:08.568    66    66 D hwcomposer: VSYNC event status:1
+10-22 12:02:08.917    66    66 D hwcomposer: VSYNC event status:0
