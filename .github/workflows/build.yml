@@ -241,6 +241,21 @@ jobs:
             adb -s localhost:5555 pull /sdcard/smoke-$TAG.png "smoke-out/shot-$TAG.png" > /dev/null 2>&1 || true
           }
 
+          echo "=== sign artifacts with ephemeral key (smoke only; CI artifacts are unsigned) ==="
+          APKSIGNER=$(ls $ANDROID_HOME/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
+          if [ -n "$APKSIGNER" ] && command -v keytool > /dev/null; then
+            keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
+            for f in apks/tv/release/AlgerTV-1.0.1.apk apks/phone/release/AlgerPhone-1.0.apk; do
+              if [ -f "$f" ] && "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 "$f"; then
+                echo "SMOKE_SIGNED $f"
+              else
+                echo "SMOKE_SIGN_FAIL $f" >> smoke-out/report.txt
+              fi
+            done
+          else
+            echo "SMOKE_ENV_FAIL=signer_missing" >> smoke-out/report.txt
+          fi
+
           smoke_one TV "apks/tv/release/AlgerTV-1.0.1.apk" "com.wushisan.algertv" ".ui.MainActivity" "smoke"
           smoke_one PHONE "apks/phone/release/AlgerPhone-1.0.apk" "com.wushisan.algertv.phone" ".ui.phone.PhoneMainActivity" ""
           echo "SMOKE_DONE date=$(date -u +%Y-%m-%dT%H:%M:%SZ) sha=${{ github.sha }}" >> smoke-out/report.txt
