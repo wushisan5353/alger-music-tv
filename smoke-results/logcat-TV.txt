@@ -1,177 +1,197 @@
 --------- beginning of main
-10-22 12:01:43.617    66    66 D hwcomposer: VSYNC event status:1
+10-22 13:10:22.333   450   450 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-22 13:10:22.333   770   770 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-22 13:10:22.333   770   770 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
 --------- beginning of system
-10-22 12:01:43.634   231   297 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
-10-22 12:01:43.643   231  1576 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv/.ui.MainActivity (has extras)} from uid 2000
-10-22 12:01:43.649  1730  1732 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 12:01:43.650   231   298 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10116; state: DISABLED
-10-22 12:01:43.650   231   298 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10116; state: DISABLED
-10-22 12:01:43.653   231   305 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10116; state: DISABLED
-10-22 12:01:43.661   135   135 D Zygote  : Forked child process 1733
-10-22 12:01:43.662  1733  1733 I Zygote  : seccomp disabled by setenforce 0
-10-22 12:01:43.662  1733  1733 I libc    : SetHeapTaggingLevel: tag level set to 0
-10-22 12:01:43.664   122   131 I adbd    : jdwp connection from 1733
-10-22 12:01:43.664   231   305 I ActivityManager: Start proc 1733:com.wushisan.algertv/u0a116 for pre-top-activity {com.wushisan.algertv/com.wushisan.algertv.ui.MainActivity}
-10-22 12:01:43.666   231  1576 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
-10-22 12:01:43.671  1733  1733 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
-10-22 12:01:43.674  1733  1733 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-22 12:01:43.674  1733  1733 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-22 12:01:43.676  1733  1733 I AlgerTV : App onCreate
-10-22 12:01:43.724    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
-10-22 12:01:43.983    66    66 D hwcomposer: VSYNC event status:0
-10-22 12:01:44.037    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 12:01:44.037  1733  1753 I Gralloc4: mapper 4.x is not supported
-10-22 12:01:44.037    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-22 12:01:44.037  1733  1753 W Gralloc3: mapper 3.x is not supported
-10-22 12:01:44.038    27    27 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-22 12:01:44.044    83  1320 W ServiceManager: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10116 pid=1733
-10-22 12:01:44.044    83  1320 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10116 => denied (203 us)
-10-22 12:01:44.058  1733  1733 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv
-10-22 12:01:44.059   231   368 D ConnectivityService: requestNetwork for uid/pid:10116/1733 NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ]
-10-22 12:01:44.061   231   379 D ConnectivityService: NetReassign [19 : null → 100]
-10-22 12:01:44.062   231   407 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
-10-22 12:01:44.062   231   375 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
-10-22 12:01:44.062   766   766 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
-10-22 12:01:44.063   231   375 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
-10-22 12:01:44.067   766   766 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
-10-22 12:01:44.068   766   766 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
-10-22 12:01:44.068   442   442 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
-10-22 12:01:44.072   231   303 I ActivityTaskManager: Displayed com.wushisan.algertv/.ui.MainActivity: +400ms
-10-22 12:01:44.122   231   298 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.21} unchanged for IME proc com.android.inputmethod.latin
-10-22 12:01:44.123   231   298 I ActivityTaskManager: Config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.21}
-10-22 12:01:44.126   231   298 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1280) mAppBounds=Rect(0, 0 - 720, 1184) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.21} unchanged for IME proc com.android.inputmethod.latin
-10-22 12:01:44.127   231   298 I WindowManager: Override config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.21} for displayId=0
-10-22 12:01:44.127   231   298 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
-10-22 12:01:44.128   231   298 V ActivityTaskManager: Sending to IME proc com.android.inputmethod.latin new config {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.21}
-10-22 12:01:44.128   231   298 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw360dp w592dp h336dp 320dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 720) mAppBounds=Rect(0, 0 - 1184, 720) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.21} unchanged for IME proc com.android.inputmethod.latin
-10-22 12:01:44.136  1733  1733 W AlgerTV : HOME_META_FAIL id=745956260: HTTP 503
-10-22 12:01:44.136  1733  1733 W AlgerTV : HOME_META_FAIL id=60198: HTTP 503
-10-22 12:01:44.138   231   298 I InputManager-JNI: Viewport [0] to add: local:0, isActive: true
-10-22 12:01:44.138   231   342 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
-10-22 12:01:44.143   442   442 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
-10-22 12:01:44.148   442   587 D EglHelper: createEglContext start
-10-22 12:01:44.149   442   587 D EglHelper: createEglContext done
-10-22 12:01:44.149   442   587 D EglHelper: createEglSurface start
-10-22 12:01:44.150   442   587 D EglHelper: createEglSurface done
-10-22 12:01:44.333  1733  1733 W AlgerTV : HOME_META_FAIL id=11641012: HTTP 503
-10-22 12:01:44.373  1733  1733 W AlgerTV : HOME_META_FAIL id=71384707: HTTP 503
-10-22 12:01:44.506  1733  1733 W AlgerTV : HOME_META_FAIL id=60131: HTTP 503
-10-22 12:01:44.569  1733  1733 W AlgerTV : HOME_META_FAIL id=3778678: HTTP 503
-10-22 12:01:44.890  1733  1733 W AlgerTV : HOME_META_FAIL id=2884035: HTTP 503
-10-22 12:01:45.075  1733  1733 W AlgerTV : HOME_META_FAIL id=991319590: HTTP 503
-10-22 12:01:45.861  1733  1733 I AlgerTV : HOME_GDS_OK meta=5/13 fallback=false
-10-22 12:01:45.861    66    66 D hwcomposer: VSYNC event status:1
-10-22 12:01:45.862  1733  1733 I AlgerTV : HOME_ROWS_BUILT fallback=false
-10-22 12:01:45.862  1733  1733 I AlgerTV : SMOKE_AUTOPLAY playlist=60198
-10-22 12:01:46.250    66    66 D hwcomposer: VSYNC event status:0
-10-22 12:01:46.482  1733  1733 I AlgerTV : PLAYLIST_GDS_OK id=60198 tracks=93
-10-22 12:01:46.485   231  1088 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 12:01:46.485   231  1088 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 12:01:46.485  1733  1733 W MediaPlayer: Use of stream types is deprecated for operations other than volume control
-10-22 12:01:46.485  1733  1733 W MediaPlayer: See the documentation of setAudioStreamType() for what to use instead with android.media.AudioAttributes to qualify your playback use case
-10-22 12:01:46.486  1733  1733 I AlgerTV : PLAYER_LOAD id=3440858634 name=Patient Zero
-10-22 12:01:46.487  1733  1733 I AlgerTV : SMOKE_AUTOPLAY_OK n=93
-10-22 12:01:46.490   424   424 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 0
-10-22 12:01:46.491  1733  1733 I AlgerTV : PlaybackService onCreate
-10-22 12:01:46.491  1733  1733 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=1
-10-22 12:01:46.491  1733  1733 E MediaPlayerNative: error (-38, 0)
-10-22 12:01:46.491   424   424 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 1
-10-22 12:01:46.491   424   424 D AvrcpMediaPlayerList: onActiveSessionsChanged: controller: com.wushisan.algertv
-10-22 12:01:46.492   424   424 I AvrcpMediaPlayerList: Adding wrapped media player: com.wushisan.algertv at key: 1
-10-22 12:01:46.495  1733  1733 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
-10-22 12:01:46.496  1733  1733 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
-10-22 12:01:46.497  1733  1733 E MediaPlayer: Error (-38,0)
-10-22 12:01:46.497  1733  1733 E AlgerTV : PLAYER_ERROR what=-38 extra=0 idx=0
-10-22 12:01:46.497  1733  1733 I AlgerTV : PLAYER_LOAD id=2755496359 name=Choosin' Texas
-10-22 12:01:46.497  1733  1733 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
-10-22 12:01:46.499  1733  1733 W AlgerTV : service sees error: 播放失败，自动跳到下一首
-10-22 12:01:46.499  1733  1733 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
-10-22 12:01:46.501  1733  1733 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
-10-22 12:01:46.687   231  1055 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
-10-22 12:01:46.696   231   231 D NotificationService: 0|com.wushisan.algertv|1001|null|10116: granting content://settings/system/notification_sound
-10-22 12:01:46.696   231   231 I chatty  : uid=1000 system_server identical 1 line
-10-22 12:01:46.696   231   231 D NotificationService: 0|com.wushisan.algertv|1001|null|10116: granting content://settings/system/notification_sound
-10-22 12:01:46.697   231   231 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
-10-22 12:01:46.703   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.704   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.705   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.706   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.707   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.707   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.709   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.709   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.710   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.711   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.713   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.713   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:46.717   442   506 W System  : ClassLoader referenced unknown path: 
-10-22 12:01:46.811  1733  1733 I AlgerTV : URL_GDS_OK id=3440858634
-10-22 12:01:46.848  1733  1733 I AlgerTV : URL_GDS_OK id=2755496359
-10-22 12:01:46.848  1733  1733 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
-10-22 12:01:46.848  1733  1733 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
-10-22 12:01:46.848  1733  1733 V MediaHTTPService: MediaHTTPService(android.media.MediaHTTPService@7ecf226): Cookies: null
-10-22 12:01:46.849   165   624 D NuPlayerDriver: NuPlayerDriver(0xee580b50) created, clientPid(1733)
-10-22 12:01:46.850  1733  1733 I AlgerTV : PLAYER_PREPARING id=2755496359
-10-22 12:01:46.850  1733  1751 V MediaHTTPService: makeHTTPConnection: CookieManager created: java.net.CookieManager@10ede67
-10-22 12:01:46.851  1733  1751 V MediaHTTPService: makeHTTPConnection(android.media.MediaHTTPService@7ecf226): cookieHandler: java.net.CookieManager@10ede67 Cookies: null
-10-22 12:01:47.600   163   689 E Utils   : did not find channel-count and/or sample-rate
-10-22 12:01:47.601   163   689 E Utils   : did not find channel-count and/or sample-rate
-10-22 12:01:47.735  1733  1733 I AlgerTV : PLAYER_PREPARED id=2755496359 dur=232333
-10-22 12:01:47.735  1733  1733 W AudioManager: Use of stream types is deprecated for operations other than volume control
-10-22 12:01:47.735  1733  1733 W AudioManager: See the documentation of requestAudioFocus() for what to use instead with android.media.AudioAttributes to qualify your playback use case
-10-22 12:01:47.736   231  1382 I MediaFocusControl: requestAudioFocus() from uid/pid 10116/1733 clientId=android.media.AudioManager@fefc60ccom.wushisan.algertv.playback.PlayerController$1@b72b55 callingPack=com.wushisan.algertv req=1 flags=0x0 sdk=28
-10-22 12:01:47.737   231   231 D MediaSessionService: Media button session is changed to com.wushisan.algertv/AlgerTV (userId=0)
-10-22 12:01:47.737   424   424 I AvrcpMediaPlayerList: onMediaKeyEventSessionChanged: token=com.wushisan.algertv
-10-22 12:01:47.738  1733  1733 I AlgerTV : PLAYER_STARTED id=2755496359
-10-22 12:01:47.738   165  1795 I GenericSource: start
-10-22 12:01:47.741   424   424 D AvrcpMediaPlayerList: setActivePlayer(): setting player to com.wushisan.algertv
-10-22 12:01:47.743   424   424 D AvrcpMediaPlayerList: sendMediaUpdate
-10-22 12:01:47.743   424   424 I AvrcpMediaPlayerList: sendMediaUpdate: Creating a one item queue for a player with no queue
-10-22 12:01:47.743   424   424 D AvrcpMediaPlayerList: sendMediaUpdate state=PlaybackState {state=3, position=3, buffered position=0, speed=1.0, updated=239532, actions=822, custom actions=[], active item id=-1, error=null}
-10-22 12:01:47.743   424   424 D AvrcpTargetService: onMediaUpdated: track_changed=true state=true queue=true
-10-22 12:01:47.743   424   424 D AvrcpNativeInterface: sendMediaUpdate: metadata=true playStatus=true queue=true
-10-22 12:01:47.743   424   424 D AvrcpTargetJni: sendMediaUpdateNative
-10-22 12:01:47.743   424   424 I bt_stack: [INFO:avrcp_service.cc(346)] virtual void bluetooth::avrcp::AvrcpService::SendMediaUpdate(bool, bool, bool) track_changed=1 :  play_state=1 :  queue=1
-10-22 12:01:47.743   424   424 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 1
-10-22 12:01:47.743   424   424 D AvrcpMediaPlayerList: onActiveSessionsChanged: controller: com.wushisan.algertv
-10-22 12:01:47.743   424   424 D AvrcpMediaPlayerList: Already have a controller for the player: com.wushisan.algertv, updating instead
-10-22 12:01:47.744   165  1802 I OMXClient: IOmx service obtained
-10-22 12:01:47.744   172   172 I OMXMaster: makeComponentInstance(OMX.google.mp3.decoder) in android.hardwar process
-10-22 12:01:47.745   424   424 D AvrcpMediaPlayerList: sendMediaUpdate
-10-22 12:01:47.745   424   424 I AvrcpMediaPlayerList: sendMediaUpdate: Creating a one item queue for a player with no queue
-10-22 12:01:47.745   424   424 D AvrcpMediaPlayerList: sendMediaUpdate state=PlaybackState {state=3, position=5, buffered position=0, speed=1.0, updated=239534, actions=822, custom actions=[], active item id=-1, error=null}
-10-22 12:01:47.745   424   424 D AvrcpTargetService: onMediaUpdated: track_changed=false state=false queue=false
-10-22 12:01:47.745   424   424 D AvrcpNativeInterface: sendMediaUpdate: metadata=false playStatus=false queue=false
-10-22 12:01:47.745   424   424 D AvrcpTargetJni: sendMediaUpdateNative
-10-22 12:01:47.745   424   424 I bt_stack: [INFO:avrcp_service.cc(346)] virtual void bluetooth::avrcp::AvrcpService::SendMediaUpdate(bool, bool, bool) track_changed=0 :  play_state=0 :  queue=0
-10-22 12:01:47.745   172   487 E OMXNodeInstance: setConfig(0xedf00fd0:google.mp3.decoder, ConfigPriority(0x6f800002)) ERROR: Undefined(0x80001001)
-10-22 12:01:47.745   165  1802 I ACodec  : codec does not support config priority (err -2147483648)
-10-22 12:01:47.745   172   487 E OMXNodeInstance: getConfig(0xedf00fd0:google.mp3.decoder, ConfigAndroidVendorExtension(0x6f100004)) ERROR: Undefined(0x80001001)
-10-22 12:01:47.745   165  1802 I MediaCodec: MediaCodec will operate in async mode
-10-22 12:01:47.754    76    76 W AudioFlinger: createTrack_l(): mismatch between requested flags (00000008) and output flags (00000006)
-10-22 12:01:47.754    76    76 D AudioFlinger: Client defaulted notificationFrames to 11200 for frameCount 22400
-10-22 12:01:47.755    76    76 D AF::TrackHandle: OpPlayAudio: track:55 usage:1 not muted
-10-22 12:01:47.756    76   327 W APM::AudioPolicyEngine: getDevicesForStrategy() unknown strategy: -1
-10-22 12:01:47.756    76   327 W APM::AudioPolicyEngine: getDevicesForStrategy() unknown strategy: -1
-10-22 12:01:47.757   231   281 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
-10-22 12:01:47.758    60    60 E FMQ     : grantorIdx must be less than 3
-10-22 12:01:47.758    60    60 E FMQ     : grantorIdx must be less than 3
-10-22 12:01:47.759    76   219 E FMQ     : grantorIdx must be less than 3
-10-22 12:01:47.759    76   219 E FMQ     : grantorIdx must be less than 3
-10-22 12:01:47.759   231   281 I system_server: oneway function results will be dropped but finished with status OK and parcel size 8
-10-22 12:01:47.942   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:47.942   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:47.990   442   442 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:47.990   442   442 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
-10-22 12:01:49.735   165  1798 I NuCachedSource2: caching reached eos.
-10-22 12:01:50.537   442   699 I vol.Events: writeEvent level_changed STREAM_MUSIC 3
-10-22 12:01:50.539    66    66 D hwcomposer: VSYNC event status:1
-10-22 12:01:50.917    66    66 D hwcomposer: VSYNC event status:0
-10-22 12:01:51.367   167   177 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
-10-22 12:01:51.367   167   177 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
-10-22 12:01:53.160   231   303 I ActivityManager: Killing 1437:com.android.camera2/u0a94 (adj 985): empty #17
-10-22 12:01:53.160   231   303 I ActivityManager: Killing 1413:com.android.calendar/u0a102 (adj 985): empty #18
-10-22 12:01:53.167   135   135 I Zygote  : Process 1437 exited due to signal 9 (Killed)
-10-22 12:01:53.172   135   135 I Zygote  : Process 1413 exited due to signal 9 (Killed)
-10-22 12:01:58.616   231  1382 I ActivityManager: Killing 1460:com.android.contacts/u0a92 (adj 975): empty #17
-10-22 12:01:58.620   135   135 I Zygote  : Process 1460 exited due to signal 9 (Killed)
+10-22 13:10:22.354   224   280 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv/.ui.MainActivity (has extras)} from uid 2000
+10-22 13:10:22.357  1860  1862 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:22.358   224   291 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10116; state: DISABLED
+10-22 13:10:22.358   224   291 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10116; state: DISABLED
+10-22 13:10:22.359   224   309 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10116; state: DISABLED
+10-22 13:10:22.370   136   136 D Zygote  : Forked child process 1863
+10-22 13:10:22.371  1863  1863 I Zygote  : seccomp disabled by setenforce 0
+10-22 13:10:22.371  1863  1863 I libc    : SetHeapTaggingLevel: tag level set to 0
+10-22 13:10:22.375   121   130 I adbd    : jdwp connection from 1863
+10-22 13:10:22.375   224   309 I ActivityManager: Start proc 1863:com.wushisan.algertv/u0a116 for pre-top-activity {com.wushisan.algertv/com.wushisan.algertv.ui.MainActivity}
+10-22 13:10:22.376   224   280 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
+10-22 13:10:22.382  1863  1863 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+10-22 13:10:22.385  1863  1863 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-22 13:10:22.385  1863  1863 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-22 13:10:22.387  1863  1863 I AlgerTV : App onCreate
+10-22 13:10:22.403  1863  1863 I AlgerTV : HOME_LOAD_START
+10-22 13:10:22.404  1863  1863 I AlgerTV : HOME_CACHE_HIT
+10-22 13:10:22.417  1863  1863 I AlgerTV : HOME_ROWS_BUILT fallback=false
+10-22 13:10:22.417  1863  1863 I AlgerTV : SMOKE_AUTOPLAY playlist=60198
+10-22 13:10:22.438    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
+10-22 13:10:22.693    68    68 D hwcomposer: VSYNC event status:0
+10-22 13:10:22.748    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 13:10:22.748  1863  1883 I Gralloc4: mapper 4.x is not supported
+10-22 13:10:22.748    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-22 13:10:22.748  1863  1883 W Gralloc3: mapper 3.x is not supported
+10-22 13:10:22.750    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 13:10:22.760   224   307 I ActivityTaskManager: Displayed com.wushisan.algertv/.ui.MainActivity: +402ms
+10-22 13:10:22.768  1863  1863 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv
+10-22 13:10:22.769   224   281 D ConnectivityService: requestNetwork for uid/pid:10116/1863 NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ]
+10-22 13:10:22.769   224   388 D ConnectivityService: NetReassign [20 : null → 100]
+10-22 13:10:22.770   224   414 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-22 13:10:22.771   224   384 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-22 13:10:22.771   224   384 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-22 13:10:22.771   770   770 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=20, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-22 13:10:22.785   450   450 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-22 13:10:22.785   770   770 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-22 13:10:22.785   770   770 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+10-22 13:10:23.038   224   281 I ActivityManager: Killing 1007:com.android.deskclock/u0a103 (adj 975): empty #17
+10-22 13:10:23.054   136   136 I Zygote  : Process 1007 exited due to signal 9 (Killed)
+10-22 13:10:24.409  1863  1863 I AlgerTV : HOME_META_OK id=1978921795 ms=2006
+10-22 13:10:24.577  1863  1863 I AlgerTV : HOME_META_OK id=60198 ms=2174
+10-22 13:10:24.611  1863  1863 I AlgerTV : HOME_META_OK id=745956260 ms=2208
+10-22 13:10:24.623  1863  1863 I AlgerTV : HOME_META_OK id=180106 ms=2220
+10-22 13:10:24.790  1863  1863 I AlgerTV : HOME_META_OK id=2809513713 ms=2387
+10-22 13:10:26.068   687   903 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
+10-22 13:10:26.068   687   903 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
+10-22 13:10:26.381   224  1060 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-22 13:10:27.241  1863  1863 I AlgerTV : HOME_META_OK id=60131 ms=4838
+10-22 13:10:27.366  1863  1863 I AlgerTV : HOME_META_OK id=11641012 ms=4963
+10-22 13:10:27.584  1863  1863 W AlgerTV : HOME_META_FAIL id=2884035 attempt=0: HTTP 503
+10-22 13:10:27.969  1863  1863 I AlgerTV : HOME_META_OK id=71384707 ms=5566
+10-22 13:10:28.304  1863  1863 I AlgerTV : HOME_META_OK id=19723756 ms=5901
+10-22 13:10:28.641  1863  1863 I AlgerTV : HOME_META_OK id=3778678 ms=6238
+10-22 13:10:31.081  1863  1863 I AlgerTV : HOME_META_OK id=3779629 ms=8678
+10-22 13:10:31.238  1863  1863 I AlgerTV : HOME_META_OK id=991319590 ms=8835
+10-22 13:10:31.318  1863  1863 I AlgerTV : PLAYLIST_GDS_OK id=60198 tracks=93
+10-22 13:10:31.320   224   281 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:31.320   224   281 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:31.321  1863  1863 W MediaPlayer: Use of stream types is deprecated for operations other than volume control
+10-22 13:10:31.321  1863  1863 W MediaPlayer: See the documentation of setAudioStreamType() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+10-22 13:10:31.322  1863  1863 I AlgerTV : PLAYER_LOAD id=3440858634 name=Patient Zero
+10-22 13:10:31.322  1863  1863 I AlgerTV : SMOKE_AUTOPLAY_OK n=93
+10-22 13:10:31.325   432   432 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 0
+10-22 13:10:31.326  1863  1863 I AlgerTV : PlaybackService onCreate
+10-22 13:10:31.327  1863  1863 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=1
+10-22 13:10:31.327  1863  1863 E MediaPlayerNative: error (-38, 0)
+10-22 13:10:31.327   432   432 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 1
+10-22 13:10:31.327   432   432 D AvrcpMediaPlayerList: onActiveSessionsChanged: controller: com.wushisan.algertv
+10-22 13:10:31.329   432   432 I AvrcpMediaPlayerList: Adding wrapped media player: com.wushisan.algertv at key: 1
+10-22 13:10:31.330  1863  1863 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
+10-22 13:10:31.331  1863  1863 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
+10-22 13:10:31.333  1863  1863 E MediaPlayer: Error (-38,0)
+10-22 13:10:31.333  1863  1863 E AlgerTV : PLAYER_ERROR what=-38 extra=0 idx=0
+10-22 13:10:31.333  1863  1863 I AlgerTV : PLAYER_LOAD id=2755496359 name=Choosin' Texas
+10-22 13:10:31.333  1863  1863 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
+10-22 13:10:31.335  1863  1863 W AlgerTV : service sees error: 播放失败，自动跳到下一首
+10-22 13:10:31.335  1863  1863 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
+10-22 13:10:31.336  1863  1863 E MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0x0, mCurrentState=0
+10-22 13:10:31.412  1863  1863 I AlgerTV : HOME_META_OK id=2884035 ms=9009
+10-22 13:10:31.412  1863  1863 I AlgerTV : HOME_DONE ms=9009 meta=13/13 fallback=false
+10-22 13:10:31.412  1863  1863 I AlgerTV : HOME_ROWS_BUILT fallback=false
+10-22 13:10:31.412    68    68 D hwcomposer: VSYNC event status:1
+10-22 13:10:31.412  1863  1915 I AlgerTV : HOME_CACHE_SAVED bytes=1992
+10-22 13:10:31.531   224   224 D NotificationService: 0|com.wushisan.algertv|1001|null|10116: granting content://settings/system/notification_sound
+10-22 13:10:31.531   224   224 I chatty  : uid=1000 system_server identical 1 line
+10-22 13:10:31.531   224   224 D NotificationService: 0|com.wushisan.algertv|1001|null|10116: granting content://settings/system/notification_sound
+10-22 13:10:31.531   224   224 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
+10-22 13:10:31.535   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.536   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.537   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.537   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.538   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.539   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.540   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.540   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.541   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.541   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.542   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.542   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:31.545   450   535 W System  : ClassLoader referenced unknown path: 
+10-22 13:10:31.759    68    68 D hwcomposer: VSYNC event status:0
+10-22 13:10:32.180   185   426 E statsd  : Found dropped events: 1 error -19 last atom tag 240 from uid 10066
+10-22 13:10:32.180  1746  1746 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10066; state: ENABLED
+10-22 13:10:32.180  1746  1746 I ProvidersCache: Updating roots due to change on user 0at content://com.android.providers.media.documents/root
+10-22 13:10:33.058    68    68 D hwcomposer: VSYNC event status:1
+10-22 13:10:33.426    68    68 D hwcomposer: VSYNC event status:0
+10-22 13:10:33.678  1863  1863 I AlgerTV : URL_GDS_OK id=3440858634
+10-22 13:10:33.725  1863  1863 I AlgerTV : URL_GDS_OK id=2755496359
+10-22 13:10:33.725  1863  1863 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+10-22 13:10:33.725  1863  1863 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
+10-22 13:10:33.725  1863  1863 V MediaHTTPService: MediaHTTPService(android.media.MediaHTTPService@d4b2c1d): Cookies: null
+10-22 13:10:33.727   156  1670 D NuPlayerDriver: NuPlayerDriver(0xef4815f0) created, clientPid(1863)
+10-22 13:10:33.728  1863  1863 I AlgerTV : PLAYER_PREPARING id=2755496359
+10-22 13:10:33.728  1863  1881 V MediaHTTPService: makeHTTPConnection: CookieManager created: java.net.CookieManager@be0ce92
+10-22 13:10:33.728  1863  1881 V MediaHTTPService: makeHTTPConnection(android.media.MediaHTTPService@d4b2c1d): cookieHandler: java.net.CookieManager@be0ce92 Cookies: null
+10-22 13:10:34.320   224   822 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:34.868   153   666 E Utils   : did not find channel-count and/or sample-rate
+10-22 13:10:34.869   153   666 E Utils   : did not find channel-count and/or sample-rate
+10-22 13:10:35.034  1863  1863 I AlgerTV : PLAYER_PREPARED id=2755496359 dur=232333
+10-22 13:10:35.034  1863  1863 W AudioManager: Use of stream types is deprecated for operations other than volume control
+10-22 13:10:35.034  1863  1863 W AudioManager: See the documentation of requestAudioFocus() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+10-22 13:10:35.035   224   822 I MediaFocusControl: requestAudioFocus() from uid/pid 10116/1863 clientId=android.media.AudioManager@ba7de8ecom.wushisan.algertv.playback.PlayerController$1@c1d36af callingPack=com.wushisan.algertv req=1 flags=0x0 sdk=28
+10-22 13:10:35.036   224   224 D MediaSessionService: Media button session is changed to com.wushisan.algertv/AlgerTV (userId=0)
+10-22 13:10:35.036   432   432 I AvrcpMediaPlayerList: onMediaKeyEventSessionChanged: token=com.wushisan.algertv
+10-22 13:10:35.036  1863  1863 I AlgerTV : PLAYER_STARTED id=2755496359
+10-22 13:10:35.037   156  1924 I GenericSource: start
+10-22 13:10:35.040   432   432 D AvrcpMediaPlayerList: setActivePlayer(): setting player to com.wushisan.algertv
+10-22 13:10:35.043   432   432 D AvrcpMediaPlayerList: sendMediaUpdate
+10-22 13:10:35.043   432   432 I AvrcpMediaPlayerList: sendMediaUpdate: Creating a one item queue for a player with no queue
+10-22 13:10:35.043   432   432 D AvrcpMediaPlayerList: sendMediaUpdate state=PlaybackState {state=3, position=3, buffered position=0, speed=1.0, updated=210001, actions=822, custom actions=[], active item id=-1, error=null}
+10-22 13:10:35.043   432   432 D AvrcpTargetService: onMediaUpdated: track_changed=true state=true queue=true
+10-22 13:10:35.043   432   432 D AvrcpNativeInterface: sendMediaUpdate: metadata=true playStatus=true queue=true
+10-22 13:10:35.043   432   432 D AvrcpTargetJni: sendMediaUpdateNative
+10-22 13:10:35.043   432   432 I bt_stack: [INFO:avrcp_service.cc(346)] virtual void bluetooth::avrcp::AvrcpService::SendMediaUpdate(bool, bool, bool) track_changed=1 :  play_state=1 :  queue=1
+10-22 13:10:35.043   156  1931 I OMXClient: IOmx service obtained
+10-22 13:10:35.043   176   176 I OMXMaster: makeComponentInstance(OMX.google.mp3.decoder) in android.hardwar process
+10-22 13:10:35.044   432   432 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 1
+10-22 13:10:35.044   176   208 E OMXNodeInstance: setConfig(0xebbc0400:google.mp3.decoder, ConfigPriority(0x6f800002)) ERROR: Undefined(0x80001001)
+10-22 13:10:35.044   156  1931 I ACodec  : codec does not support config priority (err -2147483648)
+10-22 13:10:35.044   176   208 E OMXNodeInstance: getConfig(0xebbc0400:google.mp3.decoder, ConfigAndroidVendorExtension(0x6f100004)) ERROR: Undefined(0x80001001)
+10-22 13:10:35.045   432   432 D AvrcpMediaPlayerList: onActiveSessionsChanged: controller: com.wushisan.algertv
+10-22 13:10:35.045   432   432 D AvrcpMediaPlayerList: Already have a controller for the player: com.wushisan.algertv, updating instead
+10-22 13:10:35.045   156  1931 I MediaCodec: MediaCodec will operate in async mode
+10-22 13:10:35.048   432   432 D AvrcpMediaPlayerList: sendMediaUpdate
+10-22 13:10:35.048   432   432 I AvrcpMediaPlayerList: sendMediaUpdate: Creating a one item queue for a player with no queue
+10-22 13:10:35.048   432   432 D AvrcpMediaPlayerList: sendMediaUpdate state=PlaybackState {state=3, position=8, buffered position=0, speed=1.0, updated=210006, actions=822, custom actions=[], active item id=-1, error=null}
+10-22 13:10:35.048   432   432 D AvrcpTargetService: onMediaUpdated: track_changed=false state=false queue=false
+10-22 13:10:35.048   432   432 D AvrcpNativeInterface: sendMediaUpdate: metadata=false playStatus=false queue=false
+10-22 13:10:35.048   432   432 D AvrcpTargetJni: sendMediaUpdateNative
+10-22 13:10:35.048   432   432 I bt_stack: [INFO:avrcp_service.cc(346)] virtual void bluetooth::avrcp::AvrcpService::SendMediaUpdate(bool, bool, bool) track_changed=0 :  play_state=0 :  queue=0
+10-22 13:10:35.052   224  1857 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:35.052   224  1857 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:35.053    94   187 W AudioFlinger: createTrack_l(): mismatch between requested flags (00000008) and output flags (00000006)
+10-22 13:10:35.054    94   187 D AudioFlinger: Client defaulted notificationFrames to 11200 for frameCount 22400
+10-22 13:10:35.055    94   187 D AF::TrackHandle: OpPlayAudio: track:55 usage:1 not muted
+10-22 13:10:35.056    94   187 W APM::AudioPolicyEngine: getDevicesForStrategy() unknown strategy: -1
+10-22 13:10:35.056    94   187 W APM::AudioPolicyEngine: getDevicesForStrategy() unknown strategy: -1
+10-22 13:10:35.058   224   822 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:35.059    60    77 E FMQ     : grantorIdx must be less than 3
+10-22 13:10:35.059    60    77 E FMQ     : grantorIdx must be less than 3
+10-22 13:10:35.060    94   202 E FMQ     : grantorIdx must be less than 3
+10-22 13:10:35.060    94   202 E FMQ     : grantorIdx must be less than 3
+10-22 13:10:35.060   224   822 I system_server: oneway function results will be dropped but finished with status OK and parcel size 8
+10-22 13:10:35.244   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:35.244   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:35.245    68    68 D hwcomposer: VSYNC event status:1
+10-22 13:10:35.297   450   450 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:35.297   450   450 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-22 13:10:35.626    68    68 D hwcomposer: VSYNC event status:0
+10-22 13:10:37.442   156  1927 I NuCachedSource2: caching reached eos.
+10-22 13:10:42.422    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-22 13:10:42.422  1936  1936 I Gralloc4: mapper 4.x is not supported
+10-22 13:10:42.422    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-22 13:10:42.422  1936  1936 W Gralloc3: mapper 3.x is not supported
+10-22 13:10:42.441    94   203 D AudioFlinger: mixer(0xb400e640d393d040) throttle end: throttle time(9)
+10-22 13:10:42.540  1940  1942 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 13:10:42.541  1071  1665 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-22 13:10:42.545  1071  1665 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-22 13:10:42.550  1071  1669 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-22 13:10:42.550  1071  1669 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-22 13:10:42.550  1071  1669 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-22 13:10:42.550  1071  1669 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
