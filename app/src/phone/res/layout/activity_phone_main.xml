@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Phone home, Alger mobile structure: capsule search on top, then
+     section title + horizontal cover cards, then the full chart list.
+     Pure black page; grey tiers separate sections, no borders. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/ph_bg"
     android:orientation="vertical">
 
     <LinearLayout
@@ -10,17 +13,17 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="14dp"
-        android:paddingRight="8dp">
+        android:paddingLeft="@dimen/ph_page_padding"
+        android:paddingTop="16dp"
+        android:paddingRight="12dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/app_name"
-            android:textColor="@color/text_primary"
-            android:textSize="22sp"
+            android:textColor="@color/ph_text"
+            android:textSize="@dimen/ph_text_page_title"
             android:textStyle="bold" />
 
         <Button
@@ -29,21 +32,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/row_settings"
-            android:textColor="@color/text_secondary" />
+            android:textColor="@color/ph_text_54"
+            android:textSize="@dimen/ph_text_artist" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/search_entry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/search_input_bg"
-        android:padding="12dp"
+        android:layout_marginLeft="@dimen/ph_page_padding"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="@dimen/ph_page_padding"
+        android:background="@drawable/ph_search_bg"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:drawablePadding="8dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="12dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="12dp"
         android:text="@string/search_hint"
-        android:textColor="@color/text_secondary"
-        android:textSize="15sp" />
+        android:textColor="@color/ph_text_38"
+        android:textSize="@dimen/ph_text_song" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -54,61 +63,61 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="12dp">
+            android:paddingBottom="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginLeft="@dimen/ph_page_padding"
+                android:layout_marginTop="22dp"
                 android:text="@string/row_toplist"
-                android:textColor="@color/text_primary"
-                android:textSize="18sp"
+                android:textColor="@color/ph_text"
+                android:textSize="@dimen/ph_text_section"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_toplist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:clipToPadding="false"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp" />
+                android:paddingLeft="@dimen/ph_page_padding"
+                android:paddingRight="@dimen/ph_page_padding" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginLeft="@dimen/ph_page_padding"
+                android:layout_marginTop="24dp"
                 android:text="@string/row_recommend"
-                android:textColor="@color/text_primary"
-                android:textSize="18sp"
+                android:textColor="@color/ph_text"
+                android:textSize="@dimen/ph_text_section"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recommend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:clipToPadding="false"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp" />
+                android:paddingLeft="@dimen/ph_page_padding"
+                android:paddingRight="@dimen/ph_page_padding" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginLeft="@dimen/ph_page_padding"
+                android:layout_marginTop="24dp"
                 android:text="@string/phone_all_charts"
-                android:textColor="@color/text_primary"
-                android:textSize="18sp"
+                android:textColor="@color/ph_text"
+                android:textSize="@dimen/ph_text_section"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/toplist_rows"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical" />
         </LinearLayout>
     </ScrollView>

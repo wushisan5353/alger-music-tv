@@ -2,79 +2,101 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/ph_bg"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingLeft="@dimen/ph_page_padding"
+    android:paddingTop="18dp"
+    android:paddingRight="@dimen/ph_page_padding">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/row_settings"
-        android:textColor="@color/text_primary"
-        android:textSize="19sp"
+        android:textColor="@color/ph_text"
+        android:textSize="@dimen/ph_text_page_title"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/custom_api"
-        android:textColor="@color/text_primary"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/settings_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/text_secondary"
-        android:textSize="13sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/custom_api_hint"
-        android:textColor="@color/text_secondary"
-        android:textSize="13sp" />
-
-    <EditText
-        android:id="@+id/settings_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/search_input_bg"
-        android:hint="http://192.168.1.10:3000"
-        android:inputType="textUri"
-        android:padding="12dp"
-        android:singleLine="true"
-        android:textColor="@color/text_primary"
-        android:textColorHint="@color/text_secondary"
-        android:textSize="15sp" />
-
+    <!-- Alger settings pattern: one bordered/surface card per item,
+         title + one-line description, control below. -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="22dp"
+        android:background="@drawable/ph_input_bg"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <Button
-            android:id="@+id/btn_save"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_api"
+            android:textColor="@color/ph_text"
+            android:textSize="@dimen/ph_text_song" />
+
+        <TextView
+            android:id="@+id/settings_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/ph_accent"
+            android:textSize="@dimen/ph_text_artist" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/custom_api_hint"
+            android:textColor="@color/ph_text_54"
+            android:textSize="@dimen/ph_text_artist" />
+
+        <EditText
+            android:id="@+id/settings_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/ph_search_bg"
+            android:hint="http://192.168.1.10:3000"
+            android:inputType="textUri"
+            android:paddingLeft="14dp"
+            android:paddingTop="11dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="11dp"
+            android:singleLine="true"
+            android:textColor="@color/ph_text"
+            android:textColorHint="@color/ph_text_38"
+            android:textSize="@dimen/ph_text_artist" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/save"
-            android:textColor="@color/text_primary" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_clear_api"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="@string/clear"
-            android:textColor="@color/text_secondary" />
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ph_btn_primary_bg"
+                android:minHeight="40dp"
+                android:paddingLeft="22dp"
+                android:paddingRight="22dp"
+                android:text="@string/save"
+                android:textColor="@color/ph_on_accent"
+                android:textSize="@dimen/ph_text_artist"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_clear_api"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ph_btn_ghost_bg"
+                android:minHeight="40dp"
+                android:paddingLeft="22dp"
+                android:paddingRight="22dp"
+                android:text="@string/clear"
+                android:textColor="@color/ph_text"
+                android:textSize="@dimen/ph_text_artist" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

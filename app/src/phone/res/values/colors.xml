@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Phone-only palette, Alger design language (see
+     research_notes/ui-design/alger-music-player-ui-study-20261022.md):
+     "界面无色、内容供色" — pure black page, three grey surface tiers by
+     luminance only, one brand green #22c55e, text tiers by opacity.
+     Names are ph_-prefixed so they can never collide with the shared
+     (TV-facing) colors in main. -->
+<resources>
+    <color name="ph_bg">#000000</color>
+    <color name="ph_surface">#161616</color>
+    <color name="ph_surface2">#2D2D2D</color>
+    <color name="ph_surface3">#3D3D3D</color>
+    <color name="ph_text">#F8F9FA</color>
+    <color name="ph_text_80">#CCF8F9FA</color>
+    <color name="ph_text_54">#8AF8F9FA</color>
+    <color name="ph_text_38">#61F8F9FA</color>
+    <color name="ph_accent">#22C55E</color>
+    <color name="ph_accent_dark">#1EB154</color>
+    <color name="ph_on_accent">#000000</color>
+    <!-- Glass approximation for overlays on old Android: Alger uses
+         blur(20px) + rgba(40,40,40,0.75); no realtime blur pre-API 31,
+         so a static 75%-alpha surface-2 it is. -->
+    <color name="ph_glass">#BF2D2D2D</color>
+</resources>

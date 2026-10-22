@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Phone flavor theme: AppCompat family (phone activities are
      AppCompatActivity). Never let the phone variant fall back to the
-     Leanback theme — that combination crashes AppCompatActivity. -->
+     Leanback theme — that combination crashes AppCompatActivity.
+     Palette: Alger language — pure black page, green accent. -->
 <resources>
     <style name="PhoneTheme" parent="Theme.AppCompat">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/accent</item>
-        <item name="colorAccent">@color/accent</item>
-        <item name="android:windowBackground">@color/bg_dark</item>
-        <item name="android:textColorPrimary">@color/text_primary</item>
-        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="colorPrimary">@color/ph_accent</item>
+        <item name="colorAccent">@color/ph_accent</item>
+        <item name="android:windowBackground">@color/ph_bg</item>
+        <item name="android:textColorPrimary">@color/ph_text</item>
+        <item name="android:textColorSecondary">@color/ph_text_54</item>
     </style>
 </resources>

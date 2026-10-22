@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Phone type ladder & metrics. All text sizes in sp (never px, never
+     hardcoded in layouts beyond referencing these), item sizes in dp,
+     tuned for 360-420dp wide screens.
+
+     Type ladder (4 required tiers + 2 documented variants):
+       页面标题 ph_text_page_title  24sp bold
+       分区标题 ph_text_section     20sp bold   (title family variant)
+       歌名     ph_text_song        16sp        (list primary line)
+       歌手     ph_text_artist      13sp        (list secondary line)
+       歌手·播放页 ph_text_artist_player 15sp   (player variant)
+       辅助     ph_text_aux         12sp        (duration / counts / status)
+       歌词     ph_text_lyric       17sp / current line 20sp bold -->
+<resources>
+    <dimen name="ph_text_page_title">24sp</dimen>
+    <dimen name="ph_text_section">20sp</dimen>
+    <dimen name="ph_text_song">16sp</dimen>
+    <dimen name="ph_text_artist">13sp</dimen>
+    <dimen name="ph_text_artist_player">15sp</dimen>
+    <dimen name="ph_text_aux">12sp</dimen>
+    <dimen name="ph_text_lyric">17sp</dimen>
+    <dimen name="ph_text_lyric_current">20sp</dimen>
+
+    <dimen name="ph_page_padding">20dp</dimen>
+    <dimen name="ph_card_cover">136dp</dimen>
+    <dimen name="ph_track_cover">52dp</dimen>
+    <dimen name="ph_toplist_cover">52dp</dimen>
+    <dimen name="ph_radius_card">16dp</dimen>
+    <dimen name="ph_radius_cover">12dp</dimen>
+</resources>

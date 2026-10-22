@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Horizontal cover card: rounded-16 cover, name (song tier), play
+     count (aux tier). Alger HomeCard proportions, touch edition. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="118dp"
+    android:layout_width="@dimen/ph_card_cover"
     android:layout_height="wrap_content"
-    android:layout_marginRight="12dp"
+    android:layout_marginRight="14dp"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/card_cover"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="centerCrop"
-        android:src="@drawable/cover_placeholder" />
+    <FrameLayout
+        android:layout_width="@dimen/ph_card_cover"
+        android:layout_height="@dimen/ph_card_cover"
+        android:background="@drawable/ph_cover_box">
+
+        <ImageView
+            android:id="@+id/card_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/card_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:textColor="@color/text_primary"
-        android:textSize="13sp" />
+        android:textColor="@color/ph_text"
+        android:textSize="@dimen/ph_text_song" />
 
     <TextView
         android:id="@+id/card_meta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/text_secondary"
-        android:textSize="11sp" />
+        android:textColor="@color/ph_text_54"
+        android:textSize="@dimen/ph_text_aux" />
 </LinearLayout>

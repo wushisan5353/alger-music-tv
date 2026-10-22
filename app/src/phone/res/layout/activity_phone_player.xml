@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Full-screen player: cover supplies the color (Palette gradient is
+     applied to player_root at runtime); chrome stays colorless except
+     the one green play capsule + green progress. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/player_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/ph_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="12dp">
+        android:paddingLeft="@dimen/ph_page_padding"
+        android:paddingTop="22dp"
+        android:paddingRight="@dimen/ph_page_padding"
+        android:paddingBottom="14dp">
 
         <ImageView
             android:id="@+id/player_cover"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
             android:layout_gravity="center_horizontal"
+            android:background="@drawable/ph_cover_box"
             android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop"
-            android:src="@drawable/cover_placeholder" />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/player_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="18dp"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
-            android:textColor="@color/text_primary"
-            android:textSize="20sp"
+            android:textColor="@color/ph_text"
+            android:textSize="@dimen/ph_text_page_title"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/player_artist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp" />
+            android:textColor="@color/ph_text_80"
+            android:textSize="@dimen/ph_text_artist_player" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/player_lyrics"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
             android:overScrollMode="never" />
 
@@ -64,22 +67,25 @@
                 android:id="@+id/time_current"
                 android:layout_width="44dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp" />
+                android:textColor="@color/ph_text_54"
+                android:textSize="@dimen/ph_text_aux" />
 
             <SeekBar
                 android:id="@+id/player_seek"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:progressBackgroundTint="@color/ph_surface3"
+                android:progressTint="@color/ph_accent"
+                android:thumbTint="@color/ph_accent" />
 
             <TextView
                 android:id="@+id/time_total"
                 android:layout_width="44dp"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp" />
+                android:textColor="@color/ph_text_54"
+                android:textSize="@dimen/ph_text_aux" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,39 +93,50 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingTop="4dp">
+            android:paddingTop="8dp">
 
             <ImageButton
                 android:id="@+id/btn_prev"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/ph_ctrl_btn_bg"
                 android:contentDescription="@string/prev"
-                android:src="@android:drawable/ic_media_previous" />
+                android:padding="15dp"
+                android:src="@android:drawable/ic_media_previous"
+                android:tint="@color/ph_text" />
 
             <ImageButton
                 android:id="@+id/btn_play"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginLeft="22dp"
+                android:background="@drawable/ph_play_btn_bg"
                 android:contentDescription="@string/play"
-                android:src="@android:drawable/ic_media_play" />
+                android:padding="20dp"
+                android:src="@android:drawable/ic_media_play"
+                android:tint="@color/ph_on_accent" />
 
             <ImageButton
                 android:id="@+id/btn_next"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginLeft="22dp"
+                android:background="@drawable/ph_ctrl_btn_bg"
                 android:contentDescription="@string/next"
-                android:src="@android:drawable/ic_media_next" />
+                android:padding="15dp"
+                android:src="@android:drawable/ic_media_next"
+                android:tint="@color/ph_text" />
 
             <ImageButton
                 android:id="@+id/btn_queue"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginLeft="22dp"
+                android:background="@drawable/ph_ctrl_btn_bg"
                 android:contentDescription="@string/phone_queue"
-                android:src="@android:drawable/ic_menu_sort_by_size" />
+                android:padding="16dp"
+                android:src="@android:drawable/ic_menu_sort_by_size"
+                android:tint="@color/ph_text" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -2,27 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/ph_bg"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:paddingLeft="@dimen/ph_page_padding"
+        android:paddingTop="18dp"
+        android:paddingRight="@dimen/ph_page_padding"
+        android:paddingBottom="6dp">
 
         <ImageView
             android:id="@+id/pl_cover"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:background="@drawable/ph_cover_box"
             android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop"
-            android:src="@drawable/cover_placeholder" />
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
+            android:layout_marginLeft="16dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -32,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textColor="@color/text_primary"
-                android:textSize="18sp"
+                android:textColor="@color/ph_text"
+                android:textSize="@dimen/ph_text_page_title"
                 android:textStyle="bold" />
 
             <TextView
@@ -41,19 +44,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:textColor="@color/text_secondary"
-                android:textSize="13sp" />
+                android:textColor="@color/ph_text_54"
+                android:textSize="@dimen/ph_text_artist" />
 
             <Button
                 android:id="@+id/btn_play_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/btn_bg"
-                android:paddingLeft="18dp"
-                android:paddingRight="18dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/ph_btn_primary_bg"
+                android:minHeight="40dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="@string/play_all"
-                android:textColor="@color/text_primary" />
+                android:textColor="@color/ph_on_accent"
+                android:textSize="@dimen/ph_text_artist"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -62,9 +68,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="12dp"
         android:text="@string/loading"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/ph_text_54"
+        android:textSize="@dimen/ph_text_artist"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Track row (Alger song row, touch edition): rounded cover +
+     name/artist two lines + duration on the right. The narrow eq column
+     shows a green ▶ only for the currently playing row. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="16dp"
-    android:paddingTop="9dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="9dp">
+    android:paddingLeft="@dimen/ph_page_padding"
+    android:paddingTop="8dp"
+    android:paddingRight="@dimen/ph_page_padding"
+    android:paddingBottom="8dp">
 
-    <TextView
-        android:id="@+id/track_index"
-        android:layout_width="32dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_secondary"
-        android:textSize="14sp" />
+    <ImageView
+        android:id="@+id/track_cover"
+        android:layout_width="@dimen/ph_track_cover"
+        android:layout_height="@dimen/ph_track_cover"
+        android:background="@drawable/ph_cover_box"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -29,24 +34,33 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp" />
+            android:textColor="@color/ph_text"
+            android:textSize="@dimen/ph_text_song" />
 
         <TextView
             android:id="@+id/track_sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp" />
+            android:textColor="@color/ph_text_54"
+            android:textSize="@dimen/ph_text_artist" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/track_index"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/ph_accent"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/track_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:textColor="@color/text_secondary"
-        android:textSize="12sp" />
+        android:layout_marginLeft="6dp"
+        android:textColor="@color/ph_text_54"
+        android:textSize="@dimen/ph_text_aux" />
 </LinearLayout>

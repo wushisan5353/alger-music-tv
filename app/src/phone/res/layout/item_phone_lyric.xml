@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
-    android:textColor="@color/text_lyric_dim"
-    android:textSize="16sp" />
+    android:lineSpacingMultiplier="1.5"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:textColor="@color/ph_text_54"
+    android:textSize="@dimen/ph_text_lyric" />
