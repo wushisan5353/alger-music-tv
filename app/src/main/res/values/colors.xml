@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#0B0F14</color>
+    <color name="bg_panel">#16202B</color>
+    <color name="accent">#20B2AA</color>
+    <color name="text_primary">#F5FAFA</color>
+    <color name="text_secondary">#9FB3C8</color>
+    <color name="text_lyric_dim">#8CA3B8</color>
+    <color name="focus_stroke">#FFD54F</color>
+</resources>

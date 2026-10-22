@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alger轻听</string>
+    <string name="row_recommend">推荐歌单</string>
+    <string name="row_toplist">排行榜</string>
+    <string name="row_now_playing">正在播放</string>
+    <string name="row_hot_search">热门搜索</string>
+    <string name="loading">加载中…</string>
+    <string name="play_all">播放全部</string>
+    <string name="search_hint">输入歌名或歌手，回车搜索</string>
+    <string name="search_title">搜索音乐</string>
+    <string name="prev">上一首</string>
+    <string name="next">下一首</string>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
+    <string name="no_lyric">暂无歌词</string>
+    <string name="load_failed">加载失败，点我重试</string>
+    <string name="row_settings">设置</string>
+    <string name="custom_api">自定义 API 地址</string>
+    <string name="custom_api_off">未设置</string>
+    <string name="custom_api_on">已设置</string>
+    <string name="custom_api_hint">可选：填入你自建的 NeteaseCloudMusicApi 地址后，搜索/歌单/播放/歌词优先走该地址，失败自动回落 GDStudio。留空则只用 GDStudio。</string>
+    <string name="save">保存</string>
+    <string name="clear">清除</string>
+    <string name="cancel">取消</string>
+    <string name="saved">已保存</string>
+</resources>

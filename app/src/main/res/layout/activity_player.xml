@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/player_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:paddingLeft="@dimen/page_padding"
+    android:paddingRight="@dimen/page_padding"
+    android:paddingTop="36dp"
+    android:paddingBottom="28dp">
+
+    <ImageView
+        android:id="@+id/player_cover"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/app_name"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cover_placeholder" />
+
+    <TextView
+        android:id="@+id/player_title"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/player_cover"
+        android:layout_marginTop="18dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/text_primary"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/player_artist"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/player_title"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/text_secondary"
+        android:textSize="19sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/player_lyrics"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="44dp"
+        android:layout_toRightOf="@id/player_cover"
+        android:layout_above="@id/player_bottom" />
+
+    <LinearLayout
+        android:id="@+id/player_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="44dp"
+        android:layout_toRightOf="@id/player_cover"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/player_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:max="1000"
+            android:progress="0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/player_time"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="0:00 / 0:00"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg"
+                android:minWidth="120dp"
+                android:text="@string/prev"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp" />
+
+            <Button
+                android:id="@+id/btn_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/btn_bg"
+                android:minWidth="120dp"
+                android:text="@string/pause"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/btn_bg"
+                android:minWidth="120dp"
+                android:text="@string/next"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
