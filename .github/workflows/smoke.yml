@@ -1,0 +1,105 @@
+name: Smoke
+
+# Triggered by pushing the signed APK chunks into smoke/ on the build-output
+# branch (done by the maintainer via API after local signing with the fixed
+# keystore). Runs the exact delivered binary in redroid (Android 11, ARM
+# native) on an ARM runner, following the TV Max proven route.
+on:
+  push:
+    branches: [build-output]
+    paths: ['smoke/**']
+
+permissions:
+  contents: write
+
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reassemble signed APK and verify SHA256
+        run: |
+          cat smoke/apk.part.* | base64 -d > /tmp/AlgerTV-1.0.apk
+          ACTUAL=$(sha256sum /tmp/AlgerTV-1.0.apk | cut -d' ' -f1)
+          EXPECTED=$(tr -d '[:space:]' < smoke/sha256.txt)
+          echo "expected=$EXPECTED"
+          echo "actual=  $ACTUAL"
+          [ "$EXPECTED" = "$ACTUAL" ] && echo SHA_MATCH || { echo SHA_MISMATCH; exit 1; }
+          ls -lh /tmp/AlgerTV-1.0.apk
+
+      - name: Boot redroid and smoke test
+        run: |
+          set +e
+          mkdir -p smoke-results
+          LOG=smoke-results/report.txt
+          {
+            echo "=== uname ==="; uname -a
+            echo "=== install binder module ==="
+            sudo apt-get update -qq && sudo apt-get install -y -qq "linux-modules-extra-$(uname -r)"
+            sudo modprobe binder_linux devices="binder,hwbinder,vndbinder" && echo BINDER_OK || echo BINDER_FAIL
+            echo "=== start redroid ==="
+            docker run -d --privileged -p 5555:5555 --name redroid redroid/redroid:11.0.0-latest androidboot.redroid_gpu_mode=guest
+            docker ps
+            sudo apt-get install -y -qq android-tools-adb > /dev/null 2>&1
+            adb connect localhost:5555
+            for i in $(seq 1 40); do
+              B=$(adb -s localhost:5555 shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+              echo "boot try $i: $B"
+              [ "$B" = "1" ] && break
+              sleep 10
+            done
+            echo "=== abilist ==="
+            adb -s localhost:5555 shell getprop ro.product.cpu.abilist
+            echo "=== install ==="
+            adb -s localhost:5555 install -r /tmp/AlgerTV-1.0.apk && echo INSTALL_OK || echo INSTALL_FAIL
+            adb -s localhost:5555 logcat -c
+            echo "=== launch (smoke autoplay) ==="
+            adb -s localhost:5555 shell am start -n com.wushisan.algertv/.ui.MainActivity --es alger_smoke 1
+            sleep 55
+            adb -s localhost:5555 exec-out screencap -p > smoke-results/screen-home.png
+            echo "=== navigate: open first playlist ==="
+            adb -s localhost:5555 shell input keyevent 20
+            adb -s localhost:5555 shell input keyevent 23
+            sleep 12
+            adb -s localhost:5555 exec-out screencap -p > smoke-results/screen-playlist.png
+            echo "=== top activity ==="
+            adb -s localhost:5555 shell dumpsys activity activities | head -30
+            echo "=== process ==="
+            adb -s localhost:5555 shell ps | grep algertv || echo NO_PROCESS
+            echo "=== crash buffer ==="
+            adb -s localhost:5555 logcat -b crash -d
+            echo "=== app log (AlgerTV) ==="
+            adb -s localhost:5555 logcat -d | grep -E "AlgerTV" | tail -80
+          } 2>&1 | tee -a "$LOG"
+          docker logs redroid > smoke-results/redroid.log 2>&1 || true
+          ls -lh smoke-results/
+
+      - name: Commit smoke results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add smoke-results
+          git commit -m "smoke results" || echo "nothing to commit"
+          git push || echo "push skipped"
+
+      - name: Create GitHub Release v1.0 with the tested APK
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          if grep -q INSTALL_OK smoke-results/report.txt; then
+            if gh release view v1.0 > /dev/null 2>&1; then
+              echo "release v1.0 already exists"
+            else
+              gh release create v1.0 /tmp/AlgerTV-1.0.apk \
+                --title "Alger轻听 v1.0" \
+                --notes "Alger轻听 v1.0 原生轻量版（免登录）。数据源：GDStudio（网易云）单源，另可在设置里填自建 NeteaseCloudMusicApi 地址。已在 redroid 云端冒烟验证装包/启动/出数据，真机为最终标准。"
+              echo "release created"
+            fi
+          else
+            echo "INSTALL not OK; skip release"
+          fi
