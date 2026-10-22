@@ -1,90 +1,90 @@
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: FATAL EXCEPTION: main
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: Process: com.wushisan.algertv.phone, PID: 1927
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: java.lang.RuntimeException: Unable to create service com.wushisan.algertv.playback.PlaybackService: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4498)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.ActivityThread.-$$Nest$mhandleCreateService(Unknown Source:0)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2160)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:201)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:288)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7918)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: Caused by: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.PendingIntent.checkFlags(PendingIntent.java:401)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcastAsUser(PendingIntent.java:671)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcast(PendingIntent.java:658)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:559)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:530)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:494)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:468)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at com.wushisan.algertv.playback.PlaybackService.onCreate(PlaybackService.java:61)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4485)
-10-22 13:38:30.054  1927  1927 E AndroidRuntime: 	... 9 more
-10-22 13:38:30.056  1927  1927 I Process : Sending signal. PID: 1927 SIG: 9
-10-22 13:38:30.057   244  2076 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
-10-22 13:38:30.079   244   636 I ActivityManager: Process com.wushisan.algertv.phone (pid 1927) has died: fg  TOP 
-10-22 13:38:30.079   244  1845 I WindowManager: WIN DEATH: Window{a850b94 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
-10-22 13:38:30.079   244  1845 W InputManager-JNI: Input channel object 'a850b94 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity (client)' was disposed without first being removed with the input manager!
-10-22 13:38:30.079   244   635 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(uid/pid:10077/1927, [NetworkRequest [ REQUEST id=38, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10077 RequestorUid: 10077 RequestorPkg: com.wushisan.algertv.phone UnderlyingNetworks: Null] ]], android.os.BinderProxy@3fcb268)
-10-22 13:38:30.080   244   473 D ConnectivityService: releasing NetworkRequest [ REQUEST id=38, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10077 RequestorUid: 10077 RequestorPkg: com.wushisan.algertv.phone UnderlyingNetworks: Null] ] (release request)
-10-22 13:38:30.081   244   636 W ActivityManager: Scheduling restart of crashed service com.wushisan.algertv.phone/com.wushisan.algertv.playback.PlaybackService in 1000ms for start-requested
-10-22 13:38:30.081   244   472 D EthernetNetworkFactory: eth0: onNetworkUnneeded for request: NetworkRequest [ REQUEST id=38, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10077 RequestorUid: 10077 RequestorPkg: com.wushisan.algertv.phone UnderlyingNetworks: Null] ]
-10-22 13:38:30.081   244   636 W ActivityTaskManager: Force removing ActivityRecord{eb3f939 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhonePlaylistActivity} t8}: app died, no saved state
-10-22 13:38:30.082   244   635 I WindowManager: WIN DEATH: Window{e325b48 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhonePlaylistActivity}
-10-22 13:38:30.083   244   635 W InputManager-JNI: Input channel object 'e325b48 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhonePlaylistActivity (client)' was disposed without first being removed with the input manager!
-10-22 13:38:30.083   244   266 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10077; state: DISABLED
-10-22 13:38:30.084   244   266 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10077; state: DISABLED
-10-22 13:38:30.084   244   266 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10077; state: DISABLED
-10-22 13:38:30.084   244   266 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10077; state: ENABLED
-10-22 13:38:30.085   244   273 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10077; state: ENABLED
-10-22 13:38:30.090   244   271 W UsageStatsService: Unexpected activity event reported! (com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity event : 23 instanceId : 141485704)
-10-22 13:38:30.091   111   121 W TransactionTracing: Could not find layer handle 0x77096ee26dd0
-10-22 13:38:30.091   111   111 E ClientCache: failed to get buffer, invalid process token
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: FATAL EXCEPTION: main
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: Process: com.wushisan.algertv.phone, PID: 1940
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: java.lang.RuntimeException: Unable to create service com.wushisan.algertv.playback.PlaybackService: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4498)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.ActivityThread.-$$Nest$mhandleCreateService(Unknown Source:0)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2160)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:288)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7918)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: Caused by: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.PendingIntent.checkFlags(PendingIntent.java:401)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcastAsUser(PendingIntent.java:671)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcast(PendingIntent.java:658)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:559)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:530)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:494)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:468)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at com.wushisan.algertv.playback.PlaybackService.onCreate(PlaybackService.java:61)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4485)
+10-22 13:40:13.878  1940  1940 E AndroidRuntime: 	... 9 more
+10-22 13:40:13.882   237  2142 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
+10-22 13:40:13.883  1940  1940 I Process : Sending signal. PID: 1940 SIG: 9
+10-22 13:40:14.127   237   328 E BluetoothManagerService: getState()
+10-22 13:40:14.127   237   328 E BluetoothManagerService: java.util.concurrent.TimeoutException
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1862)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1997)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at com.android.bluetooth.x.com.android.modules.utils.SynchronousResultReceiver.awaitResultNoInterrupt(SynchronousResultReceiver.java:210)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at com.android.server.bluetooth.BluetoothManagerService.synchronousGetState(BluetoothManagerService.java:893)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at com.android.server.bluetooth.BluetoothManagerService.waitForState(BluetoothManagerService.java:2908)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at com.android.server.bluetooth.BluetoothManagerService.waitForState(BluetoothManagerService.java:2895)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at com.android.server.bluetooth.BluetoothManagerService.-$$Nest$mwaitForState(Unknown Source:0)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at com.android.server.bluetooth.BluetoothManagerService$BluetoothHandler.handleMessage(BluetoothManagerService.java:2370)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at android.os.Looper.loop(Looper.java:288)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-22 13:40:14.127   237   328 E BluetoothManagerService: waitForState [12] time out
+10-22 13:40:14.127   237   328 D BluetoothManagerService: Sending off request.
+10-22 13:40:14.143   237   257 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-22 13:40:14.143   237   930 I WindowManager: WIN DEATH: Window{363e7a4 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
 --
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: FATAL EXCEPTION: main
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: Process: com.wushisan.algertv.phone, PID: 2079
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: java.lang.RuntimeException: Unable to create service com.wushisan.algertv.playback.PlaybackService: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4498)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.ActivityThread.-$$Nest$mhandleCreateService(Unknown Source:0)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2160)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:201)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:288)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7918)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: Caused by: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.PendingIntent.checkFlags(PendingIntent.java:401)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcastAsUser(PendingIntent.java:671)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcast(PendingIntent.java:658)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:559)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:530)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:494)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:468)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at com.wushisan.algertv.playback.PlaybackService.onCreate(PlaybackService.java:61)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4485)
-10-22 13:38:30.185  2079  2079 E AndroidRuntime: 	... 9 more
-10-22 13:38:30.187   244  2097 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
-10-22 13:38:30.189  2079  2079 I Process : Sending signal. PID: 2079 SIG: 9
-10-22 13:38:30.207   528   820 W Parcel  : Expecting binder but got null!
-10-22 13:38:30.220   244   635 D CoreBackPreview: Window{15b6fb0 u0 Toast}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@ecc5ae, mPriority=0}
-10-22 13:38:30.241   528   820 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3
-10-22 13:38:30.241   528   820 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-22 13:38:30.241   528   820 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3
-10-22 13:38:30.241   528   820 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-22 13:38:30.244   528   820 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3
-10-22 13:38:30.244   528   820 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-22 13:38:30.244   528   820 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3
-10-22 13:38:30.244   528   820 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-22 13:38:30.245   528   820 E OpenGLRenderer: Unable to match the desired swap behavior.
-10-22 13:38:30.259   244   635 I ActivityManager: Process com.wushisan.algertv.phone (pid 2079) has died: fg  TOP 
-10-22 13:38:30.259   244   635 W ActivityManager: Scheduling restart of crashed service com.wushisan.algertv.phone/com.wushisan.algertv.playback.PlaybackService in 1800000ms for start-requested
-10-22 13:38:30.260   161   161 I Zygote  : Process 2079 exited due to signal 9 (Killed)
-10-22 13:38:30.267   244   266 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10077; state: DISABLED
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: FATAL EXCEPTION: main
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: Process: com.wushisan.algertv.phone, PID: 2144
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: java.lang.RuntimeException: Unable to create service com.wushisan.algertv.playback.PlaybackService: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4498)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.ActivityThread.-$$Nest$mhandleCreateService(Unknown Source:0)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2160)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:288)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7918)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: Caused by: java.lang.IllegalArgumentException: com.wushisan.algertv.phone: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.PendingIntent.checkFlags(PendingIntent.java:401)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcastAsUser(PendingIntent.java:671)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.PendingIntent.getBroadcast(PendingIntent.java:658)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:559)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:530)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:494)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.support.v4.media.session.MediaSessionCompat.<init>(MediaSessionCompat.java:468)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at com.wushisan.algertv.playback.PlaybackService.onCreate(PlaybackService.java:61)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:4485)
+10-22 13:40:14.231  2144  2144 E AndroidRuntime: 	... 9 more
+10-22 13:40:14.233   237  2161 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
+10-22 13:40:14.234  2144  2144 I Process : Sending signal. PID: 2144 SIG: 9
+10-22 13:40:14.238   520   801 W Parcel  : Expecting binder but got null!
+10-22 13:40:14.239   237  1733 D CoreBackPreview: Window{cbcbd02 u0 Toast}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@63cd050, mPriority=0}
+10-22 13:40:14.245   237  1733 I ActivityManager: Process com.wushisan.algertv.phone (pid 2144) has died: fg  TOP 
+10-22 13:40:14.246   237  1733 W ActivityManager: Scheduling restart of crashed service com.wushisan.algertv.phone/com.wushisan.algertv.playback.PlaybackService in 1800000ms for start-requested
+10-22 13:40:14.249   155   155 I Zygote  : Process 2144 exited due to signal 9 (Killed)
+10-22 13:40:14.253   237   258 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10077; state: DISABLED
+10-22 13:40:14.253   237   258 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10077; state: DISABLED
+10-22 13:40:14.253   237   258 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10077; state: DISABLED
+10-22 13:40:14.253   237   258 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10077; state: ENABLED
+10-22 13:40:14.253   237   265 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10077; state: ENABLED
+10-22 13:40:14.260   108   108 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+10-22 13:40:14.265   523   523 D CompatibilityChangeReporter: Compat change id reported: 171228096; UID 10071; state: ENABLED
+10-22 13:40:14.266   523   523 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10071; state: DISABLED
+10-22 13:40:14.266   523   523 D CompatibilityChangeReporter: Compat change id reported: 37756858; UID 10071; state: ENABLED
+10-22 13:40:14.267   108   118 W TransactionTracing: Could not find layer handle 0x758806223d30
