@@ -1,7 +1,8 @@
-date=2026-10-22T11:47:04Z
+date=2026-10-22T11:49:39Z
 ref=refs/heads/main
-sha=a819d0855e4643eff6adce950afa62e4280bd9c8
+sha=07eb87637de45d58b0397c8cb1dd3b1a71360305
 signed=false
-apk_missing=1
+apk_size=3286341
+apk_sha256=8323f9d463ea61390ef08e0962ba747229212e56be503f992fee8a2f074c73b1
 phone_apk_size=2565240
 phone_apk_sha256=0b6ad39f2783816f92579aa17ac8efbc1aef696fc0d3cf8e7707538f4a4b57fb
