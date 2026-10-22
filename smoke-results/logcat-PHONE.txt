@@ -1,0 +1,7 @@
+--------- beginning of system
+10-22 11:18:48.728   270   543 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/.ui.phone.PhoneMainActivity} from uid 2000
+--------- beginning of main
+10-22 11:18:48.728  1844  1846 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-22 11:19:00.001   443   443 D KeyguardClockSwitch: Updating clock: 1119
+10-22 11:19:00.002    66    66 D hwcomposer: VSYNC event status:1
+10-22 11:19:00.375    66    66 D hwcomposer: VSYNC event status:0
