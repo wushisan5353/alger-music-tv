@@ -1,5 +1,5 @@
-date=2026-10-22T11:11:26Z
-ref=refs/heads/main
+date=2026-10-22T11:12:58Z
+ref=refs/tags/v1.0.1
 sha=87d201e8e45372b2d5674e2b08415dc5fde30af4
 signed=false
 apk_size=3285805
