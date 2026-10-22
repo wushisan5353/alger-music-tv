@@ -139,7 +139,7 @@ public class MiniPlayerBar implements PlayerController.Listener {
         final int radius = activity.getResources()
                 .getDimensionPixelSize(R.dimen.ph_radius_cover);
         if (song.picUrl != null) {
-            Glide.with(activity).load(song.picUrl)
+            Glide.with(activity.getApplicationContext()).load(song.picUrl)
                     .placeholder(R.drawable.cover_placeholder)
                     .error(R.drawable.cover_placeholder)
                     .transform(new CenterCrop(), new RoundedCorners(radius))
@@ -149,8 +149,9 @@ public class MiniPlayerBar implements PlayerController.Listener {
             MusicRepository.get().resolvePic(song, new MusicRepository.Result<String>() {
                 @Override
                 public void onSuccess(String url) {
-                    if (boundSong == song && !activity.isFinishing()) {
-                        Glide.with(activity).load(url)
+                    if (boundSong == song && !activity.isFinishing()
+                            && !activity.isDestroyed()) {
+                        Glide.with(activity.getApplicationContext()).load(url)
                                 .placeholder(R.drawable.cover_placeholder)
                                 .transform(new CenterCrop(), new RoundedCorners(radius))
                                 .into(cover);

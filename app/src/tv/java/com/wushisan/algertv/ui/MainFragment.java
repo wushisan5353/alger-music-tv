@@ -98,6 +98,10 @@ public class MainFragment extends BrowseSupportFragment {
         MusicRepository.get().loadHome(new MusicRepository.Result<MusicRepository.HomeData>() {
             @Override
             public void onSuccess(MusicRepository.HomeData data) {
+                // loadHome delivers up to twice; the final delivery can
+                // land after this fragment detached (cloud smoke caught
+                // getString() -> "not attached to a context" FATAL).
+                if (!isAdded() || getActivity() == null) return;
                 homeData = data;
                 buildRows();
                 maybeSmokeAutoPlay(data);
@@ -120,7 +124,7 @@ public class MainFragment extends BrowseSupportFragment {
     }
 
     private void buildRows() {
-        if (homeData == null) return;
+        if (homeData == null || !isAdded()) return;
         rowsAdapter.clear();
         lastNowPlayingSongId = null;
 

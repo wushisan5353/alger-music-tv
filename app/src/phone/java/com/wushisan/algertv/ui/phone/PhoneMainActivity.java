@@ -97,6 +97,11 @@ public class PhoneMainActivity extends AppCompatActivity {
         MusicRepository.get().loadHome(new MusicRepository.Result<MusicRepository.HomeData>() {
             @Override
             public void onSuccess(MusicRepository.HomeData data) {
+                // loadHome delivers up to twice and a delivery can land
+                // after this instance was destroyed (rotation recreate in
+                // the smoke rig did exactly that): never touch views or
+                // Glide with a dead activity.
+                if (isFinishing() || isDestroyed()) return;
                 bindHome(data);
                 // Only the final delivery may complain about the network;
                 // the preliminary cache/seed paint must stay silent.
@@ -164,7 +169,7 @@ public class PhoneMainActivity extends AppCompatActivity {
             ImageView cover = row.findViewById(R.id.row_cover);
             if (pl.coverUrl != null) {
                 int radius = getResources().getDimensionPixelSize(R.dimen.ph_radius_cover);
-                Glide.with(this).load(pl.coverUrl)
+                Glide.with(getApplicationContext()).load(pl.coverUrl)
                         .placeholder(R.drawable.cover_placeholder)
                         .error(R.drawable.cover_placeholder)
                         .transform(new com.bumptech.glide.load.resource.bitmap.CenterCrop(),
