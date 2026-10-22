@@ -13,8 +13,8 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:stripPhoneReleaseDebugSymbols NO-SOURCE
 > Task :app:extractPhoneReleaseNativeSymbolTables NO-SOURCE
 > Task :app:mergePhoneReleaseNativeDebugMetadata NO-SOURCE
-> Task :app:javaPreCompilePhoneRelease
 > Task :app:checkPhoneReleaseDuplicateClasses
+> Task :app:javaPreCompilePhoneRelease
 > Task :app:generatePhoneReleaseResValues
 > Task :app:checkPhoneReleaseAarMetadata
 > Task :app:mapPhoneReleaseSourceSetPaths
@@ -28,28 +28,29 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:processPhoneReleaseManifest
 > Task :app:desugarPhoneReleaseFileDependencies
 > Task :app:processPhoneReleaseManifestForPackage
-> Task :app:mergeExtDexPhoneRelease
-> Task :app:mergePhoneReleaseArtProfile
-> Task :app:mergePhoneReleaseShaders
-> Task :app:compilePhoneReleaseShaders NO-SOURCE
-> Task :app:generatePhoneReleaseAssets UP-TO-DATE
-> Task :app:mergePhoneReleaseAssets
-> Task :app:compressPhoneReleaseAssets
-> Task :app:collectPhoneReleaseDependencies
 > Task :app:processPhoneReleaseResources
-> Task :app:sdkPhoneReleaseDependencyData
 
 > Task :app:compilePhoneReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: []
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 
+> Task :app:mergeExtDexPhoneRelease
 > Task :app:dexBuilderPhoneRelease
+> Task :app:mergePhoneReleaseArtProfile
 > Task :app:mergeDexPhoneRelease
+> Task :app:mergePhoneReleaseShaders
+> Task :app:compilePhoneReleaseShaders NO-SOURCE
+> Task :app:generatePhoneReleaseAssets UP-TO-DATE
 > Task :app:mergePhoneReleaseGlobalSynthetics
-> Task :app:processPhoneReleaseJavaRes
+> Task :app:mergePhoneReleaseAssets
 > Task :app:compilePhoneReleaseArtProfile
+> Task :app:compressPhoneReleaseAssets
+> Task :app:processPhoneReleaseJavaRes
 > Task :app:optimizePhoneReleaseResources
+> Task :app:collectPhoneReleaseDependencies
+> Task :app:mergePhoneReleaseJavaResource
+> Task :app:sdkPhoneReleaseDependencyData
 > Task :app:writePhoneReleaseAppMetadata
 > Task :app:writePhoneReleaseSigningConfigVersions
 > Task :app:preTvReleaseBuild UP-TO-DATE
@@ -58,7 +59,6 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :app:stripTvReleaseDebugSymbols NO-SOURCE
 > Task :app:extractTvReleaseNativeSymbolTables NO-SOURCE
 > Task :app:mergeTvReleaseNativeDebugMetadata NO-SOURCE
-> Task :app:mergePhoneReleaseJavaResource
 > Task :app:checkTvReleaseDuplicateClasses
 > Task :app:javaPreCompileTvRelease
 > Task :app:checkTvReleaseAarMetadata
@@ -77,17 +77,6 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :app:processTvReleaseManifest
 > Task :app:desugarTvReleaseFileDependencies
 > Task :app:processTvReleaseManifestForPackage
-> Task :app:mergeExtDexTvRelease
-> Task :app:mergeTvReleaseArtProfile
-> Task :app:mergeTvReleaseShaders
-> Task :app:compileTvReleaseShaders NO-SOURCE
-> Task :app:generateTvReleaseAssets UP-TO-DATE
-> Task :app:mergeTvReleaseAssets
-> Task :app:compressTvReleaseAssets
-> Task :app:collectTvReleaseDependencies
-> Task :app:sdkTvReleaseDependencyData
-> Task :app:writeTvReleaseAppMetadata
-> Task :app:writeTvReleaseSigningConfigVersions
 > Task :app:processTvReleaseResources
 
 > Task :app:compileTvReleaseJavaWithJavac
@@ -95,19 +84,30 @@ Note: [1] Wrote GeneratedAppGlideModule with: []
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 
+> Task :app:mergeExtDexTvRelease
 > Task :app:dexBuilderTvRelease
-> Task :app:mergeTvReleaseGlobalSynthetics
+> Task :app:mergeTvReleaseArtProfile
 > Task :app:mergeDexTvRelease
-> Task :app:processTvReleaseJavaRes
+> Task :app:mergeTvReleaseShaders
+> Task :app:compileTvReleaseShaders NO-SOURCE
+> Task :app:generateTvReleaseAssets UP-TO-DATE
+> Task :app:mergeTvReleaseGlobalSynthetics
+> Task :app:mergeTvReleaseAssets
 > Task :app:compileTvReleaseArtProfile
+> Task :app:compressTvReleaseAssets
+> Task :app:processTvReleaseJavaRes
 > Task :app:mergeTvReleaseJavaResource
+> Task :app:collectTvReleaseDependencies
+> Task :app:sdkTvReleaseDependencyData
+> Task :app:writeTvReleaseAppMetadata
+> Task :app:writeTvReleaseSigningConfigVersions
 > Task :app:optimizeTvReleaseResources
 > Task :app:packageTvRelease
 > Task :app:createTvReleaseApkListingFileRedirect
 > Task :app:assembleTvRelease
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792667775938.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792669582450.json
 
-BUILD SUCCESSFUL in 38s
+BUILD SUCCESSFUL in 43s
 70 actionable tasks: 70 executed
 gradle_exit=0
