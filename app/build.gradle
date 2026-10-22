@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+}
+
+def ksFile = System.getenv('KEYSTORE_FILE')
+def ksPass = System.getenv('KS_PASS')
+def keyAlias = System.getenv('KEY_ALIAS')
+def keyPass = System.getenv('KEY_PASS')
+def hasSigning = ksFile != null && ksFile.length() > 0
+
+android {
+    namespace 'com.wushisan.algertv'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.wushisan.algertv'
+        minSdk 22
+        targetSdk 28
+        versionCode 1
+        versionName '1.0'
+    }
+
+    signingConfigs {
+        release {
+            if (hasSigning) {
+                storeFile file(ksFile)
+                storePassword ksPass
+                keyAlias keyAlias
+                keyPassword keyPass
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            if (hasSigning) {
+                signingConfig signingConfigs.release
+            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (variant.buildType.name == 'release') {
+                output.outputFileName = 'AlgerTV-1.0.apk'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.media:media:1.1.0'
+    implementation 'androidx.core:core:1.1.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.12.13'
+}
