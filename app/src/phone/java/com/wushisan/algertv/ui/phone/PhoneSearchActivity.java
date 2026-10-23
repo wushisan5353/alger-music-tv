@@ -1,10 +1,12 @@
 package com.wushisan.algertv.ui.phone;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -76,6 +78,23 @@ public class PhoneSearchActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
 
         miniBar = new MiniPlayerBar(this);
+
+        // Raise the keyboard only after the first frame is on screen.
+        // windowSoftInputMode=stateVisible forced IME creation into the
+        // window-open path; on several OEM keyboards that stalls the open
+        // (user report: tap search = no reaction, then jank). The manifest
+        // now uses stateHidden and we show the IME deferred instead.
+        input.post(new Runnable() {
+            @Override
+            public void run() {
+                input.requestFocus();
+                InputMethodManager imm = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+                }
+            }
+        });
     }
 
     @Override
