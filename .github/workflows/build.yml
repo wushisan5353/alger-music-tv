@@ -324,61 +324,81 @@ jobs:
           # The real TV (Android 5.1.1) has neither ISRG Root X1 nor X2,
           # so GDStudio's Let's Encrypt chain is untrusted there while
           # redroid 11 (has X1) sails through — the gap that let 1.0.4
-          # ship "green" and still fail on TV. Remove X1 from the system
-          # store, relaunch cold, and require HOME_DONE meta>0: only the
-          # app's bundled fallback roots (SslSupport) can carry it then.
-          echo "--- TV TLS sim (system ISRG Root X1 removed) ---"
+          # ship "green" and still fail on TV. Remove X1, relaunch cold,
+          # and require HOME_DONE meta>0 AND a TLS_BUNDLED_ROOT_USED hit:
+          # only the app's bundled fallback roots (SslSupport) can carry
+          # it then.
+          # Round 3 (dual-store isolation): round 2 removed X1 only from
+          # /system/etc/security/cacerts and reported SIM_OK, but the SIM
+          # logcat had zero BUNDLED_ROOT_USED hits — Android 11 also reads
+          # system roots from the APEX conscrypt store, which round 2
+          # never touched, so the A/B never actually happened. This round
+          # isolates BOTH stores and treats isolation itself as a gated
+          # assertion (negative control first: the probe must see X1 in
+          # the system store before removal, and must NOT see it in
+          # either store after). All stderr is archived to tls-sim.txt.
+          echo "--- TV TLS sim (dual-store ISRG Root X1 removal) ---"
           grep -m1 "HOME_DONE" smoke-out/logcat-TV-first.txt > smoke-out/tls-sim.txt || true
           BASEMETA=$(grep -m1 "HOME_DONE" smoke-out/logcat-TV-first.txt | sed -n 's/.*meta=\([0-9]*\)\/.*/\1/p')
           echo "TV_HOME_BASE_META=${BASEMETA:-none}" >> smoke-out/report.txt
-          CACERTS=/system/etc/security/cacerts
-          X1FILE=$CACERTS/6187b673.0
-          SIMMODE=none
-          if $D shell "ls $X1FILE" > /dev/null 2>&1; then
-            # Round 1 ended SKIPPED (mode=none): plain adb shell likely
-            # lacks mount/remount privilege. redroid is userdebug, so try
-            # a root shell first; capture every attempt's stderr into
-            # tls-sim.txt so a repeat failure is diagnosable, not silent.
-            $D root >> smoke-out/tls-sim.txt 2>&1 || true
-            $D wait-for-device
-            echo "tls-sim shell id: $($D shell id 2>/dev/null)" >> smoke-out/tls-sim.txt
-            $D shell "cp -r $CACERTS /data/local/tmp/cacerts-full && rm /data/local/tmp/cacerts-full/6187b673.0 && mount --bind /data/local/tmp/cacerts-full $CACERTS" >> smoke-out/tls-sim.txt 2>&1 && SIMMODE=bind || true
-            if [ "$SIMMODE" = "bind" ] && $D shell "ls $X1FILE" > /dev/null 2>&1; then SIMMODE=none; fi
-            if [ "$SIMMODE" = "none" ]; then
-              $D shell "mount -o rw,remount /system && cp $X1FILE /data/local/tmp/6187b673.0.bak && rm $X1FILE" >> smoke-out/tls-sim.txt 2>&1 && SIMMODE=mv || true
-              if [ "$SIMMODE" = "mv" ] && $D shell "ls $X1FILE" > /dev/null 2>&1; then SIMMODE=none; fi
-            fi
-            if [ "$SIMMODE" = "none" ]; then
-              $D shell "touch /data/local/tmp/empty-cert && mount --bind /data/local/tmp/empty-cert $X1FILE" >> smoke-out/tls-sim.txt 2>&1 && SIMMODE=filebind || true
-              if [ "$SIMMODE" = "filebind" ]; then
-                X1SIZE=$($D shell "wc -c < $X1FILE" 2>/dev/null | tr -d ' \r')
-                if [ "${X1SIZE:-x}" != "0" ]; then SIMMODE=none; fi
-              fi
-            fi
+          X1NAME=6187b673.0
+          SYSSTORE=/system/etc/security/cacerts
+          APEXSTORE=/apex/com.android.conscrypt/cacerts
+          $D root >> smoke-out/tls-sim.txt 2>&1 || true
+          $D wait-for-device
+          echo "tls-sim shell id: $($D shell id 2>&1)" >> smoke-out/tls-sim.txt
+          PRE_SYS=absent
+          if $D shell "ls $SYSSTORE/$X1NAME" >> smoke-out/tls-sim.txt 2>&1; then PRE_SYS=present; fi
+          echo "TV_TLS_PRE_SYSTEM_X1=$PRE_SYS" >> smoke-out/report.txt
+          iso_store() {
+            if ! $D shell "ls $1/$X1NAME" >> smoke-out/tls-sim.txt 2>&1; then echo absent; return; fi
+            $D shell "rm -rf /data/local/tmp/iso-$2 && cp -r $1 /data/local/tmp/iso-$2 && rm /data/local/tmp/iso-$2/$X1NAME && mount --bind /data/local/tmp/iso-$2 $1" >> smoke-out/tls-sim.txt 2>&1
+            if ! $D shell "ls $1/$X1NAME" >> smoke-out/tls-sim.txt 2>&1; then echo ok; return; fi
+            $D shell "touch /data/local/tmp/empty-cert && mount --bind /data/local/tmp/empty-cert $1/$X1NAME" >> smoke-out/tls-sim.txt 2>&1
+            SZ=$($D shell "wc -c < $1/$X1NAME" 2>/dev/null | tr -d ' \r')
+            if [ "${SZ:-x}" = "0" ]; then echo ok; else echo fail; fi
+          }
+          ISO_SYS=$(iso_store $SYSSTORE sys)
+          ISO_APEX=$(iso_store $APEXSTORE apex)
+          echo "TV_TLS_ISO_SYSTEM=$ISO_SYS" >> smoke-out/report.txt
+          echo "TV_TLS_ISO_APEX=$ISO_APEX" >> smoke-out/report.txt
+          ISO=0
+          if [ "$PRE_SYS" = "present" ] && [ "$ISO_SYS" = "ok" ]; then
+            if [ "$ISO_APEX" = "ok" ] || [ "$ISO_APEX" = "absent" ]; then ISO=1; fi
           fi
-          echo "TV_TLS_SIM_MODE=$SIMMODE" >> smoke-out/report.txt
-          if [ "$SIMMODE" != "none" ]; then
+          echo "TV_TLS_ISO_ESTABLISHED=$ISO" >> smoke-out/report.txt
+          if [ "$ISO" = "1" ]; then echo "TV_TLS_SIM_MODE=dual" >> smoke-out/report.txt; else echo "TV_TLS_SIM_MODE=incomplete" >> smoke-out/report.txt; fi
+          if [ "$ISO" = "1" ]; then
+            $D shell am force-stop $TVPKG
             $D shell pm clear $TVPKG
             $D logcat -c
             $D shell am start -n "$TVPKG/$TVACT"
             sleep 14
             $D logcat -d > smoke-out/logcat-TV-tlssim.txt 2>/dev/null
+            if ! grep -q "HOME_DONE" smoke-out/logcat-TV-tlssim.txt; then
+              sleep 8
+              $D logcat -d > smoke-out/logcat-TV-tlssim.txt 2>/dev/null
+            fi
             grep "HOME_" smoke-out/logcat-TV-tlssim.txt >> smoke-out/tls-sim.txt || true
+            grep "TLS_" smoke-out/logcat-TV-tlssim.txt >> smoke-out/tls-sim.txt || true
             grep -m3 "HOME_META_FAIL" smoke-out/logcat-TV-tlssim.txt >> smoke-out/tls-sim.txt || true
             SIMMETA=$(grep -m1 "HOME_DONE" smoke-out/logcat-TV-tlssim.txt | sed -n 's/.*meta=\([0-9]*\)\/.*/\1/p')
+            BUNDLED=$(grep -c "TLS_BUNDLED_ROOT_USED" smoke-out/logcat-TV-tlssim.txt || true)
+            SSLERR=$(grep -c "SSLHandshakeException\|Trust anchor" smoke-out/logcat-TV-tlssim.txt || true)
             echo "TV_TLS_SIM_META=${SIMMETA:-none}" >> smoke-out/report.txt
-            if [ -n "$SIMMETA" ] && [ "$SIMMETA" -gt 0 ]; then
+            echo "TV_TLS_BUNDLED_HITS=${BUNDLED:-0}" >> smoke-out/report.txt
+            echo "TV_TLS_SSL_ERRS=${SSLERR:-0}" >> smoke-out/report.txt
+            if [ -n "$SIMMETA" ] && [ "$SIMMETA" -gt 0 ] && [ "${BUNDLED:-0}" -ge 1 ]; then
               echo "TV_TLS_SIM_OK" >> smoke-out/report.txt
+            elif [ -n "$SIMMETA" ] && [ "$SIMMETA" -gt 0 ]; then
+              echo "TV_TLS_SIM_INCONCLUSIVE" >> smoke-out/report.txt
             else
               echo "TV_TLS_SIM_FAIL" >> smoke-out/report.txt
             fi
-            if [ "$SIMMODE" = "bind" ]; then
-              $D shell "umount $CACERTS" > /dev/null 2>&1 || true
-            elif [ "$SIMMODE" = "filebind" ]; then
-              $D shell "umount $X1FILE" > /dev/null 2>&1 || true
-            else
-              $D shell "cp /data/local/tmp/6187b673.0.bak $X1FILE" > /dev/null 2>&1 || true
-            fi
+            $D shell "umount $SYSSTORE" >> smoke-out/tls-sim.txt 2>&1 || true
+            $D shell "umount $APEXSTORE" >> smoke-out/tls-sim.txt 2>&1 || true
+            $D shell "umount $SYSSTORE/$X1NAME" >> smoke-out/tls-sim.txt 2>&1 || true
+            $D shell "umount $APEXSTORE/$X1NAME" >> smoke-out/tls-sim.txt 2>&1 || true
           else
             echo "TV_TLS_SIM_SKIPPED" >> smoke-out/report.txt
           fi
