@@ -1,8 +1,8 @@
 === uname ===
 Linux runnervmidgih 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:12:01 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
 total 8.0K
-drwxr-xr-x 3 runner runner 4.0K Oct 23 03:06 phone
-drwxr-xr-x 3 runner runner 4.0K Oct 23 03:06 tv
+drwxr-xr-x 3 runner runner 4.0K Oct 23 03:08 phone
+drwxr-xr-x 3 runner runner 4.0K Oct 23 03:08 tv
 Reading package lists...
 Building dependency tree...
 Reading state information...
@@ -27,7 +27,7 @@ Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf3
 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 adb arm64 1:34.0.4-1build3 [272 kB]
 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 android-sdk-platform-tools-common all 28.0.2+9 [6402 B]
 Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf-lite32t64 arm64 3.21.12-8.2ubuntu0.4 [221 kB]
-Fetched 2225 kB in 1s (2692 kB/s)
+Fetched 2225 kB in 1s (1991 kB/s)
 Selecting previously unselected package android-liblog:arm64.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 203258 files and directories currently installed.)
 Preparing to unpack .../0-android-liblog_1%3a34.0.4-1build3_arm64.deb ...
@@ -94,7 +94,7 @@ Need to get 114 MB of archives.
 After this operation, 112 MB of additional disk space will be used.
 Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 wireless-regdb all 2026.05.30-0ubuntu1~24.04.1 [7714 B]
 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 linux-modules-extra-6.17.0-1022-azure arm64 6.17.0-1022.22 [114 MB]
-Fetched 114 MB in 4s (26.1 MB/s)
+Fetched 114 MB in 4s (30.0 MB/s)
 Selecting previously unselected package wireless-regdb.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 203319 files and directories currently installed.)
 Preparing to unpack .../wireless-regdb_2026.05.30-0ubuntu1~24.04.1_all.deb ...
@@ -148,7 +148,7 @@ Unable to find image 'redroid/redroid:11.0.0-latest' locally
 06cb3c383cf0: Pull complete
 Digest: sha256:60b0810684be4578733a847be3314c50b70f73bc92405b5a627ebe9b633ebb5e
 Status: Downloaded newer image for redroid/redroid:11.0.0-latest
-de14f06637b7e795f0c6ddd5a16f25d4fd0102437609b56ed872a30de57674b5
+f27ff399f6a1a4be71670c3b70124cb63f0b7faeb3da4c4fc6557c814033a3d1
 * daemon not running; starting now at tcp:5037
 * daemon started successfully
 connected to localhost:5555
@@ -166,7 +166,7 @@ Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity }
 Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity (has extras) }
 --- TV direct-URL pipeline (source-independent) ---
 Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity (has extras) }
-/home/runner/work/_temp/4eb030fb-a568-4bde-90de-13ff478b5c20.sh: line 130: [: 0
+/home/runner/work/_temp/854520f9-fbbf-4eba-9da5-1f685609f73f.sh: line 130: [: 0
 0: integer expression expected
 --- TV TLS sim (system ISRG Root X1 removed) ---
 Success
@@ -176,43 +176,43 @@ Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.
 Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity }
 --- PHONE search repro ---
 Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity }
-/home/runner/work/_temp/4eb030fb-a568-4bde-90de-13ff478b5c20.sh: line 271: PPID: readonly variable
+/home/runner/work/_temp/854520f9-fbbf-4eba-9da5-1f685609f73f.sh: line 271: PPID: readonly variable
 --- PHONE direct-URL pipeline ---
 Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity (has extras) }
-/home/runner/work/_temp/4eb030fb-a568-4bde-90de-13ff478b5c20.sh: line 297: [: 0
+/home/runner/work/_temp/854520f9-fbbf-4eba-9da5-1f685609f73f.sh: line 297: [: 0
 0: integer expression expected
 REDROID_BOOTED
 TV_INSTALL_OK
-TV_FIRST_ALIVE pid=1893
+TV_FIRST_ALIVE pid=1901
 TV_FIRST_FATAL_COUNT=0
-TV_PROCESS_ALIVE pid=1986
+TV_PROCESS_ALIVE pid=1993
 TV_FATAL_COUNT=0
-TV_AUTOPLAY_UNCONFIRMED
-TV_FIRST_TRACK load=3440858634 start=none errors=0
-TV_FIRST_TRACK_FAIL
-TV_DIRECT_NOT_STARTED
+TV_AUTOPLAY_OK
+TV_FIRST_TRACK load=3440858634 start=3440858634 errors=0
+TV_FIRST_TRACK_OK
+TV_DIRECT_STARTED
 TV_DIRECT_PLAYER_ERRORS=0
 TV_DIRECT_POSITION p1=0
 0 p2=0
 0
-TV_DIRECT_ALIVE pid=2081
-TV_HOME_BASE_META=6
+TV_DIRECT_ALIVE pid=2098
+TV_HOME_BASE_META=11
 TV_TLS_SIM_MODE=none
 TV_TLS_SIM_SKIPPED
 PHONE_INSTALL_OK
-PHONE_FIRST_ALIVE pid=2232
+PHONE_FIRST_ALIVE pid=2255
 PHONE_FIRST_FATAL_COUNT=0
-PHONE_PROCESS_ALIVE pid=2338
+PHONE_PROCESS_ALIVE pid=2355
 PHONE_FATAL_COUNT=0
 PHONE_SEARCH_OPEN_OK
 PHONE_SEARCH_RESULTS=7
 PHONE_SEARCH_ANR_COUNT=0
 PHONE_SEARCH_FATAL_COUNT=0
-PHONE_SEARCH_ALIVE pid=2430
+PHONE_SEARCH_ALIVE pid=2439
 PHONE_DIRECT_STARTED
 PHONE_DIRECT_PLAYER_ERRORS=0
 PHONE_DIRECT_POSITION p1=0
 0 p2=0
 0
-PHONE_DIRECT_ALIVE pid=2630
-SMOKE_DONE date=2026-10-23T03:10:26Z sha=2159084d5b84d0279c6cb20dd8844fb26ad523d5
+PHONE_DIRECT_ALIVE pid=2638
+SMOKE_DONE date=2026-10-23T03:12:30Z sha=d9e2821aa115472e0f1c770033606eb790eb20bf
