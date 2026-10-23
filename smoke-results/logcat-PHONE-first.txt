@@ -1,348 +1,266 @@
 --------- beginning of main
-10-23 03:07:04.649    96    96 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:04.660  1979  1979 I oid.documentsu: The ClassLoaderContext is a special shared library.
-10-23 03:07:04.665  1979  1979 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-23 03:07:04.665  1979  1979 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-23 03:07:04.672  1979  1979 E ContextImpl: Tried to access visual service LayoutInflater from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006 Visual services, such as WindowManager, WallpaperService or LayoutInflater should be accessed from Activity or other visual Context. Use an Activity or a Context created with Context#createWindowContext(int, Bundle), which are adjusted to the configuration and visual bounds of an area on screen.
-10-23 03:07:04.672  1979  1979 E ContextImpl: java.lang.IllegalAccessException: Tried to access visual service LayoutInflater from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.app.ContextImpl.getSystemService(ContextImpl.java:1914)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.content.ContextWrapper.getSystemService(ContextWrapper.java:803)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.from(LayoutInflater.java:282)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at com.android.documentsui.DragShadowBuilder.<init>(DragShadowBuilder.java:49)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:195)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:166)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at com.android.documentsui.DragAndDropManager.create(DragAndDropManager.java:163)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at com.android.documentsui.DocumentsApplication.onCreate(DocumentsApplication.java:145)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1192)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6719)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.app.ActivityThread.access$1300(ActivityThread.java:237)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1913)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at android.app.ActivityThread.main(ActivityThread.java:7664)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at java.lang.reflect.Method.invoke(Native Method)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
-10-23 03:07:04.672  1979  1979 E ContextImpl: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006UI constants, such as display metrics or window metrics, must be accessed from Activity or other visual Context. Use an Activity or a Context created with Context#createWindowContext(int, Bundle), which are adjusted to the configuration and visual bounds of an area on screen
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: java.lang.IllegalArgumentException: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.ViewConfiguration.get(ViewConfiguration.java:510)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5317)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5467)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.ViewGroup.<init>(ViewGroup.java:697)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.widget.LinearLayout.<init>(LinearLayout.java:254)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.widget.LinearLayout.<init>(LinearLayout.java:250)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.widget.LinearLayout.<init>(LinearLayout.java:246)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createView(LayoutInflater.java:852)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createView(LayoutInflater.java:774)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.internal.policy.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:58)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:928)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:948)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1002)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:959)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:657)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:532)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:479)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragShadowBuilder.<init>(DragShadowBuilder.java:49)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:195)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:166)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager.create(DragAndDropManager.java:163)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DocumentsApplication.onCreate(DocumentsApplication.java:145)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1192)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6719)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.access$1300(ActivityThread.java:237)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1913)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.main(ActivityThread.java:7664)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Method.invoke(Native Method)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
-10-23 03:07:04.672  1979  1979 E ViewConfiguration: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
-10-23 03:07:04.673  1979  1979 E ContextImpl: Tried to access visual service WindowManager from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006 Visual services, such as WindowManager, WallpaperService or LayoutInflater should be accessed from Activity or other visual Context. Use an Activity or a Context created with Context#createWindowContext(int, Bundle), which are adjusted to the configuration and visual bounds of an area on screen.
-10-23 03:07:04.673  1979  1979 E ContextImpl: java.lang.IllegalAccessException: Tried to access visual service WindowManager from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.app.ContextImpl.getSystemService(ContextImpl.java:1914)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.content.ContextWrapper.getSystemService(ContextWrapper.java:803)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.content.Context.getSystemService(Context.java:3705)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.ViewConfiguration.<init>(ViewConfiguration.java:422)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.ViewConfiguration.get(ViewConfiguration.java:520)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.View.<init>(View.java:5317)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.View.<init>(View.java:5467)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.ViewGroup.<init>(ViewGroup.java:697)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.widget.LinearLayout.<init>(LinearLayout.java:254)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.widget.LinearLayout.<init>(LinearLayout.java:250)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.widget.LinearLayout.<init>(LinearLayout.java:246)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.createView(LayoutInflater.java:852)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.createView(LayoutInflater.java:774)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.internal.policy.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:58)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:928)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:948)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1002)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:959)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:657)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:532)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:479)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.documentsui.DragShadowBuilder.<init>(DragShadowBuilder.java:49)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:195)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:166)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.documentsui.DragAndDropManager.create(DragAndDropManager.java:163)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.documentsui.DocumentsApplication.onCreate(DocumentsApplication.java:145)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1192)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6719)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.app.ActivityThread.access$1300(ActivityThread.java:237)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1913)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at android.app.ActivityThread.main(ActivityThread.java:7664)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at java.lang.reflect.Method.invoke(Native Method)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
-10-23 03:07:04.673  1979  1979 E ContextImpl: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006UI constants, such as display metrics or window metrics, must be accessed from Activity or other visual Context. Use an Activity or a Context created with Context#createWindowContext(int, Bundle), which are adjusted to the configuration and visual bounds of an area on screen
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: java.lang.IllegalArgumentException: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.ViewConfiguration.get(ViewConfiguration.java:510)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5317)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5467)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.ViewGroup.<init>(ViewGroup.java:697)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.widget.LinearLayout.<init>(LinearLayout.java:254)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.widget.LinearLayout.<init>(LinearLayout.java:250)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.widget.LinearLayout.<init>(LinearLayout.java:246)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createView(LayoutInflater.java:852)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createView(LayoutInflater.java:774)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.internal.policy.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:58)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:928)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:948)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1002)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:959)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1121)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1082)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:680)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:532)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:479)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragShadowBuilder.<init>(DragShadowBuilder.java:49)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:195)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:166)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager.create(DragAndDropManager.java:163)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DocumentsApplication.onCreate(DocumentsApplication.java:145)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1192)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6719)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.access$1300(ActivityThread.java:237)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1913)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.main(ActivityThread.java:7664)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Method.invoke(Native Method)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
-10-23 03:07:04.674  1979  1979 E ViewConfiguration: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006UI constants, such as display metrics or window metrics, must be accessed from Activity or other visual Context. Use an Activity or a Context created with Context#createWindowContext(int, Bundle), which are adjusted to the configuration and visual bounds of an area on screen
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: java.lang.IllegalArgumentException: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.ViewConfiguration.get(ViewConfiguration.java:510)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5317)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5467)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.widget.ImageView.<init>(ImageView.java:195)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.widget.ImageView.<init>(ImageView.java:190)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.widget.ImageView.<init>(ImageView.java:186)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DropBadgeView.<init>(DropBadgeView.java:40)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createView(LayoutInflater.java:852)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1004)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1231)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1117)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1082)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1124)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1082)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:680)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:532)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:479)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragShadowBuilder.<init>(DragShadowBuilder.java:49)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:195)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:166)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager.create(DragAndDropManager.java:163)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DocumentsApplication.onCreate(DocumentsApplication.java:145)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1192)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6719)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.access$1300(ActivityThread.java:237)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1913)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.main(ActivityThread.java:7664)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Method.invoke(Native Method)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
-10-23 03:07:04.675  1979  1979 E ViewConfiguration: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006UI constants, such as display metrics or window metrics, must be accessed from Activity or other visual Context. Use an Activity or a Context created with Context#createWindowContext(int, Bundle), which are adjusted to the configuration and visual bounds of an area on screen
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: java.lang.IllegalArgumentException: Tried to access UI constants from a non-visual Context:com.android.documentsui.DocumentsApplication@a22d006
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.ViewConfiguration.get(ViewConfiguration.java:510)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5317)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.View.<init>(View.java:5467)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.widget.TextView.<init>(TextView.java:1000)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.widget.TextView.<init>(TextView.java:994)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.widget.TextView.<init>(TextView.java:990)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createView(LayoutInflater.java:852)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createView(LayoutInflater.java:774)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.internal.policy.PhoneLayoutInflater.onCreateView(PhoneLayoutInflater.java:58)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:928)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:948)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1002)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:959)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1121)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1082)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1124)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1082)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:680)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:532)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:479)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragShadowBuilder.<init>(DragShadowBuilder.java:49)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:195)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager$RuntimeDragAndDropManager.<init>(DragAndDropManager.java:166)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DragAndDropManager.create(DragAndDropManager.java:163)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.documentsui.DocumentsApplication.onCreate(DocumentsApplication.java:145)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1192)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6719)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.access$1300(ActivityThread.java:237)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1913)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.os.Handler.dispatchMessage(Handler.java:106)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at android.app.ActivityThread.main(ActivityThread.java:7664)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at java.lang.reflect.Method.invoke(Native Method)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
-10-23 03:07:04.678  1979  1979 E ViewConfiguration: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
-10-23 03:07:04.681  1979  1979 D DocumentsApplication: OverlayManager.setEnabled() result: true
+10-23 03:09:12.810    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:12.843   153   504 E Utils   : did not find channel-count and/or sample-rate
+10-23 03:09:12.843   153   504 E Utils   : did not find channel-count and/or sample-rate
+10-23 03:09:12.893   273   308 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
 --------- beginning of system
-10-23 03:07:04.683   271   299 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
-10-23 03:07:04.688  2009  2012 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 03:07:04.689   271   306 W System  : ClassLoader referenced unknown path: 
-10-23 03:07:04.691   271   305 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10116; state: DISABLED
-10-23 03:07:04.691   271   305 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10116; state: ENABLED
-10-23 03:07:04.691   271   312 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10116; state: ENABLED
-10-23 03:07:04.698  1187  1769 I MediaProvider: Begin Intent { act=android.intent.action.PACKAGE_DATA_CLEARED dat=package:com.wushisan.algertv.phone flg=0x1000010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
-10-23 03:07:04.699   134   134 D Zygote  : Forked child process 2014
-10-23 03:07:04.700   271   312 I ActivityManager: Start proc 2014:com.wushisan.algertv.phone/u0a116 for pre-top-activity {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
-10-23 03:07:04.700  2014  2014 I Zygote  : seccomp disabled by setenforce 0
-10-23 03:07:04.700  1187  1769 I MediaProvider: End Intent { act=android.intent.action.PACKAGE_DATA_CLEARED dat=package:com.wushisan.algertv.phone flg=0x1000010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService (has extras) }
-10-23 03:07:04.702   120   132 I adbd    : jdwp connection from 2014
-10-23 03:07:04.704   271  1139 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
-10-23 03:07:04.707   747   778 D DefaultDisplay: Available size changed from [Point(1080, 1017), Point(1794, 1731)] to [Point(1080, 1032), Point(1824, 1776)]
-10-23 03:07:04.707   747   747 D ConfigMonitor: Available size changed from [Point(1080, 1032), Point(1824, 1776)] to [Point(1080, 1017), Point(1794, 1731)]
-10-23 03:07:04.713   747  1362 E FrameEvents: updateAcquireFence: Did not find frame.
-10-23 03:07:04.716    96    96 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:04.716   747  1362 E FrameEvents: updateAcquireFence: Did not find frame.
-10-23 03:07:04.815   271  1139 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
-10-23 03:07:04.818   271  1139 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h676dp 420dpi nrml long port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1824) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.93} unchanged for IME proc com.android.inputmethod.latin
-10-23 03:07:04.818   271  1139 I ActivityTaskManager: Config changes=20000500 {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.93}
-10-23 03:07:04.819   271  1139 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h676dp 420dpi nrml long port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1824) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.93} unchanged for IME proc com.android.inputmethod.latin
-10-23 03:07:04.820   271  1139 I WindowManager: Override config changes=20000500 {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.93} for displayId=0
-10-23 03:07:04.820   271  1139 V ActivityTaskManager: Sending to IME proc com.android.inputmethod.latin new config {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.93}
-10-23 03:07:04.820   271  1139 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.93} unchanged for IME proc com.android.inputmethod.latin
-10-23 03:07:04.821   271  1139 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{f30d617 u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0x180e03
-10-23 03:07:04.821   271  1139 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{322deda u0 StatusBar}, surfaceController Surface(name=StatusBar)/@0x7d51180
-10-23 03:07:04.821   271  1139 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{41e9f13 u0 com.android.systemui.ImageWallpaper}, surfaceController Surface(name=com.android.systemui.ImageWallpaper)/@0x3f19114
-10-23 03:07:04.821   271  1139 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
-10-23 03:07:04.822   271  1139 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
-10-23 03:07:04.823   271  1139 W ActivityManager: Slow operation: 119ms so far, now at attachApplicationLocked: after mServices.attachApplicationLocked
-10-23 03:07:04.824   271   303 W Looper  : Slow dispatch took 117ms android.ui h=android.hardware.display.DisplayManagerGlobal$DisplayListenerDelegate c=null m=2
-10-23 03:07:04.824   271   581 W system_server: Long monitor contention with owner Binder:271_C (1139) at void com.android.server.am.ActivityManagerService.attachApplication(android.app.IApplicationThread, long)(ActivityManagerService.java:5455) waiters=0 in void com.android.server.am.ActivityManagerService.unregisterReceiver(android.content.IIntentReceiver) for 106ms
-10-23 03:07:04.832  2014  2014 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-23 03:07:04.832  2014  2014 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-23 03:07:04.838  2014  2014 I AlgerTV : TLS_SUPPORT_READY bundled=true
-10-23 03:07:04.843   747   779 D LoaderTask: loadWorkspace: loading default favorites
-10-23 03:07:04.849    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:04.855   271   581 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
-10-23 03:07:04.859   461   461 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
-10-23 03:07:04.861   271   304 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
-10-23 03:07:04.861   461   461 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
-10-23 03:07:04.861   271   304 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
-10-23 03:07:04.865   461   461 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
-10-23 03:07:04.870   461   461 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
-10-23 03:07:04.871  2014  2014 I AlgerTV : App onCreate
-10-23 03:07:04.872   461   461 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
-10-23 03:07:04.876   461   461 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
-10-23 03:07:04.893  2014  2014 I AlgerTV : HOME_LOAD_START
-10-23 03:07:04.893  2014  2014 I AlgerTV : HOME_SEED
-10-23 03:07:04.916    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:04.931    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
-10-23 03:07:04.983    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:05.049    96    96 I chatty  : uid=1000(system) /system/bin/surfaceflinger identical 1 line
-10-23 03:07:05.116    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:05.182    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-23 03:07:05.182    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:05.182  2014  2038 I Gralloc4: mapper 4.x is not supported
-10-23 03:07:05.182    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-23 03:07:05.182  2014  2038 W Gralloc3: mapper 3.x is not supported
-10-23 03:07:05.183    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-23 03:07:05.191    96   101 W ServiceManager: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10116 pid=2014
-10-23 03:07:05.191    96   101 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10116 => denied (136 us)
-10-23 03:07:05.192   271   310 I ActivityTaskManager: Displayed com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity: +508ms
-10-23 03:07:05.250   271   306 I WindowManager: Screen frozen for +545ms due to Window{68cd8d1 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
-10-23 03:07:05.270   271   306 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
-10-23 03:07:05.316    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:05.326  2014  2014 W AlgerTV : HOME_META_FAIL id=1978921795 attempt=0: HTTP 503
-10-23 03:07:05.383    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:05.449    96    96 I chatty  : uid=1000(system) /system/bin/surfaceflinger identical 1 line
-10-23 03:07:05.516    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:05.569  2014  2014 W AlgerTV : HOME_META_FAIL id=11641012 attempt=0: HTTP 503
-10-23 03:07:05.582    96    96 E CompositionEngine: [BackColorSurface#1] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 03:07:05.638  2014  2014 W AlgerTV : HOME_META_FAIL id=60198 attempt=0: HTTP 503
-10-23 03:07:05.789  2014  2014 W AlgerTV : HOME_META_FAIL id=71384707 attempt=0: HTTP 503
-10-23 03:07:05.851  2014  2014 W AlgerTV : HOME_META_FAIL id=60131 attempt=0: HTTP 503
-10-23 03:07:06.031  2014  2014 W AlgerTV : HOME_META_FAIL id=3778678 attempt=0: HTTP 503
-10-23 03:07:06.062  2014  2014 W AlgerTV : HOME_META_FAIL id=19723756 attempt=0: HTTP 503
-10-23 03:07:06.273  2014  2014 W AlgerTV : HOME_META_FAIL id=2884035 attempt=0: HTTP 503
-10-23 03:07:06.294  2014  2014 W AlgerTV : HOME_META_FAIL id=3779629 attempt=0: HTTP 503
-10-23 03:07:06.484  2014  2014 W AlgerTV : HOME_META_FAIL id=991319590 attempt=0: HTTP 503
-10-23 03:07:06.583  2014  2014 W AlgerTV : HOME_META_FAIL id=1978921795 attempt=1: HTTP 503
-10-23 03:07:06.783  2014  2014 W AlgerTV : HOME_META_FAIL id=11641012 attempt=1: HTTP 503
-10-23 03:07:06.849  2014  2014 W AlgerTV : HOME_META_FAIL id=60198 attempt=1: HTTP 503
-10-23 03:07:07.091  2014  2014 I AlgerTV : HOME_META_OK id=745956260 ms=2198
-10-23 03:07:07.206  2014  2014 I AlgerTV : HOME_META_OK id=180106 ms=2313
-10-23 03:07:07.295   271   305 I system_server: Explicit concurrent copying GC freed 65069(2807KB) AllocSpace objects, 12(440KB) LOS objects, 75% free, 8114KB/31MB, paused 42us total 21.384ms
-10-23 03:07:07.397  2014  2014 I AlgerTV : HOME_META_OK id=2809513713 ms=2504
-10-23 03:07:07.419  2014  2014 W AlgerTV : HOME_META_FAIL id=19723756 attempt=1: HTTP 503
-10-23 03:07:07.613  2014  2014 W AlgerTV : HOME_META_FAIL id=2884035 attempt=1: HTTP 503
-10-23 03:07:07.637  2014  2014 W AlgerTV : HOME_META_FAIL id=3779629 attempt=1: HTTP 503
-10-23 03:07:07.723   271  1106 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
-10-23 03:07:07.825  2014  2014 W AlgerTV : HOME_META_FAIL id=991319590 attempt=1: HTTP 503
-10-23 03:07:09.412  2014  2014 I AlgerTV : HOME_META_OK id=60131 ms=4519
-10-23 03:07:09.464  2014  2014 I AlgerTV : HOME_META_OK id=71384707 ms=4571
-10-23 03:07:09.566  2014  2014 I AlgerTV : HOME_META_OK id=3778678 ms=4673
-10-23 03:07:09.566  2014  2014 I AlgerTV : HOME_DONE ms=4673 meta=6/13 fallback=false
-10-23 03:07:09.566  2014  2068 I AlgerTV : HOME_CACHE_SAVED bytes=1315
-10-23 03:07:09.570  2014  2014 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv.phone
-10-23 03:07:09.571   271   588 D ConnectivityService: requestNetwork for uid/pid:10116/2014 NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv.phone] ]
-10-23 03:07:09.571   271   396 D ConnectivityService: NetReassign [19 : null → 100]
-10-23 03:07:09.571   271   424 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-23 03:07:09.571   271   392 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-23 03:07:09.571   811   811 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-23 03:07:09.571   271   392 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=19, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
-10-23 03:07:09.573   461   461 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
-10-23 03:07:09.573   811   811 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
-10-23 03:07:09.573   811   811 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
-10-23 03:07:11.505   145   179 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
-10-23 03:07:11.505   145   179 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
-10-23 03:07:14.638   271   304 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
-10-23 03:07:16.748    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-23 03:07:16.748  2081  2081 I Gralloc4: mapper 4.x is not supported
-10-23 03:07:16.748    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-23 03:07:16.748  2081  2081 W Gralloc3: mapper 3.x is not supported
-10-23 03:07:16.862  2085  2087 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 03:07:16.864  1187  1769 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 03:07:16.868  1187  1769 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 03:07:16.870  1187  1773 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
-10-23 03:07:16.870  1187  1773 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 03:07:16.870  1187  1773 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:07:16.870  1187  1773 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 03:09:12.896   273   566 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
+10-23 03:09:12.899   273   307 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10117; state: DISABLED
+10-23 03:09:12.899   273   307 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10117; state: ENABLED
+10-23 03:09:12.899   273   314 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10117; state: ENABLED
+10-23 03:09:12.900   273   307 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h676dp 420dpi nrml long port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1824) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.101} unchanged for IME proc com.android.inputmethod.latin
+10-23 03:09:12.900   273   307 I ActivityTaskManager: Config changes=20000580 {1.0 ?mcc?mnc [en_US] ldltr sw411dp w683dp h387dp 420dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1920, 1080) mAppBounds=Rect(0, 0 - 1794, 1080) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.101}
+10-23 03:09:12.901   273   307 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h676dp 420dpi nrml long port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1824) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.101} unchanged for IME proc com.android.inputmethod.latin
+10-23 03:09:12.902   273   307 I WindowManager: Override config changes=20000580 {1.0 ?mcc?mnc [en_US] ldltr sw411dp w683dp h387dp 420dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1920, 1080) mAppBounds=Rect(0, 0 - 1794, 1080) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.101} for displayId=0
+10-23 03:09:12.903   273   307 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
+10-23 03:09:12.903   273   307 V ActivityTaskManager: Sending to IME proc com.android.inputmethod.latin new config {1.0 ?mcc?mnc [en_US] ldltr sw411dp w683dp h387dp 420dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1920, 1080) mAppBounds=Rect(0, 0 - 1794, 1080) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.101}
+10-23 03:09:12.904   273   307 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w683dp h387dp 420dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1920, 1080) mAppBounds=Rect(0, 0 - 1794, 1080) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.101} unchanged for IME proc com.android.inputmethod.latin
+10-23 03:09:12.905   462   462 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-23 03:09:12.905   273   307 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{29f833d u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0xa76d34a
+10-23 03:09:12.905   273   307 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{f196ac0 u0 StatusBar}, surfaceController Surface(name=StatusBar)/@0xe34b2bb
+10-23 03:09:12.906   142   142 D Zygote  : Forked child process 2232
+10-23 03:09:12.908  2232  2232 I Zygote  : seccomp disabled by setenforce 0
+10-23 03:09:12.910   751   781 D DefaultDisplay: Available size changed from [Point(1080, 1017), Point(1794, 1731)] to [Point(1080, 1032), Point(1824, 1776)]
+10-23 03:09:12.911   751   751 D ConfigMonitor: Available size changed from [Point(1080, 1032), Point(1824, 1776)] to [Point(1080, 1017), Point(1794, 1731)]
+10-23 03:09:12.911   273   307 I InputManager-JNI: Viewport [0] to add: local:0, isActive: true
+10-23 03:09:12.911   273   314 I ActivityManager: Start proc 2232:com.wushisan.algertv.phone/u0a117 for pre-top-activity {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
+10-23 03:09:12.911   273   349 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
+10-23 03:09:12.911   123   132 I adbd    : jdwp connection from 2232
+10-23 03:09:12.913   273   312 W UsageStatsService: Unexpected activity event reported! (com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher event : 2 instanceId : 174494851)
+10-23 03:09:12.913   273   307 D CompatibilityChangeReporter: Compat change id reported: 136219221; UID 10116; state: DISABLED
+10-23 03:09:12.915   273   301 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
+10-23 03:09:12.921   751  1393 E FrameEvents: updateAcquireFence: Did not find frame.
+10-23 03:09:12.927   751  1393 E FrameEvents: updateAcquireFence: Did not find frame.
+10-23 03:09:12.931  2232  2232 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-23 03:09:12.931  2232  2232 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-23 03:09:12.934  2232  2232 I AlgerTV : TLS_SUPPORT_READY bundled=true
+10-23 03:09:12.938   751   782 D LoaderTask: loadWorkspace: loading default favorites
+10-23 03:09:12.944    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:12.962   751   751 D RecentsOrientedState: current RecentsOrientedState: [this=RecentsOrientedState@603483b mOrientationHandler=PortraitPagedViewHandler@cc14c6a mDisplayRotation=0 mTouchRotation=0 mRecentsActivityRotation=0 isRecentsActivityRotationAllowed=false mSystemRotation=false mFlags=291]
+10-23 03:09:12.962   751   751 D RecentsOrientedState: current RecentsOrientedState: [this=RecentsOrientedState@603483b mOrientationHandler=PortraitPagedViewHandler@cc14c6a mDisplayRotation=0 mTouchRotation=0 mRecentsActivityRotation=0 isRecentsActivityRotationAllowed=false mSystemRotation=false mFlags=291]
+10-23 03:09:12.967  2232  2232 I AlgerTV : App onCreate
+10-23 03:09:12.977   462   462 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
+10-23 03:09:12.977   462   462 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-23 03:09:12.978   462   462 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
+10-23 03:09:12.980   462   462 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
+10-23 03:09:12.981   462   462 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
+10-23 03:09:12.985   462   462 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
+10-23 03:09:12.987   751   782 D LoaderTask: loadWorkspace: loading default favorites
+10-23 03:09:12.992  2232  2232 I AlgerTV : HOME_LOAD_START
+10-23 03:09:12.992  2232  2232 I AlgerTV : HOME_SEED
+10-23 03:09:13.008   462   462 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-23 03:09:13.011    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.021  2081  2081 I AlgerTV : PLAYER_PREPARED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 dur=372715
+10-23 03:09:13.021  2081  2081 W AudioManager: Use of stream types is deprecated for operations other than volume control
+10-23 03:09:13.021  2081  2081 W AudioManager: See the documentation of requestAudioFocus() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+10-23 03:09:13.022   273  1171 I MediaFocusControl: requestAudioFocus() from uid/pid 10116/2081 clientId=android.media.AudioManager@9a6afcecom.wushisan.algertv.playback.PlayerController$1@cddceef callingPack=com.wushisan.algertv req=1 flags=0x0 sdk=28
+10-23 03:09:13.022   166  2118 I GenericSource: start
+10-23 03:09:13.023  2081  2081 I AlgerTV : PLAYER_STARTED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:09:13.024   273   273 D MediaSessionService: Media button session is changed to com.wushisan.algertv/AlgerTV (userId=0)
+10-23 03:09:13.028   273   566 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{f196ac0 u0 StatusBar}, surfaceController Surface(name=StatusBar)/@0xe34b2bb
+10-23 03:09:13.028   442   442 I AvrcpMediaPlayerList: onMediaKeyEventSessionChanged: token=com.wushisan.algertv
+10-23 03:09:13.029    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
+10-23 03:09:13.038   442   442 D AvrcpMediaPlayerList: setActivePlayer(): setting player to com.wushisan.algertv
+10-23 03:09:13.041   166  2276 I OMXClient: IOmx service obtained
+10-23 03:09:13.041   176   191 I OMXMaster: makeComponentInstance(OMX.google.mp3.decoder) in android.hardwar process
+10-23 03:09:13.042   176   191 E OMXNodeInstance: setConfig(0xe7880b00:google.mp3.decoder, ConfigPriority(0x6f800002)) ERROR: Undefined(0x80001001)
+10-23 03:09:13.042   166  2276 I ACodec  : codec does not support config priority (err -2147483648)
+10-23 03:09:13.042   176   191 E OMXNodeInstance: getConfig(0xe7880b00:google.mp3.decoder, ConfigAndroidVendorExtension(0x6f100004)) ERROR: Undefined(0x80001001)
+10-23 03:09:13.042   442   442 D AvrcpMediaPlayerList: sendMediaUpdate
+10-23 03:09:13.042   442   442 I AvrcpMediaPlayerList: sendMediaUpdate: Creating a one item queue for a player with no queue
+10-23 03:09:13.042   442   442 D AvrcpMediaPlayerList: sendMediaUpdate state=PlaybackState {state=3, position=13, buffered position=0, speed=1.0, updated=193436, actions=822, custom actions=[], active item id=-1, error=null}
+10-23 03:09:13.042   442   442 D AvrcpTargetService: onMediaUpdated: track_changed=true state=true queue=true
+10-23 03:09:13.042   442   442 D AvrcpNativeInterface: sendMediaUpdate: metadata=true playStatus=true queue=true
+10-23 03:09:13.042   442   442 D AvrcpTargetJni: sendMediaUpdateNative
+10-23 03:09:13.042   442   442 I bt_stack: [INFO:avrcp_service.cc(346)] virtual void bluetooth::avrcp::AvrcpService::SendMediaUpdate(bool, bool, bool) track_changed=1 :  play_state=1 :  queue=1
+10-23 03:09:13.042   442   442 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 1
+10-23 03:09:13.043   166  2276 I MediaCodec: MediaCodec will operate in async mode
+10-23 03:09:13.046   442   442 D AvrcpMediaPlayerList: onActiveSessionsChanged: controller: com.wushisan.algertv
+10-23 03:09:13.046   442   442 D AvrcpMediaPlayerList: Already have a controller for the player: com.wushisan.algertv, updating instead
+10-23 03:09:13.052   442   442 D AvrcpMediaPlayerList: sendMediaUpdate
+10-23 03:09:13.052   442   442 I AvrcpMediaPlayerList: sendMediaUpdate: Creating a one item queue for a player with no queue
+10-23 03:09:13.052   442   442 D AvrcpMediaPlayerList: sendMediaUpdate state=PlaybackState {state=3, position=23, buffered position=0, speed=1.0, updated=193446, actions=822, custom actions=[], active item id=-1, error=null}
+10-23 03:09:13.053   442   442 D AvrcpTargetService: onMediaUpdated: track_changed=false state=false queue=false
+10-23 03:09:13.053   442   442 D AvrcpNativeInterface: sendMediaUpdate: metadata=false playStatus=false queue=false
+10-23 03:09:13.053   442   442 D AvrcpTargetJni: sendMediaUpdateNative
+10-23 03:09:13.053   442   442 I bt_stack: [INFO:avrcp_service.cc(346)] virtual void bluetooth::avrcp::AvrcpService::SendMediaUpdate(bool, bool, bool) track_changed=0 :  play_state=0 :  queue=0
+10-23 03:09:13.053   273   301 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:09:13.053   273   301 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:09:13.055   273   552 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{29f833d u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0xa76d34a
+10-23 03:09:13.056    84   411 W AudioFlinger: createTrack_l(): mismatch between requested flags (00000008) and output flags (00000006)
+10-23 03:09:13.056    84   411 D AudioFlinger: Client defaulted notificationFrames to 11200 for frameCount 22400
+10-23 03:09:13.057    84   411 D AF::TrackHandle: OpPlayAudio: track:55 usage:1 not muted
+10-23 03:09:13.059    84    84 W APM::AudioPolicyEngine: getDevicesForStrategy() unknown strategy: -1
+10-23 03:09:13.059    84    84 W APM::AudioPolicyEngine: getDevicesForStrategy() unknown strategy: -1
+10-23 03:09:13.061   273   552 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:09:13.061    61   167 E FMQ     : grantorIdx must be less than 3
+10-23 03:09:13.061    61   167 E FMQ     : grantorIdx must be less than 3
+10-23 03:09:13.062    84   168 E FMQ     : grantorIdx must be less than 3
+10-23 03:09:13.062    84   168 E FMQ     : grantorIdx must be less than 3
+10-23 03:09:13.066   273   552 I system_server: oneway function results will be dropped but finished with status OK and parcel size 8
+10-23 03:09:13.077    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.143    97    97 I chatty  : uid=1000(system) /system/bin/surfaceflinger identical 1 line
+10-23 03:09:13.210    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.231   462   462 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:09:13.231   462   462 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:09:13.277    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.280   462   462 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:09:13.280   462   462 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:09:13.292    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 03:09:13.292  2232  2259 I Gralloc4: mapper 4.x is not supported
+10-23 03:09:13.292    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-23 03:09:13.292  2232  2259 W Gralloc3: mapper 3.x is not supported
+10-23 03:09:13.293    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 03:09:13.316   273   312 I ActivityTaskManager: Displayed com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity: +405ms
+10-23 03:09:13.318    97  1395 W ServiceManager: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10117 pid=2232
+10-23 03:09:13.318    97  1395 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10117 => denied (126 us)
+10-23 03:09:13.320  2232  2232 W AlgerTV : HOME_META_FAIL id=1978921795 attempt=0: HTTP 503
+10-23 03:09:13.320  2232  2232 W AlgerTV : HOME_META_FAIL id=180106 attempt=0: HTTP 503
+10-23 03:09:13.320  2232  2232 W AlgerTV : HOME_META_FAIL id=2809513713 attempt=0: HTTP 503
+10-23 03:09:13.320  2232  2232 W AlgerTV : HOME_META_FAIL id=745956260 attempt=0: HTTP 503
+10-23 03:09:13.345   273   301 I WindowManager: Screen frozen for +534ms due to Window{e41199c u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}
+10-23 03:09:13.392   273   301 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+10-23 03:09:13.396    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 03:09:13.410    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.477    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.517  2232  2232 W AlgerTV : HOME_META_FAIL id=11641012 attempt=0: HTTP 503
+10-23 03:09:13.540  2232  2232 W AlgerTV : HOME_META_FAIL id=71384707 attempt=0: HTTP 503
+10-23 03:09:13.543    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.610    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.610    97    97 E CompositionEngine: [RotationLayer#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.610  2232  2232 W AlgerTV : HOME_META_FAIL id=3778678 attempt=0: HTTP 503
+10-23 03:09:13.615  2232  2232 W AlgerTV : HOME_META_FAIL id=60131 attempt=0: HTTP 503
+10-23 03:09:13.678    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.678    97    97 E CompositionEngine: [com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.678    97    97 E CompositionEngine: [StatusBar#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.678    97    97 E CompositionEngine: [NavigationBar0#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.735  2232  2232 W AlgerTV : HOME_META_FAIL id=19723756 attempt=0: HTTP 503
+10-23 03:09:13.743    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.743    97    97 E CompositionEngine: [com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.743    97    97 E CompositionEngine: [StatusBar#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.743    97    97 E CompositionEngine: [NavigationBar0#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.762  2232  2232 W AlgerTV : HOME_META_FAIL id=3779629 attempt=0: HTTP 503
+10-23 03:09:13.810    97    97 E CompositionEngine: [com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.810    97    97 E CompositionEngine: [StatusBar#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.810    97    97 E CompositionEngine: [NavigationBar0#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:13.823  2232  2232 W AlgerTV : HOME_META_FAIL id=2884035 attempt=0: HTTP 503
+10-23 03:09:13.841  2232  2232 W AlgerTV : HOME_META_FAIL id=991319590 attempt=0: HTTP 503
+10-23 03:09:13.888   273   308 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+10-23 03:09:13.892   273   307 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w683dp h387dp 420dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1920, 1080) mAppBounds=Rect(0, 0 - 1794, 1080) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.131} unchanged for IME proc com.android.inputmethod.latin
+10-23 03:09:13.893   273   307 I ActivityTaskManager: Config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131}
+10-23 03:09:13.894   273   307 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w683dp h387dp 420dpi nrml land -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1920, 1080) mAppBounds=Rect(0, 0 - 1794, 1080) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90} s.131} unchanged for IME proc com.android.inputmethod.latin
+10-23 03:09:13.896   273   307 I WindowManager: Override config changes=20000480 {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131} for displayId=0
+10-23 03:09:13.896   273   307 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
+10-23 03:09:13.896   273   307 V ActivityTaskManager: Sending to IME proc com.android.inputmethod.latin new config {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131}
+10-23 03:09:13.896   273   307 W ActivityTaskManager: Current config: {1.0 ?mcc?mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1920) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131} unchanged for IME proc com.android.inputmethod.latin
+10-23 03:09:13.896   462   462 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-23 03:09:13.899   273   307 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{29f833d u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0xa76d34a
+10-23 03:09:13.899   273   307 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{f196ac0 u0 StatusBar}, surfaceController Surface(name=StatusBar)/@0xe34b2bb
+10-23 03:09:13.899   273   307 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{e41199c u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}, surfaceController Surface(name=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity)/@0x937c1c5
+10-23 03:09:13.901   273   307 I InputManager-JNI: Viewport [0] to add: local:0, isActive: true
+10-23 03:09:13.902   273   349 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
+10-23 03:09:13.944    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:13.946   273  1892 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{e41199c u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity}, surfaceController Surface(name=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity)/@0x937c1c5
+10-23 03:09:13.950   462   462 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-23 03:09:13.955   273   552 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{29f833d u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0xa76d34a
+10-23 03:09:14.021   273   566 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{f196ac0 u0 StatusBar}, surfaceController Surface(name=StatusBar)/@0xe34b2bb
+10-23 03:09:14.034   166  2217 I NuCachedSource2: caching reached eos.
+10-23 03:09:14.077   273   308 I WindowManager: Screen frozen for +334ms due to Window{f196ac0 u0 StatusBar}
+10-23 03:09:14.097   273   308 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+10-23 03:09:14.210    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:14.277    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:14.277    97    97 E CompositionEngine: [RotationLayer#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.337  2232  2232 W AlgerTV : HOME_META_FAIL id=2809513713 attempt=1: HTTP 503
+10-23 03:09:14.337  2232  2232 W AlgerTV : HOME_META_FAIL id=1978921795 attempt=1: HTTP 503
+10-23 03:09:14.344    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:14.344    97    97 E CompositionEngine: [com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.344    97    97 E CompositionEngine: [StatusBar#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.344    97    97 E CompositionEngine: [NavigationBar0#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.395  2232  2232 W AlgerTV : HOME_META_FAIL id=180106 attempt=1: HTTP 503
+10-23 03:09:14.409  2232  2232 W AlgerTV : HOME_META_FAIL id=745956260 attempt=1: HTTP 503
+10-23 03:09:14.410    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:14.410    97    97 E CompositionEngine: [com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.410    97    97 E CompositionEngine: [StatusBar#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.410    97    97 E CompositionEngine: [NavigationBar0#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.477    97    97 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 03:09:14.477    97    97 E CompositionEngine: [com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.477    97    97 E CompositionEngine: [StatusBar#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.477    97    97 E CompositionEngine: [NavigationBar0#0] Invalid device requested composition type change: CLIENT (1) --> DEVICE (2)
+10-23 03:09:14.550  2232  2232 W AlgerTV : HOME_META_FAIL id=11641012 attempt=1: HTTP 503
+10-23 03:09:14.568  2232  2232 W AlgerTV : HOME_META_FAIL id=71384707 attempt=1: HTTP 503
+10-23 03:09:14.677  2232  2232 W AlgerTV : HOME_META_FAIL id=3778678 attempt=1: HTTP 503
+10-23 03:09:14.744  2232  2232 W AlgerTV : HOME_META_FAIL id=60131 attempt=1: HTTP 503
+10-23 03:09:14.811  2232  2232 W AlgerTV : HOME_META_FAIL id=19723756 attempt=1: HTTP 503
+10-23 03:09:14.811  2232  2232 W AlgerTV : HOME_META_FAIL id=3779629 attempt=1: HTTP 503
+10-23 03:09:14.944  2232  2232 W AlgerTV : HOME_META_FAIL id=2884035 attempt=1: HTTP 503
+10-23 03:09:14.944  2232  2232 W AlgerTV : HOME_META_FAIL id=991319590 attempt=1: HTTP 503
+10-23 03:09:15.643  2232  2232 I AlgerTV : HOME_META_OK id=60198 ms=2651
+10-23 03:09:15.643  2232  2232 I AlgerTV : HOME_DONE ms=2651 meta=1/13 fallback=false
+10-23 03:09:15.644  2232  2303 I AlgerTV : HOME_CACHE_SAVED bytes=831
+10-23 03:09:15.682  2232  2232 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv.phone
+10-23 03:09:15.683   273   566 D ConnectivityService: requestNetwork for uid/pid:10117/2232 NetworkRequest [ TRACK_DEFAULT id=22, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ]
+10-23 03:09:15.683   273   399 D ConnectivityService: NetReassign [22 : null → 100]
+10-23 03:09:15.683   273   428 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=22, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-23 03:09:15.684   273   395 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=22, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-23 03:09:15.684   273   395 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=22, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-23 03:09:15.684   807   807 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=22, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10117 AdministratorUids: [] RequestorUid: 10117 RequestorPackageName: com.wushisan.algertv.phone] ] with score 70 and providerId 1
+10-23 03:09:15.686   462   462 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-23 03:09:15.686   807   807 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-23 03:09:15.686   807   807 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+10-23 03:09:15.940   273  1105 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-23 03:09:16.123   273   307 I system_server: Explicit concurrent copying GC freed 88517(3494KB) AllocSpace objects, 38(1608KB) LOS objects, 75% free, 8300KB/32MB, paused 42us total 22.495ms
+10-23 03:09:16.123   273   284 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.wm.-$$Lambda$ju_KnYxEFekr6LzoWamCeaO5FHQ
+10-23 03:09:16.124   273   284 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+10-23 03:09:22.563   170   174 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
+10-23 03:09:22.563   170   174 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
+10-23 03:09:24.965    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 03:09:24.965  2312  2312 I Gralloc4: mapper 4.x is not supported
+10-23 03:09:24.965    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-23 03:09:24.965  2312  2312 W Gralloc3: mapper 3.x is not supported
+10-23 03:09:25.066  2316  2318 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:09:25.067  1142  1774 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 03:09:25.069  1142  1774 W ExifInterface: Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.
+10-23 03:09:25.069  1142  1774 W ExifInterface: java.io.EOFException
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.media.ExifInterface$ByteOrderedDataInputStream.readShort(ExifInterface.java:4657)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.media.ExifInterface.readByteOrder(ExifInterface.java:3657)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.media.ExifInterface.parseTiffHeaders(ExifInterface.java:3677)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.media.ExifInterface.getRawAttributes(ExifInterface.java:2924)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.media.ExifInterface.loadAttributes(ExifInterface.java:1988)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.media.ExifInterface.<init>(ExifInterface.java:1607)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.media.ExifInterface.<init>(ExifInterface.java:1558)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanItemImage(ModernMediaScanner.java:1092)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanItem(ModernMediaScanner.java:780)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.access$800(ModernMediaScanner.java:139)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.visitFile(ModernMediaScanner.java:633)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.visitFile(ModernMediaScanner.java:272)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at java.nio.file.Files.walkFileTree(Files.java:2670)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at java.nio.file.Files.walkFileTree(Files.java:2742)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.walkFileTree(ModernMediaScanner.java:366)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.run(ModernMediaScanner.java:329)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanFile(ModernMediaScanner.java:239)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanFile(ModernMediaScanner.java:233)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.MediaProvider.scanFile(MediaProvider.java:1096)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.MediaService.onScanFile(MediaService.java:166)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at com.android.providers.media.MediaService.onHandleWork(MediaService.java:67)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at androidx.core.app.JobIntentService$CommandProcessor.doInBackground(JobIntentService.java:391)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at androidx.core.app.JobIntentService$CommandProcessor.doInBackground(JobIntentService.java:382)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at android.os.AsyncTask$3.call(AsyncTask.java:394)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-23 03:09:25.069  1142  1774 W ExifInterface: 	at java.lang.Thread.run(Thread.java:923)
+10-23 03:09:25.071  1142  1774 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 03:09:25.072  1142  1778 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-23 03:09:25.072  1142  1778 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 03:09:25.072  1142  1778 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-23 03:09:25.072  1142  1778 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)

@@ -1,31 +1,183 @@
 --------- beginning of system
-10-23 03:06:42.666   271   581 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv/.ui.MainActivity (has extras)} from uid 2000
+10-23 03:08:50.856   273  1892 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv/.ui.MainActivity (has extras)} from uid 2000
 --------- beginning of main
-10-23 03:06:42.666  1913  1915 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 03:06:58.729    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-23 03:06:58.729  1916  1916 I Gralloc4: mapper 4.x is not supported
-10-23 03:06:58.730    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-23 03:06:58.730  1916  1916 W Gralloc3: mapper 3.x is not supported
-10-23 03:06:58.921  1920  1922 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 03:06:58.922  1187  1769 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 03:06:58.929  1187  1769 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 03:06:58.929  1187  1773 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
-10-23 03:06:58.929  1187  1773 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 03:06:58.929  1187  1773 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
-10-23 03:06:58.929  1187  1773 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
-10-23 03:07:00.001   461   461 D KeyguardClockSwitch: Updating clock: 307
-10-23 03:07:00.002    70    70 D hwcomposer: VSYNC event status:1
-10-23 03:07:00.048    70    76 D hwcomposer: hw_composer sent 42 syncs in 82s
-10-23 03:07:00.381    70    70 D hwcomposer: VSYNC event status:0
-10-23 03:07:01.728   706   973 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
-10-23 03:07:01.728   706   973 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
+10-23 03:08:50.859  2078  2080 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:08:50.861   273   307 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10116; state: DISABLED
+10-23 03:08:50.861   273   307 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10116; state: DISABLED
+10-23 03:08:50.861   273   314 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10116; state: DISABLED
+10-23 03:08:50.865   142   142 D Zygote  : Forked child process 2081
+10-23 03:08:50.866  2081  2081 I Zygote  : seccomp disabled by setenforce 0
+10-23 03:08:50.866  2081  2081 I libc    : SetHeapTaggingLevel: tag level set to 0
+10-23 03:08:50.866   273   314 I ActivityManager: Start proc 2081:com.wushisan.algertv/u0a116 for pre-top-activity {com.wushisan.algertv/com.wushisan.algertv.ui.MainActivity}
+10-23 03:08:50.868   123   132 I adbd    : jdwp connection from 2081
+10-23 03:08:50.871   273  1892 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
+10-23 03:08:50.872   273   307 I ActivityManager: Killing 1268:com.android.printspooler/u0a87 (adj 985): empty #17
+10-23 03:08:50.874  2081  2081 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+10-23 03:08:50.875    74    81 D hwcomposer: hw_composer sent 66 syncs in 62s
+10-23 03:08:50.877   142   142 I Zygote  : Process 1268 exited due to signal 9 (Killed)
+10-23 03:08:50.884  2081  2081 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-23 03:08:50.884  2081  2081 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-23 03:08:50.885   462   462 V ShadeControllerImpl: NotificationShadeWindow: com.android.systemui.statusbar.phone.NotificationShadeWindowView{98b0da2 I.E...... ......ID 0,0-720,1280} canPanelBeCollapsed(): false
+10-23 03:08:50.887  2081  2081 I AlgerTV : TLS_SUPPORT_READY bundled=true
+10-23 03:08:50.888   462   462 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-23 03:08:50.914  2081  2081 I AlgerTV : App onCreate
+10-23 03:08:50.924  2081  2081 I AlgerTV : SMOKE_DIRECT_PLAY tv
+10-23 03:08:50.926   273   552 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:08:50.926   273   552 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:08:50.927  2081  2081 W MediaPlayer: Use of stream types is deprecated for operations other than volume control
+10-23 03:08:50.927  2081  2081 W MediaPlayer: See the documentation of setAudioStreamType() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+10-23 03:08:50.928  2081  2081 I AlgerTV : PLAYER_LOAD id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 name=Smoke Direct
+10-23 03:08:50.928  2081  2081 I AlgerTV : URL_DIRECT id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:08:50.929   273   301 I ActivityTaskManager: START u0 {cmp=com.wushisan.algertv/.ui.PlayerActivity} from uid 10116
+10-23 03:08:50.939  2081  2081 I AlgerTV : HOME_LOAD_START
+10-23 03:08:50.939  2081  2081 I AlgerTV : HOME_CACHE_HIT
+10-23 03:08:50.948   442   442 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 0
+10-23 03:08:50.949  2081  2081 I AlgerTV : PlaybackService onCreate
+10-23 03:08:50.949   442   442 V AvrcpMediaPlayerList: onActiveSessionsChanged: number of controllers: 1
+10-23 03:08:50.950   442   442 D AvrcpMediaPlayerList: onActiveSessionsChanged: controller: com.wushisan.algertv
+10-23 03:08:50.950   442   442 D AvrcpMediaPlayerList: Already have a controller for the player: com.wushisan.algertv, updating instead
+10-23 03:08:50.954  2081  2081 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+10-23 03:08:50.954  2081  2081 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
+10-23 03:08:50.954  2081  2081 V MediaHTTPService: MediaHTTPService(android.media.MediaHTTPService@190e550): Cookies: null
+10-23 03:08:50.955   166  1781 D NuPlayerDriver: NuPlayerDriver(0xebec0650) created, clientPid(2081)
+10-23 03:08:50.958  2081  2081 I AlgerTV : PLAYER_PREPARING id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:08:50.959   273  1892 W ActivityTaskManager: Tried to set launchTime (0) < mLastActivityLaunchTime (171277)
+10-23 03:08:50.961  2081  2099 V MediaHTTPService: makeHTTPConnection: CookieManager created: java.net.CookieManager@e9c0e68
+10-23 03:08:50.961  2081  2099 V MediaHTTPService: makeHTTPConnection(android.media.MediaHTTPService@190e550): cookieHandler: java.net.CookieManager@e9c0e68 Cookies: null
+10-23 03:08:50.964  2081  2081 I AlgerTV : HOME_ROWS_BUILT fallback=false
+10-23 03:08:51.015    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device manifest.
+10-23 03:08:51.153   273   273 D NotificationService: 0|com.wushisan.algertv|1001|null|10116: granting content://settings/system/notification_sound
+10-23 03:08:51.153   273   273 I chatty  : uid=1000 system_server identical 1 line
+10-23 03:08:51.153   273   273 D NotificationService: 0|com.wushisan.algertv|1001|null|10116: granting content://settings/system/notification_sound
+10-23 03:08:51.153   273   273 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
+10-23 03:08:51.156   462   462 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:08:51.156   462   462 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:08:51.158   462   462 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:08:51.158   462   462 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:08:51.159   462   462 D InterruptionStateProvider: No bubble up: not allowed to bubble: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:08:51.160   462   462 D InterruptionStateProvider: No heads up: unimportant notification: 0|com.wushisan.algertv|1001|null|10116
+10-23 03:08:51.209    74    74 D hwcomposer: VSYNC event status:0
+10-23 03:08:51.359    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 03:08:51.360  2081  2103 I Gralloc4: mapper 4.x is not supported
+10-23 03:08:51.360    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-23 03:08:51.360  2081  2103 W Gralloc3: mapper 3.x is not supported
+10-23 03:08:51.362    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 03:08:51.379  2081  2081 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:08:51.434  2081  2081 W AlgerTV : HOME_META_FAIL id=2809513713 attempt=0: HTTP 503
+10-23 03:08:51.434  2081  2081 W AlgerTV : HOME_META_FAIL id=745956260 attempt=0: HTTP 503
+10-23 03:08:51.436   273   312 I ActivityTaskManager: Displayed com.wushisan.algertv/.ui.PlayerActivity: +577ms
+10-23 03:08:51.441  2081  2081 W AlgerTV : HOME_META_FAIL id=11641012 attempt=0: HTTP 503
+10-23 03:08:51.486  2081  2081 I TetheringManager: registerTetheringEventCallback:com.wushisan.algertv
+10-23 03:08:51.487   273   572 D ConnectivityService: requestNetwork for uid/pid:10116/2081 NetworkRequest [ TRACK_DEFAULT id=21, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ]
+10-23 03:08:51.487   273   399 D ConnectivityService: NetReassign [21 : null → 100]
+10-23 03:08:51.487   273   428 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=21, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-23 03:08:51.487   273   395 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=21, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-23 03:08:51.487   273   395 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=21, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-23 03:08:51.487   807   807 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=21, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] with score 70 and providerId 1
+10-23 03:08:51.489   462   462 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-23 03:08:51.489   807   807 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-23 03:08:51.489   807   807 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+10-23 03:08:51.496  2081  2081 W AlgerTV : HOME_META_FAIL id=71384707 attempt=0: HTTP 503
+10-23 03:08:51.498   273   399 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=21, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10116 AdministratorUids: [] RequestorUid: 10116 RequestorPackageName: com.wushisan.algertv] ] (release request)
+10-23 03:08:51.500   462   462 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+10-23 03:08:51.500   807   807 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+10-23 03:08:51.500   807   807 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+10-23 03:08:51.639  2081  2081 W AlgerTV : HOME_META_FAIL id=60131 attempt=0: HTTP 503
+10-23 03:08:51.660  2081  2081 W AlgerTV : HOME_META_FAIL id=3778678 attempt=0: HTTP 503
+10-23 03:08:51.851   273  2141 I system_server: The ClassLoaderContext is a special shared library.
+10-23 03:08:51.851   273  2141 I system_server: The ClassLoaderContext is a special shared library.
+10-23 03:08:51.851  2081  2081 W AlgerTV : HOME_META_FAIL id=19723756 attempt=0: HTTP 503
+10-23 03:08:51.852   273  2141 I system_server: The ClassLoaderContext is a special shared library.
+10-23 03:08:51.860   273  2141 I chatty  : uid=1000 system_server identical 13 lines
+10-23 03:08:51.860   273  2141 I system_server: The ClassLoaderContext is a special shared library.
+10-23 03:08:51.863   150   150 V installd: DexInv: --- BEGIN '/apex/com.android.wifi/javalib/service-wifi.jar' ---
+10-23 03:08:51.871  2142  2142 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=8 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --classpath-dir=/apex/com.android.wifi/javalib --class-loader-context=PCL[];PCL[/system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
+10-23 03:08:51.872  2142  2142 I dex2oat32: setting boot class path to /apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/core-icu4j.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/framework-atb-backward-compatibility.jar
+10-23 03:08:51.886  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onIpClientCreated is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.886  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onNewDhcpResults is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.886  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onPostDhcpAction is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.886  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onPreDhcpAction is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.886  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onProvisioningFailure is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.886  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onProvisioningSuccess is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getCachedSizeField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getEnumVerifier is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getFieldNumber is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getMapDefaultEntry is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getMessageFieldClass is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getOneof is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getPresenceField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getPresenceMask is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getType is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.isEnforceUtf8 is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.isRequired is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/OneofInfo;.getCaseField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/OneofInfo;.getValueField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldArray;.dataAt is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldArray;.size is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldData;.computeSerializedSize is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldData;.writeTo is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/SoapEnvelope;.parseBody is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/SoapEnvelope;.writeBody is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.887  2142  2142 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/transport/HttpTransportSE;.getServiceConnection is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 03:08:51.900  2081  2081 W AlgerTV : HOME_META_FAIL id=3779629 attempt=0: HTTP 503
+10-23 03:08:51.921   487  1818 I PermissionControllerServiceImpl: Updating user sensitive for user 0
+10-23 03:08:51.923   487   565 I LancherPackagesLiveData: updating LauncherPackageLiveData
+10-23 03:08:51.925   487   556 I UserPackageInfos: updating UserPackageInfosLiveData for user 0
+10-23 03:08:52.066  2081  2081 W AlgerTV : HOME_META_FAIL id=2884035 attempt=0: HTTP 503
+10-23 03:08:52.139  2081  2081 W AlgerTV : HOME_META_FAIL id=991319590 attempt=0: HTTP 503
+10-23 03:08:52.294  2142  2142 I dex2oat32: dex2oat took 424.205ms (1.442s cpu) (threads: 4) arena alloc=0B (0B) java alloc=742KB (759840B) native alloc=2566KB (2627824B) free=4872KB (4989216B)
+10-23 03:08:52.299   150   150 V installd: DexInv: --- END '/apex/com.android.wifi/javalib/service-wifi.jar' (success) ---
+10-23 03:08:52.300   150   150 V installd: DexInv: --- BEGIN '/apex/com.android.os.statsd/javalib/service-statsd.jar' ---
+10-23 03:08:52.309  2148  2148 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=8 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --classpath-dir=/apex/com.android.os.statsd/javalib --class-loader-context=PCL[];PCL[/system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
+10-23 03:08:52.310  2148  2148 I dex2oat32: setting boot class path to /apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/core-icu4j.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/framework-atb-backward-compatibility.jar
+10-23 03:08:52.338  2148  2148 I dex2oat32: dex2oat took 29.511ms (31.347ms cpu) (threads: 4) arena alloc=0B (0B) java alloc=65KB (67368B) native alloc=1267KB (1298176B) free=1514KB (1550576B)
+10-23 03:08:52.341   150   150 V installd: DexInv: --- END '/apex/com.android.os.statsd/javalib/service-statsd.jar' (success) ---
+10-23 03:08:52.342   273  2141 I system_server: The ClassLoaderContext is a special shared library.
+10-23 03:08:52.381   273  2141 I chatty  : uid=1000 system_server identical 54 lines
+10-23 03:08:52.382   273  2141 I system_server: The ClassLoaderContext is a special shared library.
+10-23 03:08:52.382   273  2141 I BackgroundDexOptService: Pinning optimized code {android}
+10-23 03:08:52.477  2081  2081 I AlgerTV : HOME_META_OK id=1978921795 ms=1538
+10-23 03:08:52.500  2081  2081 I AlgerTV : HOME_META_OK id=60198 ms=1561
+10-23 03:08:52.542  2081  2081 I AlgerTV : HOME_META_OK id=180106 ms=1603
+10-23 03:08:52.563   170   174 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
+10-23 03:08:52.563   170   174 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
+10-23 03:08:52.752  2081  2081 W AlgerTV : HOME_META_FAIL id=71384707 attempt=1: HTTP 503
+10-23 03:08:52.768   723   978 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
+10-23 03:08:52.768   723   978 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
+10-23 03:08:53.134  2081  2081 W AlgerTV : HOME_META_FAIL id=60131 attempt=1: HTTP 503
+10-23 03:08:53.346  2081  2081 W AlgerTV : HOME_META_FAIL id=3778678 attempt=1: HTTP 503
+10-23 03:08:53.556  2081  2081 W AlgerTV : HOME_META_FAIL id=19723756 attempt=1: HTTP 503
+10-23 03:08:53.766  2081  2081 W AlgerTV : HOME_META_FAIL id=3779629 attempt=1: HTTP 503
+10-23 03:08:53.935   273   572 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:08:54.011  2081  2081 W AlgerTV : HOME_META_FAIL id=2884035 attempt=1: HTTP 503
+10-23 03:08:54.110  2081  2081 W AlgerTV : HOME_META_FAIL id=991319590 attempt=1: HTTP 503
+10-23 03:08:54.918   273  1105 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-23 03:08:55.014  2081  2081 I AlgerTV : HOME_META_OK id=2809513713 ms=4075
+10-23 03:08:55.059  2081  2081 I AlgerTV : HOME_META_OK id=745956260 ms=4120
+10-23 03:08:55.215  2081  2081 I AlgerTV : HOME_META_OK id=11641012 ms=4276
+10-23 03:08:55.215  2081  2081 I AlgerTV : HOME_DONE ms=4276 meta=6/13 fallback=false
+10-23 03:08:55.216  2081  2081 I AlgerTV : HOME_ROWS_BUILT fallback=false
+10-23 03:08:55.216  2081  2154 I AlgerTV : HOME_CACHE_SAVED bytes=1313
+10-23 03:09:00.001   462   462 D KeyguardClockSwitch: Updating clock: 309
+10-23 03:09:06.917    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 03:09:06.917  2155  2155 I Gralloc4: mapper 4.x is not supported
+10-23 03:09:06.917    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-23 03:09:06.917  2155  2155 W Gralloc3: mapper 3.x is not supported
+10-23 03:09:06.996  2159  2161 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 03:09:06.997  1142  1774 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 03:09:07.001  1142  1774 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 03:09:07.001  1142  1778 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-23 03:09:07.001  1142  1778 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 03:09:07.001  1142  1778 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-23 03:09:07.001  1142  1778 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)

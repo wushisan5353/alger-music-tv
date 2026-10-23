@@ -1,0 +1,4 @@
+10-23 03:08:50.924  2081  2081 I AlgerTV : SMOKE_DIRECT_PLAY tv
+10-23 03:08:50.928  2081  2081 I AlgerTV : PLAYER_LOAD id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 name=Smoke Direct
+10-23 03:08:50.958  2081  2081 I AlgerTV : PLAYER_PREPARING id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:08:51.379  2081  2081 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
