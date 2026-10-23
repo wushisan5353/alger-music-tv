@@ -1,7 +1,7 @@
-10-23 03:10:55.867  2098  2098 I AlgerTV : SMOKE_DIRECT_PLAY tv
-10-23 03:10:55.870  2098  2098 I AlgerTV : PLAYER_LOAD id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 name=Smoke Direct
-10-23 03:10:55.897  2098  2098 I AlgerTV : PLAYER_PREPARING id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
-10-23 03:10:56.248  2098  2098 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
-10-23 03:10:56.857  2098  2098 I AlgerTV : PLAYER_PREPARED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 dur=372715
-10-23 03:10:56.858  2098  2098 I AlgerTV : PLAYER_STARTED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
-10-23 03:10:56.864  2098  2098 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:21:04.464  2072  2072 I AlgerTV : SMOKE_DIRECT_PLAY tv
+10-23 03:21:04.468  2072  2072 I AlgerTV : PLAYER_LOAD id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 name=Smoke Direct
+10-23 03:21:04.506  2072  2072 I AlgerTV : PLAYER_PREPARING id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:21:04.842  2072  2072 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:21:05.490  2072  2072 I AlgerTV : PLAYER_PREPARED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 dur=372715
+10-23 03:21:05.491  2072  2072 I AlgerTV : PLAYER_STARTED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 03:21:05.498  2072  2072 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
