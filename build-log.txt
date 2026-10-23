@@ -13,14 +13,14 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:stripPhoneReleaseDebugSymbols NO-SOURCE
 > Task :app:extractPhoneReleaseNativeSymbolTables NO-SOURCE
 > Task :app:mergePhoneReleaseNativeDebugMetadata NO-SOURCE
-> Task :app:checkPhoneReleaseDuplicateClasses
 > Task :app:javaPreCompilePhoneRelease
+> Task :app:checkPhoneReleaseDuplicateClasses
 > Task :app:generatePhoneReleaseResValues
 > Task :app:checkPhoneReleaseAarMetadata
 > Task :app:mapPhoneReleaseSourceSetPaths
 > Task :app:generatePhoneReleaseResources
-> Task :app:packagePhoneReleaseResources
 > Task :app:mergePhoneReleaseResources
+> Task :app:packagePhoneReleaseResources
 > Task :app:createPhoneReleaseCompatibleScreenManifests
 > Task :app:extractDeepLinksPhoneRelease
 > Task :app:parsePhoneReleaseLocalResources
@@ -43,6 +43,7 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:mergeTvReleaseJniLibFolders
 > Task :app:mergeTvReleaseNativeLibs NO-SOURCE
 > Task :app:processPhoneReleaseResources
+> Task :app:stripTvReleaseDebugSymbols NO-SOURCE
 
 > Task :app:compilePhoneReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: []
@@ -57,7 +58,6 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:processPhoneReleaseJavaRes
 > Task :app:compilePhoneReleaseArtProfile
 > Task :app:optimizePhoneReleaseResources
-> Task :app:stripTvReleaseDebugSymbols NO-SOURCE
 > Task :app:extractTvReleaseNativeSymbolTables NO-SOURCE
 > Task :app:mergeTvReleaseNativeDebugMetadata NO-SOURCE
 > Task :app:checkTvReleaseDuplicateClasses
@@ -95,23 +95,23 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:mergeTvReleaseShaders
 > Task :app:compileTvReleaseShaders NO-SOURCE
 > Task :app:generateTvReleaseAssets UP-TO-DATE
-> Task :app:mergeTvReleaseGlobalSynthetics
 > Task :app:mergeTvReleaseAssets
-> Task :app:compileTvReleaseArtProfile
 > Task :app:compressTvReleaseAssets
+> Task :app:mergeTvReleaseGlobalSynthetics
 > Task :app:processTvReleaseJavaRes
+> Task :app:compileTvReleaseArtProfile
 > Task :app:mergeTvReleaseJavaResource
+> Task :app:optimizeTvReleaseResources
 > Task :app:collectTvReleaseDependencies
 > Task :app:sdkTvReleaseDependencyData
-> Task :app:optimizeTvReleaseResources
 > Task :app:writeTvReleaseAppMetadata
 > Task :app:writeTvReleaseSigningConfigVersions
 > Task :app:packageTvRelease
 > Task :app:createTvReleaseApkListingFileRedirect
 > Task :app:assembleTvRelease
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792715382776.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792715390095.json
 
-BUILD SUCCESSFUL in 51s
+BUILD SUCCESSFUL in 50s
 70 actionable tasks: 70 executed
 gradle_exit=0
