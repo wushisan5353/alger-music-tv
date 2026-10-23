@@ -41,12 +41,8 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:writePhoneReleaseSigningConfigVersions
 > Task :app:preTvReleaseBuild UP-TO-DATE
 > Task :app:mergeTvReleaseJniLibFolders
-> Task :app:mergeTvReleaseNativeLibs NO-SOURCE
-> Task :app:stripTvReleaseDebugSymbols NO-SOURCE
-> Task :app:extractTvReleaseNativeSymbolTables NO-SOURCE
-> Task :app:mergeTvReleaseNativeDebugMetadata NO-SOURCE
 > Task :app:processPhoneReleaseResources
-> Task :app:checkTvReleaseDuplicateClasses
+> Task :app:mergeTvReleaseNativeLibs NO-SOURCE
 
 > Task :app:compilePhoneReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: []
@@ -57,10 +53,14 @@ Note: Recompile with -Xlint:unchecked for details.
 
 > Task :app:dexBuilderPhoneRelease
 > Task :app:mergeDexPhoneRelease
-> Task :app:mergePhoneReleaseGlobalSynthetics
 > Task :app:processPhoneReleaseJavaRes
+> Task :app:mergePhoneReleaseGlobalSynthetics
 > Task :app:compilePhoneReleaseArtProfile
 > Task :app:optimizePhoneReleaseResources
+> Task :app:stripTvReleaseDebugSymbols NO-SOURCE
+> Task :app:extractTvReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeTvReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:checkTvReleaseDuplicateClasses
 > Task :app:javaPreCompileTvRelease
 > Task :app:checkTvReleaseAarMetadata
 > Task :app:generateTvReleaseResValues
@@ -83,24 +83,21 @@ Note: Recompile with -Xlint:unchecked for details.
 
 > Task :app:compileTvReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: []
-
-> Task :app:mergeExtDexTvRelease
-
-> Task :app:compileTvReleaseJavaWithJavac
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: /home/runner/work/alger-music-tv/alger-music-tv/app/src/tv/java/com/wushisan/algertv/ui/PlayerActivity.java uses unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 
+> Task :app:mergeExtDexTvRelease
 > Task :app:dexBuilderTvRelease
 > Task :app:mergeTvReleaseArtProfile
 > Task :app:mergeDexTvRelease
-> Task :app:mergeTvReleaseGlobalSynthetics
 > Task :app:mergeTvReleaseShaders
-> Task :app:compileTvReleaseArtProfile
 > Task :app:compileTvReleaseShaders NO-SOURCE
 > Task :app:generateTvReleaseAssets UP-TO-DATE
+> Task :app:mergeTvReleaseGlobalSynthetics
 > Task :app:mergeTvReleaseAssets
+> Task :app:compileTvReleaseArtProfile
 > Task :app:compressTvReleaseAssets
 > Task :app:processTvReleaseJavaRes
 > Task :app:mergeTvReleaseJavaResource
@@ -113,8 +110,8 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:createTvReleaseApkListingFileRedirect
 > Task :app:assembleTvRelease
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792716039193.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792716941781.json
 
-BUILD SUCCESSFUL in 1m 2s
+BUILD SUCCESSFUL in 46s
 70 actionable tasks: 70 executed
 gradle_exit=0
