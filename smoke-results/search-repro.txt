@@ -1,2 +1,3 @@
-SEARCH_ENTRY_XY=notfound
-SEARCH_CHIP_XY=notfound
+SEARCH_ENTRY_XY=540 331
+    mResumedActivity: ActivityRecord{762b171 u0 com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneSearchActivity t13}
+SEARCH_CHIP_XY=146 387
