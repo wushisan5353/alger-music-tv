@@ -112,7 +112,7 @@ jobs:
           else
             echo "apk_missing=1" >> "$STAGE/build-info.txt"
           fi
-          PHONE_APK=app/build/outputs/apk/phone/release/AlgerPhone-1.2.apk
+          PHONE_APK=app/build/outputs/apk/phone/release/AlgerPhone-1.3.apk
           if [ -f "$PHONE_APK" ]; then
             PSIZE=$(stat -c%s "$PHONE_APK")
             PSHA=$(sha256sum "$PHONE_APK" | cut -d' ' -f1)
@@ -150,14 +150,14 @@ jobs:
         run: |
           gh release create "${GITHUB_REF_NAME}" \
             app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk \
-            app/build/outputs/apk/phone/release/AlgerPhone-1.2.apk \
+            app/build/outputs/apk/phone/release/AlgerPhone-1.3.apk \
             --title "Alger轻听 ${GITHUB_REF_NAME}" \
             --notes "Alger轻听 ${GITHUB_REF_NAME}（原生轻量版，免登录；含电视版与手机版两个 APK）"
 
       - name: Fail if APK missing
         run: |
           test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk
-          test -f app/build/outputs/apk/phone/release/AlgerPhone-1.2.apk
+          test -f app/build/outputs/apk/phone/release/AlgerPhone-1.3.apk
 
   # In-workflow smoke on redroid 11 (ARM runner). This round the smoke also
   # reproduces the "first launch shows no list" report: BOTH flavors are
@@ -226,7 +226,7 @@ jobs:
           echo "apksigner=$APKSIGNER keytool=$(command -v keytool || echo MISSING)"
           if [ -n "$APKSIGNER" ] && command -v keytool > /dev/null; then
             keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
-            for f in apks/tv/release/AlgerTV-1.0.4.apk apks/phone/release/AlgerPhone-1.2.apk; do
+            for f in apks/tv/release/AlgerTV-1.0.4.apk apks/phone/release/AlgerPhone-1.3.apk; do
               if [ -f "$f" ] && "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 "$f"; then
                 echo "SMOKE_SIGNED $f"
               else
@@ -314,8 +314,8 @@ jobs:
           if grep -q "PLAYER_STARTED" smoke-out/logcat-TV-direct.txt; then echo "TV_DIRECT_STARTED" >> smoke-out/report.txt; else echo "TV_DIRECT_NOT_STARTED" >> smoke-out/report.txt; fi
           DERR=$(grep -c "PLAYER_ERROR" smoke-out/logcat-TV-direct.txt || true)
           echo "TV_DIRECT_PLAYER_ERRORS=$DERR" >> smoke-out/report.txt
-          DP1=$(grep -o "position=[0-9]*" smoke-out/media-session-TV-direct-1.txt | head -1 | cut -d= -f2)
-          DP2=$(grep -o "position=[0-9]*" smoke-out/media-session-TV-direct-2.txt | head -1 | cut -d= -f2)
+          DP1=$(awk '/package=com\.wushisan\.algertv$/{s=1} s && /state=PlaybackState/{print; exit}' smoke-out/media-session-TV-direct-1.txt | grep -o "position=[0-9]*" | cut -d= -f2)
+          DP2=$(awk '/package=com\.wushisan\.algertv$/{s=1} s && /state=PlaybackState/{print; exit}' smoke-out/media-session-TV-direct-2.txt | grep -o "position=[0-9]*" | cut -d= -f2)
           echo "TV_DIRECT_POSITION p1=${DP1:-none} p2=${DP2:-none}" >> smoke-out/report.txt
           if [ -n "$DP1" ] && [ -n "$DP2" ] && [ "$DP2" -gt "$DP1" ]; then echo "TV_DIRECT_POSITION_ADVANCED" >> smoke-out/report.txt; fi
           alive_line TV_DIRECT $TVPKG
@@ -325,7 +325,7 @@ jobs:
           PHACT=com.wushisan.algertv.ui.phone.PhoneMainActivity
           $D shell wm size 1080x1920
           $D shell wm density 420
-          if $D install -r apks/phone/release/AlgerPhone-1.2.apk > smoke-out/install-PHONE.txt 2>&1; then
+          if $D install -r apks/phone/release/AlgerPhone-1.3.apk > smoke-out/install-PHONE.txt 2>&1; then
             echo "PHONE_INSTALL_OK" >> smoke-out/report.txt
           else
             echo "PHONE_INSTALL_FAIL" >> smoke-out/report.txt
@@ -387,12 +387,12 @@ jobs:
           sleep 3
           shot shot-PHONE-search-open.png
           $D shell dumpsys activity activities > smoke-out/search-activities.txt 2>/dev/null
-          if grep -m1 "topResumedActivity" smoke-out/search-activities.txt | grep -q "PhoneSearchActivity"; then
+          if grep -m1 -E "topResumedActivity|mResumedActivity" smoke-out/search-activities.txt | grep -q "PhoneSearchActivity"; then
             echo "PHONE_SEARCH_OPEN_OK" >> smoke-out/report.txt
           else
             echo "PHONE_SEARCH_OPEN_FAIL" >> smoke-out/report.txt
           fi
-          grep -m1 "topResumedActivity" smoke-out/search-activities.txt >> smoke-out/search-repro.txt || true
+          grep -m1 -E "topResumedActivity|mResumedActivity" smoke-out/search-activities.txt >> smoke-out/search-repro.txt || true
           # Hot chip tap -> real search through the data source.
           $D shell uiautomator dump /sdcard/ui-search.xml > /dev/null 2>&1
           $D pull /sdcard/ui-search.xml smoke-out/ui-search.xml > /dev/null 2>&1 || true
@@ -435,8 +435,8 @@ jobs:
           if grep -q "PLAYER_STARTED" smoke-out/logcat-PHONE-direct.txt; then echo "PHONE_DIRECT_STARTED" >> smoke-out/report.txt; else echo "PHONE_DIRECT_NOT_STARTED" >> smoke-out/report.txt; fi
           PERR=$(grep -c "PLAYER_ERROR" smoke-out/logcat-PHONE-direct.txt || true)
           echo "PHONE_DIRECT_PLAYER_ERRORS=$PERR" >> smoke-out/report.txt
-          PP1=$(grep -o "position=[0-9]*" smoke-out/media-session-PHONE-direct-1.txt | head -1 | cut -d= -f2)
-          PP2=$(grep -o "position=[0-9]*" smoke-out/media-session-PHONE-direct-2.txt | head -1 | cut -d= -f2)
+          PP1=$(awk 'index($0,"package=com.wushisan.algertv.phone"){s=1} s && /state=PlaybackState/{print; exit}' smoke-out/media-session-PHONE-direct-1.txt | grep -o "position=[0-9]*" | cut -d= -f2)
+          PP2=$(awk 'index($0,"package=com.wushisan.algertv.phone"){s=1} s && /state=PlaybackState/{print; exit}' smoke-out/media-session-PHONE-direct-2.txt | grep -o "position=[0-9]*" | cut -d= -f2)
           echo "PHONE_DIRECT_POSITION p1=${PP1:-none} p2=${PP2:-none}" >> smoke-out/report.txt
           if [ -n "$PP1" ] && [ -n "$PP2" ] && [ "$PP2" -gt "$PP1" ]; then echo "PHONE_DIRECT_POSITION_ADVANCED" >> smoke-out/report.txt; fi
           alive_line PHONE_DIRECT $PHPKG
@@ -500,7 +500,7 @@ jobs:
           sudo apt-get install -y apksigner default-jdk-headless android-tools-adb > /dev/null 2>&1 || true
           APKSIGNER=$(command -v apksigner || ls $ANDROID_HOME/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
           keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
-          "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 apks/phone/release/AlgerPhone-1.2.apk && echo "MODERN_SIGNED" || echo "MODERN_SIGN_FAIL"
+          "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 apks/phone/release/AlgerPhone-1.3.apk && echo "MODERN_SIGNED" || echo "MODERN_SIGN_FAIL"
           cat > tapcalc.py << 'PYEOF'
           import re, sys
           xml = open(sys.argv[1], encoding='utf-8', errors='ignore').read()
@@ -517,6 +517,25 @@ jobs:
                   sys.exit(0)
           sys.exit(1)
           PYEOF
+          cat > tapnth.py << 'PYEOF'
+          import re, sys
+          xml = open(sys.argv[1], encoding='utf-8', errors='ignore').read()
+          pat, mode, nth = sys.argv[2], sys.argv[3], int(sys.argv[4])
+          hits = []
+          for m in re.finditer(r'<node[^>]*>', xml):
+              node = m.group(0)
+              if mode == 'id' and ('resource-id="com.wushisan.algertv.phone:id/' + pat + '"') not in node:
+                  continue
+              if mode == 'text' and ('text="' + pat + '"') not in node:
+                  continue
+              b = re.search(r'bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', node)
+              if b:
+                  hits.append(((int(b.group(1)) + int(b.group(3))) // 2, (int(b.group(2)) + int(b.group(4))) // 2))
+          if nth < len(hits):
+              print(hits[nth][0], hits[nth][1])
+              sys.exit(0)
+          sys.exit(1)
+          PYEOF
           cat > repro-phone.sh << 'REPROEOF'
           #!/bin/bash
           # $1 = env label (redroid13 / emulator34). Expects adb ready.
@@ -528,12 +547,17 @@ jobs:
           echo "PHONE_MODERN_ENV=$1" >> "$OUT/report.txt"
           adb wait-for-device
           adb shell getprop ro.build.version.sdk > "$OUT/sdk.txt" 2>/dev/null
-          if adb install -r apks/phone/release/AlgerPhone-1.2.apk > "$OUT/install.txt" 2>&1; then
+          if adb install -r apks/phone/release/AlgerPhone-1.3.apk > "$OUT/install.txt" 2>&1; then
             echo "PHONE_MODERN_INSTALL_OK" >> "$OUT/report.txt"
           else
             echo "PHONE_MODERN_INSTALL_FAIL" >> "$OUT/report.txt"; exit 0
           fi
           adb shell pm clear $PKG
+          # Pre-grant notifications: on API 33+ the first FGS notification
+          # raises the system POST_NOTIFICATIONS grant dialog, which sits in
+          # front of every later segment (it poisoned the search repro in
+          # the 0fe3adf round - uiautomator only saw permissioncontroller).
+          adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS > /dev/null 2>&1 || true
           adb logcat -c
           adb shell am start -n "$PKG/$ACT" --es alger_smoke 1
           sleep 30
@@ -552,8 +576,8 @@ jobs:
           fi
           grep -E "SMOKE_PHONE_|PLAYER_" "$OUT/logcat-modern.txt" | head -40 > "$OUT/play-markers.txt" || true
           if grep -q "PLAYER_STARTED" "$OUT/logcat-modern.txt"; then echo "PHONE_MODERN_PLAYER_STARTED" >> "$OUT/report.txt"; fi
-          P1=$(grep -o "position=[0-9]*" "$OUT/media-session-1.txt" | head -1 | cut -d= -f2)
-          P2=$(grep -o "position=[0-9]*" "$OUT/media-session-2.txt" | head -1 | cut -d= -f2)
+          P1=$(awk 'index($0,"package=com.wushisan.algertv.phone"){s=1} s && /state=PlaybackState/{print; exit}' "$OUT/media-session-1.txt" | grep -o "position=[0-9]*" | cut -d= -f2)
+          P2=$(awk 'index($0,"package=com.wushisan.algertv.phone"){s=1} s && /state=PlaybackState/{print; exit}' "$OUT/media-session-2.txt" | grep -o "position=[0-9]*" | cut -d= -f2)
           echo "PHONE_MODERN_POSITION p1=${P1:-none} p2=${P2:-none}" >> "$OUT/report.txt"
           if [ -n "$P1" ] && [ -n "$P2" ] && [ "$P2" -gt "$P1" ]; then echo "PHONE_MODERN_POSITION_ADVANCED" >> "$OUT/report.txt"; fi
           if grep -q "PLAYING" "$OUT/media-session-2.txt"; then echo "PHONE_MODERN_SESSION_PLAYING" >> "$OUT/report.txt"; fi
@@ -567,6 +591,127 @@ jobs:
           MERR=$(grep -c "PLAYER_ERROR" "$OUT/logcat-modern.txt" || true)
           echo "PHONE_MODERN_FIRST_TRACK load=${MFL:-none} start=${MFS:-none} errors=$MERR" >> "$OUT/report.txt"
           if [ -n "$MFL" ] && [ "$MFL" = "$MFS" ] && [ "$MERR" = "0" ]; then echo "PHONE_MODERN_FIRST_TRACK_OK" >> "$OUT/report.txt"; else echo "PHONE_MODERN_FIRST_TRACK_FAIL" >> "$OUT/report.txt"; fi
+          # ---- Navigate-while-playing repro (user report on phone 1.2:
+          # while a track is playing, switching playlists or searching for
+          # a new song kills the app). Real uiautomator path from wherever
+          # the playback segment ended: walk back to home -> open the 2nd
+          # chart playlist -> tap its first track (queue switch while the
+          # old queue plays) -> back home -> search -> hot chip -> early
+          # BACK (destroys the search activity while its pic_id rows still
+          # have cover resolves in flight) -> reopen search -> results ->
+          # tap first result (queue switch from search). Alive + FATAL are
+          # checked after every step; any FATAL in this segment's logcat
+          # saves the full AndroidRuntime stack to phone-crash.txt.
+          echo "NAV_SEGMENT_START" >> "$OUT/report.txt"
+          adb logcat -c
+          nav_top() {
+            adb shell dumpsys activity activities 2>/dev/null | grep -m1 -E "topResumedActivity|mResumedActivity" | grep -o "Phone[A-Za-z]*Activity" | head -1
+          }
+          nav_alive() {
+            NPID=$(adb shell pidof $PKG | tr -d '\r')
+            if [ -n "$NPID" ]; then echo "NAV_ALIVE $1 pid=$NPID" >> "$OUT/report.txt"; else echo "NAV_DEAD $1" >> "$OUT/report.txt"; fi
+          }
+          nav_shot() {
+            adb shell screencap -p /sdcard/nav.png
+            adb pull /sdcard/nav.png "$OUT/shot-PHONE-nav-$1.png" > /dev/null 2>&1 || true
+          }
+          nav_back_home() {
+            for i in 1 2 3; do
+              T=$(nav_top)
+              case "$T" in
+                PhonePlayerActivity|PhonePlaylistActivity|PhoneSearchActivity|PhoneQueueActivity)
+                  adb shell input keyevent 4; sleep 2 ;;
+                *) break ;;
+              esac
+            done
+          }
+          echo "NAV_TOP_START=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive start
+          nav_back_home
+          echo "NAV_TOP_HOME=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive home
+          adb shell uiautomator dump /sdcard/ui-navhome.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-navhome.xml "$OUT/ui-nav-home.xml" > /dev/null 2>&1 || true
+          RXY=$(python3 tapnth.py "$OUT/ui-nav-home.xml" row_name id 1 2>/dev/null)
+          echo "NAV_ROW2_XY=${RXY:-notfound}" >> "$OUT/report.txt"
+          if [ -n "$RXY" ]; then adb shell input tap $RXY; fi
+          sleep 9
+          echo "NAV_TOP_PLAYLIST2=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive playlist2
+          nav_shot playlist2
+          adb shell uiautomator dump /sdcard/ui-navpl2.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-navpl2.xml "$OUT/ui-nav-playlist2.xml" > /dev/null 2>&1 || true
+          NROWS=$(grep -o "id/track_name" "$OUT/ui-nav-playlist2.xml" 2>/dev/null | wc -l)
+          echo "NAV_PLAYLIST2_ROWS=$NROWS" >> "$OUT/report.txt"
+          TXY=$(python3 tapnth.py "$OUT/ui-nav-playlist2.xml" track_name id 0 2>/dev/null)
+          echo "NAV_TRACK1_XY=${TXY:-notfound}" >> "$OUT/report.txt"
+          if [ -n "$TXY" ]; then adb shell input tap $TXY; fi
+          sleep 8
+          echo "NAV_TOP_AFTER_TRACKTAP=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive after_track_tap
+          nav_shot after-track-tap
+          adb shell dumpsys media_session > "$OUT/media-session-nav.txt" 2>/dev/null
+          nav_back_home
+          echo "NAV_TOP_HOME2=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive home2
+          adb shell uiautomator dump /sdcard/ui-navhome2.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-navhome2.xml "$OUT/ui-nav-home2.xml" > /dev/null 2>&1 || true
+          SXY=$(python3 tapcalc.py "$OUT/ui-nav-home2.xml" search_entry id 2>/dev/null)
+          echo "NAV_SEARCH_XY=${SXY:-notfound}" >> "$OUT/report.txt"
+          if [ -n "$SXY" ]; then adb shell input tap $SXY; fi
+          sleep 3
+          echo "NAV_TOP_SEARCH=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive search_open
+          adb shell uiautomator dump /sdcard/ui-navsearch.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-navsearch.xml "$OUT/ui-nav-search.xml" > /dev/null 2>&1 || true
+          CXY2=$(python3 tapcalc.py "$OUT/ui-nav-search.xml" 周杰伦 text 2>/dev/null)
+          echo "NAV_CHIP_XY=${CXY2:-notfound}" >> "$OUT/report.txt"
+          if [ -n "$CXY2" ]; then adb shell input tap $CXY2; fi
+          sleep 3
+          adb shell input keyevent 4
+          sleep 4
+          echo "NAV_TOP_AFTER_EARLY_BACK=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive after_early_back
+          nav_shot after-early-back
+          adb shell uiautomator dump /sdcard/ui-navhome3.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-navhome3.xml "$OUT/ui-nav-home3.xml" > /dev/null 2>&1 || true
+          SXY2=$(python3 tapcalc.py "$OUT/ui-nav-home3.xml" search_entry id 2>/dev/null)
+          echo "NAV_SEARCH2_XY=${SXY2:-notfound}" >> "$OUT/report.txt"
+          if [ -n "$SXY2" ]; then adb shell input tap $SXY2; fi
+          sleep 3
+          adb shell uiautomator dump /sdcard/ui-navsearch2.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-navsearch2.xml "$OUT/ui-nav-search2.xml" > /dev/null 2>&1 || true
+          CXY3=$(python3 tapcalc.py "$OUT/ui-nav-search2.xml" 周杰伦 text 2>/dev/null)
+          echo "NAV_CHIP2_XY=${CXY3:-notfound}" >> "$OUT/report.txt"
+          if [ -n "$CXY3" ]; then adb shell input tap $CXY3; fi
+          sleep 9
+          adb shell uiautomator dump /sdcard/ui-navres.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-navres.xml "$OUT/ui-nav-results.xml" > /dev/null 2>&1 || true
+          SROWS=$(grep -o "id/track_name" "$OUT/ui-nav-results.xml" 2>/dev/null | wc -l)
+          echo "NAV_SEARCH_ROWS=$SROWS" >> "$OUT/report.txt"
+          nav_alive search_results
+          nav_shot search-results
+          RXY2=$(python3 tapnth.py "$OUT/ui-nav-results.xml" track_name id 0 2>/dev/null)
+          echo "NAV_RESULT1_XY=${RXY2:-notfound}" >> "$OUT/report.txt"
+          if [ -n "$RXY2" ]; then adb shell input tap $RXY2; fi
+          sleep 8
+          echo "NAV_TOP_FINAL=$(nav_top)" >> "$OUT/report.txt"
+          nav_alive final
+          nav_shot final
+          adb shell dumpsys media_session > "$OUT/media-session-nav-final.txt" 2>/dev/null
+          adb logcat -d > "$OUT/logcat-nav.txt" 2>/dev/null
+          NFATAL=$(grep -c "FATAL EXCEPTION" "$OUT/logcat-nav.txt" || true)
+          echo "NAV_FATAL_COUNT=$NFATAL" >> "$OUT/report.txt"
+          if [ "$NFATAL" != "0" ]; then
+            grep -A 60 "FATAL EXCEPTION" "$OUT/logcat-nav.txt" | head -130 > "$OUT/phone-crash-nav.txt"
+            cp "$OUT/phone-crash-nav.txt" "$OUT/phone-crash.txt"
+          fi
+          if grep -q "NAV_DEAD" "$OUT/report.txt" || [ "$NFATAL" != "0" ]; then
+            echo "PHONE_NAV_CRASH" >> "$OUT/report.txt"
+          else
+            echo "PHONE_NAV_OK" >> "$OUT/report.txt"
+          fi
+          if grep -q "PLAYING" "$OUT/media-session-nav-final.txt"; then echo "PHONE_NAV_SESSION_PLAYING_END" >> "$OUT/report.txt"; fi
           # ---- Direct-URL pipeline: proves prepare/start/position with the
           # data source bypassed (cloud egress is GDStudio-rate-limited).
           adb shell am force-stop $PKG
@@ -582,8 +727,8 @@ jobs:
           if grep -q "PLAYER_STARTED" "$OUT/logcat-direct.txt"; then echo "PHONE_MODERN_DIRECT_STARTED" >> "$OUT/report.txt"; else echo "PHONE_MODERN_DIRECT_NOT_STARTED" >> "$OUT/report.txt"; fi
           MDERR=$(grep -c "PLAYER_ERROR" "$OUT/logcat-direct.txt" || true)
           echo "PHONE_MODERN_DIRECT_PLAYER_ERRORS=$MDERR" >> "$OUT/report.txt"
-          MP1=$(grep -o "position=[0-9]*" "$OUT/media-session-direct-1.txt" | head -1 | cut -d= -f2)
-          MP2=$(grep -o "position=[0-9]*" "$OUT/media-session-direct-2.txt" | head -1 | cut -d= -f2)
+          MP1=$(awk 'index($0,"package=com.wushisan.algertv.phone"){s=1} s && /state=PlaybackState/{print; exit}' "$OUT/media-session-direct-1.txt" | grep -o "position=[0-9]*" | cut -d= -f2)
+          MP2=$(awk 'index($0,"package=com.wushisan.algertv.phone"){s=1} s && /state=PlaybackState/{print; exit}' "$OUT/media-session-direct-2.txt" | grep -o "position=[0-9]*" | cut -d= -f2)
           echo "PHONE_MODERN_DIRECT_POSITION p1=${MP1:-none} p2=${MP2:-none}" >> "$OUT/report.txt"
           if [ -n "$MP1" ] && [ -n "$MP2" ] && [ "$MP2" -gt "$MP1" ]; then echo "PHONE_MODERN_DIRECT_POSITION_ADVANCED" >> "$OUT/report.txt"; fi
           if grep -q "PLAYING" "$OUT/media-session-direct-2.txt"; then echo "PHONE_MODERN_DIRECT_SESSION_PLAYING" >> "$OUT/report.txt"; fi
@@ -602,7 +747,7 @@ jobs:
           adb shell screencap -p /sdcard/modern-search.png
           adb pull /sdcard/modern-search.png "$OUT/shot-PHONE-modern-search.png" > /dev/null 2>&1 || true
           adb shell dumpsys activity activities > "$OUT/search-modern-activities.txt" 2>/dev/null
-          if grep -m1 "topResumedActivity" "$OUT/search-modern-activities.txt" | grep -q "PhoneSearchActivity"; then
+          if grep -m1 -E "topResumedActivity|mResumedActivity" "$OUT/search-modern-activities.txt" | grep -q "PhoneSearchActivity"; then
             echo "PHONE_MODERN_SEARCH_OPEN_OK" >> "$OUT/report.txt"
           else
             echo "PHONE_MODERN_SEARCH_OPEN_FAIL" >> "$OUT/report.txt"
