@@ -1,122 +1,136 @@
 --------- beginning of system
-10-23 00:33:07.624   259   552 I ActivityManager: Start proc 1813:com.android.quicksearchbox/u0a99 for broadcast {com.android.quicksearchbox/com.android.quicksearchbox.SearchWidgetProvider}
+10-23 00:33:22.509   250   559 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{832fe3c u0 com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher}, surfaceController Surface(name=com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher)/@0xec41c8e
+10-23 00:33:22.515   250   303 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{832fe3c u0 com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher}, surfaceController Surface(name=com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher)/@0xec41c8e
+10-23 00:33:22.515   250   303 I chatty  : uid=1000(system) android.anim identical 1 line
+10-23 00:33:22.516   250   303 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{832fe3c u0 com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher}, surfaceController Surface(name=com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher)/@0xec41c8e
+10-23 00:33:22.516   250   303 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
+10-23 00:33:22.517   250   303 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{832fe3c u0 com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher}, surfaceController Surface(name=com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher)/@0xec41c8e
+10-23 00:33:22.517   250   303 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{832fe3c u0 com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher}, surfaceController Surface(name=com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher)/@0xec41c8e
 --------- beginning of main
-10-23 00:33:07.639  1813  1813 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
-10-23 00:33:07.639  1813  1813 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
-10-23 00:33:07.639  1813  1813 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
-10-23 00:33:07.639  1813  1813 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
-10-23 00:33:07.641  1813  1813 I .quicksearchbo: The ClassLoaderContext is a special shared library.
-10-23 00:33:07.644  1813  1813 I .quicksearchbo: The ClassLoaderContext is a special shared library.
-10-23 00:33:07.645  1813  1813 D nativeloader: classloader namespace configured for unbundled product apk. library_path=/system/product/app/QuickSearchBox/lib/arm64:/product/lib64:/system/product/lib64
-10-23 00:33:07.648  1813  1813 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-23 00:33:07.648  1813  1813 D NetworkSecurityConfig: No Network Security Config specified, using platform default
-10-23 00:33:07.653    69    69 D hwcomposer: VSYNC event status:0
-10-23 00:33:07.653    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:33:07.675   259   403 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
-10-23 00:33:07.678   709   740 D LoaderTask: loadWorkspace: loading default favorites
-10-23 00:33:07.679   259   296 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
-10-23 00:33:07.679  1835  1838 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 00:33:07.683   259   547 I ActivityManager: Killing 1023:com.android.deskclock/u0a104 (adj 985): empty #17
-10-23 00:33:07.696   444   444 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
-10-23 00:33:07.702   259   547 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{32813df u0 StatusBar}, surfaceController Surface(name=StatusBar)/@0x9a43885
-10-23 00:33:07.719   141   141 I Zygote  : Process 1023 exited due to signal 9 (Killed)
-10-23 00:33:07.723   259   547 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{76b10ef u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0x84109fc
-10-23 00:33:07.763   444   444 D KeyguardViewMediator: adjustStatusBarLocked: mShowing=false mOccluded=false isSecure=false force=false --> flags=0x0
-10-23 00:33:07.787   259   302 I WindowManager: Screen frozen for +512ms due to Window{32813df u0 StatusBar}
-10-23 00:33:07.837   259   302 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
-10-23 00:33:07.854    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:33:07.896   444   444 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
-10-23 00:33:07.896   444   444 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
-10-23 00:33:07.897   444   444 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
-10-23 00:33:07.899   444   444 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
-10-23 00:33:07.901   444   444 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
-10-23 00:33:07.904   444   444 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
-10-23 00:33:07.920    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:33:07.987    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:33:08.003   444   444 E QSAnimator: tileView is null wifi
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null bt
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null dnd
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null rotation
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null battery
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null airplane
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null cast
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null screenrecord
-10-23 00:33:08.005   444   444 E QSAnimator: tileView is null dbg:mem
-10-23 00:33:08.053    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:33:08.120    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:33:08.127   259   300 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
-10-23 00:33:09.873   259   301 I system_server: Explicit concurrent copying GC freed 59485(2833KB) AllocSpace objects, 22(576KB) LOS objects, 75% free, 7936KB/31MB, paused 25us total 20.124ms
-10-23 00:33:09.873   259   270 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.wm.-$$Lambda$ju_KnYxEFekr6LzoWamCeaO5FHQ
-10-23 00:33:09.873   259   270 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
-10-23 00:33:11.334   259  1841 I system_server: The ClassLoaderContext is a special shared library.
-10-23 00:33:11.350   259  1841 I chatty  : uid=1000 system_server identical 15 lines
-10-23 00:33:11.350   259  1841 I system_server: The ClassLoaderContext is a special shared library.
-10-23 00:33:11.352   147   284 V installd: DexInv: --- BEGIN '/apex/com.android.wifi/javalib/service-wifi.jar' ---
-10-23 00:33:11.360  1842  1842 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=8 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --classpath-dir=/apex/com.android.wifi/javalib --class-loader-context=PCL[];PCL[/system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
-10-23 00:33:11.361  1842  1842 I dex2oat32: setting boot class path to /apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/core-icu4j.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/framework-atb-backward-compatibility.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onIpClientCreated is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onNewDhcpResults is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onPostDhcpAction is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onPreDhcpAction is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onProvisioningFailure is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onProvisioningSuccess is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getCachedSizeField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getEnumVerifier is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getFieldNumber is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getMapDefaultEntry is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getMessageFieldClass is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getOneof is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getPresenceField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getPresenceMask is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getType is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.isEnforceUtf8 is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.isRequired is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/OneofInfo;.getCaseField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/OneofInfo;.getValueField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldArray;.dataAt is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldArray;.size is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldData;.computeSerializedSize is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldData;.writeTo is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/SoapEnvelope;.parseBody is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.375  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/SoapEnvelope;.writeBody is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.376  1842  1842 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/transport/HttpTransportSE;.getServiceConnection is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
-10-23 00:33:11.405   476   495 I PermissionControllerServiceImpl: Updating user sensitive for user 0
-10-23 00:33:11.410   476   540 I UserPackageInfos: updating UserPackageInfosLiveData for user 0
-10-23 00:33:11.418   476   545 I LancherPackagesLiveData: updating LauncherPackageLiveData
-10-23 00:33:11.898  1842  1842 I dex2oat32: dex2oat took 538.118ms (657.509ms cpu) (threads: 2) arena alloc=0B (0B) java alloc=726KB (743456B) native alloc=2286KB (2341136B) free=4477KB (4584896B)
-10-23 00:33:11.900   147   284 V installd: DexInv: --- END '/apex/com.android.wifi/javalib/service-wifi.jar' (success) ---
-10-23 00:33:11.901   147   284 V installd: DexInv: --- BEGIN '/apex/com.android.os.statsd/javalib/service-statsd.jar' ---
-10-23 00:33:11.909  1847  1847 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=8 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --classpath-dir=/apex/com.android.os.statsd/javalib --class-loader-context=PCL[];PCL[/system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
-10-23 00:33:11.910  1847  1847 I dex2oat32: setting boot class path to /apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/core-icu4j.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/framework-atb-backward-compatibility.jar
-10-23 00:33:11.933  1847  1847 I dex2oat32: dex2oat took 24.602ms (25.347ms cpu) (threads: 2) arena alloc=0B (0B) java alloc=33KB (34600B) native alloc=1003KB (1027200B) free=1493KB (1529712B)
-10-23 00:33:11.935   147   284 V installd: DexInv: --- END '/apex/com.android.os.statsd/javalib/service-statsd.jar' (success) ---
-10-23 00:33:11.936   259  1841 I system_server: The ClassLoaderContext is a special shared library.
-10-23 00:33:11.970   259  1841 I chatty  : uid=1000 system_server identical 54 lines
-10-23 00:33:11.970   259  1841 I system_server: The ClassLoaderContext is a special shared library.
-10-23 00:33:11.970   259  1841 I BackgroundDexOptService: Pinning optimized code {android}
-10-23 00:33:12.299   167   170 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
-10-23 00:33:12.299   167   170 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
-10-23 00:33:12.599   656   908 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
-10-23 00:33:12.599   656   908 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
-10-23 00:33:19.772    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-23 00:33:19.772  1851  1851 I Gralloc4: mapper 4.x is not supported
-10-23 00:33:19.772    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-23 00:33:19.772  1851  1851 W Gralloc3: mapper 3.x is not supported
-10-23 00:33:20.060  1855  1857 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 00:33:20.068  1055  1670 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 00:33:20.090  1055  1670 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 00:33:20.091  1055  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
-10-23 00:33:20.092  1055  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:33:20.092  1055  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
-10-23 00:33:20.092  1055  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 00:33:22.520   446   446 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
+10-23 00:33:22.522   446   446 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-23 00:33:22.526   446   446 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
+10-23 00:33:22.528   446   446 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
+10-23 00:33:22.528   250   372 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} from uid 2000
+10-23 00:33:22.535   446   446 D NavigationModeController: getCurrentInteractionMode: mode=0 contextUser=0
+10-23 00:33:22.537   718   718 D RecentsOrientedState: current RecentsOrientedState: [this=RecentsOrientedState@e10d3d5 mOrientationHandler=PortraitPagedViewHandler@8ad6adc mDisplayRotation=0 mTouchRotation=0 mRecentsActivityRotation=0 isRecentsActivityRotationAllowed=false mSystemRotation=false mFlags=291]
+10-23 00:33:22.537   718   718 D RecentsOrientedState: current RecentsOrientedState: [this=RecentsOrientedState@e10d3d5 mOrientationHandler=PortraitPagedViewHandler@8ad6adc mDisplayRotation=0 mTouchRotation=0 mRecentsActivityRotation=0 isRecentsActivityRotationAllowed=false mSystemRotation=false mFlags=291]
+10-23 00:33:22.558   250   308 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10098; state: DISABLED
+10-23 00:33:22.558   250   308 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10098; state: DISABLED
+10-23 00:33:22.559   718   751 D LoaderTask: loadWorkspace: loading default favorites
+10-23 00:33:22.563   718   718 D ConfigMonitor: Configuration changed.
+10-23 00:33:22.563   250   309 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10098; state: DISABLED
+10-23 00:33:22.564   446   446 D NavigationModeController: getCurrentUserContext: contextUser=0 currentUser=0
+10-23 00:33:22.568    71    71 D hwcomposer: VSYNC event status:0
+10-23 00:33:22.571    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 00:33:22.572   718  1275 E FrameEvents: updateAcquireFence: Did not find frame.
+10-23 00:33:22.575   718  1275 E FrameEvents: updateAcquireFence: Did not find frame.
+10-23 00:33:22.583   136   136 D Zygote  : Forked child process 1822
+10-23 00:33:22.584  1822  1822 I Zygote  : seccomp disabled by setenforce 0
+10-23 00:33:22.584  1822  1822 I libc    : SetHeapTaggingLevel: tag level set to 0
+10-23 00:33:22.584   250   309 I ActivityManager: Start proc 1822:com.android.quicksearchbox/u0a98 for broadcast {com.android.quicksearchbox/com.android.quicksearchbox.SearchWidgetProvider}
+10-23 00:33:22.588   122   132 I adbd    : jdwp connection from 1822
+10-23 00:33:22.597  1822  1822 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+10-23 00:33:22.597  1822  1822 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-23 00:33:22.597  1822  1822 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+10-23 00:33:22.597  1822  1822 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-23 00:33:22.598  1822  1822 I .quicksearchbo: The ClassLoaderContext is a special shared library.
+10-23 00:33:22.601  1822  1822 I .quicksearchbo: The ClassLoaderContext is a special shared library.
+10-23 00:33:22.601  1822  1822 D nativeloader: classloader namespace configured for unbundled product apk. library_path=/system/product/app/QuickSearchBox/lib/arm64:/product/lib64:/system/product/lib64
+10-23 00:33:22.603  1822  1822 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-23 00:33:22.603  1822  1822 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-23 00:33:22.606   718   751 D LoaderTask: loadWorkspace: loading default favorites
+10-23 00:33:22.618   250   558 I ActivityManager: Killing 1002:com.android.deskclock/u0a104 (adj 985): empty #17
+10-23 00:33:22.630   136   136 I Zygote  : Process 1002 exited due to signal 9 (Killed)
+10-23 00:33:22.636    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null wifi
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null bt
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null dnd
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null rotation
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null battery
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null airplane
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null cast
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null screenrecord
+10-23 00:33:22.688   446   446 E QSAnimator: tileView is null dbg:mem
+10-23 00:33:22.694   446   446 D KeyguardViewMediator: adjustStatusBarLocked: mShowing=false mOccluded=false isSecure=false force=false --> flags=0x0
+10-23 00:33:22.705   250   303 I WindowManager: Screen frozen for +485ms due to Window{8c1e079 u0 com.android.systemui.ImageWallpaper}
+10-23 00:33:22.751   250   303 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+10-23 00:33:22.769    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 00:33:22.969    82    82 I chatty  : uid=1000(system) /system/bin/surfaceflinger identical 3 lines
+10-23 00:33:23.036    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 00:33:23.110   250   301 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+10-23 00:33:24.781   250   302 I system_server: Explicit concurrent copying GC freed 58144(2791KB) AllocSpace objects, 22(576KB) LOS objects, 75% free, 7952KB/31MB, paused 24us total 20.029ms
+10-23 00:33:24.781   250   263 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.wm.-$$Lambda$ju_KnYxEFekr6LzoWamCeaO5FHQ
+10-23 00:33:24.781   250   263 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+10-23 00:33:25.819   250  1844 I system_server: The ClassLoaderContext is a special shared library.
+10-23 00:33:25.826   250  1844 I chatty  : uid=1000 system_server identical 15 lines
+10-23 00:33:25.827   250  1844 I system_server: The ClassLoaderContext is a special shared library.
+10-23 00:33:25.829   148   148 V installd: DexInv: --- BEGIN '/apex/com.android.wifi/javalib/service-wifi.jar' ---
+10-23 00:33:25.836  1845  1845 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=8 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --classpath-dir=/apex/com.android.wifi/javalib --class-loader-context=PCL[];PCL[/system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
+10-23 00:33:25.837  1845  1845 I dex2oat32: setting boot class path to /apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/core-icu4j.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/framework-atb-backward-compatibility.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onIpClientCreated is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onNewDhcpResults is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onPostDhcpAction is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onPreDhcpAction is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onProvisioningFailure is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/android/net/ip/IpClientCallbacks;.onProvisioningSuccess is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getCachedSizeField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getEnumVerifier is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getFieldNumber is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getMapDefaultEntry is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getMessageFieldClass is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getOneof is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getPresenceField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getPresenceMask is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.getType is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.isEnforceUtf8 is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/FieldInfo;.isRequired is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/OneofInfo;.getCaseField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/OneofInfo;.getValueField is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldArray;.dataAt is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldArray;.size is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldData;.computeSerializedSize is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/com/google/protobuf/nano/FieldData;.writeTo is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/SoapEnvelope;.parseBody is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.851  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/SoapEnvelope;.writeBody is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.852  1845  1845 W dex2oat32: Method Lcom/android/wifi/x/org/ksoap2/transport/HttpTransportSE;.getServiceConnection is abstract, but the declaring class is neither abstract nor an interface in dex file service-wifi.jar
+10-23 00:33:25.888   469   734 I PermissionControllerServiceImpl: Updating user sensitive for user 0
+10-23 00:33:25.889   469   552 I UserPackageInfos: updating UserPackageInfosLiveData for user 0
+10-23 00:33:25.890   469   546 I LancherPackagesLiveData: updating LauncherPackageLiveData
+10-23 00:33:26.283  1845  1845 I dex2oat32: dex2oat took 447.381ms (686.810ms cpu) (threads: 2) arena alloc=0B (0B) java alloc=726KB (743456B) native alloc=2287KB (2342656B) free=4525KB (4633936B)
+10-23 00:33:26.286   148   148 V installd: DexInv: --- END '/apex/com.android.wifi/javalib/service-wifi.jar' (success) ---
+10-23 00:33:26.287   148   148 V installd: DexInv: --- BEGIN '/apex/com.android.os.statsd/javalib/service-statsd.jar' ---
+10-23 00:33:26.295  1849  1849 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=8 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --classpath-dir=/apex/com.android.os.statsd/javalib --class-loader-context=PCL[];PCL[/system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
+10-23 00:33:26.296  1849  1849 I dex2oat32: setting boot class path to /apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/core-icu4j.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/framework-atb-backward-compatibility.jar
+10-23 00:33:26.341  1849  1849 I dex2oat32: dex2oat took 47.271ms (25.384ms cpu) (threads: 2) arena alloc=0B (0B) java alloc=33KB (34600B) native alloc=1003KB (1027136B) free=1493KB (1529776B)
+10-23 00:33:26.344   148   148 V installd: DexInv: --- END '/apex/com.android.os.statsd/javalib/service-statsd.jar' (success) ---
+10-23 00:33:26.345   250  1844 I system_server: The ClassLoaderContext is a special shared library.
+10-23 00:33:26.390   250  1844 I chatty  : uid=1000 system_server identical 54 lines
+10-23 00:33:26.390   250  1844 I system_server: The ClassLoaderContext is a special shared library.
+10-23 00:33:26.391   250  1844 I BackgroundDexOptService: Pinning optimized code {android}
+10-23 00:33:26.777   168   178 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
+10-23 00:33:26.777   168   178 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
+10-23 00:33:26.981   680   918 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
+10-23 00:33:26.981   680   918 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
+10-23 00:33:34.618    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 00:33:34.618  1853  1853 I Gralloc4: mapper 4.x is not supported
+10-23 00:33:34.618    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-23 00:33:34.618  1853  1853 W Gralloc3: mapper 3.x is not supported
+10-23 00:33:34.878  1857  1859 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 00:33:34.880  1071  1669 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 00:33:34.884  1071  1669 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 00:33:34.887  1071  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-23 00:33:34.887  1071  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:34.887  1071  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-23 00:33:34.887  1071  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)

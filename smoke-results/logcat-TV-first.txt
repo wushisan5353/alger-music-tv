@@ -1,77 +1,79 @@
 --------- beginning of main
-10-23 00:32:32.467   709   709 I chatty  : uid=10109(com.android.launcher3) expire 4 lines
-10-23 00:32:32.467   709   709 D LoaderResults: Too many consecutive reloads, skipping obsolete data-bind
+10-23 00:32:47.267   718  1275 E FrameEvents: updateAcquireFence: Did not find frame.
+10-23 00:32:47.269    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 00:32:47.301    71    71 D hwcomposer: VSYNC event status:0
 --------- beginning of system
-10-23 00:32:32.515   259   402 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{76b10ef u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0x84109fc
-10-23 00:32:32.516   259  1579 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv/.ui.MainActivity} from uid 2000
-10-23 00:32:32.516  1741  1743 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 00:32:32.563   656   908 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
-10-23 00:32:32.563   656   908 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
-10-23 00:32:32.590   259   302 I WindowManager: Screen frozen for +486ms due to Window{32813df u0 StatusBar}
-10-23 00:32:32.624   259   302 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
-10-23 00:32:32.720    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:32:32.853    82    82 I chatty  : uid=1000(system) /system/bin/surfaceflinger identical 2 lines
-10-23 00:32:32.920    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
-10-23 00:32:34.646   259   301 I system_server: Explicit concurrent copying GC freed 46804(1964KB) AllocSpace objects, 12(240KB) LOS objects, 75% free, 7796KB/31MB, paused 24us total 19.462ms
-10-23 00:32:34.648    69    69 D hwcomposer: VSYNC event status:1
-10-23 00:32:34.985    69    69 D hwcomposer: VSYNC event status:0
-10-23 00:32:36.607   259   298 I ActivityManager: Killing 1409:com.android.calendar/u0a103 (adj 985): empty #17
-10-23 00:32:36.608   259   296 I ActivityManager: Killing 1432:com.android.camera2/u0a94 (adj 975): empty #17
-10-23 00:32:36.616   141   141 I Zygote  : Process 1432 exited due to signal 9 (Killed)
-10-23 00:32:36.621   141   141 I Zygote  : Process 1409 exited due to signal 9 (Killed)
-10-23 00:32:41.465    69    69 D hwcomposer: VSYNC event status:1
-10-23 00:32:41.467   444   685 I vol.Events: writeEvent level_changed STREAM_MUSIC 3
-10-23 00:32:41.859    69    69 D hwcomposer: VSYNC event status:0
-10-23 00:32:42.299   167   170 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
-10-23 00:32:42.299   167   170 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
-10-23 00:32:46.561   259   296 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 2000; state: ENABLED
-10-23 00:32:46.562   259   296 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
-10-23 00:32:46.565  1055  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
-10-23 00:32:46.565  1055  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:32:46.565  1055  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.lambda$onFileCreatedForFuse$12(MediaProvider.java:1127)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.lambda$onFileCreatedForFuse$12$MediaProvider(Unknown Source:0)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$VhB3wkpGkT4Cm_4TN5qOQg3m3rU.run(Unknown Source:4)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
-10-23 00:32:46.565  1055  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
-10-23 00:32:46.566  1055  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
-10-23 00:32:46.566  1055  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:32:46.566  1055  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onInsert$0(MediaProvider.java:613)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onInsert$0$MediaProvider$3(Unknown Source:0)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$OA4Hj-5lam3D4oprnbu7ZpL-f_E.run(Unknown Source:10)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
-10-23 00:32:46.566  1055  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
-10-23 00:32:46.601    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
-10-23 00:32:46.601  1747  1747 I Gralloc4: mapper 4.x is not supported
-10-23 00:32:46.602    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
-10-23 00:32:46.602  1747  1747 W Gralloc3: mapper 3.x is not supported
-10-23 00:32:46.796   259  1579 I ActivityManager: Killing 1455:com.android.contacts/u0a93 (adj 985): empty #17
-10-23 00:32:46.796  1751  1753 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
-10-23 00:32:46.805  1055  1670 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 00:32:46.806   141   141 I Zygote  : Process 1455 exited due to signal 9 (Killed)
-10-23 00:32:46.810  1055  1670 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 00:32:46.815  1055  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
-10-23 00:32:46.815  1055  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:32:46.815  1055  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
-10-23 00:32:46.815  1055  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 00:32:47.313   250   372 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{33612d0 u0 StatusBar}, surfaceController Surface(name=StatusBar)/@0x1feb59f
+10-23 00:32:47.362   250   372 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{a814b5b u0 NavigationBar0}, surfaceController Surface(name=NavigationBar0)/@0x895433e
+10-23 00:32:47.402   250   372 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv/.ui.MainActivity} from uid 2000
+10-23 00:32:47.407  1744  1746 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+10-23 00:32:47.444   250   303 I WindowManager: Screen frozen for +482ms due to Window{33612d0 u0 StatusBar}
+10-23 00:32:47.490   250   303 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+10-23 00:32:47.570    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 00:32:47.703    82    82 I chatty  : uid=1000(system) /system/bin/surfaceflinger identical 2 lines
+10-23 00:32:47.769    82    82 E CompositionEngine: [BackColorSurface#0] Invalid device requested composition type change: SOLID_COLOR (3) --> DEVICE (2)
+10-23 00:32:49.512   250   302 I system_server: Explicit concurrent copying GC freed 45218(1925KB) AllocSpace objects, 12(240KB) LOS objects, 75% free, 7801KB/31MB, paused 27us total 19.825ms
+10-23 00:32:49.514    71    71 D hwcomposer: VSYNC event status:1
+10-23 00:32:49.901    71    71 D hwcomposer: VSYNC event status:0
+10-23 00:32:51.083   250   299 I ActivityManager: Killing 1417:com.android.calendar/u0a99 (adj 985): empty #17
+10-23 00:32:51.087   250   559 I ActivityManager: Killing 1443:com.android.camera2/u0a94 (adj 975): empty #17
+10-23 00:32:51.098   136   136 I Zygote  : Process 1417 exited due to signal 9 (Killed)
+10-23 00:32:51.098   136   136 I Zygote  : Process 1443 exited due to signal 9 (Killed)
+10-23 00:32:55.956   446   711 I vol.Events: writeEvent level_changed STREAM_MUSIC 3
+10-23 00:32:55.958    71    71 D hwcomposer: VSYNC event status:1
+10-23 00:32:56.301    71    71 D hwcomposer: VSYNC event status:0
+10-23 00:32:56.776   168   178 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
+10-23 00:32:56.776   168   178 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
+10-23 00:33:00.001   446   446 D KeyguardClockSwitch: Updating clock: 1233
+10-23 00:33:00.002    71    71 D hwcomposer: VSYNC event status:1
+10-23 00:33:00.368    71    71 D hwcomposer: VSYNC event status:0
+10-23 00:33:01.452   250   297 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 2000; state: ENABLED
+10-23 00:33:01.453   250   297 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+10-23 00:33:01.490  1071  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-23 00:33:01.490  1071  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:01.490  1071  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.lambda$onFileCreatedForFuse$12(MediaProvider.java:1127)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.lambda$onFileCreatedForFuse$12$MediaProvider(Unknown Source:0)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$VhB3wkpGkT4Cm_4TN5qOQg3m3rU.run(Unknown Source:4)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-23 00:33:01.490  1071  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 00:33:01.492  1071  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-23 00:33:01.492  1071  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:01.492  1071  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onInsert$0(MediaProvider.java:613)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onInsert$0$MediaProvider$3(Unknown Source:0)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$OA4Hj-5lam3D4oprnbu7ZpL-f_E.run(Unknown Source:10)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-23 00:33:01.492  1071  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 00:33:01.493    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+10-23 00:33:01.493  1749  1749 I Gralloc4: mapper 4.x is not supported
+10-23 00:33:01.493    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-23 00:33:01.493  1749  1749 W Gralloc3: mapper 3.x is not supported
+10-23 00:33:01.688   250   297 I ActivityManager: Killing 1467:com.android.contacts/u0a92 (adj 985): empty #17
+10-23 00:33:01.696   136   136 I Zygote  : Process 1467 exited due to signal 9 (Killed)
+10-23 00:33:01.699  1071  1669 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 00:33:01.704  1071  1669 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/shot.png flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 00:33:01.709  1071  1674 E StorageManager: Failed to set extended attributes for /storage/emulated/0/shot.png to set project id.: Operation not supported on transport endpoint
+10-23 00:33:01.709  1071  1674 W MediaProvider: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:01.709  1071  1674 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/shot.png
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2512)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:583)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:562)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider.access$800(MediaProvider.java:224)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1(MediaProvider.java:635)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at com.android.providers.media.MediaProvider$3.lambda$onUpdate$1$MediaProvider$3(Unknown Source:0)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at com.android.providers.media.-$$Lambda$MediaProvider$3$WJkiC6ajEYmAPvc5_niXuh2KmrI.run(Unknown Source:8)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:938)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at android.os.Looper.loop(Looper.java:223)
+10-23 00:33:01.709  1071  1674 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
