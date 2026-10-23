@@ -24,23 +24,9 @@ Record for full_user=0
   Media key listener package: 
   OnMediaKeyEventDispatchedListener: added 0 listener(s)
   OnMediaKeyEventSessionChangedListener: added 0 listener(s)
-  Last MediaButtonReceiver: MBR {pi=PendingIntent{5983fba: PendingIntentRecord{919fe6b com.wushisan.algertv.phone broadcastIntent}}, type=1}
-  Media button session is com.wushisan.algertv.phone/AlgerPhone (userId=0)
-  Sessions Stack - have 1 sessions:
-    AlgerPhone com.wushisan.algertv.phone/AlgerPhone (userId=0)
-      ownerPid=2288, ownerUid=10077, userId=0
-      package=com.wushisan.algertv.phone
-      launchIntent=null
-      mediaButtonReceiver=MBR {pi=PendingIntent{5983fba: PendingIntentRecord{919fe6b com.wushisan.algertv.phone broadcastIntent}}, type=1}
-      active=true
-      flags=3
-      rating type=0
-      controllers: 5
-      state=PlaybackState {state=3, position=0, buffered position=0, speed=1.0, updated=182386, actions=822, custom actions=[], active item id=-1, error=null}
-      audioAttrs=AudioAttributes: usage=USAGE_MEDIA content=CONTENT_TYPE_UNKNOWN flags=0x800 tags= bundle=null
-      volumeType=1, controlType=2, max=0, current=0
-      metadata: size=4, description=Smoke Direct, SoundHelix, null
-      queueTitle=null, size=0
+  Last MediaButtonReceiver: MBR {pi=PendingIntent{f582e72: PendingIntentRecord{4deb2c3 com.wushisan.algertv.phone broadcastIntent}}, type=1}
+  Media button session is null
+  Sessions Stack - have 0 sessions:
 Audio playback (lastly played comes first)
   uid=10077 packages=com.wushisan.algertv.phone 
 Media session config:
