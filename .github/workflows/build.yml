@@ -335,9 +335,25 @@ jobs:
           X1FILE=$CACERTS/6187b673.0
           SIMMODE=none
           if $D shell "ls $X1FILE" > /dev/null 2>&1; then
-            $D shell "cp -r $CACERTS /data/local/tmp/cacerts-full && rm /data/local/tmp/cacerts-full/6187b673.0 && mount --bind /data/local/tmp/cacerts-full $CACERTS" > /dev/null 2>&1 && SIMMODE=bind || true
+            # Round 1 ended SKIPPED (mode=none): plain adb shell likely
+            # lacks mount/remount privilege. redroid is userdebug, so try
+            # a root shell first; capture every attempt's stderr into
+            # tls-sim.txt so a repeat failure is diagnosable, not silent.
+            $D root >> smoke-out/tls-sim.txt 2>&1 || true
+            $D wait-for-device
+            echo "tls-sim shell id: $($D shell id 2>/dev/null)" >> smoke-out/tls-sim.txt
+            $D shell "cp -r $CACERTS /data/local/tmp/cacerts-full && rm /data/local/tmp/cacerts-full/6187b673.0 && mount --bind /data/local/tmp/cacerts-full $CACERTS" >> smoke-out/tls-sim.txt 2>&1 && SIMMODE=bind || true
+            if [ "$SIMMODE" = "bind" ] && $D shell "ls $X1FILE" > /dev/null 2>&1; then SIMMODE=none; fi
             if [ "$SIMMODE" = "none" ]; then
-              $D shell "mount -o rw,remount /system && mv $X1FILE /data/local/tmp/6187b673.0.bak" > /dev/null 2>&1 && SIMMODE=mv || true
+              $D shell "mount -o rw,remount /system && cp $X1FILE /data/local/tmp/6187b673.0.bak && rm $X1FILE" >> smoke-out/tls-sim.txt 2>&1 && SIMMODE=mv || true
+              if [ "$SIMMODE" = "mv" ] && $D shell "ls $X1FILE" > /dev/null 2>&1; then SIMMODE=none; fi
+            fi
+            if [ "$SIMMODE" = "none" ]; then
+              $D shell "touch /data/local/tmp/empty-cert && mount --bind /data/local/tmp/empty-cert $X1FILE" >> smoke-out/tls-sim.txt 2>&1 && SIMMODE=filebind || true
+              if [ "$SIMMODE" = "filebind" ]; then
+                X1SIZE=$($D shell "wc -c < $X1FILE" 2>/dev/null | tr -d ' \r')
+                if [ "${X1SIZE:-x}" != "0" ]; then SIMMODE=none; fi
+              fi
             fi
           fi
           echo "TV_TLS_SIM_MODE=$SIMMODE" >> smoke-out/report.txt
@@ -358,8 +374,10 @@ jobs:
             fi
             if [ "$SIMMODE" = "bind" ]; then
               $D shell "umount $CACERTS" > /dev/null 2>&1 || true
+            elif [ "$SIMMODE" = "filebind" ]; then
+              $D shell "umount $X1FILE" > /dev/null 2>&1 || true
             else
-              $D shell "mv /data/local/tmp/6187b673.0.bak $X1FILE" > /dev/null 2>&1 || true
+              $D shell "cp /data/local/tmp/6187b673.0.bak $X1FILE" > /dev/null 2>&1 || true
             fi
           else
             echo "TV_TLS_SIM_SKIPPED" >> smoke-out/report.txt
