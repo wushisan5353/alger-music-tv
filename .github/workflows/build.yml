@@ -101,7 +101,7 @@ jobs:
             echo "sha=${{ github.sha }}"
             echo "signed=${SIGNED:-unknown}"
           } > "$STAGE/build-info.txt"
-          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk
+          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.5.apk
           if [ -f "$APK" ]; then
             SIZE=$(stat -c%s "$APK")
             SHA=$(sha256sum "$APK" | cut -d' ' -f1)
@@ -149,14 +149,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk \
+            app/build/outputs/apk/tv/release/AlgerTV-1.0.5.apk \
             app/build/outputs/apk/phone/release/AlgerPhone-1.3.apk \
             --title "Alger轻听 ${GITHUB_REF_NAME}" \
             --notes "Alger轻听 ${GITHUB_REF_NAME}（原生轻量版，免登录；含电视版与手机版两个 APK）"
 
       - name: Fail if APK missing
         run: |
-          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk
+          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.5.apk
           test -f app/build/outputs/apk/phone/release/AlgerPhone-1.3.apk
 
   # In-workflow smoke on redroid 11 (ARM runner). This round the smoke also
@@ -226,7 +226,7 @@ jobs:
           echo "apksigner=$APKSIGNER keytool=$(command -v keytool || echo MISSING)"
           if [ -n "$APKSIGNER" ] && command -v keytool > /dev/null; then
             keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
-            for f in apks/tv/release/AlgerTV-1.0.4.apk apks/phone/release/AlgerPhone-1.3.apk; do
+            for f in apks/tv/release/AlgerTV-1.0.5.apk apks/phone/release/AlgerPhone-1.3.apk; do
               if [ -f "$f" ] && "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 "$f"; then
                 echo "SMOKE_SIGNED $f"
               else
@@ -251,7 +251,7 @@ jobs:
           TVACT=com.wushisan.algertv.ui.MainActivity
           $D shell wm size 1920x1080
           $D shell wm density 320
-          if $D install -r apks/tv/release/AlgerTV-1.0.4.apk > smoke-out/install-TV.txt 2>&1; then
+          if $D install -r apks/tv/release/AlgerTV-1.0.5.apk > smoke-out/install-TV.txt 2>&1; then
             echo "TV_INSTALL_OK" >> smoke-out/report.txt
           else
             echo "TV_INSTALL_FAIL" >> smoke-out/report.txt
@@ -319,6 +319,52 @@ jobs:
           echo "TV_DIRECT_POSITION p1=${DP1:-none} p2=${DP2:-none}" >> smoke-out/report.txt
           if [ -n "$DP1" ] && [ -n "$DP2" ] && [ "$DP2" -gt "$DP1" ]; then echo "TV_DIRECT_POSITION_ADVANCED" >> smoke-out/report.txt; fi
           alive_line TV_DIRECT $TVPKG
+
+          # ---------- TV TLS sim: emulate the API 22 trust store --------
+          # The real TV (Android 5.1.1) has neither ISRG Root X1 nor X2,
+          # so GDStudio's Let's Encrypt chain is untrusted there while
+          # redroid 11 (has X1) sails through — the gap that let 1.0.4
+          # ship "green" and still fail on TV. Remove X1 from the system
+          # store, relaunch cold, and require HOME_DONE meta>0: only the
+          # app's bundled fallback roots (SslSupport) can carry it then.
+          echo "--- TV TLS sim (system ISRG Root X1 removed) ---"
+          grep -m1 "HOME_DONE" smoke-out/logcat-TV-first.txt > smoke-out/tls-sim.txt || true
+          BASEMETA=$(grep -m1 "HOME_DONE" smoke-out/logcat-TV-first.txt | sed -n 's/.*meta=\([0-9]*\)\/.*/\1/p')
+          echo "TV_HOME_BASE_META=${BASEMETA:-none}" >> smoke-out/report.txt
+          CACERTS=/system/etc/security/cacerts
+          X1FILE=$CACERTS/6187b673.0
+          SIMMODE=none
+          if $D shell "ls $X1FILE" > /dev/null 2>&1; then
+            $D shell "cp -r $CACERTS /data/local/tmp/cacerts-full && rm /data/local/tmp/cacerts-full/6187b673.0 && mount --bind /data/local/tmp/cacerts-full $CACERTS" > /dev/null 2>&1 && SIMMODE=bind || true
+            if [ "$SIMMODE" = "none" ]; then
+              $D shell "mount -o rw,remount /system && mv $X1FILE /data/local/tmp/6187b673.0.bak" > /dev/null 2>&1 && SIMMODE=mv || true
+            fi
+          fi
+          echo "TV_TLS_SIM_MODE=$SIMMODE" >> smoke-out/report.txt
+          if [ "$SIMMODE" != "none" ]; then
+            $D shell pm clear $TVPKG
+            $D logcat -c
+            $D shell am start -n "$TVPKG/$TVACT"
+            sleep 14
+            $D logcat -d > smoke-out/logcat-TV-tlssim.txt 2>/dev/null
+            grep "HOME_" smoke-out/logcat-TV-tlssim.txt >> smoke-out/tls-sim.txt || true
+            grep -m3 "HOME_META_FAIL" smoke-out/logcat-TV-tlssim.txt >> smoke-out/tls-sim.txt || true
+            SIMMETA=$(grep -m1 "HOME_DONE" smoke-out/logcat-TV-tlssim.txt | sed -n 's/.*meta=\([0-9]*\)\/.*/\1/p')
+            echo "TV_TLS_SIM_META=${SIMMETA:-none}" >> smoke-out/report.txt
+            if [ -n "$SIMMETA" ] && [ "$SIMMETA" -gt 0 ]; then
+              echo "TV_TLS_SIM_OK" >> smoke-out/report.txt
+            else
+              echo "TV_TLS_SIM_FAIL" >> smoke-out/report.txt
+            fi
+            if [ "$SIMMODE" = "bind" ]; then
+              $D shell "umount $CACERTS" > /dev/null 2>&1 || true
+            else
+              $D shell "mv /data/local/tmp/6187b673.0.bak $X1FILE" > /dev/null 2>&1 || true
+            fi
+          else
+            echo "TV_TLS_SIM_SKIPPED" >> smoke-out/report.txt
+          fi
+
 
           # ---------------- PHONE: 1080x1920, first + second launch -------
           PHPKG=com.wushisan.algertv.phone
