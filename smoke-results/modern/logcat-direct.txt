@@ -1,151 +1,145 @@
 --------- beginning of main
-10-23 00:59:02.890   111   111 E ClientCache: failed to get buffer, invalid process token
-10-23 00:59:02.892   111   111 E BpTransactionCompletedListener: Failed to transact (-32)
-10-23 00:59:02.893   111   111 E CompositionEngine: [Dim Layer for - Task=8#140] Invalid device requested composition type change: SolidColor (3) --> Device (2)
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af019bb0
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af018ad0
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af018a10
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af019790
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af018e90
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af0188f0
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af019c70
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af01a8d0
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af019790
-10-23 00:59:02.893   111   115 W TransactionTracing: Could not find layer handle 0x7044af019c70
-10-23 00:59:02.899   861  1275 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3
-10-23 00:59:02.899   861  1275 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-23 00:59:02.899   861  1275 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3
-10-23 00:59:02.899   861  1275 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-23 00:59:02.899   861  1275 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3
-10-23 00:59:02.899   861  1275 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-23 00:59:02.900   861  1275 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3
-10-23 00:59:02.900   861  1275 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
-10-23 00:59:02.909   861  1275 E OpenGLRenderer: Unable to match the desired swap behavior.
-10-23 00:59:02.914   185  1997 D MediaCodec: flushMediametrics
-10-23 00:59:02.923   185  1967 D NuPlayerDriver: notifyResetComplete(0xf61406d0)
-10-23 00:59:02.923   185  1967 D AudioTrack: stop(8): called with 0 frames delivered
-10-23 00:59:02.923   108  1871 W AudioFlinger: session id 2761 not found for pid 1783
-10-23 00:59:02.957   111   111 E CompositionEngine: [Dim Layer for - Task=8#140] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.606   188  2113 D MediaCodec: flushMediametrics
+10-23 01:25:05.607   188  2063 D NuPlayerDriver: notifyResetComplete(0xe7a81060)
+10-23 01:25:05.608   188  1811 D AudioTrack: stop(8): called with 0 frames delivered
+10-23 01:25:05.608   106   840 W AudioFlinger: session id 2561 not found for pid 1874
 --------- beginning of system
-10-23 00:59:02.959   238   722 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10077; state: DISABLED
-10-23 00:59:02.959   238   722 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity (has extras)} from uid 2000
-10-23 00:59:02.959   238   722 E CellBroadcastUtils: getDefaultCellBroadcastReceiverPackageName: no package found
-10-23 00:59:03.024   111   111 E CompositionEngine: [Dim Layer for - Task=8#140] Invalid device requested composition type change: SolidColor (3) --> Device (2)
-10-23 00:59:03.024   111   111 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#151] Invalid device requested composition type change: SolidColor (3) --> Device (2)
-10-23 00:59:03.090   111   111 E CompositionEngine: [Dim Layer for - Task=8#140] Invalid device requested composition type change: SolidColor (3) --> Device (2)
-10-23 00:59:03.090   111   111 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#151] Invalid device requested composition type change: SolidColor (3) --> Device (2)
-10-23 00:59:03.157   111   111 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#151] Invalid device requested composition type change: SolidColor (3) --> Device (2)
-10-23 00:59:03.182   238   460 E TrafficController: create PF_KEY socket failed: Address family not supported by protocol
-10-23 00:59:03.182   238   460 E TrafficController: map swap synchronize_rcu() ended with failure: Address family not supported by protocol
-10-23 00:59:03.182   238   460 D TrafficControllerJni: native_swapActiveStatsMap failed, error code = 97
-10-23 00:59:03.182   238   460 E NetworkStats: problem reading network stats
-10-23 00:59:03.182   238   460 E NetworkStats: java.lang.IllegalStateException: java.io.IOException: android.os.ServiceSpecificException: Unable to swap active stats map: Address family not supported by protocol (code 97)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService.readNetworkStatsUidDetail(NetworkStatsService.java:2763)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService.getNetworkStatsUidDetail(NetworkStatsService.java:2777)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService.recordSnapshotLocked(NetworkStatsService.java:2204)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService.performPollLocked(NetworkStatsService.java:2293)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService.performPoll(NetworkStatsService.java:2266)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService.-$$Nest$mperformPoll(Unknown Source:0)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService$3.onReceive(NetworkStatsService.java:1940)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at android.app.LoadedApk$ReceiverDispatcher$Args.lambda$getRunnable$0$android-app-LoadedApk$ReceiverDispatcher$Args(LoadedApk.java:1790)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at android.app.LoadedApk$ReceiverDispatcher$Args$$ExternalSyntheticLambda0.run(Unknown Source:2)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at android.os.Handler.handleCallback(Handler.java:942)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at android.os.Looper.loopOnce(Looper.java:201)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at android.os.Looper.loop(Looper.java:288)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at android.os.HandlerThread.run(HandlerThread.java:67)
-10-23 00:59:03.182   238   460 E NetworkStats: Caused by: java.io.IOException: android.os.ServiceSpecificException: Unable to swap active stats map: Address family not supported by protocol (code 97)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsFactory.requestSwapActiveStatsMapLocked(NetworkStatsFactory.java:310)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsFactory.readNetworkStatsDetail(NetworkStatsFactory.java:337)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsService.readNetworkStatsUidDetail(NetworkStatsService.java:2761)
-10-23 00:59:03.182   238   460 E NetworkStats: 	... 13 more
-10-23 00:59:03.182   238   460 E NetworkStats: Caused by: android.os.ServiceSpecificException: Unable to swap active stats map: Address family not supported by protocol (code 97)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.BpfNetMaps.maybeThrow(BpfNetMaps.java:71)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.BpfNetMaps.swapActiveStatsMap(BpfNetMaps.java:226)
-10-23 00:59:03.182   238   460 E NetworkStats: 	at com.android.server.net.NetworkStatsFactory.requestSwapActiveStatsMapLocked(NetworkStatsFactory.java:308)
-10-23 00:59:03.182   238   460 E NetworkStats: 	... 15 more
-10-23 00:59:03.182   187   187 E BandwidthController: Updating quota globalAlert failed (Status[code: 2, msg: "[No such file or directory] : fopen("/proc/net/xt_quota/globalAlert", "we") failed"])
-10-23 00:59:03.222    93    93 D hwcomposer: VSYNC event status:0
-10-23 00:59:03.224   111   115 W TransactionTracing: Could not find layer handle 0x7044af019a30
-10-23 00:59:03.224   111   115 W TransactionTracing: Could not find layer handle 0x7044af02f1b0
-10-23 00:59:03.224   111   115 W TransactionTracing: Could not find layer handle 0x7044af023a50
-10-23 00:59:03.224   111   111 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#151] Invalid device requested composition type change: SolidColor (3) --> Device (2)
-10-23 00:59:03.905    38    50 I keystore2: keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
-10-23 00:59:06.334   238  1456 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
-10-23 00:59:06.403  1221  1221 I ProvidersCache: Updating roots due to change on user 0at content://com.android.providers.media.documents/root
-10-23 00:59:12.434   238   259 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
-10-23 00:59:12.434   238   259 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
-10-23 00:59:15.399   238   257 D OomAdjuster: Not killing cached processes
-10-23 00:59:15.399   537  1856 I PermissionControllerServiceImpl: Updating user sensitive for user 0
-10-23 00:59:17.134   187   211 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
-10-23 00:59:17.134   187   211 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
-10-23 00:59:17.743   714   937 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
-10-23 00:59:17.743   714   937 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
-10-23 00:59:19.058  1186  1447 W MediaProvider: isAppCloneUserPair for user 0: false
-10-23 00:59:19.059  1186  1447 V MediaProvider: Inserted id:1000000019 less than next row id backup:1000001000.
-10-23 00:59:19.062  2342  2342 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
-10-23 00:59:19.062  1186  1361 E StorageManager: Failed to set extended attributes for /storage/emulated/0/modern-direct.png to set project id.: Operation not supported on transport endpoint
-10-23 00:59:19.063  1186  1361 W MediaProvider: Failed to update quota type for /storage/emulated/0/modern-direct.png
-10-23 00:59:19.063  1186  1361 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/modern-direct.png
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2618)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:712)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.lambda$onFileCreatedForFuse$17(MediaProvider.java:1723)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.$r8$lambda$RwX1jyw0H1CYPm6NAX9_DxGu3Co(Unknown Source:0)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider$$ExternalSyntheticLambda7.run(Unknown Source:4)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:942)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at android.os.Looper.loopOnce(Looper.java:201)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at android.os.Looper.loop(Looper.java:288)
-10-23 00:59:19.063  1186  1361 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
-10-23 00:59:19.064  1186  1361 E StorageManager: Failed to set extended attributes for /storage/emulated/0/modern-direct.png to set project id.: Operation not supported on transport endpoint
-10-23 00:59:19.064  1186  1361 W MediaProvider: Failed to update quota type for /storage/emulated/0/modern-direct.png
-10-23 00:59:19.064  1186  1361 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/modern-direct.png
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2618)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:712)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:690)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.-$$Nest$mupdateQuotaTypeForUri(Unknown Source:0)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.lambda$onInsert$0(MediaProvider.java:743)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.$r8$lambda$DnIEye5Sx8fODP4Bt_qvKpm3U-Q(Unknown Source:0)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider$4$$ExternalSyntheticLambda0.run(Unknown Source:6)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:942)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at android.os.Looper.loopOnce(Looper.java:201)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at android.os.Looper.loop(Looper.java:288)
-10-23 00:59:19.064  1186  1361 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
-10-23 00:59:19.095    22    22 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
-10-23 00:59:19.095  2342  2344 I Gralloc4: mapper 4.x is not supported
-10-23 00:59:19.095    22    22 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device VINTF manifest.
-10-23 00:59:19.095  2342  2344 W Gralloc3: mapper 3.x is not supported
-10-23 00:59:19.239  1186  1530 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 00:59:19.243  1186  1530 V MediaProvider: Inserted id:1000000019 less than next row id backup:1000001000.
-10-23 00:59:19.246  1186  1361 E StorageManager: Failed to set extended attributes for /storage/emulated/0/modern-direct.png to set project id.: Operation not supported on transport endpoint
-10-23 00:59:19.247  1186  1361 W MediaProvider: Failed to update quota type for /storage/emulated/0/modern-direct.png
-10-23 00:59:19.247  1186  1361 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/modern-direct.png
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2618)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:712)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:690)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider.-$$Nest$mupdateQuotaTypeForUri(Unknown Source:0)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.lambda$onUpdate$1(MediaProvider.java:773)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.$r8$lambda$3D2OHltIfecN7CvhaLyqtkV--uY(Unknown Source:0)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at com.android.providers.media.MediaProvider$4$$ExternalSyntheticLambda1.run(Unknown Source:10)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:942)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at android.os.Looper.loopOnce(Looper.java:201)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at android.os.Looper.loop(Looper.java:288)
-10-23 00:59:19.247  1186  1361 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
-10-23 00:59:19.247  1186  1530 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
-10-23 00:59:21.385   238   272 W BatteryExternalStatsWorker: error reading Bluetooth stats: 9
-10-23 00:59:24.274  1186  1361 D PickerSyncController: Fetching SyncRequestParams. Authority: com.android.providers.media.photopicker. LatestMediaCollectionInfo: Bundle[{last_media_sync_generation=14, media_collection_id=1307:ed5f847d-e790-4064-aebb-f5c6ff7d157f:external_primary}]. CachedMediaCollectionInfo: Bundle[{last_media_sync_generation=8, media_collection_id=1307:ed5f847d-e790-4064-aebb-f5c6ff7d157f:external_primary}]
-10-23 00:59:24.274  1186  1361 D PickerSyncController: SyncRequestParams. Authority: com.android.providers.media.photopicker. Result: SYNC_TYPE_INCREMENTAL
-10-23 00:59:24.274  1186  1361 I PickerSyncController: Executing SyncAdd. authority: com.android.providers.media.photopicker
-10-23 00:59:24.275  1186  1361 I PickerSyncController: Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=8}]. Result count: 1. Cursor count: 1
-10-23 00:59:24.275  1186  1361 I PickerSyncController: Executing SyncRemove. authority: com.android.providers.media.photopicker
-10-23 00:59:24.277  1186  1361 I PickerSyncController: Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=8}]. Result count: 0. Cursor count: 0
-10-23 00:59:24.277  1186  1361 D PickerSyncController: Fetching SyncRequestParams. Null cloud authority. Result: SYNC_TYPE_RESET
-10-23 00:59:24.277  1186  1361 I PickerSyncController: Executing SyncReset. authority: null
-10-23 00:59:24.277  1186  1361 I PickerSyncController: SyncReset. Authority: null. Result count: 0
-10-23 00:59:24.277  1186  1361 D PickerSyncController: Ignoring cache media info for null authority with bundle: null
-10-23 00:59:24.277  1186  1361 I PickerSyncController: Executing SyncAlbumReset. authority: com.android.providers.media.photopicker. albumId: null
-10-23 00:59:24.277  1186  1361 I PickerSyncController: Successfully executed SyncResetAlbum. authority: com.android.providers.media.photopicker. albumId: null. Result count: 0
-10-23 00:59:24.277  1186  1361 I PickerSyncController: Executing SyncAlbumReset. authority: null. albumId: null
-10-23 00:59:24.277  1186  1361 I PickerSyncController: Successfully executed SyncResetAlbum. authority: null. albumId: null. Result count: 0
+10-23 01:25:05.619   236  2453 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10077; state: DISABLED
+10-23 01:25:05.619   236  2453 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity (has extras)} from uid 2000
+10-23 01:25:05.619   236  2453 E CellBroadcastUtils: getDefaultCellBroadcastReceiverPackageName: no package found
+10-23 01:25:05.625   109   109 E ClientCache: failed to get buffer, invalid process token
+10-23 01:25:05.626   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921bc50
+10-23 01:25:05.626   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921b2f0
+10-23 01:25:05.626   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921c490
+10-23 01:25:05.626   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921b350
+10-23 01:25:05.626   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce92188f0
+10-23 01:25:05.627   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921c430
+10-23 01:25:05.627   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce9218410
+10-23 01:25:05.627   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921b350
+10-23 01:25:05.627   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921c430
+10-23 01:25:05.627   109   109 E BpTransactionCompletedListener: Failed to transact (-32)
+10-23 01:25:05.627   109   109 E CompositionEngine: [Dim Layer for - Task=8#139] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.628   851  1296 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3
+10-23 01:25:05.628   851  1296 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
+10-23 01:25:05.628   851  1296 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3
+10-23 01:25:05.628   851  1296 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
+10-23 01:25:05.629   851  1296 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3
+10-23 01:25:05.629   851  1296 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
+10-23 01:25:05.629   851  1296 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3
+10-23 01:25:05.629   851  1296 E AHardwareBuffer: GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -3), handle=0x0
+10-23 01:25:05.634   851  1296 E OpenGLRenderer: Unable to match the desired swap behavior.
+10-23 01:25:05.692   109   109 E CompositionEngine: [Dim Layer for - Task=8#139] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.758   109   109 E CompositionEngine: [Dim Layer for - Task=8#139] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.758   109   109 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#150] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.825   109   109 E CompositionEngine: [Dim Layer for - Task=8#139] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.825   109   109 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#150] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.892   109   109 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#150] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:05.957    86    86 D hwcomposer: VSYNC event status:0
+10-23 01:25:05.958   109   120 W TransactionTracing: Could not find layer handle 0x7d4ce921bef0
+10-23 01:25:05.958   109   109 E CompositionEngine: [Dim Layer for - WindowedMagnification:0:31#150] Invalid device requested composition type change: SolidColor (3) --> Device (2)
+10-23 01:25:09.067   236  1546 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-23 01:25:09.293  1257  1257 I ProvidersCache: Updating roots due to change on user 0at content://com.android.providers.media.documents/root
+10-23 01:25:09.635   236   486 E TrafficController: create PF_KEY socket failed: Address family not supported by protocol
+10-23 01:25:09.635   236   486 E TrafficController: map swap synchronize_rcu() ended with failure: Address family not supported by protocol
+10-23 01:25:09.635   236   486 D TrafficControllerJni: native_swapActiveStatsMap failed, error code = 97
+10-23 01:25:09.635   236   486 E NetworkStats: problem reading network stats
+10-23 01:25:09.635   236   486 E NetworkStats: java.lang.IllegalStateException: java.io.IOException: android.os.ServiceSpecificException: Unable to swap active stats map: Address family not supported by protocol (code 97)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService.readNetworkStatsUidDetail(NetworkStatsService.java:2763)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService.getNetworkStatsUidDetail(NetworkStatsService.java:2777)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService.recordSnapshotLocked(NetworkStatsService.java:2204)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService.performPollLocked(NetworkStatsService.java:2293)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService.performPoll(NetworkStatsService.java:2266)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService.-$$Nest$mperformPoll(Unknown Source:0)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService$3.onReceive(NetworkStatsService.java:1940)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at android.app.LoadedApk$ReceiverDispatcher$Args.lambda$getRunnable$0$android-app-LoadedApk$ReceiverDispatcher$Args(LoadedApk.java:1790)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at android.app.LoadedApk$ReceiverDispatcher$Args$$ExternalSyntheticLambda0.run(Unknown Source:2)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at android.os.Handler.handleCallback(Handler.java:942)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at android.os.Looper.loop(Looper.java:288)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 01:25:09.635   236   486 E NetworkStats: Caused by: java.io.IOException: android.os.ServiceSpecificException: Unable to swap active stats map: Address family not supported by protocol (code 97)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsFactory.requestSwapActiveStatsMapLocked(NetworkStatsFactory.java:310)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsFactory.readNetworkStatsDetail(NetworkStatsFactory.java:337)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsService.readNetworkStatsUidDetail(NetworkStatsService.java:2761)
+10-23 01:25:09.635   236   486 E NetworkStats: 	... 13 more
+10-23 01:25:09.635   236   486 E NetworkStats: Caused by: android.os.ServiceSpecificException: Unable to swap active stats map: Address family not supported by protocol (code 97)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.BpfNetMaps.maybeThrow(BpfNetMaps.java:71)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.BpfNetMaps.swapActiveStatsMap(BpfNetMaps.java:226)
+10-23 01:25:09.635   236   486 E NetworkStats: 	at com.android.server.net.NetworkStatsFactory.requestSwapActiveStatsMapLocked(NetworkStatsFactory.java:308)
+10-23 01:25:09.635   236   486 E NetworkStats: 	... 15 more
+10-23 01:25:09.635   193   481 E BandwidthController: Updating quota globalAlert failed (Status[code: 2, msg: "[No such file or directory] : fopen("/proc/net/xt_quota/globalAlert", "we") failed"])
+10-23 01:25:21.704  1231  1436 W MediaProvider: isAppCloneUserPair for user 0: false
+10-23 01:25:21.704  1231  1436 V MediaProvider: Inserted id:1000000019 less than next row id backup:1000001000.
+10-23 01:25:21.705  2467  2467 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-23 01:25:21.706  1231  1407 E StorageManager: Failed to set extended attributes for /storage/emulated/0/modern-direct.png to set project id.: Operation not supported on transport endpoint
+10-23 01:25:21.707  1231  1407 W MediaProvider: Failed to update quota type for /storage/emulated/0/modern-direct.png
+10-23 01:25:21.707  1231  1407 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/modern-direct.png
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2618)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:712)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.lambda$onFileCreatedForFuse$17(MediaProvider.java:1723)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.$r8$lambda$RwX1jyw0H1CYPm6NAX9_DxGu3Co(Unknown Source:0)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider$$ExternalSyntheticLambda7.run(Unknown Source:4)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:942)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at android.os.Looper.loop(Looper.java:288)
+10-23 01:25:21.707  1231  1407 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 01:25:21.708  1231  1407 E StorageManager: Failed to set extended attributes for /storage/emulated/0/modern-direct.png to set project id.: Operation not supported on transport endpoint
+10-23 01:25:21.708  1231  1407 W MediaProvider: Failed to update quota type for /storage/emulated/0/modern-direct.png
+10-23 01:25:21.708  1231  1407 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/modern-direct.png
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2618)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:712)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:690)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.-$$Nest$mupdateQuotaTypeForUri(Unknown Source:0)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.lambda$onInsert$0(MediaProvider.java:743)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.$r8$lambda$DnIEye5Sx8fODP4Bt_qvKpm3U-Q(Unknown Source:0)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider$4$$ExternalSyntheticLambda0.run(Unknown Source:6)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:942)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at android.os.Looper.loop(Looper.java:288)
+10-23 01:25:21.708  1231  1407 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 01:25:21.722    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-23 01:25:21.722  2467  2469 I Gralloc4: mapper 4.x is not supported
+10-23 01:25:21.722    21    21 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device VINTF manifest.
+10-23 01:25:21.722  2467  2469 W Gralloc3: mapper 3.x is not supported
+10-23 01:25:21.855   236   263 D OomAdjuster: Not killing cached processes
+10-23 01:25:21.859  1231  1758 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 01:25:21.863  1231  1758 V MediaProvider: Inserted id:1000000019 less than next row id backup:1000001000.
+10-23 01:25:21.864  1231  1758 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+10-23 01:25:21.864  1231  1407 E StorageManager: Failed to set extended attributes for /storage/emulated/0/modern-direct.png to set project id.: Operation not supported on transport endpoint
+10-23 01:25:21.865  1231  1407 W MediaProvider: Failed to update quota type for /storage/emulated/0/modern-direct.png
+10-23 01:25:21.865  1231  1407 W MediaProvider: java.io.IOException: Failed to update quota type for /storage/emulated/0/modern-direct.png
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at android.os.storage.StorageManager.updateExternalStorageFileQuotaType(StorageManager.java:2618)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForFileInternal(MediaProvider.java:712)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.updateQuotaTypeForUri(MediaProvider.java:690)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider.-$$Nest$mupdateQuotaTypeForUri(Unknown Source:0)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.lambda$onUpdate$1(MediaProvider.java:773)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider$4.$r8$lambda$3D2OHltIfecN7CvhaLyqtkV--uY(Unknown Source:0)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at com.android.providers.media.MediaProvider$4$$ExternalSyntheticLambda1.run(Unknown Source:10)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at android.os.Handler.handleCallback(Handler.java:942)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at android.os.Looper.loop(Looper.java:288)
+10-23 01:25:21.865  1231  1407 W MediaProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-23 01:25:23.865   558   597 I PermissionControllerServiceImpl: Updating user sensitive for user 0
+10-23 01:25:25.118   193   207 E Netd    : Failed to dump IPv4 sockets struct tcp_info: No such file or directory
+10-23 01:25:25.118   193   207 E TcpSocketMonitor: Failed to poll TCP socket info: No such file or directory
+10-23 01:25:25.498   764  1111 E TcpSocketTracker: Expect to get family 10 SOCK_DIAG_BY_FAMILY message but get 2
+10-23 01:25:25.498   764  1111 E TcpSocketTracker: Expect to get family 2 SOCK_DIAG_BY_FAMILY message but get 2
+10-23 01:25:26.533   236   269 W BatteryExternalStatsWorker: error reading Bluetooth stats: 9
+10-23 01:25:26.891  1231  1407 D PickerSyncController: Fetching SyncRequestParams. Authority: com.android.providers.media.photopicker. LatestMediaCollectionInfo: Bundle[{last_media_sync_generation=14, media_collection_id=1307:ff838041-b294-4eae-ac55-3b032f75d2ef:external_primary}]. CachedMediaCollectionInfo: Bundle[{last_media_sync_generation=8, media_collection_id=1307:ff838041-b294-4eae-ac55-3b032f75d2ef:external_primary}]
+10-23 01:25:26.891  1231  1407 D PickerSyncController: SyncRequestParams. Authority: com.android.providers.media.photopicker. Result: SYNC_TYPE_INCREMENTAL
+10-23 01:25:26.891  1231  1407 I PickerSyncController: Executing SyncAdd. authority: com.android.providers.media.photopicker
+10-23 01:25:26.891  1231  1407 I PickerSyncController: Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=8}]. Result count: 1. Cursor count: 1
+10-23 01:25:26.892  1231  1407 I PickerSyncController: Executing SyncRemove. authority: com.android.providers.media.photopicker
+10-23 01:25:26.893  1231  1407 I PickerSyncController: Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=8}]. Result count: 0. Cursor count: 0
+10-23 01:25:26.893  1231  1407 D PickerSyncController: Fetching SyncRequestParams. Null cloud authority. Result: SYNC_TYPE_RESET
+10-23 01:25:26.893  1231  1407 I PickerSyncController: Executing SyncReset. authority: null
+10-23 01:25:26.893  1231  1407 I PickerSyncController: SyncReset. Authority: null. Result count: 0
+10-23 01:25:26.893  1231  1407 D PickerSyncController: Ignoring cache media info for null authority with bundle: null
+10-23 01:25:26.893  1231  1407 I PickerSyncController: Executing SyncAlbumReset. authority: com.android.providers.media.photopicker. albumId: null
+10-23 01:25:26.893  1231  1407 I PickerSyncController: Successfully executed SyncResetAlbum. authority: com.android.providers.media.photopicker. albumId: null. Result count: 0
+10-23 01:25:26.893  1231  1407 I PickerSyncController: Executing SyncAlbumReset. authority: null. albumId: null
+10-23 01:25:26.893  1231  1407 I PickerSyncController: Successfully executed SyncResetAlbum. authority: null. albumId: null. Result count: 0

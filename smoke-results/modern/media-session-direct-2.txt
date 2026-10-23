@@ -3,7 +3,7 @@ MEDIA SESSION SERVICE (dumpsys media_session)
 4 sessions listeners.
 Global priority session is com.android.server.telecom/HeadsetMediaButton (userId=0)
   HeadsetMediaButton com.android.server.telecom/HeadsetMediaButton (userId=0)
-    ownerPid=238, ownerUid=1000, userId=0
+    ownerPid=236, ownerUid=1000, userId=0
     package=com.android.server.telecom
     launchIntent=null
     mediaButtonReceiver=null
@@ -24,7 +24,7 @@ Record for full_user=0
   Media key listener package: 
   OnMediaKeyEventDispatchedListener: added 0 listener(s)
   OnMediaKeyEventSessionChangedListener: added 0 listener(s)
-  Last MediaButtonReceiver: MBR {pi=PendingIntent{f582e72: PendingIntentRecord{4deb2c3 com.wushisan.algertv.phone broadcastIntent}}, type=1}
+  Last MediaButtonReceiver: MBR {pi=PendingIntent{fa54b4d: PendingIntentRecord{e0b602 com.wushisan.algertv.phone broadcastIntent}}, type=1}
   Media button session is null
   Sessions Stack - have 0 sessions:
 Audio playback (lastly played comes first)
