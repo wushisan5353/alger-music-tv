@@ -1,8 +1,7 @@
-date=2026-10-23T01:50:49Z
-ref=refs/tags/v1.0.4
-sha=d8a3d43ba082d11954fb59fea42ef80e19105f79
+date=2026-10-23T02:55:52Z
+ref=refs/heads/main
+sha=531a87e2f6dd2cd1dc49ef495739de463c2df860
 signed=false
 apk_size=3290928
 apk_sha256=792b561abb274189c11ce714a10c18a02b5119a7232c59cf3306d26cba9a8f92
-phone_apk_size=2577187
-phone_apk_sha256=01527b535b4ee16e86e5a4bfb80427caf32c5e84077ee4cfaf243083ed2abb08
+phone_apk_missing=1
