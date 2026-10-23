@@ -3,7 +3,7 @@ MEDIA SESSION SERVICE (dumpsys media_session)
 4 sessions listeners.
 Global priority session is com.android.server.telecom/HeadsetMediaButton (userId=0)
   HeadsetMediaButton com.android.server.telecom/HeadsetMediaButton (userId=0)
-    ownerPid=273, ownerUid=1000, userId=0
+    ownerPid=271, ownerUid=1000, userId=0
     package=com.android.server.telecom
     launchIntent=null
     mediaButtonReceiver=null
@@ -25,36 +25,22 @@ Record for full_user=0
   OnMediaKeyEventDispatchedListener: added 0 listener(s)
   OnMediaKeyEventSessionChangedListener: added 1 listener(s)
     from com.android.bluetooth
-  Last MediaButtonReceiver: MBR {pi=PendingIntent{fad357e: PendingIntentRecord{805adf com.wushisan.algertv.phone broadcastIntent}}, type=1}
+  Last MediaButtonReceiver: MBR {pi=PendingIntent{b7c39f2: PendingIntentRecord{b89843 com.wushisan.algertv.phone broadcastIntent}}, type=1}
   Media button session is com.wushisan.algertv.phone/AlgerPhone (userId=0)
-  Sessions Stack - have 2 sessions:
+  Sessions Stack - have 1 sessions:
     AlgerPhone com.wushisan.algertv.phone/AlgerPhone (userId=0)
-      ownerPid=2604, ownerUid=10117, userId=0
+      ownerPid=2395, ownerUid=10116, userId=0
       package=com.wushisan.algertv.phone
       launchIntent=null
-      mediaButtonReceiver=MBR {pi=PendingIntent{fad357e: PendingIntentRecord{805adf com.wushisan.algertv.phone broadcastIntent}}, type=1}
+      mediaButtonReceiver=MBR {pi=PendingIntent{b7c39f2: PendingIntentRecord{b89843 com.wushisan.algertv.phone broadcastIntent}}, type=1}
       active=true
       flags=3
       rating type=0
-      controllers: 5
-      state=PlaybackState {state=3, position=0, buffered position=0, speed=1.0, updated=282933, actions=822, custom actions=[], active item id=-1, error=null}
-      audioAttrs=AudioAttributes: usage=USAGE_MEDIA content=CONTENT_TYPE_UNKNOWN flags=0x800 tags= bundle=null
-      volumeType=1, controlType=2, max=0, current=0
-      metadata: size=4, description=Smoke Direct, SoundHelix, null
-      queueTitle=null, size=0
-    AlgerTV com.wushisan.algertv/AlgerTV (userId=0)
-      ownerPid=2074, ownerUid=10116, userId=0
-      package=com.wushisan.algertv
-      launchIntent=null
-      mediaButtonReceiver=MBR {pi=PendingIntent{4e1c43a: PendingIntentRecord{cc668eb com.wushisan.algertv broadcastIntent}}, type=1}
-      active=true
-      flags=3
-      rating type=0
-      controllers: 2
-      state=PlaybackState {state=2, position=73603, buffered position=0, speed=1.0, updated=282931, actions=822, custom actions=[], active item id=-1, error=null}
+      controllers: 6
+      state=PlaybackState {state=3, position=0, buffered position=0, speed=1.0, updated=520440, actions=822, custom actions=[], active item id=-1, error=null}
       audioAttrs=AudioAttributes: usage=USAGE_MEDIA content=CONTENT_TYPE_UNKNOWN flags=0x800 tags= bundle=null
       volumeType=1, controlType=2, max=0, current=0
       metadata: size=4, description=Smoke Direct, SoundHelix, null
       queueTitle=null, size=0
 Audio playback (lastly played comes first)
-  uid=10117 packages=com.wushisan.algertv.phone 
+  uid=10116 packages=com.wushisan.algertv.phone 
