@@ -101,7 +101,7 @@ jobs:
             echo "sha=${{ github.sha }}"
             echo "signed=${SIGNED:-unknown}"
           } > "$STAGE/build-info.txt"
-          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.3.apk
+          APK=app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk
           if [ -f "$APK" ]; then
             SIZE=$(stat -c%s "$APK")
             SHA=$(sha256sum "$APK" | cut -d' ' -f1)
@@ -112,7 +112,7 @@ jobs:
           else
             echo "apk_missing=1" >> "$STAGE/build-info.txt"
           fi
-          PHONE_APK=app/build/outputs/apk/phone/release/AlgerPhone-1.1.apk
+          PHONE_APK=app/build/outputs/apk/phone/release/AlgerPhone-1.2.apk
           if [ -f "$PHONE_APK" ]; then
             PSIZE=$(stat -c%s "$PHONE_APK")
             PSHA=$(sha256sum "$PHONE_APK" | cut -d' ' -f1)
@@ -149,21 +149,29 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            app/build/outputs/apk/tv/release/AlgerTV-1.0.3.apk \
-            app/build/outputs/apk/phone/release/AlgerPhone-1.1.apk \
+            app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk \
+            app/build/outputs/apk/phone/release/AlgerPhone-1.2.apk \
             --title "Alger轻听 ${GITHUB_REF_NAME}" \
             --notes "Alger轻听 ${GITHUB_REF_NAME}（原生轻量版，免登录；含电视版与手机版两个 APK）"
 
       - name: Fail if APK missing
         run: |
-          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.3.apk
-          test -f app/build/outputs/apk/phone/release/AlgerPhone-1.1.apk
+          test -f app/build/outputs/apk/tv/release/AlgerTV-1.0.4.apk
+          test -f app/build/outputs/apk/phone/release/AlgerPhone-1.2.apk
 
   # In-workflow smoke on redroid 11 (ARM runner). This round the smoke also
   # reproduces the "first launch shows no list" report: BOTH flavors are
   # launched cold (pm clear) for a first-launch screenshot + HOME_ load
   # markers, then relaunched for a second-launch screenshot. TV runs at
   # 1920x1080/density 320, phone at 1080x1920/density 420.
+  # Fix-round 2 additions: (a) first-track verdicts — the first PLAYER_LOAD
+  # id must equal the first PLAYER_STARTED id with zero PLAYER_ERROR in
+  # between (the -38 prepare-poll bug skipped track 1); (b) direct-URL
+  # pipeline segments (--es alger_smoke_direct 1) that prove prepare/start/
+  # position independent of the rate-limited data source; (c) a phone
+  # search repro: uiautomator-tap the home search entry, verify focus
+  # lands on PhoneSearchActivity, tap a hot chip, count result rows,
+  # capture ANR evidence (user report: search tap = no reaction + jank).
   smoke:
     needs: build
     if: always()
@@ -218,7 +226,7 @@ jobs:
           echo "apksigner=$APKSIGNER keytool=$(command -v keytool || echo MISSING)"
           if [ -n "$APKSIGNER" ] && command -v keytool > /dev/null; then
             keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
-            for f in apks/tv/release/AlgerTV-1.0.3.apk apks/phone/release/AlgerPhone-1.1.apk; do
+            for f in apks/tv/release/AlgerTV-1.0.4.apk apks/phone/release/AlgerPhone-1.2.apk; do
               if [ -f "$f" ] && "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 "$f"; then
                 echo "SMOKE_SIGNED $f"
               else
@@ -243,7 +251,7 @@ jobs:
           TVACT=com.wushisan.algertv.ui.MainActivity
           $D shell wm size 1920x1080
           $D shell wm density 320
-          if $D install -r apks/tv/release/AlgerTV-1.0.3.apk > smoke-out/install-TV.txt 2>&1; then
+          if $D install -r apks/tv/release/AlgerTV-1.0.4.apk > smoke-out/install-TV.txt 2>&1; then
             echo "TV_INSTALL_OK" >> smoke-out/report.txt
           else
             echo "TV_INSTALL_FAIL" >> smoke-out/report.txt
@@ -257,6 +265,11 @@ jobs:
           alive_line TV_FIRST $TVPKG
           $D logcat -d > smoke-out/logcat-TV-first.txt 2>/dev/null
           grep "HOME_" smoke-out/logcat-TV-first.txt > smoke-out/home-repro.txt || true
+          # Self-grep the FIRST-launch segment for fatals: the report's
+          # FATAL count below only covers the second segment (lesson of
+          # the 500aeef round, where two real crashes shipped "all green").
+          TVFF=$(grep -c "FATAL EXCEPTION" smoke-out/logcat-TV-first.txt || true)
+          echo "TV_FIRST_FATAL_COUNT=$TVFF" >> smoke-out/report.txt
           echo "--- TV second launch (smoke autoplay) ---"
           $D shell am force-stop $TVPKG
           $D logcat -c
@@ -275,13 +288,44 @@ jobs:
             echo "TV_AUTOPLAY_UNCONFIRMED" >> smoke-out/report.txt
           fi
           grep -E "SMOKE_AUTOPLAY|PLAYER_" smoke-out/logcat-TV.txt | head -30 > smoke-out/autoplay-TV.txt || true
+          # First-track verdict: first loaded id must be first started id,
+          # and no PLAYER_ERROR may appear before it (the -38 signature).
+          FLID=$(grep -m1 "PLAYER_LOAD id=" smoke-out/logcat-TV.txt | sed -n 's/.*PLAYER_LOAD id=\([^ ]*\).*/\1/p')
+          FSID=$(grep -m1 "PLAYER_STARTED id=" smoke-out/logcat-TV.txt | sed -n 's/.*PLAYER_STARTED id=\([^ ]*\).*/\1/p')
+          ERRS=$(grep -c "PLAYER_ERROR" smoke-out/logcat-TV.txt || true)
+          echo "TV_FIRST_TRACK load=${FLID:-none} start=${FSID:-none} errors=$ERRS" >> smoke-out/report.txt
+          if [ -n "$FLID" ] && [ "$FLID" = "$FSID" ] && [ "$ERRS" = "0" ]; then
+            echo "TV_FIRST_TRACK_OK" >> smoke-out/report.txt
+          else
+            echo "TV_FIRST_TRACK_FAIL" >> smoke-out/report.txt
+          fi
+
+          echo "--- TV direct-URL pipeline (source-independent) ---"
+          $D shell am force-stop $TVPKG
+          $D logcat -c
+          $D shell am start -n "$TVPKG/$TVACT" --es alger_smoke_direct 1
+          sleep 16
+          shot shot-TV-direct.png
+          $D shell dumpsys media_session > smoke-out/media-session-TV-direct-1.txt 2>/dev/null
+          sleep 5
+          $D shell dumpsys media_session > smoke-out/media-session-TV-direct-2.txt 2>/dev/null
+          $D logcat -d > smoke-out/logcat-TV-direct.txt 2>/dev/null
+          grep -E "SMOKE_DIRECT|PLAYER_" smoke-out/logcat-TV-direct.txt | head -30 > smoke-out/direct-TV.txt || true
+          if grep -q "PLAYER_STARTED" smoke-out/logcat-TV-direct.txt; then echo "TV_DIRECT_STARTED" >> smoke-out/report.txt; else echo "TV_DIRECT_NOT_STARTED" >> smoke-out/report.txt; fi
+          DERR=$(grep -c "PLAYER_ERROR" smoke-out/logcat-TV-direct.txt || true)
+          echo "TV_DIRECT_PLAYER_ERRORS=$DERR" >> smoke-out/report.txt
+          DP1=$(grep -o "position=[0-9]*" smoke-out/media-session-TV-direct-1.txt | head -1 | cut -d= -f2)
+          DP2=$(grep -o "position=[0-9]*" smoke-out/media-session-TV-direct-2.txt | head -1 | cut -d= -f2)
+          echo "TV_DIRECT_POSITION p1=${DP1:-none} p2=${DP2:-none}" >> smoke-out/report.txt
+          if [ -n "$DP1" ] && [ -n "$DP2" ] && [ "$DP2" -gt "$DP1" ]; then echo "TV_DIRECT_POSITION_ADVANCED" >> smoke-out/report.txt; fi
+          alive_line TV_DIRECT $TVPKG
 
           # ---------------- PHONE: 1080x1920, first + second launch -------
           PHPKG=com.wushisan.algertv.phone
           PHACT=com.wushisan.algertv.ui.phone.PhoneMainActivity
           $D shell wm size 1080x1920
           $D shell wm density 420
-          if $D install -r apks/phone/release/AlgerPhone-1.1.apk > smoke-out/install-PHONE.txt 2>&1; then
+          if $D install -r apks/phone/release/AlgerPhone-1.2.apk > smoke-out/install-PHONE.txt 2>&1; then
             echo "PHONE_INSTALL_OK" >> smoke-out/report.txt
           else
             echo "PHONE_INSTALL_FAIL" >> smoke-out/report.txt
@@ -295,6 +339,8 @@ jobs:
           alive_line PHONE_FIRST $PHPKG
           $D logcat -d > smoke-out/logcat-PHONE-first.txt 2>/dev/null
           grep "HOME_" smoke-out/logcat-PHONE-first.txt >> smoke-out/home-repro.txt || true
+          PHFF=$(grep -c "FATAL EXCEPTION" smoke-out/logcat-PHONE-first.txt || true)
+          echo "PHONE_FIRST_FATAL_COUNT=$PHFF" >> smoke-out/report.txt
           echo "--- PHONE second launch ---"
           $D shell am force-stop $PHPKG
           $D logcat -c
@@ -307,6 +353,93 @@ jobs:
           FATAL=$(grep -c "FATAL EXCEPTION" smoke-out/logcat-PHONE.txt || true)
           echo "PHONE_FATAL_COUNT=$FATAL" >> smoke-out/report.txt
           grep -E "FATAL EXCEPTION|AndroidRuntime" smoke-out/logcat-PHONE.txt | head -20 > smoke-out/fatal-PHONE.txt || true
+
+          # ---------- PHONE search repro (user: tap = no reaction + jank)
+          echo "--- PHONE search repro ---"
+          cat > /tmp/tapcalc.py << 'PYEOF'
+          import re, sys
+          xml = open(sys.argv[1], encoding='utf-8', errors='ignore').read()
+          pat, mode = sys.argv[2], sys.argv[3]
+          for m in re.finditer(r'<node[^>]*>', xml):
+              node = m.group(0)
+              if mode == 'id' and ('resource-id="com.wushisan.algertv.phone:id/' + pat + '"') not in node:
+                  continue
+              if mode == 'text' and ('text="' + pat + '"') not in node:
+                  continue
+              b = re.search(r'bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', node)
+              if b:
+                  print((int(b.group(1)) + int(b.group(3))) // 2, (int(b.group(2)) + int(b.group(4))) // 2)
+                  sys.exit(0)
+          sys.exit(1)
+          PYEOF
+          tap_match() { # $1=dumpfile $2=pattern $3=mode -> echoes "x y"
+            python3 /tmp/tapcalc.py "$1" "$2" "$3" 2>/dev/null
+          }
+          $D shell am force-stop $PHPKG
+          $D logcat -c
+          $D shell am start -n "$PHPKG/$PHACT"
+          sleep 9
+          $D shell uiautomator dump /sdcard/ui-home.xml > /dev/null 2>&1
+          $D pull /sdcard/ui-home.xml smoke-out/ui-home.xml > /dev/null 2>&1 || true
+          XY=$(tap_match smoke-out/ui-home.xml search_entry id)
+          echo "SEARCH_ENTRY_XY=${XY:-notfound}" >> smoke-out/search-repro.txt
+          if [ -n "$XY" ]; then $D shell input tap $XY; fi
+          sleep 3
+          shot shot-PHONE-search-open.png
+          $D shell dumpsys activity activities > smoke-out/search-activities.txt 2>/dev/null
+          if grep -m1 "topResumedActivity" smoke-out/search-activities.txt | grep -q "PhoneSearchActivity"; then
+            echo "PHONE_SEARCH_OPEN_OK" >> smoke-out/report.txt
+          else
+            echo "PHONE_SEARCH_OPEN_FAIL" >> smoke-out/report.txt
+          fi
+          grep -m1 "topResumedActivity" smoke-out/search-activities.txt >> smoke-out/search-repro.txt || true
+          # Hot chip tap -> real search through the data source.
+          $D shell uiautomator dump /sdcard/ui-search.xml > /dev/null 2>&1
+          $D pull /sdcard/ui-search.xml smoke-out/ui-search.xml > /dev/null 2>&1 || true
+          CXY=$(tap_match smoke-out/ui-search.xml 周杰伦 text)
+          echo "SEARCH_CHIP_XY=${CXY:-notfound}" >> smoke-out/search-repro.txt
+          if [ -n "$CXY" ]; then $D shell input tap $CXY; fi
+          sleep 9
+          shot shot-PHONE-search-results.png
+          $D shell uiautomator dump /sdcard/ui-results.xml > /dev/null 2>&1
+          $D pull /sdcard/ui-results.xml smoke-out/ui-results.xml > /dev/null 2>&1 || true
+          ROWS=$(grep -o "id/track_name" smoke-out/ui-results.xml 2>/dev/null | wc -l)
+          echo "PHONE_SEARCH_RESULTS=$ROWS" >> smoke-out/report.txt
+          $D logcat -d > smoke-out/logcat-PHONE-search.txt 2>/dev/null
+          ANRS=$(grep -c "ANR in\|Input dispatching timed out" smoke-out/logcat-PHONE-search.txt || true)
+          echo "PHONE_SEARCH_ANR_COUNT=$ANRS" >> smoke-out/report.txt
+          grep -c "Skipped .* frames" smoke-out/logcat-PHONE-search.txt > smoke-out/search-skipped.txt || true
+          SFATAL=$(grep -c "FATAL EXCEPTION" smoke-out/logcat-PHONE-search.txt || true)
+          echo "PHONE_SEARCH_FATAL_COUNT=$SFATAL" >> smoke-out/report.txt
+          # Main-thread stack snapshot for the "whole device jank" report.
+          PPID=$($D shell pidof $PHPKG | tr -d '\r')
+          if [ -n "$PPID" ]; then
+            $D shell kill -3 $PPID > /dev/null 2>&1 || true
+            sleep 2
+            $D pull /data/anr/traces.txt smoke-out/search-traces.txt > /dev/null 2>&1 || true
+          fi
+          alive_line PHONE_SEARCH $PHPKG
+
+          # ---------- PHONE direct-URL pipeline (source-independent) ------
+          echo "--- PHONE direct-URL pipeline ---"
+          $D shell am force-stop $PHPKG
+          $D logcat -c
+          $D shell am start -n "$PHPKG/$PHACT" --es alger_smoke_direct 1
+          sleep 16
+          shot shot-PHONE-direct.png
+          $D shell dumpsys media_session > smoke-out/media-session-PHONE-direct-1.txt 2>/dev/null
+          sleep 5
+          $D shell dumpsys media_session > smoke-out/media-session-PHONE-direct-2.txt 2>/dev/null
+          $D logcat -d > smoke-out/logcat-PHONE-direct.txt 2>/dev/null
+          grep -E "SMOKE_DIRECT|PLAYER_" smoke-out/logcat-PHONE-direct.txt | head -30 > smoke-out/direct-PHONE.txt || true
+          if grep -q "PLAYER_STARTED" smoke-out/logcat-PHONE-direct.txt; then echo "PHONE_DIRECT_STARTED" >> smoke-out/report.txt; else echo "PHONE_DIRECT_NOT_STARTED" >> smoke-out/report.txt; fi
+          PERR=$(grep -c "PLAYER_ERROR" smoke-out/logcat-PHONE-direct.txt || true)
+          echo "PHONE_DIRECT_PLAYER_ERRORS=$PERR" >> smoke-out/report.txt
+          PP1=$(grep -o "position=[0-9]*" smoke-out/media-session-PHONE-direct-1.txt | head -1 | cut -d= -f2)
+          PP2=$(grep -o "position=[0-9]*" smoke-out/media-session-PHONE-direct-2.txt | head -1 | cut -d= -f2)
+          echo "PHONE_DIRECT_POSITION p1=${PP1:-none} p2=${PP2:-none}" >> smoke-out/report.txt
+          if [ -n "$PP1" ] && [ -n "$PP2" ] && [ "$PP2" -gt "$PP1" ]; then echo "PHONE_DIRECT_POSITION_ADVANCED" >> smoke-out/report.txt; fi
+          alive_line PHONE_DIRECT $PHPKG
 
           echo "SMOKE_DONE date=$(date -u +%Y-%m-%dT%H:%M:%SZ) sha=${{ github.sha }}" >> smoke-out/report.txt
           cat smoke-out/report.txt
@@ -367,7 +500,23 @@ jobs:
           sudo apt-get install -y apksigner default-jdk-headless android-tools-adb > /dev/null 2>&1 || true
           APKSIGNER=$(command -v apksigner || ls $ANDROID_HOME/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
           keytool -genkeypair -keystore /tmp/smoke.jks -alias smoke -storepass smoke123 -keypass smoke123 -keyalg RSA -keysize 2048 -validity 3650 -dname "CN=smoke" > /dev/null 2>&1
-          "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 apks/phone/release/AlgerPhone-1.1.apk && echo "MODERN_SIGNED" || echo "MODERN_SIGN_FAIL"
+          "$APKSIGNER" sign --ks /tmp/smoke.jks --ks-key-alias smoke --ks-pass pass:smoke123 --key-pass pass:smoke123 apks/phone/release/AlgerPhone-1.2.apk && echo "MODERN_SIGNED" || echo "MODERN_SIGN_FAIL"
+          cat > tapcalc.py << 'PYEOF'
+          import re, sys
+          xml = open(sys.argv[1], encoding='utf-8', errors='ignore').read()
+          pat, mode = sys.argv[2], sys.argv[3]
+          for m in re.finditer(r'<node[^>]*>', xml):
+              node = m.group(0)
+              if mode == 'id' and ('resource-id="com.wushisan.algertv.phone:id/' + pat + '"') not in node:
+                  continue
+              if mode == 'text' and ('text="' + pat + '"') not in node:
+                  continue
+              b = re.search(r'bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', node)
+              if b:
+                  print((int(b.group(1)) + int(b.group(3))) // 2, (int(b.group(2)) + int(b.group(4))) // 2)
+                  sys.exit(0)
+          sys.exit(1)
+          PYEOF
           cat > repro-phone.sh << 'REPROEOF'
           #!/bin/bash
           # $1 = env label (redroid13 / emulator34). Expects adb ready.
@@ -379,7 +528,7 @@ jobs:
           echo "PHONE_MODERN_ENV=$1" >> "$OUT/report.txt"
           adb wait-for-device
           adb shell getprop ro.build.version.sdk > "$OUT/sdk.txt" 2>/dev/null
-          if adb install -r apks/phone/release/AlgerPhone-1.1.apk > "$OUT/install.txt" 2>&1; then
+          if adb install -r apks/phone/release/AlgerPhone-1.2.apk > "$OUT/install.txt" 2>&1; then
             echo "PHONE_MODERN_INSTALL_OK" >> "$OUT/report.txt"
           else
             echo "PHONE_MODERN_INSTALL_FAIL" >> "$OUT/report.txt"; exit 0
@@ -410,6 +559,80 @@ jobs:
           if grep -q "PLAYING" "$OUT/media-session-2.txt"; then echo "PHONE_MODERN_SESSION_PLAYING" >> "$OUT/report.txt"; fi
           PID=$(adb shell pidof $PKG | tr -d '\r')
           if [ -n "$PID" ]; then echo "PHONE_MODERN_ALIVE_END pid=$PID" >> "$OUT/report.txt"; else echo "PHONE_MODERN_DEAD_END" >> "$OUT/report.txt"; fi
+          # First-track verdict (fix-round 2): the first PLAYER_LOAD id must
+          # be the first PLAYER_STARTED id and no PLAYER_ERROR may precede
+          # it — the pre-fix -38 handler skipped track 1 every time.
+          MFL=$(grep -m1 "PLAYER_LOAD id=" "$OUT/logcat-modern.txt" | sed -n 's/.*PLAYER_LOAD id=\([^ ]*\).*/\1/p')
+          MFS=$(grep -m1 "PLAYER_STARTED id=" "$OUT/logcat-modern.txt" | sed -n 's/.*PLAYER_STARTED id=\([^ ]*\).*/\1/p')
+          MERR=$(grep -c "PLAYER_ERROR" "$OUT/logcat-modern.txt" || true)
+          echo "PHONE_MODERN_FIRST_TRACK load=${MFL:-none} start=${MFS:-none} errors=$MERR" >> "$OUT/report.txt"
+          if [ -n "$MFL" ] && [ "$MFL" = "$MFS" ] && [ "$MERR" = "0" ]; then echo "PHONE_MODERN_FIRST_TRACK_OK" >> "$OUT/report.txt"; else echo "PHONE_MODERN_FIRST_TRACK_FAIL" >> "$OUT/report.txt"; fi
+          # ---- Direct-URL pipeline: proves prepare/start/position with the
+          # data source bypassed (cloud egress is GDStudio-rate-limited).
+          adb shell am force-stop $PKG
+          adb logcat -c
+          adb shell am start -n "$PKG/$ACT" --es alger_smoke_direct 1
+          sleep 16
+          adb shell screencap -p /sdcard/modern-direct.png
+          adb pull /sdcard/modern-direct.png "$OUT/shot-PHONE-modern-direct.png" > /dev/null 2>&1 || true
+          adb shell dumpsys media_session > "$OUT/media-session-direct-1.txt" 2>/dev/null
+          sleep 5
+          adb shell dumpsys media_session > "$OUT/media-session-direct-2.txt" 2>/dev/null
+          adb logcat -d > "$OUT/logcat-direct.txt" 2>/dev/null
+          if grep -q "PLAYER_STARTED" "$OUT/logcat-direct.txt"; then echo "PHONE_MODERN_DIRECT_STARTED" >> "$OUT/report.txt"; else echo "PHONE_MODERN_DIRECT_NOT_STARTED" >> "$OUT/report.txt"; fi
+          MDERR=$(grep -c "PLAYER_ERROR" "$OUT/logcat-direct.txt" || true)
+          echo "PHONE_MODERN_DIRECT_PLAYER_ERRORS=$MDERR" >> "$OUT/report.txt"
+          MP1=$(grep -o "position=[0-9]*" "$OUT/media-session-direct-1.txt" | head -1 | cut -d= -f2)
+          MP2=$(grep -o "position=[0-9]*" "$OUT/media-session-direct-2.txt" | head -1 | cut -d= -f2)
+          echo "PHONE_MODERN_DIRECT_POSITION p1=${MP1:-none} p2=${MP2:-none}" >> "$OUT/report.txt"
+          if [ -n "$MP1" ] && [ -n "$MP2" ] && [ "$MP2" -gt "$MP1" ]; then echo "PHONE_MODERN_DIRECT_POSITION_ADVANCED" >> "$OUT/report.txt"; fi
+          if grep -q "PLAYING" "$OUT/media-session-direct-2.txt"; then echo "PHONE_MODERN_DIRECT_SESSION_PLAYING" >> "$OUT/report.txt"; fi
+          # ---- Search repro: tap the home search entry, require focus on
+          # PhoneSearchActivity, tap a hot chip, count result rows, ANR scan.
+          adb shell am force-stop $PKG
+          adb logcat -c
+          adb shell am start -n "$PKG/$ACT"
+          sleep 9
+          adb shell uiautomator dump /sdcard/ui-mhome.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-mhome.xml "$OUT/ui-modern-home.xml" > /dev/null 2>&1 || true
+          XY=$(python3 tapcalc.py "$OUT/ui-modern-home.xml" search_entry id 2>/dev/null)
+          echo "MODERN_SEARCH_ENTRY_XY=${XY:-notfound}" >> "$OUT/search-modern.txt"
+          if [ -n "$XY" ]; then adb shell input tap $XY; fi
+          sleep 3
+          adb shell screencap -p /sdcard/modern-search.png
+          adb pull /sdcard/modern-search.png "$OUT/shot-PHONE-modern-search.png" > /dev/null 2>&1 || true
+          adb shell dumpsys activity activities > "$OUT/search-modern-activities.txt" 2>/dev/null
+          if grep -m1 "topResumedActivity" "$OUT/search-modern-activities.txt" | grep -q "PhoneSearchActivity"; then
+            echo "PHONE_MODERN_SEARCH_OPEN_OK" >> "$OUT/report.txt"
+          else
+            echo "PHONE_MODERN_SEARCH_OPEN_FAIL" >> "$OUT/report.txt"
+          fi
+          adb shell uiautomator dump /sdcard/ui-msearch.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-msearch.xml "$OUT/ui-modern-search.xml" > /dev/null 2>&1 || true
+          CXY=$(python3 tapcalc.py "$OUT/ui-modern-search.xml" 周杰伦 text 2>/dev/null)
+          echo "MODERN_SEARCH_CHIP_XY=${CXY:-notfound}" >> "$OUT/search-modern.txt"
+          if [ -n "$CXY" ]; then adb shell input tap $CXY; fi
+          sleep 9
+          adb shell screencap -p /sdcard/modern-sresults.png
+          adb pull /sdcard/modern-sresults.png "$OUT/shot-PHONE-modern-search-results.png" > /dev/null 2>&1 || true
+          adb shell uiautomator dump /sdcard/ui-mresults.xml > /dev/null 2>&1
+          adb pull /sdcard/ui-mresults.xml "$OUT/ui-modern-results.xml" > /dev/null 2>&1 || true
+          MROWS=$(grep -o "id/track_name" "$OUT/ui-modern-results.xml" 2>/dev/null | wc -l)
+          echo "PHONE_MODERN_SEARCH_RESULTS=$MROWS" >> "$OUT/report.txt"
+          adb logcat -d > "$OUT/logcat-search-modern.txt" 2>/dev/null
+          MANR=$(grep -c "ANR in\|Input dispatching timed out" "$OUT/logcat-search-modern.txt" || true)
+          echo "PHONE_MODERN_SEARCH_ANR_COUNT=$MANR" >> "$OUT/report.txt"
+          MFATAL2=$(grep -c "FATAL EXCEPTION" "$OUT/logcat-search-modern.txt" || true)
+          echo "PHONE_MODERN_SEARCH_FATAL_COUNT=$MFATAL2" >> "$OUT/report.txt"
+          MPID=$(adb shell pidof $PKG | tr -d '\r')
+          if [ -n "$MPID" ]; then
+            adb shell kill -3 $MPID > /dev/null 2>&1 || true
+            sleep 2
+            adb pull /data/anr/traces.txt "$OUT/search-modern-traces.txt" > /dev/null 2>&1 || true
+            echo "PHONE_MODERN_SEARCH_ALIVE_END pid=$MPID" >> "$OUT/report.txt"
+          else
+            echo "PHONE_MODERN_SEARCH_DEAD_END" >> "$OUT/report.txt"
+          fi
           cat "$OUT/report.txt"
           REPROEOF
           chmod +x repro-phone.sh
@@ -458,7 +681,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set +e
-          [ -f modern-out/logcat-modern.txt ] && tail -c 300000 modern-out/logcat-modern.txt > modern-out/logcat-modern.txt.tmp && mv modern-out/logcat-modern.txt.tmp modern-out/logcat-modern.txt
+          for lf in modern-out/logcat-modern.txt modern-out/logcat-direct.txt modern-out/logcat-search-modern.txt; do
+            [ -f "$lf" ] && tail -c 300000 "$lf" > "$lf.tmp" && mv "$lf.tmp" "$lf"
+          done
           rm -rf /tmp/outrepo
           if git clone --branch build-output "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" /tmp/outrepo 2>/dev/null; then
             echo "cloned existing build-output"
