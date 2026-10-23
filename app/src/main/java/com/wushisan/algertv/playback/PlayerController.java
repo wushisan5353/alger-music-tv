@@ -43,6 +43,15 @@ public class PlayerController {
     private int index = -1;
     private boolean playing = false;
     private boolean preparing = false;
+    /**
+     * True only between onPrepared and the next load/reset. MediaPlayer
+     * position/duration/seek calls are valid solely inside this window;
+     * calling them earlier (a UI ticker polling while prepareAsync is
+     * still in flight, or PlaybackService.refresh on song change) makes
+     * the player post error (1, -38) to the error listener — which used
+     * to kill the first track of every queue on real devices.
+     */
+    private boolean prepared = false;
     private long loadToken = 0;
 
     private final AudioManager.OnAudioFocusChangeListener focusListener =
@@ -103,24 +112,30 @@ public class PlayerController {
     }
 
     public int getPosition() {
+        // Never touch the player outside the prepared window: in Idle /
+        // Initialized / Preparing states getCurrentPosition() posts an
+        // error (1, -38) to the error listener even when called inside
+        // try/catch — the exception is not the delivery mechanism.
+        if (!prepared || mediaPlayer == null) return 0;
         try {
-            if (mediaPlayer != null && (playing || preparing)) return mediaPlayer.getCurrentPosition();
-            if (mediaPlayer != null) return mediaPlayer.getCurrentPosition();
+            return mediaPlayer.getCurrentPosition();
         } catch (Exception ignored) {
+            return 0;
         }
-        return 0;
     }
 
     public int getDuration() {
-        try {
-            Song s = currentSong();
-            int d = mediaPlayer == null ? 0 : mediaPlayer.getDuration();
-            if (d > 0) return d;
-            return s == null ? 0 : (int) s.durationMs;
-        } catch (Exception e) {
-            Song s = currentSong();
-            return s == null ? 0 : (int) s.durationMs;
+        // Same guard as getPosition(): fall back to playlist metadata
+        // until the player is actually prepared.
+        if (prepared && mediaPlayer != null) {
+            try {
+                int d = mediaPlayer.getDuration();
+                if (d > 0) return d;
+            } catch (Exception ignored) {
+            }
         }
+        Song s = currentSong();
+        return s == null ? 0 : (int) s.durationMs;
     }
 
     // ------------------------------------------------------------- control
@@ -140,7 +155,8 @@ public class PlayerController {
     }
 
     public void resume() {
-        if (mediaPlayer == null) {
+        if (preparing) return; // onPrepared starts playback when ready
+        if (mediaPlayer == null || !prepared) {
             startCurrent();
             return;
         }
@@ -186,7 +202,7 @@ public class PlayerController {
     }
 
     public void seekBy(int deltaMs) {
-        if (mediaPlayer == null) return;
+        if (mediaPlayer == null || !prepared) return;
         try {
             int pos = mediaPlayer.getCurrentPosition() + deltaMs;
             int dur = mediaPlayer.getDuration();
@@ -198,7 +214,7 @@ public class PlayerController {
     }
 
     public void seekTo(int posMs) {
-        if (mediaPlayer == null) return;
+        if (mediaPlayer == null || !prepared) return;
         try {
             mediaPlayer.seekTo(posMs);
         } catch (Exception ignored) {
@@ -212,6 +228,7 @@ public class PlayerController {
         } catch (Exception ignored) {
         }
         preparing = false;
+        prepared = false;
         setPlaying(false);
     }
 
@@ -244,6 +261,7 @@ public class PlayerController {
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
+                prepared = true;
                 preparing = false;
                 Song s = currentSong();
                 Log.i(App.TAG, "PLAYER_PREPARED id=" + (s == null ? "?" : s.id)
@@ -270,7 +288,18 @@ public class PlayerController {
         mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
+                // -38 (INVALID_OPERATION) is a client-side state error,
+                // not a stream failure: something polled or sought the
+                // player outside the prepared window. It must never kill
+                // a track — the pre-fix handler treated it as fatal and
+                // skipped the first song of every queue.
+                if (extra == -38) {
+                    Log.w(App.TAG, "PLAYER_ERROR_IGNORED -38 idx=" + index
+                            + " prepared=" + prepared);
+                    return true;
+                }
                 Log.e(App.TAG, "PLAYER_ERROR what=" + what + " extra=" + extra + " idx=" + index);
+                prepared = false;
                 preparing = false;
                 setPlaying(false);
                 notifyError("播放失败，自动跳到下一首");
@@ -288,6 +317,7 @@ public class PlayerController {
         if (song == null) return;
         ensurePlayer();
         final long token = ++loadToken;
+        prepared = false;
         preparing = true;
         setPlaying(false);
         notifySongChanged();

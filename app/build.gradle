@@ -34,8 +34,11 @@ android {
             // 1.0.3: home first-launch fix (disk cache + per-request retry,
             // shared MusicRepository) + full Alger visual language on TV
             // (pure black, grey tiers, brand green, TV type ladder).
-            versionCode 4
-            versionName '1.0.3'
+            // 1.0.4: prepared-state guard in PlayerController — UI/service
+            // polling before onPrepared posted error (1,-38) which the
+            // old handler treated as fatal, killing the first track.
+            versionCode 5
+            versionName '1.0.4'
         }
         phone {
             dimension 'device'
@@ -44,9 +47,12 @@ android {
             // notification runtime permission handled in the phone sources).
             // 1.1: Alger visual rebuild + home first-launch fix + playback
             // entry hardening for Android 12-14 (startForegroundService).
+            // 1.2: same prepared-state/-38 fix as TV 1.0.4 (shared
+            // PlayerController) + neutral search hint + system-bar insets
+            // on all phone screens (bottom rows no longer under nav bar).
             targetSdk 34
-            versionCode 2
-            versionName '1.1'
+            versionCode 3
+            versionName '1.2'
         }
     }
 

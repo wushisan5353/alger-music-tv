@@ -615,6 +615,22 @@ public class MusicRepository {
     // ------------------------------------------------------------ Play / LRC
 
     public void resolvePlayUrl(final Song song, final Result<String> cb) {
+        // Smoke-only passthrough: a song whose id is "direct:<url>" resolves
+        // to that URL with no network call, so CI can verify the playback
+        // pipeline (prepare/start/position) even when the data source is
+        // rate-limiting the cloud egress IP. Only reachable via the
+        // alger_smoke_direct intent hooks; real songs never carry this id.
+        if (song.id != null && song.id.startsWith("direct:")) {
+            final String directUrl = song.id.substring("direct:".length());
+            Log.i(App.TAG, "URL_DIRECT id=" + song.id);
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    cb.onSuccess(directUrl);
+                }
+            });
+            return;
+        }
         String base = customBase();
         if (base != null) {
             resolvePlayUrlCustom(base, song, new Result<String>() {

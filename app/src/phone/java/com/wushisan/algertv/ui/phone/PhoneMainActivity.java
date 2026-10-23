@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.wushisan.algertv.R;
 import com.wushisan.algertv.data.MusicRepository;
 import com.wushisan.algertv.data.Playlist;
+import com.wushisan.algertv.data.Song;
 import com.wushisan.algertv.playback.PlayerController;
 
 import java.util.List;
@@ -73,6 +74,24 @@ public class PhoneMainActivity extends AppCompatActivity {
         // loadHome delivers twice: an instant preliminary paint (disk
         // cache, else the built-in seed) and the refreshed final data.
         loadHome();
+        maybeSmokeDirectPlay();
+    }
+
+    /** Smoke hook: with --es alger_smoke_direct 1, play a direct-URL track
+     *  through the full playback pipeline (data source bypassed — the CI
+     *  egress IP is rate-limited there) and open the player screen, whose
+     *  400 ms ticker is exactly the poller that used to trigger error -38
+     *  during prepare. */
+    private void maybeSmokeDirectPlay() {
+        if (!"1".equals(getIntent().getStringExtra("alger_smoke_direct"))) return;
+        Song s = new Song(
+                "direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+                "Smoke Direct", "SoundHelix", "", null, null, 0);
+        android.util.Log.i("AlgerTV", "SMOKE_DIRECT_PLAY phone");
+        java.util.List<Song> q = new java.util.ArrayList<>();
+        q.add(s);
+        PlayerController.get().playQueue(q, 0);
+        startActivity(new android.content.Intent(this, PhonePlayerActivity.class));
     }
 
     @Override
