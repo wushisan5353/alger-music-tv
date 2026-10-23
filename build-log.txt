@@ -19,8 +19,8 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:checkPhoneReleaseAarMetadata
 > Task :app:mapPhoneReleaseSourceSetPaths
 > Task :app:generatePhoneReleaseResources
-> Task :app:mergePhoneReleaseResources
 > Task :app:packagePhoneReleaseResources
+> Task :app:mergePhoneReleaseResources
 > Task :app:createPhoneReleaseCompatibleScreenManifests
 > Task :app:extractDeepLinksPhoneRelease
 > Task :app:parsePhoneReleaseLocalResources
@@ -42,8 +42,11 @@ Installing Android SDK Build-Tools 33.0.1 in /usr/local/lib/android/sdk/build-to
 > Task :app:preTvReleaseBuild UP-TO-DATE
 > Task :app:mergeTvReleaseJniLibFolders
 > Task :app:mergeTvReleaseNativeLibs NO-SOURCE
-> Task :app:processPhoneReleaseResources
 > Task :app:stripTvReleaseDebugSymbols NO-SOURCE
+> Task :app:extractTvReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeTvReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:processPhoneReleaseResources
+> Task :app:checkTvReleaseDuplicateClasses
 
 > Task :app:compilePhoneReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: []
@@ -58,9 +61,6 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:processPhoneReleaseJavaRes
 > Task :app:compilePhoneReleaseArtProfile
 > Task :app:optimizePhoneReleaseResources
-> Task :app:extractTvReleaseNativeSymbolTables NO-SOURCE
-> Task :app:mergeTvReleaseNativeDebugMetadata NO-SOURCE
-> Task :app:checkTvReleaseDuplicateClasses
 > Task :app:javaPreCompileTvRelease
 > Task :app:checkTvReleaseAarMetadata
 > Task :app:generateTvReleaseResValues
@@ -83,35 +83,38 @@ Note: Recompile with -Xlint:unchecked for details.
 
 > Task :app:compileTvReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: []
+
+> Task :app:mergeExtDexTvRelease
+
+> Task :app:compileTvReleaseJavaWithJavac
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: /home/runner/work/alger-music-tv/alger-music-tv/app/src/tv/java/com/wushisan/algertv/ui/PlayerActivity.java uses unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 
-> Task :app:mergeExtDexTvRelease
 > Task :app:dexBuilderTvRelease
 > Task :app:mergeTvReleaseArtProfile
 > Task :app:mergeDexTvRelease
+> Task :app:mergeTvReleaseGlobalSynthetics
 > Task :app:mergeTvReleaseShaders
+> Task :app:compileTvReleaseArtProfile
 > Task :app:compileTvReleaseShaders NO-SOURCE
 > Task :app:generateTvReleaseAssets UP-TO-DATE
 > Task :app:mergeTvReleaseAssets
 > Task :app:compressTvReleaseAssets
-> Task :app:mergeTvReleaseGlobalSynthetics
 > Task :app:processTvReleaseJavaRes
-> Task :app:compileTvReleaseArtProfile
 > Task :app:mergeTvReleaseJavaResource
-> Task :app:optimizeTvReleaseResources
 > Task :app:collectTvReleaseDependencies
 > Task :app:sdkTvReleaseDependencyData
 > Task :app:writeTvReleaseAppMetadata
 > Task :app:writeTvReleaseSigningConfigVersions
+> Task :app:optimizeTvReleaseResources
 > Task :app:packageTvRelease
 > Task :app:createTvReleaseApkListingFileRedirect
 > Task :app:assembleTvRelease
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792715390095.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1792716039193.json
 
-BUILD SUCCESSFUL in 50s
+BUILD SUCCESSFUL in 1m 2s
 70 actionable tasks: 70 executed
 gradle_exit=0
