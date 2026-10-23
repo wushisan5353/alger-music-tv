@@ -108,8 +108,8 @@ public class MusicRepository {
 
     private static MusicRepository sInstance;
 
-    private final OkHttpClient clientGds;
-    private final OkHttpClient clientCustom;
+    private OkHttpClient clientGds;
+    private OkHttpClient clientCustom;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final Map<String, String> picCache = new HashMap<>();
     private Context appContext;
@@ -117,26 +117,41 @@ public class MusicRepository {
     public static synchronized void init(Context ctx) {
         if (sInstance == null) sInstance = new MusicRepository();
         if (ctx != null) sInstance.appContext = ctx.getApplicationContext();
+        sInstance.buildClients();
     }
 
     public static MusicRepository get() {
         return sInstance;
     }
 
-    private MusicRepository() {
-        clientGds = new OkHttpClient.Builder()
+    private MusicRepository() {}
+
+    /**
+     * Clients are built in init() (not the constructor) so they can carry
+     * the SslSupport socket factory: GDStudio's Let's Encrypt chain is
+     * untrusted by Android 5.1's built-in store (see SslSupport).
+     */
+    private synchronized void buildClients() {
+        if (clientGds != null) return;
+        OkHttpClient.Builder gds = new OkHttpClient.Builder()
                 .connectTimeout(8, TimeUnit.SECONDS)
                 .readTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(8, TimeUnit.SECONDS)
-                .build();
-        // Custom source is user-hosted: fail fast so GDStudio fallback is snappy.
-        clientCustom = new OkHttpClient.Builder()
+                .writeTimeout(8, TimeUnit.SECONDS);
+        OkHttpClient.Builder custom = new OkHttpClient.Builder()
                 .connectTimeout(4, TimeUnit.SECONDS)
                 .readTimeout(4, TimeUnit.SECONDS)
                 .writeTimeout(4, TimeUnit.SECONDS)
                 .callTimeout(5, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(false)
-                .build();
+                .retryOnConnectionFailure(false);
+        if (appContext != null) {
+            gds.sslSocketFactory(SslSupport.socketFactory(appContext),
+                    SslSupport.trustManager(appContext));
+            custom.sslSocketFactory(SslSupport.socketFactory(appContext),
+                    SslSupport.trustManager(appContext));
+        }
+        clientGds = gds.build();
+        // Custom source is user-hosted: fail fast so GDStudio fallback is snappy.
+        clientCustom = custom.build();
     }
 
     // ------------------------------------------------------- Custom API pref

@@ -36,6 +36,7 @@ public class MainFragment extends BrowseSupportFragment {
 
     private ArrayObjectAdapter rowsAdapter;
     private MusicRepository.HomeData homeData;
+    private boolean homeDelivered = false;
     private boolean smokeAutoPlayed = false;
     private String lastNowPlayingSongId = null;
 
@@ -98,29 +99,62 @@ public class MainFragment extends BrowseSupportFragment {
         MusicRepository.get().loadHome(new MusicRepository.Result<MusicRepository.HomeData>() {
             @Override
             public void onSuccess(MusicRepository.HomeData data) {
+                homeDelivered = true;
                 // loadHome delivers up to twice; the final delivery can
                 // land after this fragment detached (cloud smoke caught
                 // getString() -> "not attached to a context" FATAL).
                 if (!isAdded() || getActivity() == null) return;
                 homeData = data;
-                buildRows();
+                buildRowsSafely();
                 maybeSmokeAutoPlay(data);
             }
 
             @Override
             public void onError(String message) {
+                homeDelivered = true;
                 Log.w(App.TAG, "HOME_LOAD_ERROR: " + message);
                 // Never leave an empty home: fall back to the built-in seed
                 // rows (names are known offline) and say so.
                 if (homeData == null && getActivity() != null) {
                     homeData = MusicRepository.builtInHomeData();
                     homeData.fromFallback = true;
-                    buildRows();
+                    buildRowsSafely();
                     Toast.makeText(getActivity(), R.string.load_failed,
                             Toast.LENGTH_LONG).show();
                 }
             }
         });
+        // Watchdog: the loading row must never be permanent. If neither
+        // delivery landed within 6s (any platform-specific surprise on
+        // the real TV), force the built-in seed rows on screen.
+        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!homeDelivered && isAdded() && homeData == null) {
+                            Log.w(App.TAG, "HOME_WATCHDOG_SEED");
+                            homeData = MusicRepository.builtInHomeData();
+                            homeData.fromFallback = true;
+                            buildRowsSafely();
+                        }
+                    }
+                }, 6000);
+    }
+
+    /** buildRows with a seatbelt: any failure retries once with seed data. */
+    private void buildRowsSafely() {
+        try {
+            buildRows();
+        } catch (Throwable t) {
+            Log.e(App.TAG, "HOME_ROWS_BUILD_FAIL: " + t);
+            homeData = MusicRepository.builtInHomeData();
+            homeData.fromFallback = true;
+            try {
+                buildRows();
+            } catch (Throwable ignored) {
+                Log.e(App.TAG, "HOME_ROWS_BUILD_FAIL_SEED: " + ignored);
+            }
+        }
     }
 
     private void buildRows() {

@@ -37,8 +37,13 @@ android {
             // 1.0.4: prepared-state guard in PlayerController — UI/service
             // polling before onPrepared posted error (1,-38) which the
             // old handler treated as fatal, killing the first track.
-            versionCode 5
-            versionName '1.0.4'
+            // 1.0.5: bundle ISRG Root X1/X2 as fallback trust anchors —
+            // GDStudio's Let's Encrypt chain is untrusted by Android
+            // 5.1's store, so on the real TV every request failed and
+            // home sat on its loading row; plus a home watchdog so the
+            // loading row can never be permanent.
+            versionCode 6
+            versionName '1.0.5'
         }
         phone {
             dimension 'device'
