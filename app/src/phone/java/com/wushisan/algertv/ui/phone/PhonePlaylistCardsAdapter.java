@@ -69,7 +69,7 @@ public class PhonePlaylistCardsAdapter
         if (pl.coverUrl != null) {
             int radius = holder.itemView.getResources()
                     .getDimensionPixelSize(R.dimen.ph_radius_card);
-            Glide.with(holder.itemView.getContext()).load(pl.coverUrl)
+            Glide.with(holder.itemView.getContext().getApplicationContext()).load(pl.coverUrl)
                     .placeholder(R.drawable.cover_placeholder)
                     .error(R.drawable.cover_placeholder)
                     .transform(new CenterCrop(), new RoundedCorners(radius))

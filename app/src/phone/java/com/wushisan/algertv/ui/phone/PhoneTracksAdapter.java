@@ -100,19 +100,24 @@ public class PhoneTracksAdapter extends RecyclerView.Adapter<PhoneTracksAdapter.
     }
 
     /** Rounded cover; search results only carry a pic_id, resolved lazily
-     *  with a tag guard so recycled rows never show a stale cover. */
+     *  with a tag guard so recycled rows never show a stale cover.
+     *  All Glide calls here use the application context on purpose: the
+     *  resolvePic callback can land after the host activity is destroyed
+     *  (user backs out of search while pic requests are in flight), and
+     *  Glide.with(activity) then throws "You cannot start a load for a
+     *  destroyed activity" — the playing-then-navigate crash of 1.2. */
     private void bindCover(final VH holder, final Song s) {
         holder.cover.setTag(s);
         int radius = holder.itemView.getResources()
                 .getDimensionPixelSize(R.dimen.ph_radius_cover);
         if (s.picUrl != null && s.picUrl.length() > 0) {
-            Glide.with(holder.itemView.getContext()).load(s.picUrl)
+            Glide.with(holder.itemView.getContext().getApplicationContext()).load(s.picUrl)
                     .placeholder(R.drawable.cover_placeholder)
                     .error(R.drawable.cover_placeholder)
                     .transform(new CenterCrop(), new RoundedCorners(radius))
                     .into(holder.cover);
         } else if (s.picId != null) {
-            Glide.with(holder.itemView.getContext()).clear(holder.cover);
+            Glide.with(holder.itemView.getContext().getApplicationContext()).clear(holder.cover);
             holder.cover.setImageResource(R.drawable.cover_placeholder);
             MusicRepository.get().resolvePic(s, new MusicRepository.Result<String>() {
                 @Override
@@ -120,7 +125,7 @@ public class PhoneTracksAdapter extends RecyclerView.Adapter<PhoneTracksAdapter.
                     if (holder.cover.getTag() == s) {
                         int r = holder.itemView.getResources()
                                 .getDimensionPixelSize(R.dimen.ph_radius_cover);
-                        Glide.with(holder.itemView.getContext()).load(url)
+                        Glide.with(holder.itemView.getContext().getApplicationContext()).load(url)
                                 .placeholder(R.drawable.cover_placeholder)
                                 .transform(new CenterCrop(), new RoundedCorners(r))
                                 .into(holder.cover);
@@ -132,7 +137,7 @@ public class PhoneTracksAdapter extends RecyclerView.Adapter<PhoneTracksAdapter.
                 }
             });
         } else {
-            Glide.with(holder.itemView.getContext()).clear(holder.cover);
+            Glide.with(holder.itemView.getContext().getApplicationContext()).clear(holder.cover);
             holder.cover.setImageResource(R.drawable.cover_placeholder);
         }
     }
