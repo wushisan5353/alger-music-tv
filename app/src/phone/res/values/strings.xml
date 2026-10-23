@@ -2,6 +2,7 @@
 <resources>
     <string name="phone_all_charts">排行榜单</string>
     <string name="phone_search_action">搜索</string>
+    <string name="phone_search_hint">搜索歌曲 / 歌手</string>
     <string name="phone_queue">播放队列</string>
     <string name="phone_no_results">没有找到相关歌曲</string>
     <string name="phone_search_failed">搜索失败，请检查网络</string>
