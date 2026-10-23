@@ -1,8 +1,8 @@
 === uname ===
 Linux runnervmidgih 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:12:01 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
 total 8.0K
-drwxr-xr-x 3 runner runner 4.0K Oct 23 00:31 phone
-drwxr-xr-x 3 runner runner 4.0K Oct 23 00:31 tv
+drwxr-xr-x 3 runner runner 4.0K Oct 23 00:42 phone
+drwxr-xr-x 3 runner runner 4.0K Oct 23 00:42 tv
 Reading package lists...
 Building dependency tree...
 Reading state information...
@@ -27,7 +27,7 @@ Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf3
 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 adb arm64 1:34.0.4-1build3 [272 kB]
 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 android-sdk-platform-tools-common all 28.0.2+9 [6402 B]
 Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libprotobuf-lite32t64 arm64 3.21.12-8.2ubuntu0.4 [221 kB]
-Fetched 2225 kB in 2s (1024 kB/s)
+Fetched 2225 kB in 1s (1582 kB/s)
 Selecting previously unselected package android-liblog:arm64.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 203258 files and directories currently installed.)
 Preparing to unpack .../0-android-liblog_1%3a34.0.4-1build3_arm64.deb ...
@@ -94,7 +94,7 @@ Need to get 114 MB of archives.
 After this operation, 112 MB of additional disk space will be used.
 Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 wireless-regdb all 2026.05.30-0ubuntu1~24.04.1 [7714 B]
 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 linux-modules-extra-6.17.0-1022-azure arm64 6.17.0-1022.22 [114 MB]
-Fetched 114 MB in 1s (101 MB/s)
+Fetched 114 MB in 2s (61.9 MB/s)
 Selecting previously unselected package wireless-regdb.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 203319 files and directories currently installed.)
 Preparing to unpack .../wireless-regdb_2026.05.30-0ubuntu1~24.04.1_all.deb ...
@@ -148,7 +148,7 @@ Unable to find image 'redroid/redroid:11.0.0-latest' locally
 06cb3c383cf0: Pull complete
 Digest: sha256:60b0810684be4578733a847be3314c50b70f73bc92405b5a627ebe9b633ebb5e
 Status: Downloaded newer image for redroid/redroid:11.0.0-latest
-cc17f2a7308908ebaea88f7b17326cc7e483ab81dfb2bbf55adf25efe0eddf21
+55325c23231000417c73ff86f3d12a4ab24e92fe006ec95f92099898caf1d7bf
 * daemon not running; starting now at tcp:5037
 * daemon started successfully
 connected to localhost:5555
@@ -157,34 +157,50 @@ boot try 2: 1
 arm64-v8a,armeabi-v7a,armeabi
 === sign artifacts with ephemeral key (smoke only; CI artifacts are unsigned) ===
 apksigner=/usr/bin/apksigner keytool=/usr/bin/keytool
-Failed
+SMOKE_SIGNED apks/tv/release/AlgerTV-1.0.4.apk
+SMOKE_SIGNED apks/phone/release/AlgerPhone-1.2.apk
+Success
 --- TV first launch (cold, no extras) ---
 Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity }
-Error type 3
-Error: Activity class {com.wushisan.algertv/com.wushisan.algertv.ui.MainActivity} does not exist.
 --- TV second launch (smoke autoplay) ---
 Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity (has extras) }
-Error type 3
-Error: Activity class {com.wushisan.algertv/com.wushisan.algertv.ui.MainActivity} does not exist.
-Failed
+--- TV direct-URL pipeline (source-independent) ---
+Starting: Intent { cmp=com.wushisan.algertv/.ui.MainActivity (has extras) }
+Success
 --- PHONE first launch (cold) ---
 Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity }
-Error type 3
-Error: Activity class {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} does not exist.
 --- PHONE second launch ---
 Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity }
-Error type 3
-Error: Activity class {com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity} does not exist.
+--- PHONE search repro ---
+Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity }
+/home/runner/work/_temp/878b63b7-41fd-44ce-8d7a-9863c6e23c4b.sh: line 225: PPID: readonly variable
+--- PHONE direct-URL pipeline ---
+Starting: Intent { cmp=com.wushisan.algertv.phone/com.wushisan.algertv.ui.phone.PhoneMainActivity (has extras) }
 REDROID_BOOTED
-SMOKE_SIGN_FAIL apks/tv/release/AlgerTV-1.0.3.apk
-SMOKE_SIGN_FAIL apks/phone/release/AlgerPhone-1.1.apk
-TV_INSTALL_FAIL
-TV_FIRST_DEAD
-TV_PROCESS_DEAD
+TV_INSTALL_OK
+TV_FIRST_ALIVE pid=1784
+TV_FIRST_FATAL_COUNT=0
+TV_PROCESS_ALIVE pid=1873
 TV_FATAL_COUNT=0
 TV_AUTOPLAY_UNCONFIRMED
-PHONE_INSTALL_FAIL
-PHONE_FIRST_DEAD
-PHONE_PROCESS_DEAD
+TV_FIRST_TRACK load=none start=none errors=0
+TV_FIRST_TRACK_FAIL
+TV_DIRECT_STARTED
+TV_DIRECT_PLAYER_ERRORS=0
+TV_DIRECT_POSITION p1=0 p2=0
+TV_DIRECT_ALIVE pid=1960
+PHONE_INSTALL_OK
+PHONE_FIRST_ALIVE pid=2099
+PHONE_FIRST_FATAL_COUNT=0
+PHONE_PROCESS_ALIVE pid=2210
 PHONE_FATAL_COUNT=0
-SMOKE_DONE date=2026-10-23T00:33:45Z sha=6cb62ebe0ddf7d03b817188c420dbae2eeea8462
+PHONE_SEARCH_OPEN_FAIL
+PHONE_SEARCH_RESULTS=7
+PHONE_SEARCH_ANR_COUNT=0
+PHONE_SEARCH_FATAL_COUNT=0
+PHONE_SEARCH_ALIVE pid=2294
+PHONE_DIRECT_STARTED
+PHONE_DIRECT_PLAYER_ERRORS=0
+PHONE_DIRECT_POSITION p1=0 p2=0
+PHONE_DIRECT_ALIVE pid=2475
+SMOKE_DONE date=2026-10-23T00:46:07Z sha=0fe3adf469f74becdf7e33e0c26566fdaaf6066f

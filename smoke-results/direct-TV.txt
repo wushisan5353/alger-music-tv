@@ -1,0 +1,7 @@
+10-23 00:44:32.067  1960  1960 I AlgerTV : SMOKE_DIRECT_PLAY tv
+10-23 00:44:32.072  1960  1960 I AlgerTV : PLAYER_LOAD id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 name=Smoke Direct
+10-23 00:44:32.105  1960  1960 I AlgerTV : PLAYER_PREPARING id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 00:44:32.481  1960  1960 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 00:44:33.187  1960  1960 I AlgerTV : PLAYER_PREPARED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3 dur=372715
+10-23 00:44:33.188  1960  1960 I AlgerTV : PLAYER_STARTED id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+10-23 00:44:33.193  1960  1960 I AlgerTV : PLAYER_UI_BIND id=direct:https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
